@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <meta charset="utf-8">
+    <title>Dating form</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <filedset>
+    <h1 id="title">Girlfriend Application</h1>
+    <p id="description">Thank you for considering me to become your boyfriend</p>
+    <form id="survey-form">
+      <label for ="name" id="name-label">Name <input id="name" type="text" required placeholder="enter your name"/></label>
+      <label for="email" id="email-label">Email <input id="email" type="email" required placeholder="enter your email"/></label>
+      <label for="number" id="number-label">Number<input id="number" type="number" max="120" min="18" placeholder="enter your number"/></label>
+      </fieldset>
+      <fieldset>
+        <label> How hot are you?
+      <select id="dropdown">
+        <option value="pick one">Pick One</option>
+        <option value="1-5">1-5</option>
+        <option value="6-7">6-7</option>
+        <option value="8-10">8-10</option>
+      </select>
+      </label>
+      <label for="picture">Upload your picture: <input id="picture" type="file" name="file" /></label>
+      <label for="male"><input type="radio" name="Distance" id="SDR" value="SDR" class="inline"/>Short Distance Relationship</label>
+      <label for="female"><input type="radio" name="Distance" id="LDR" value="LDR" class="inline"/>Long Distance Relationship</label>
+      <label for="catfish"><input type="checkbox" value="notcatfish" class="inline"/>I hereby declare that I am not a catfish</label>
+      <label for="catfish"><input type="checkbox" value="gooddeed" class="inline"/>I hereby declare that I have good intentions</label>
+      <label for="bio">Tell me about yourself and your intentions with me<textarea id="bio"></textarea></label>
+      </fieldset>
+      <input type="submit" id="submit" />
+      </form>
+    </body>
+  </html>
