@@ -19,3 +19,23 @@ Route::get('/', function () {
 Route::get('/rpl', function () {
     return view('rpl');
 });
+
+Route::get('/', function () {
+    return view('layout.ruangan');
+});
+
+Route::get('/ruangans', function () {
+    return view('layout.ruangan');
+});
+
+Route::get('/penjadwalans/add', function () {
+    return view('penjadwalan.formadd');
+});
+
+Route::get('/pemeliharaans/add', function () {
+    return view('pemeliharaan.formadd');
+});
+
+Route::resource('pemeliharaans', PemeliharaansController::class);
+Route::resource('penjadwalans', PenjadwalansController::class);
+Route::resource('ruangans', RuangansController::class);
