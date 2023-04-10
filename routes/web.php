@@ -39,3 +39,8 @@ Route::get('/pemeliharaans/add', function () {
 Route::resource('pemeliharaans', PemeliharaansController::class);
 Route::resource('penjadwalans', PenjadwalansController::class);
 Route::resource('ruangans', RuangansController::class);
+Route::resource('admins', AdminController::class);
+Route::resource('wares', WareController::class);
+Route::resource('pinjams', PinjamController::class);
+Route::resource('perawatans', PerawatanController::class);
+Route::resource('products', ProductController::class);
