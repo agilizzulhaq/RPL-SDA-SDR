@@ -22,15 +22,13 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::get('/rpl', function () {
     return view('rpl');
 });
 
 Route::get('/', function () {
-    return view('layout.ruangan');
+    return view('rpl');
 });
 
 Route::get('/ruangans', function () {
