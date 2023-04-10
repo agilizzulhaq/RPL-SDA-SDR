@@ -21,25 +21,33 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
+            <th>ID Admin</th>
+            <th>ID User</th>
             <th>Kode Alat</th>
             <th>Nama Alat</th>
             <th>Nama Peminjam</th>
             <th>Tanggal Pinjam</th>
+            <th>Status Peminjaman</th>
+            <th>Alasan Peminjaman</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($pinjams as $pinjam)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $pinjam->kodealat }}</td>
-            <td>{{ $pinjam->namaalat }}</td>
-            <td>{{ $pinjam->namapeminjam }}</td>
-            <td>{{ $pinjam->tanggalpinjam }}</td>
+            <td>{{ $pinjam->kode_alat }}</td>
+            <td>{{ $pinjam->id_admin }}</td>
+            <td>{{ $pinjam->id_user }}</td>
+            <td>{{ $pinjam->nama_alat }}</td>
+            <td>{{ $pinjam->nama_peminjam }}</td>
+            <td>{{ $pinjam->tanggal_peminjam }}</td>
+            <td>{{ $pinjam->status_peminjaman }}</td>
+            <td>{{ $pinjam->alasan_peminjaman }}</td>
             <td>
-                <form action="{{ route('pinjams.destroy',$pinjam->kodealat) }}" method="POST">
+                <form action="{{ route('pinjams.destroy',$pinjam->kode_alat) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('pinjams.show',$pinjam->kodealat) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('pinjams.show',$pinjam->kode_alat) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('pinjams.edit',$pinjam->kodealat) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('pinjams.edit',$pinjam->kode_alat) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')

@@ -34,10 +34,14 @@ class PinjamController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'kodealat' => 'required',
-            'namaalat' => 'required',
-            'namapeminjam' => 'required',
-            'tanggalpinjam' => 'required',
+            'kode_alat' => 'required',
+            'id_admin' => 'required',
+            'id_user' => 'required',
+            'nama_alat' => 'required',
+            'nama_peminjam' => 'required',
+            'tanggal_peminjam' => 'required',
+            'status_peminjaman' => 'required',
+            'alasan_peminjaman' => 'required',
         ]);
         
         Pinjam::create($request->all());
@@ -68,10 +72,14 @@ class PinjamController extends Controller
     public function update(Request $request, Pinjam $pinjam): RedirectResponse
     {
         $request->validate([
-            'kodealat' => 'required',
-            'namaalat' => 'required',
-            'namapeminjam' => 'required',
-            'tanggalpinjam' => 'required',
+            'kode_alat' => 'required',
+            'id_admin' => 'required',
+            'id_user' => 'required',
+            'nama_alat' => 'required',
+            'nama_peminjam' => 'required',
+            'tanggal_peminjam' => 'required',
+            'status_peminjaman' => 'required',
+            'alasan_peminjaman' => 'required',
         ]);
         
         $pinjam->update($request->all());

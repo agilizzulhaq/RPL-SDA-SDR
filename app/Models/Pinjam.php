@@ -9,6 +9,6 @@ class Pinjam extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'kodealat';
-    protected $fillable = ['kodealat', 'namaalat', 'namapeminjam', 'tanggalpinjam'];
+    protected $primaryKey = 'kode_alat';
+    protected $fillable = ['kode_alat', 'id_admin', 'id_user','nama_alat', 'nama_peminjam', 'tanggal_peminjam', 'status_peminjaman', 'alasan_peminjaman'];
 }

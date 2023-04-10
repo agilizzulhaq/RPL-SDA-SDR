@@ -34,12 +34,16 @@ class PerawatanController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'kodealat' => 'required',
-            'namaalat' => 'required',
-            'lokasialat' => 'required',
-            'jenisperawatan' => 'required',
-            'catatanperawatan' => 'required',
-            'tanggalperawatan' => 'required',
+            'kode_alat' => 'required',
+            'id_admin' => 'required',
+            'id_keeper' => 'required',
+            'id_user' => 'required',
+            'nama_alat' => 'required',
+            'lokasi_alat' => 'required',
+            'jenis_perawatan' => 'required',
+            'status_perawatan' => 'required',
+            'riwayat_perawatan' => 'required',
+            'catatan_perawatan' => 'required',
         ]);
         
         Perawatan::create($request->all());
@@ -70,12 +74,16 @@ class PerawatanController extends Controller
     public function update(Request $request, Perawatan $perawatan): RedirectResponse
     {
         $request->validate([
-            'kodealat' => 'required',
-            'namaalat' => 'required',
-            'lokasialat' => 'required',
-            'jenisperawatan' => 'required',
-            'catatanperawatan' => 'required',
-            'tanggalperawatan' => 'required',
+            'kode_alat' => 'required',
+            'id_admin' => 'required',
+            'id_keeper' => 'required',
+            'id_user' => 'required',
+            'nama_alat' => 'required',
+            'lokasi_alat' => 'required',
+            'jenis_perawatan' => 'required',
+            'status_perawatan' => 'required',
+            'riwayat_perawatan' => 'required',
+            'catatan_perawatan' => 'required',
         ]);
         
         $perawatan->update($request->all());

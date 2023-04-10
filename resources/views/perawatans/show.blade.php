@@ -16,37 +16,61 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Kode Alat:</strong>
-                {{ $perawatan->kodealat }}
+                {{ $perawatan->kode_alat }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>ID Admin:</strong>
+                {{ $perawatan->id_admin }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>ID Keeper:</strong>
+                {{ $perawatan->id_keeper }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>ID User:</strong>
+                {{ $perawatan->id_user }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nama Alat:</strong>
-                {{ $perawatan->namaalat }}
+                {{ $perawatan->nama_alat }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Lokasi Alat:</strong>
-                {{ $perawatan->lokasialat }}
+                {{ $perawatan->lokasi_alat }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Jenis Perawatan:</strong>
-                {{ $perawatan->jenisperawatan }}
+                {{ $perawatan->jenis_perawatan }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Status Perawatan:</strong>
+                {{ $perawatan->status_perawatan }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Riwayat Perawatan:</strong>
+                {{ $perawatan->riwayat_perawatan }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Catatan Perawatan:</strong>
-                {{ $perawatan->catatanperawatan }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Tanggal Perawatan:</strong>
-                {{ $perawatan->tanggalperawatan }}
+                {{ $perawatan->catatan_perawatan }}
             </div>
         </div>
     </div>

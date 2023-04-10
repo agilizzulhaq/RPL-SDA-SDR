@@ -9,6 +9,6 @@ class Perawatan extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'kodealat';
-    protected $fillable = ['kodealat', 'namaalat', 'lokasialat','jenisperawatan', 'catatanperawatan', 'tanggalperawatan'];
+    protected $primaryKey = 'kode_alat';
+    protected $fillable = ['kode_alat', 'id_admin', 'id_keeper', 'id_user', 'nama_alat', 'lokasi_alat','jenis_perawatan','status_perawatan','riwayat_perawatan', 'catatan_perawatan'];
 }

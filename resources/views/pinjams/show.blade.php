@@ -16,25 +16,49 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Kode Alat:</strong>
-                {{ $pinjam->kodealat }}
+                {{ $pinjam->kode_alat }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>ID Admin:</strong>
+                {{ $pinjam->id_admin }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>ID User:</strong>
+                {{ $pinjam->id_user }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nama Alat:</strong>
-                {{ $pinjam->namaalat }}
+                {{ $pinjam->nama_alat }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nama Peminjam:</strong>
-                {{ $pinjam->namapeminjam }}
+                {{ $pinjam->nama_peminjam }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Tanggal Pinjam:</strong>
-                {{ $pinjam->tanggalpinjam }}
+                {{ $pinjam->tanggal_peminjam }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Status Peminjaman:</strong>
+                {{ $pinjam->status_peminjaman }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Alasan Peminjaman:</strong>
+                {{ $pinjam->alasan_peminjaman }}
             </div>
         </div>
     </div>
