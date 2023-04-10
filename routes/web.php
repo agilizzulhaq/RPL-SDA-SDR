@@ -52,9 +52,9 @@ Route::get('/editalat/{id}', [InventoryController::class, 'editalat']) -> name('
 Route::post('/updatealat/{id}', [InventoryController::class, 'updatealat']) -> name('updatealat');
 Route::get('/hapusalat/{id}', [InventoryController::class, 'hapusalat']) -> name('hapusalat');
 
-Route::get('/ruangan', [RuanganController::class, 'ruangan']) -> name('ruangan');
-Route::get('/tambahruangan', [RuanganController::class, 'tambahruangan']) -> name('tambahruangan');
-Route::post('/masukkanruangan', [RuanganController::class, 'masukkanruangan']) -> name('masukkanruangan');
-Route::get('/editruangan/{id}', [RuanganController::class, 'editruangan']) -> name('editruangan');
-Route::post('/updateruangan/{id}', [RuanganController::class, 'updateruangan']) -> name('updateruangan');
-Route::get('/hapusruangan/{id}', [RuanganController::class, 'hapusruangan']) -> name('hapusruangan');
+Route::get('/ruangan', [RoomController::class, 'ruangan']) -> name('ruangan');
+Route::get('/tambahruangan', [RoomController::class, 'tambahruangan']) -> name('tambahruangan');
+Route::post('/masukkanruangan', [RoomController::class, 'masukkanruangan']) -> name('masukkanruangan');
+Route::get('/editruangan/{id}', [RoomController::class, 'editruangan']) -> name('editruangan');
+Route::post('/updateruangan/{id}', [RoomController::class, 'updateruangan']) -> name('updateruangan');
+Route::get('/hapusruangan/{id}', [RoomController::class, 'hapusruangan']) -> name('hapusruangan');

@@ -2,47 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ruangan;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
-class RuanganController extends Controller
+class RoomController extends Controller
 {
-    # Controller Data Ruangan
+    # Controller Data Room
     public function ruangan(Request $request) {
         if($request -> has ('search')) {
-            $data = Ruangan::where('namaRuangan','LIKE','%' .$request -> search.'%') -> paginate(5);
+            $data = Room::where('namaRuangan','LIKE','%' .$request -> search.'%') -> paginate(5);
         } else {
-            $data = Ruangan::paginate(5);
+            $data = Room::paginate(5);
         }
-        return view('ruangan.dataruangan', compact('data'));
+        return view('room.dataruangan', compact('data'));
     }
 
     # Controller Input Data
     public function tambahruangan() {
-        return view('ruangan.tambahdata');
+        return view('room.tambahdata');
     }
 
     public function masukkandata(Request $request) {
         //dd($request->all());
-        Ruangan::create($request->all());
+        Room::create($request->all());
         return redirect()->route('ruangan') -> with('success','Data berhasil ditambahkan');
     }
 
     # Controller Edit Data
     public function editdata($id) {
-        $data = Ruangan::find($id);
+        $data = Room::find($id);
         //dd($data);
-        return view('ruangan.editdata', compact('data'));
+        return view('room.editdata', compact('data'));
     }
     
     public function updatedata(Request $request, $id) {
-        $data = Ruangan::find($id);
+        $data = Room::find($id);
         $data -> update($request -> all());
         return redirect()->route('ruangan') -> with('success','Data berhasil diperbaharui');
     }
 
     public function hapusdata($id) {
-        $data = Ruangan::find($id);
+        $data = Room::find($id);
         $data -> delete();
         return redirect()->route('ruangan') -> with('success','Data berhasil dihapus');
     }
