@@ -1,4 +1,4 @@
-@extends('layout.main')
+{{-- @extends('layout.main')
 
 @section('content')
 <h3> From tambah Data Jadwal</h3>
@@ -91,4 +91,4 @@
             </form>
         </div>
     </div>
-@endsection
+@endsection --}}

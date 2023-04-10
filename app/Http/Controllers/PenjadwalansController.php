@@ -52,16 +52,16 @@ class PenjadwalansController extends Controller
      */
     public function show(Ruangans $ruangans,$koderuangan)
     {
-        $ruangans = Ruangans::all();
-        $data = $ruangans->find($koderuangan);
-        return view('penjadwalan.formedit')->with([
-            'txtkode' => $koderuangan,
-            'txtnama' => $data->namaruangan,
-            'txtjenis' => $data->jenisruangan,
-            'txtlokasi' => $data->lokasi,
-            'txtkapasitas' => $data->kapasitas,
-            'txtstatus' => $data->status,
-        ]);
+        // $ruangans = Ruangans::all();
+        // $data = $ruangans->find($koderuangan);
+        // return view('penjadwalan.formedit')->with([
+        //     'txtkode' => $koderuangan,
+        //     'txtnama' => $data->namaruangan,
+        //     'txtjenis' => $data->jenisruangan,
+        //     'txtlokasi' => $data->lokasi,
+        //     'txtkapasitas' => $data->kapasitas,
+        //     'txtstatus' => $data->status,
+        // ]);
 
     }
 
@@ -78,16 +78,16 @@ class PenjadwalansController extends Controller
      */
     public function update(Request $request, Ruangans $ruangans,$koderuangan)
     {
-        $data =$ruangans->find($koderuangan);
-        $data->koderuangan = $request->txtkode;
-        $data->namaruangan = $request->txtnama;
-        $data->jenisruangan = $request->txtjenis;
-        $data->lokasi = $request->txtlokasi;
-        $data->kapasitas = $request->txtkapasitas;
-        $data->status = $request->txtstatus;
-        $data->save();
+        // $data =$ruangans->find($koderuangan);
+        // $data->koderuangan = $request->txtkode;
+        // $data->namaruangan = $request->txtnama;
+        // $data->jenisruangan = $request->txtjenis;
+        // $data->lokasi = $request->txtlokasi;
+        // $data->kapasitas = $request->txtkapasitas;
+        // $data->status = $request->txtstatus;
+        // $data->save();
 
-        return redirect('penjadwalans')->with('msg','mengubah data');
+        // return redirect('penjadwalans')->with('msg','mengubah data');
     }
 
     /**
@@ -95,8 +95,8 @@ class PenjadwalansController extends Controller
      */
     public function destroy(Ruangans $ruangans)
     {
-        $data = $ruangans->find($koderuangan);
-        $data->delete();
-        return redirect('penjadwalans')->with('msg','menghapus data');
+        // $data = $ruangans->find($koderuangan);
+        // $data->delete();
+        // return redirect('penjadwalans')->with('msg','menghapus data');
     }
 }

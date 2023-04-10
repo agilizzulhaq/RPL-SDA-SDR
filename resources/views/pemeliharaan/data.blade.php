@@ -38,11 +38,13 @@
                     <td>{{ $row->history }}</td>
                     <td>{{ $row->statusperawatan }}</td>
                     <td>
-                        <button onclick="window.location='{{ url('pemeliharaans/'.$row->koderuangan) }}'" type="button" class="btn btn-sm btn-info" title="Edit data">
+                        <button
+                        {{-- onclick="window.location='{{ url('pemeliharaans/'.$row->koderuangan) }}'"  --}}
+                            type="button" class="btn btn-sm btn-info" title="Edit data">
                             <i class="fas fa-edit"></i>
-                            <form onsubmit="return deleteData()" style="display: inline"  method="POST" action="{{ url('pemeliharaans/'.$row->koderuangan) }}">
+                            {{-- <form onsubmit="return deleteData()" style="display: inline"  method="POST" action="{{ url('pemeliharaans/'.$row->koderuangan) }}">
                             @csrf
-                            @method('DELETE')
+                            @method('DELETE') --}}
                             <button type="submit" title="Hapus Data" class="btn btn-sm btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                             </button>

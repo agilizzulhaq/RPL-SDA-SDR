@@ -2,7 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\RoomController;
+use App\Http\Controllers\PemeliharaansController;
+use App\Http\Controllers\PenjadwalansController;
+use App\Http\Controllers\RuangansController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\WareController;
+use App\Http\Controllers\PinjamController;
+use App\Http\Controllers\PerawatanController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------

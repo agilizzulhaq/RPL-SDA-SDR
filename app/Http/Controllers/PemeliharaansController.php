@@ -53,16 +53,16 @@ class PemeliharaansController extends Controller
      */
     public function show(Ruangans $ruangans,$koderuangan)
     {
-        $ruangans = Ruangans::all();
-        $data = $ruangans->find($koderuangan);
-        return view('pemeliharaan.formedit')->with([
-            'txtkode' => $koderuangan,
-            'txtnama' => $data->namaruangan,
-            'txtlokasi' => $data->lokasi,
-            'txtkondisi' => $data->kondisi,
-            'txthistory' => $data->history,
-            'txtstatusp' => $data->statusperawatan,
-        ]);
+        // $ruangans = Ruangans::all();
+        // $data = $ruangans->find($koderuangan);
+        // return view('pemeliharaan.formedit')->with([
+        //     'txtkode' => $koderuangan,
+        //     'txtnama' => $data->namaruangan,
+        //     'txtlokasi' => $data->lokasi,
+        //     'txtkondisi' => $data->kondisi,
+        //     'txthistory' => $data->history,
+        //     'txtstatusp' => $data->statusperawatan,
+        // ]);
     }
 
     /**
@@ -78,16 +78,16 @@ class PemeliharaansController extends Controller
      */
     public function update(Request $request, Ruangans $ruangans)
     {
-        $data =$ruangans->find($koderuangan);
-        $data->koderuangan = $request->txtkode;
-        $data->namaruangan = $request->txtnama;
-        $data->lokasi = $request->txtlokasi;
-        $data->kondisi = $request->txtkondisi;
-        $data->history = $request->txthistory;
-        $data->statusperawatan = $request->txtstatusp;
-        $data->save();
+        // $data =$ruangans->find($koderuangan);
+        // $data->koderuangan = $request->txtkode;
+        // $data->namaruangan = $request->txtnama;
+        // $data->lokasi = $request->txtlokasi;
+        // $data->kondisi = $request->txtkondisi;
+        // $data->history = $request->txthistory;
+        // $data->statusperawatan = $request->txtstatusp;
+        // $data->save();
 
-        return redirect('pemeliharaans')->with('msg','menambahkan data');
+        // return redirect('pemeliharaans')->with('msg','menambahkan data');
     }
 
     /**
@@ -95,8 +95,8 @@ class PemeliharaansController extends Controller
      */
     public function destroy(Ruangans $ruangans)
     {
-        $data = $ruangans->find($koderuangan);
-        $data->delete();
-        return redirect('penjadwalans')->with('msg','menghapus data');
+        // $data = $ruangans->find($koderuangan);
+        // $data->delete();
+        // return redirect('penjadwalans')->with('msg','menghapus data');
     }
 }
