@@ -1,10 +1,6 @@
-@extends('../layout2/main')
+@extends('admins.layout')
 
-@section('nav')
-    @include('../layout2/nav')
-@endsection
-
-@section('isi')
+@section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
@@ -33,8 +29,8 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Admin Id:</strong>
-                <input type="text" name="adminid" class="form-control" placeholder="Admin Id">
+                <strong>Id:</strong>
+                <input type="text" name="id" class="form-control" placeholder="Id">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -45,8 +41,20 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Jabatan:</strong>
-                <input type="text" name="jabatan" class="form-control" placeholder="Jabatan">
+                <strong>Tanggal Lahir:</strong>
+                <input type="text" name="tanggal_lahir" class="form-control" placeholder="tanggal_lahir">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Alamat:</strong>
+                <input type="text" name="alamat" class="form-control" placeholder="Alamat">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Email:</strong>
+                <input type="text" name="email" class="form-control" placeholder="Email">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

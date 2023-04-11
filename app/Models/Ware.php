@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Ware extends Model
 {
     use HasFactory;
-    protected $table = 'wares';
-    protected $fillable = [
-        'wareid',
-        'namaware',
-        'jabatanware',
-    ];
+    public $incrementing = false;
+    protected $table = 'admins';
+    protected $primaryKey = 'id';
+    protected $fillable = ['id', 'nama', 'tanggal_lahir', 'alamat', 'email',];
 }

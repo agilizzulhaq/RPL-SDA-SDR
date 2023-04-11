@@ -1,10 +1,6 @@
-@extends('../layout2/main')
+@extends('admins.layout')
 
-@section('nav')
-    @include('../layout2/nav')
-@endsection
-
-@section('isi')
+@section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
@@ -19,8 +15,8 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Admin Id:</strong>
-            {{ $admin->adminid }}
+            <strong>Id:</strong>
+            {{ $admin->id }}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -31,8 +27,20 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Jabatan:</strong>
-            {{ $admin->jabatan }}
+            <strong>Tanggal Lahir:</strong>
+            {{ $admin->tanggal_lahir }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Alamat:</strong>
+            {{ $admin->alamat }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Email:</strong>
+            {{ $admin->email }}
         </div>
     </div>
 </div>

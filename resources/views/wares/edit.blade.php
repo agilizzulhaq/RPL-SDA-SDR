@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Edit WareKeeper</h2>
+            <h2>Edit Ware</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('wares.index') }}"> Back</a>
@@ -30,23 +30,35 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>WareKeeper Id:</strong>
-                <input type="text" name="wareid" value="{{ $ware->wareid }}" class="form-control" placeholder="warekeeper id">
+                <strong>Id:</strong>
+                <input type="text" name="id" value="{{ $ware->id}}" class="form-control" placeholder="Id">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nama:</strong>
-                <input type="text" name="namaware" value="{{ $ware->namaware }}" class="form-control" placeholder="namaware">
+                <input type="text" name="nama" value="{{ $ware->nama}}" class="form-control" placeholder="Nama">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Jabatan:</strong>
-                <input type="text" name="jabatanware" value="{{ $ware->jabatanware }}" class="form-control" placeholder="jabatan ware">
+                <strong>Tanggal Lahir:</strong>
+                <input type="text" name="tanggal_lahir" value="{{ $ware->tanggal_lahir}}" class="form-control" placeholder="tanggal_lahir">
             </div>
         </div>
-        <div class=" col-xs-12 col-sm-12 col-md-12 text-center">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Alamat:</strong>
+                <input type="text" name="alamat" value="{{ $ware->alamat}}" class="form-control" placeholder="Alamat">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Email:</strong>
+                <input type="text" name="email" value="{{ $ware->email}}" class="form-control" placeholder="Email">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>

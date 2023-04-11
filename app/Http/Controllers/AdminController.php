@@ -35,15 +35,16 @@ class AdminController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'adminid' => 'required',
+            'id' => 'required',
             'nama' => 'required',
-            'jabatan' => 'required',
+            'tanggal_lahir' => 'required',
+            'alamat' => 'required',
+            'email' => 'required',
         ]);
 
         Admin::create($request->all());
-
         return redirect()->route('admins.index')
-            ->with('success', 'Admins created successfully.');
+            ->with('success', 'Admin created successfully.');
     }
 
     /**
@@ -68,9 +69,11 @@ class AdminController extends Controller
     public function update(Request $request, Admin $admin): RedirectResponse
     {
         $request->validate([
-            'adminid' => 'required',
+            'id' => 'required',
             'nama' => 'required',
-            'jabatan' => 'required',
+            'tanggal_lahir' => 'required',
+            'alamat' => 'required',
+            'email' => 'required',
         ]);
 
         $admin->update($request->all());
@@ -87,6 +90,6 @@ class AdminController extends Controller
         $admin->delete();
 
         return redirect()->route('admins.index')
-            ->with('success', 'Inventory deleted successfully');
+            ->with('success', 'Admin deleted successfully');
     }
 }
