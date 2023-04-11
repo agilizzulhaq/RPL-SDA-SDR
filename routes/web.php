@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\WareController;
 use App\Http\Controllers\AdminController;
@@ -24,15 +25,13 @@ use App\Http\Controllers\PemeliharaansController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::get('/rpl', function () {
     return view('rpl');
 });
 
 Route::get('/', function () {
-    return view('layout.ruangan');
+    return view('rpl');
 });
 
 Route::get('/ruangans', function () {
