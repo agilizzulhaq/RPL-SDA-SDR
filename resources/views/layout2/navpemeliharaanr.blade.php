@@ -14,7 +14,7 @@
     <span class="material-icons h-23 mt-2 " style="font-size: 25px;">chevron_right</span>
     <p class="text-lg font-bold mt-3 ml-3">Penjadwalan Ruangan</p>
 </a>
-<a id="menu" href="/sdr/pemeliharaanr" tabindex="0" class="cursor-pointer text-black hover:text-black no-underline bg-[#D9D9D9] flex items-center pl-10 hover:bg-[#FFFFFF]">
+<a id="menu" href="/sdr/pemeliharaanr" tabindex="0" class="cursor-pointer text-black hover:text-black no-underline bg-[#FFFFFF] flex items-center pl-10 hover:bg-[#FFFFFF]">
     <span class="material-icons h-23 mt-2 " style="font-size: 25px;">chevron_right</span>
     <p class="text-lg font-bold mt-3 ml-3">Pemeliharaan Ruangan</p>
 </a>

@@ -1,6 +1,10 @@
-@extends('layout.main')
+@extends('../layout2/main')
 
-@section('content')
+@section('nav')
+    @include('../layout2/navpemeliharaanr')
+@endsection
+
+@section('isi')
 <h3> Data Pemeliharaan</h3>
 <div class="card">
     <div class="card-header">

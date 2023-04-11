@@ -45,18 +45,18 @@ Route::get('/penjadwalans/add', function () {
 Route::get('/pemeliharaans/add', function () {
     return view('pemeliharaan.formadd');
 });
-Route::get('/sda', function () {
-    return view('sda');
-});
-Route::get('/sdr', function () {
-    return view('sdr');
-});
+// Route::get('/sda', function () {
+//     return view('sda');
+// });
+// Route::get('/sdr', function () {
+//     return view('sdr');
+// });
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::resource('pemeliharaans', PemeliharaansController::class);
-Route::resource('penjadwalans', PenjadwalansController::class);
+Route::resource('/sdr/pemeliharaanr', PemeliharaansController::class);
+Route::resource('/sdr/penjadwalanr', PenjadwalansController::class);
 Route::resource('ruangans', RuangansController::class);
 Route::resource('admins', AdminController::class);
 Route::resource('wares', WareController::class);
@@ -65,14 +65,14 @@ Route::resource('/sda/perawatans', PerawatanController::class);
 Route::resource('products', ProductController::class);
 Route::resource('/sda/pembelian', PembelianController::class);
 
-Route::get('/alat', [InventoryController::class, 'alat']) -> name('alat');
+Route::get('/sda', [InventoryController::class, 'alat']) -> name('alat');
 Route::get('/tambahalat', [InventoryController::class, 'tambahalat']) -> name('tambahalat');
 Route::post('/masukkanalat', [InventoryController::class, 'masukkanalat']) -> name('masukkanalat');
 Route::get('/editalat/{id}', [InventoryController::class, 'editalat']) -> name('editalat');
 Route::post('/updatealat/{id}', [InventoryController::class, 'updatealat']) -> name('updatealat');
 Route::get('/hapusalat/{id}', [InventoryController::class, 'hapusalat']) -> name('hapusalat');
 
-Route::get('/ruangan', [RoomController::class, 'ruangan']) -> name('ruangan');
+Route::get('/sdr', [RoomController::class, 'ruangan']) -> name('ruangan');
 Route::get('/tambahruangan', [RoomController::class, 'tambahruangan']) -> name('tambahruangan');
 Route::post('/masukkanruangan', [RoomController::class, 'masukkanruangan']) -> name('masukkanruangan');
 Route::get('/editruangan/{id}', [RoomController::class, 'editruangan']) -> name('editruangan');
