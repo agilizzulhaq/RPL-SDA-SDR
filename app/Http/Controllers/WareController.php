@@ -35,9 +35,11 @@ class WareController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'wareid' => 'required',
-            'namaware' => 'required',
-            'jabatanware' => 'required',
+            'id' => 'required',
+            'nama' => 'required',
+            'tanggal_lahir' => 'required',
+            'alamat' => 'required',
+            'email' => 'required',
         ]);
 
         Ware::create($request->all());
@@ -68,9 +70,11 @@ class WareController extends Controller
     public function update(Request $request, Ware $ware): RedirectResponse
     {
         $request->validate([
-            'wareid' => 'required',
-            'namaware' => 'required',
-            'jabatanware' => 'required',
+            'id' => 'required',
+            'nama' => 'required',
+            'tanggal_lahir' => 'required',
+            'alamat' => 'required',
+            'email' => 'required',
         ]);
 
         $ware->update($request->all());

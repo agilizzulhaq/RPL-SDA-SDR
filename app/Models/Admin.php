@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Admin extends Model
 {
     use HasFactory;
+    public $incrementing = false;
     protected $table = 'admins';
-    protected $fillable = [
-        'adminid',
-        'nama',
-        'jabatan',
-    ];
+    protected $primaryKey = 'id';
+    protected $fillable = ['id', 'nama', 'tanggal_lahir', 'alamat', 'email',];
 }

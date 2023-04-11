@@ -58,8 +58,7 @@ Route::get('/dashboard', function () {
 Route::resource('/sdr/pemeliharaanr', PemeliharaansController::class);
 Route::resource('/sdr/penjadwalanr', PenjadwalansController::class);
 Route::resource('ruangans', RuangansController::class);
-Route::resource('admins', AdminController::class);
-Route::resource('wares', WareController::class);
+
 Route::resource('/sda/pinjams', PinjamController::class);
 Route::resource('/sda/perawatans', PerawatanController::class);
 Route::resource('products', ProductController::class);
@@ -78,3 +77,6 @@ Route::post('/masukkanruangan', [RoomController::class, 'masukkanruangan']) -> n
 Route::get('/editruangan/{id}', [RoomController::class, 'editruangan']) -> name('editruangan');
 Route::post('/updateruangan/{id}', [RoomController::class, 'updateruangan']) -> name('updateruangan');
 Route::get('/hapusruangan/{id}', [RoomController::class, 'hapusruangan']) -> name('hapusruangan');
+
+Route::resource('admins', AdminController::class);
+Route::resource('wares', WareController::class);
