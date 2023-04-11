@@ -1,6 +1,10 @@
-@extends('admins.layout')
+@extends('../layout2/main')
 
-@section('content')
+@section('nav')
+    @include('../layout2/nav')
+@endsection
+
+@section('isi')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">

@@ -1,8 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\WareController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PinjamController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RuangansController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\PerawatanController;
+use App\Http\Controllers\PenjadwalansController;
+use App\Http\Controllers\PemeliharaansController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,15 +46,25 @@ Route::get('/penjadwalans/add', function () {
 Route::get('/pemeliharaans/add', function () {
     return view('pemeliharaan.formadd');
 });
+Route::get('/sda', function () {
+    return view('sda');
+});
+Route::get('/sdr', function () {
+    return view('sdr');
+});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
 
 Route::resource('pemeliharaans', PemeliharaansController::class);
 Route::resource('penjadwalans', PenjadwalansController::class);
 Route::resource('ruangans', RuangansController::class);
 Route::resource('admins', AdminController::class);
 Route::resource('wares', WareController::class);
-Route::resource('pinjams', PinjamController::class);
-Route::resource('perawatans', PerawatanController::class);
+Route::resource('/sda/pinjams', PinjamController::class);
+Route::resource('/sda/perawatans', PerawatanController::class);
 Route::resource('products', ProductController::class);
+Route::resource('/sda/pembelian', PembelianController::class);
 
 Route::get('/alat', [InventoryController::class, 'alat']) -> name('alat');
 Route::get('/tambahalat', [InventoryController::class, 'tambahalat']) -> name('tambahalat');

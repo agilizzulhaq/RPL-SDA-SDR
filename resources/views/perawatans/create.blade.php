@@ -1,6 +1,10 @@
-@extends('perawatans.layout')
-  
-@section('content')
+@extends('../layout2/main')
+
+@section('nav')
+    @include('../layout2/navperawatan')
+@endsection
+
+@section('isi')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">

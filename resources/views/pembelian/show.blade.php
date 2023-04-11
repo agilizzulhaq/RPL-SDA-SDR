@@ -1,17 +1,17 @@
 @extends('../layout2/main')
 
 @section('nav')
-    @include('../layout2/navperawatan')
+    @include('../layout2/navpembelian')
 @endsection
 
 @section('isi')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> Show Data</h2>
+                <h2> Deskripsi Produk</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('perawatans.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('pembelian.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -19,62 +19,68 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Kode Alat:</strong>
-                {{ $perawatan->kode_alat }}
+                <strong>ID Pembelian Alat</strong>
+                {{ $pembelian->idPembelianAlat }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>ID Admin:</strong>
-                {{ $perawatan->id_admin }}
+                <strong>Nama Alat</strong>
+                {{ $pembelian->namaAlat }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>ID Keeper:</strong>
-                {{ $perawatan->id_keeper }}
+                <strong>Tanggal Pembelian</strong>
+                {{ $pembelian->tanggalPembelian }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>ID User:</strong>
-                {{ $perawatan->id_user }}
+                <strong>Vendor</strong>
+                {{ $pembelian->vendor }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Nama Alat:</strong>
-                {{ $perawatan->nama_alat }}
+                <strong>Harga</strong>
+                {{ $pembelian->harga }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Lokasi Alat:</strong>
-                {{ $perawatan->lokasi_alat }}
+                <strong>Alasan</strong>
+                {{ $pembelian->alasan }}
+            </div>
+        </div>
+        {{-- <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Kode Alat</strong>
+                {{ $pembelian->kodeAlat }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Jenis Perawatan:</strong>
-                {{ $perawatan->jenis_perawatan }}
+                <strong>Nama Alat</strong>
+                {{ $pembelian->namaAlat }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Status Perawatan:</strong>
-                {{ $perawatan->status_perawatan }}
+                <strong>Lokasi</strong>
+                {{ $pembelian->lokasi }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Riwayat Perawatan:</strong>
-                {{ $perawatan->riwayat_perawatan }}
+                <strong>Kondisi</strong>
+                {{ $pembelian->kondisi }}
             </div>
-        </div>
+        </div> --}}
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Catatan Perawatan:</strong>
-                {{ $perawatan->catatan_perawatan }}
+                <strong>Status</strong>
+                {{ $pembelian->status }}
             </div>
         </div>
     </div>
