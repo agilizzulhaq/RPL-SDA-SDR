@@ -22,26 +22,26 @@ class InventoryController extends Controller
         return view('inventory.tambahdata');
     }
 
-    public function masukkandata(Request $request) {
+    public function masukkanalat(Request $request) {
         //dd($request->all());
         Inventory::create($request->all());
         return redirect()->route('alat') -> with('success','Data berhasil ditambahkan');
     }
 
     # Controller Edit Data
-    public function editdata($id) {
+    public function editalat($id) {
         $data = Inventory::find($id);
         //dd($data);
         return view('inventory.editdata', compact('data'));
     }
     
-    public function updatedata(Request $request, $id) {
+    public function updatealat(Request $request, $id) {
         $data = Inventory::find($id);
         $data -> update($request -> all());
         return redirect()->route('alat') -> with('success','Data berhasil diperbaharui');
     }
 
-    public function hapusdata($id) {
+    public function hapusalat($id) {
         $data = Inventory::find($id);
         $data -> delete();
         return redirect()->route('alat') -> with('success','Data berhasil dihapus');
