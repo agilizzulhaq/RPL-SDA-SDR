@@ -66,9 +66,9 @@ Route::resource('/sda/pembelian', PembelianController::class);
 
 Route::get('/sda', [InventoryController::class, 'alat']) -> name('alat');
 Route::get('/tambahalat', [InventoryController::class, 'tambahalat']) -> name('tambahalat');
-Route::post('/masukkandata', [InventoryController::class, 'masukkandata']) -> name('masukkandata');
+Route::post('/masukkanalat', [InventoryController::class, 'masukkanalat']) -> name('masukkanalat');
 Route::get('/editalat/{id}', [InventoryController::class, 'editalat']) -> name('editalat');
-Route::post('/updatedata/{id}', [InventoryController::class, 'updatedata']) -> name('updatedata');
+Route::post('/updatealat/{id}', [InventoryController::class, 'updatealat']) -> name('updatealat');
 Route::get('/hapusalat/{id}', [InventoryController::class, 'hapusalat']) -> name('hapusalat');
 
 Route::get('/sdr', [RoomController::class, 'ruangan']) -> name('ruangan');
