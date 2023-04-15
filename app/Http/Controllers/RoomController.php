@@ -2,48 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inventory;
+use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
-class InventoryController extends Controller
+class RuanganController extends Controller
 {
-    # Controller Data Alat
-    public function alat(Request $request) {
+    public function ruangan(Request $request) {
         if($request -> has ('search')) {
-            $data = Inventory::where('namaAlat','LIKE','%' .$request -> search.'%') -> paginate(5);
+            $data = Ruangan::where('namaRuangan','LIKE','%' .$request -> search.'%') -> paginate(5);
         } else {
-            $data = Inventory::paginate(5);
+            $data = Ruangan::paginate(5);
         }
-        return view('inventory.dataalat', compact('data'));
+        return view('ruangan.dataruangan', compact('data'));
     }
 
-    # Controller Input Data
-    public function tambahalat() {
-        return view('inventory.tambahdata');
+    public function addruangan() {
+        return view('ruangan.tambahdata');
     }
 
-    public function masukkanalat(Request $request) {
-        //dd($request->all());
-        Inventory::create($request->all());
-        return redirect()->route('alat') -> with('success','Data berhasil ditambahkan');
+    public function insertruangan(Request $request) {
+        Ruangan::create($request->all());
+        return redirect()->route('ruangan') -> with('success','Data berhasil ditambahkan');
     }
 
     # Controller Edit Data
-    public function editalat($id) {
-        $data = Inventory::find($id);
+    public function editruangan($id) {
+        $data = Ruangan::find($id);
         //dd($data);
-        return view('inventory.editdata', compact('data'));
+        return view('ruangan.editdata', compact('data'));
     }
     
-    public function updatealat(Request $request, $id) {
-        $data = Inventory::find($id);
+    public function updateruangan(Request $request, $id) {
+        $data = Ruangan::find($id);
         $data -> update($request -> all());
-        return redirect()->route('alat') -> with('success','Data berhasil diperbaharui');
+        return redirect()->route('ruangan') -> with('success','Data berhasil diperbaharui');
     }
 
-    public function hapusalat($id) {
-        $data = Inventory::find($id);
+    public function deleteruangan($id) {
+        $data = Ruangan::find($id);
         $data -> delete();
-        return redirect()->route('alat') -> with('success','Data berhasil dihapus');
+        return redirect()->route('ruangan') -> with('success','Data berhasil dihapus');
     }
 }
