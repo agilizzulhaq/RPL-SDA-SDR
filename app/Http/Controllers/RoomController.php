@@ -13,14 +13,14 @@ class RoomController extends Controller
         } else {
             $data = Room::paginate(5);
         }
-        return view('ruangan.dataruangan', compact('data'));
+        return view('room.dataruangan', compact('data'));
     }
 
-    public function addruangan() {
-        return view('ruangan.tambahdata');
+    public function tambahruangan() {
+        return view('room.tambahdata');
     }
 
-    public function insertruangan(Request $request) {
+    public function masukkanruangan(Request $request) {
         Room::create($request->all());
         return redirect()->route('ruangan') -> with('success','Data berhasil ditambahkan');
     }
@@ -29,7 +29,7 @@ class RoomController extends Controller
     public function editruangan($id) {
         $data = Room::find($id);
         //dd($data);
-        return view('ruangan.editdata', compact('data'));
+        return view('room.editdata', compact('data'));
     }
     
     public function updateruangan(Request $request, $id) {
@@ -38,7 +38,7 @@ class RoomController extends Controller
         return redirect()->route('ruangan') -> with('success','Data berhasil diperbaharui');
     }
 
-    public function deleteruangan($id) {
+    public function hapusruangan($id) {
         $data = Room::find($id);
         $data -> delete();
         return redirect()->route('ruangan') -> with('success','Data berhasil dihapus');
