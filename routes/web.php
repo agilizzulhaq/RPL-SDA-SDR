@@ -51,8 +51,17 @@ Route::get('/pemeliharaans/add', function () {
 // Route::get('/sdr', function () {
 //     return view('sdr');
 // });
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/dashboard-admin', function () {
+    return view('dashboard-admin');
+});
+Route::get('/dashboard-warehouse', function () {
+    return view('dashboard-warehouse');
+});
+Route::get('/ppa', function () {
+    return view('ppa');
+});
+Route::get('/ppr', function () {
+    return view('ppr');
 });
 
 Route::resource('/sdr/pemeliharaanr', PemeliharaansController::class);
