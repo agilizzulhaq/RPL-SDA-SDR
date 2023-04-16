@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\WareController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PinjamController;
+use App\Http\Controllers\PeminjamanAlatController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RuangansController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PembelianController;
-use App\Http\Controllers\PerawatanController;
+use App\Http\Controllers\PerawatanAlatController;
 use App\Http\Controllers\PenjadwalansController;
 use App\Http\Controllers\PemeliharaansController;
 
@@ -68,8 +68,8 @@ Route::resource('/sdr/pemeliharaanr', PemeliharaansController::class);
 Route::resource('/sdr/penjadwalanr', PenjadwalansController::class);
 Route::resource('ruangans', RuangansController::class);
 
-Route::resource('/sda/pinjams', PinjamController::class);
-Route::resource('/sda/perawatans', PerawatanController::class);
+Route::resource('/sda/peminjaman_alat', PeminjamanAlatController::class);
+Route::resource('/sda/perawatan_alat', PerawatanAlatController::class);
 Route::resource('products', ProductController::class);
 Route::resource('/sda/pembelian', PembelianController::class);
 
