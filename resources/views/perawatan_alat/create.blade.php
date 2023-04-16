@@ -13,7 +13,7 @@
                     <h2>Add New</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('perawatans.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('perawatan_alat.index') }}"> Back</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
             </div>
         @endif
            
-        <form action="{{ route('perawatans.store') }}" method="POST">
+        <form action="{{ route('perawatan_alat.store') }}" method="POST">
             @csrf
           
              <div class="row">
@@ -72,25 +72,36 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Jenis Perawatan:</strong>
-                        <input type="text" name="jenis_perawatan" class="form-control" placeholder="Jenis Perawatan">
+                        <select class="form-select" name="jenis_perawatan" aria-label=".form-select-sm example">
+                            <option selected>Pilih Status Perawatan</option>
+                            <option value="Perawatan rutin">Perawatan rutin</option>
+                            <option value="Pembersihan alat">Pembersihan alat</option>
+                            <option value="Perawatan kerusakan">Perawatan kerusakan</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Status Perawatan:</strong>
-                        <input type="text" name="status_perawatan" class="form-control" placeholder="Status Perawatan">
+                        <select class="form-select" name="status_perawatan" aria-label=".form-select-sm example">
+                            <option selected>Pilih Status Perawatan</option>
+                            <option value="Belum konfirmasi">Belum konfirmasi</option>
+                            <option value="Konfirmasi untuk perawatan">Konfirmasi untuk perawatan</option>
+                            <option value="Sedang dalam perawatan">Sedang dalam perawatan</option>
+                            <option value="Perawatan selesai">Perawatan selesai</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Riwayat Perawatan:</strong>
-                        <input type="text" name="riwayat_perawatan" class="form-control" placeholder="Riwayat Perawatan">
+                        <input type="textarea" name="riwayat_perawatan" class="form-control" placeholder="Riwayat Perawatan">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Catatan Perawatan:</strong>
-                        <input type="text" name="catatan_perawatan" class="form-control" placeholder="Catatan Perawatan">
+                        <input type="textarea" name="catatan_perawatan" class="form-control" placeholder="Catatan Perawatan">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

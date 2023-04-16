@@ -6,18 +6,17 @@
 
 @section('isi')
     <div class="w-[1040px]">
-
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Add New</h2>
+                    <h2>Edit Data Pinjam</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('pinjams.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('peminjaman_alat.index') }}"> Back</a>
                 </div>
             </div>
         </div>
-           
+       
         @if ($errors->any())
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -28,64 +27,65 @@
                 </ul>
             </div>
         @endif
-           
-        <form action="{{ route('pinjams.store') }}" method="POST">
+      
+        <form action="{{ route('peminjaman_alat.update',$peminjaman_alat->kode_alat) }}" method="POST">
             @csrf
-          
+            @method('PUT')
+       
              <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Kode Alat:</strong>
-                        <input type="text" name="kode_alat" class="form-control" placeholder="Kode Alat">
+                        <input type="text" name="kode_alat" value="{{ $peminjaman_alat->kode_alat }}" class="form-control" placeholder="Kode Alat">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>ID Admin:</strong>
-                        <input type="text" name="id_admin" class="form-control" placeholder="ID Admin">
+                        <input type="text" name="id_admin" value="{{ $peminjaman_alat->id_admin }}" class="form-control" placeholder="ID Admin">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>ID User:</strong>
-                        <input type="text" name="id_user" class="form-control" placeholder="ID User">
+                        <input type="text" name="id_user" value="{{ $peminjaman_alat->id_user }}" class="form-control" placeholder="ID User">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Nama Alat:</strong>
-                        <input type="text" name="nama_alat" class="form-control" placeholder="Nama Alat">
+                        <input type="text" value="{{ $peminjaman_alat->nama_alat }}" class="form-control" name="nama_alat" placeholder="Nama Alat">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Nama Peminjam:</strong>
-                        <input type="text" name="nama_peminjam" class="form-control" placeholder="Nama Peminjam">
+                        <input type="text" value="{{ $peminjaman_alat->nama_peminjam }}" class="form-control" name="nama_peminjam" placeholder="Nama Peminjam">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Tanggal Pinjam:</strong>
-                        <input type="datetime-local" class="form-control" name="tanggal_peminjam" placeholder="Tanggal Pinjam">
+                        <input type="datetime-local" value="{{ $peminjaman_alat->tanggal_peminjam }}" class="form-control" name="tanggal_peminjam" placeholder="Tanggal Pinjam">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Status Peminjaman:</strong>
-                        <input type="text" name="status_peminjaman" class="form-control" placeholder="Status Peminjaman">
+                        <input type="text" value="{{ $peminjaman_alat->status_peminjaman }}" class="form-control" name="status_peminjaman" placeholder="Status Peminjaman">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Alasan Peminjaman:</strong>
-                        <input type="text" name="alasan_peminjaman" class="form-control" placeholder="Alasan Peminjaman">
+                        <input type="text" value="{{ $peminjaman_alat->alasan_peminjaman }}" class="form-control" name="alasan_peminjaman" placeholder="Alasan Peminjaman">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
-           
+       
         </form>
     </div>
 @endsection

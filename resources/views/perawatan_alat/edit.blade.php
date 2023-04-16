@@ -13,7 +13,7 @@
                     <h2>Edit Data Perawatan</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('perawatans.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('perawatan_alat.index') }}"> Back</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
             </div>
         @endif
       
-        <form action="{{ route('perawatans.update',$perawatan->kode_alat)  }}" method="POST">
+        <form action="{{ route('perawatan_alat.update',$perawatan_alat->kode_alat)  }}" method="POST">
             @csrf
             @method('PUT')
        
@@ -37,61 +37,61 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Kode Alat:</strong>
-                        <input type="text" name="kode_alat" value="{{ $perawatan->kode_alat }}" class="form-control" placeholder="Kode Alat">
+                        <input type="text" name="kode_alat" value="{{ $perawatan_alat->kode_alat }}" class="form-control" placeholder="Kode Alat">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>ID Admin:</strong>
-                        <input type="text" name="id_admin" value="{{ $perawatan->id_admin }}" class="form-control" placeholder="ID Admin">
+                        <input type="text" name="id_admin" value="{{ $perawatan_alat->id_admin }}" class="form-control" placeholder="ID Admin">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>ID Keeper:</strong>
-                        <input type="text" name="id_keeper" value="{{ $perawatan->id_keeper }}" class="form-control" placeholder="ID Keeper">
+                        <input type="text" name="id_keeper" value="{{ $perawatan_alat->id_keeper }}" class="form-control" placeholder="ID Keeper">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>ID User:</strong>
-                        <input type="text" name="id_user" value="{{ $perawatan->id_user }}" class="form-control" placeholder="ID User">
+                        <input type="text" name="id_user" value="{{ $perawatan_alat->id_user }}" class="form-control" placeholder="ID User">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Nama Alat:</strong>
-                        <input type="text" value="{{ $perawatan->nama_alat }}" class="form-control" name="nama_alat" placeholder="Nama Alat">
+                        <input type="text" value="{{ $perawatan_alat->nama_alat }}" class="form-control" name="nama_alat" placeholder="Nama Alat">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Lokasi Alat:</strong>
-                        <input type="text" value="{{ $perawatan->lokasi_alat }}" class="form-control" name="lokasi_alat" placeholder="Lokasi Alat">
+                        <input type="text" value="{{ $perawatan_alat->lokasi_alat }}" class="form-control" name="lokasi_alat" placeholder="Lokasi Alat">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Jenis Perawatan:</strong>
-                        <input type="text" value="{{ $perawatan->jenis_perawatan }}" class="form-control" name="jenis_perawatan" placeholder="Jenis Perawatan">
+                        <input type="text" value="{{ $perawatan_alat->jenis_perawatan }}" class="form-control" name="jenis_perawatan" placeholder="Jenis Perawatan">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Status Perawatan:</strong>
-                        <input type="text" value="{{ $perawatan->status_perawatan }}" class="form-control" name="status_perawatan" placeholder="Status Perawatan">
+                        <input type="text" value="{{ $perawatan_alat->status_perawatan }}" class="form-control" name="status_perawatan" placeholder="Status Perawatan">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Riwayat Perawatan:</strong>
-                        <input type="text" value="{{ $perawatan->riwayat_perawatan }}" class="form-control" name="riwayat_perawatan" placeholder="Riwayat Perawatan">
+                        <input type="text" value="{{ $perawatan_alat->riwayat_perawatan }}" class="form-control" name="riwayat_perawatan" placeholder="Riwayat Perawatan">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Catatan Perawatan:</strong>
-                        <input type="text" value="{{ $perawatan->catatan_perawatan }}" class="form-control" name="catatan_perawatan" placeholder="Catatan Perawatan">
+                        <input type="text" value="{{ $perawatan_alat->catatan_perawatan }}" class="form-control" name="catatan_perawatan" placeholder="Catatan Perawatan">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
