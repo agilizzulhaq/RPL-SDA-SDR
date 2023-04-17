@@ -57,11 +57,8 @@ Route::get('/dashboard-admin', function () {
 Route::get('/dashboard-warehouse', function () {
     return view('dashboard-warehouse');
 });
-Route::get('/ppa', function () {
-    return view('ppa');
-});
-Route::get('/ppr', function () {
-    return view('ppr');
+Route::get('/dashboard-user', function () {
+    return view('dashboard-user');
 });
 
 Route::resource('/sdr/pemeliharaanr', PemeliharaansController::class);

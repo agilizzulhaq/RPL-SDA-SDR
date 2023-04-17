@@ -4,6 +4,6 @@
     @include('layout2.navd')
 @endsection
 @section('isi')
-    <p class="text-4xl font-bold">Dashboard WareHouse</p>
+    <p class="text-4xl font-bold">Dashboard User</p>
 
 @endsection

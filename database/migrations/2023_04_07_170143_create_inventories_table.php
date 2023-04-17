@@ -16,6 +16,8 @@ return new class extends Migration
             $table->integer('kodeAlat');
             $table->string('namaAlat');
             $table->text('lokasiAlat');
+            $table->integer('stok');
+            $table->integer('limit');
             $table->enum('jenisAlat', ['Medis', 'Non-Medis']);
             $table->enum('pemakaianAlat', ['Reusable', 'Disposable']);
             $table->enum('kondisiAlat', ['Layak', 'Tidak Layak']);

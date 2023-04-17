@@ -28,11 +28,11 @@
                         <th scope="col">Kode Alat</th>
                         <th scope="col">Nama Alat</th>
                         <th scope="col">Lokasi Alat</th>
+                        <th scope="col">Stok / Limit</th>
                         <th scope="col">Jenis Alat</th>
                         <th scope="col">Pemakaian Alat</th>
                         <th scope="col">Kondisi Alat</th>
                         <th scope="col">Status Alat</th>
-                        <th scope="col">Dibuat</th>
                         <th scope="col">Aksi</th>
                       </tr>
                     </thead>
@@ -46,11 +46,11 @@
                             <td>{{$row -> kodeAlat}}</td>
                             <td>{{$row -> namaAlat}}</td>
                             <td>{{$row -> lokasiAlat}}</td>
+                            <td>{{$row -> stok}} / {{$row -> limit}}</td>
                             <td>{{$row -> jenisAlat}}</td>
                             <td>{{$row -> pemakaianAlat}}</td>
                             <td>{{$row -> kondisiAlat}}</td>
                             <td>{{$row -> statusAlat}}</td>
-                            <td>{{$row -> created_at -> diffForHumans()}}</td>
                             <td>
                                 <a href="/editalat/{{$row -> id}}" class="btn btn-primary">Edit</a>
                                 <a href="#" class="btn btn-danger delete" data-id="{{$row -> id}}" data-nama="{{$row -> namaAlat}}">Hapus</a>
