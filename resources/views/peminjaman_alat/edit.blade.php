@@ -41,18 +41,6 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>ID Admin:</strong>
-                        <input type="text" name="id_admin" value="{{ $peminjaman_alat->id_admin }}" class="form-control" placeholder="ID Admin">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>ID User:</strong>
-                        <input type="text" name="id_user" value="{{ $peminjaman_alat->id_user }}" class="form-control" placeholder="ID User">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
                         <strong>Nama Alat:</strong>
                         <input type="text" value="{{ $peminjaman_alat->nama_alat }}" class="form-control" name="nama_alat" placeholder="Nama Alat">
                     </div>

@@ -26,8 +26,6 @@
         <table class="table table-bordered">
             <tr>
                 <th>No</th>
-                <th>ID Admin</th>
-                <th>ID User</th>
                 <th>Kode Alat</th>
                 <th>Nama Alat</th>
                 <th>Nama Peminjam</th>
@@ -40,8 +38,6 @@
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $peminjamanalat->kode_alat }}</td>
-                <td>{{ $peminjamanalat->id_admin }}</td>
-                <td>{{ $peminjamanalat->id_user }}</td>
                 <td>{{ $peminjamanalat->nama_alat }}</td>
                 <td>{{ $peminjamanalat->nama_peminjam }}</td>
                 <td>{{ $peminjamanalat->tanggal_peminjam }}</td>

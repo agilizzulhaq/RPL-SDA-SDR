@@ -41,24 +41,6 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>ID Admin:</strong>
-                        <input type="text" name="id_admin" class="form-control" placeholder="ID Admin">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>ID Keeper:</strong>
-                        <input type="text" name="id_keeper" class="form-control" placeholder="ID_Keeper">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>ID User:</strong>
-                        <input type="text" name="id_user" class="form-control" placeholder="ID User">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
                         <strong>Nama Alat:</strong>
                         <input type="text" name="nama_alat" class="form-control" placeholder="Nama Alat">
                     </div>

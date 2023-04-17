@@ -35,9 +35,6 @@ class PerawatanAlatController extends Controller
     {
         $request->validate([
             'kode_alat' => 'required',
-            'id_admin' => 'required',
-            'id_keeper' => 'required',
-            'id_user' => 'required',
             'nama_alat' => 'required',
             'lokasi_alat' => 'required',
             'jenis_perawatan' => 'required',
@@ -75,9 +72,6 @@ class PerawatanAlatController extends Controller
     {
         $request->validate([
             'kode_alat' => 'required',
-            'id_admin' => 'required',
-            'id_keeper' => 'required',
-            'id_user' => 'required',
             'nama_alat' => 'required',
             'lokasi_alat' => 'required',
             'jenis_perawatan' => 'required',

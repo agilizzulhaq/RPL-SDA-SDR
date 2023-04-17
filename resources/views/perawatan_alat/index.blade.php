@@ -28,9 +28,6 @@
             <tr>
                 <th>No</th>
                 <th>Kode Alat</th>
-                <th>ID Admin</th>
-                <th>ID Keeper</th>
-                <th>ID User</th>
                 <th>Nama Alat</th>
                 <th>Lokasi Alat</th>
                 <th>Jenis Perawatan</th>
@@ -43,9 +40,6 @@
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $perawatan->kode_alat }}</td>
-                <td>{{ $perawatan->id_admin }}</td>
-                <td>{{ $perawatan->id_keeper }}</td>
-                <td>{{ $perawatan->id_user }}</td>
                 <td>{{ $perawatan->nama_alat }}</td>
                 <td>{{ $perawatan->lokasi_alat }}</td>
                 <td>{{ $perawatan->jenis_perawatan }}</td>
