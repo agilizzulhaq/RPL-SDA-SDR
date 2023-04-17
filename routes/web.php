@@ -30,9 +30,9 @@ Route::get('/rpl', function () {
     return view('rpl');
 });
 
-Route::get('/', function () {
-    return view('rpl');
-});
+// Route::get('/', function () {
+//     return view('rpl');
+// });
 
 Route::get('/ruangans', function () {
     return view('layout.ruangan');
@@ -60,6 +60,25 @@ Route::get('/dashboard-warehouse', function () {
 Route::get('/dashboard-user', function () {
     return view('dashboard-user');
 });
+Route::get('/mdusers', function () {
+    return view('mdusers');
+});
+// Route::get('/mdalat', function () {
+//     return view('mdalat');
+// });
+Route::get('/mdlokasialat', function () {
+    return view('mdlokasialat');
+});
+// Route::get('/mdruangan', function () {
+//     return view('mdruangan');
+// });
+Route::get('/mdlokasiruangan', function () {
+    return view('mdlokasiruangan');
+});
+Route::get('/mdvendor', function () {
+    return view('mdvendor');
+});
+
 
 Route::resource('/sdr/pemeliharaanr', PemeliharaansController::class);
 Route::resource('/sdr/penjadwalanr', PenjadwalansController::class);
@@ -69,14 +88,14 @@ Route::resource('/sda/perawatan_alat', PerawatanAlatController::class);
 Route::resource('products', ProductController::class);
 Route::resource('/sda/pembelian', PembelianController::class);
 
-Route::get('/sda', [InventoryController::class, 'alat'])->name('alat');
+Route::get('/mdalat', [InventoryController::class, 'alat'])->name('alat');
 Route::get('/tambahalat', [InventoryController::class, 'tambahalat'])->name('tambahalat');
 Route::post('/masukkanalat', [InventoryController::class, 'masukkanalat'])->name('masukkanalat');
 Route::get('/editalat/{id}', [InventoryController::class, 'editalat'])->name('editalat');
 Route::post('/updatealat/{id}', [InventoryController::class, 'updatealat'])->name('updatealat');
 Route::get('/hapusalat/{id}', [InventoryController::class, 'hapusalat'])->name('hapusalat');
 
-Route::get('/sdr', [RoomController::class, 'ruangan'])->name('ruangan');
+Route::get('/mdruangan', [RoomController::class, 'ruangan'])->name('ruangan');
 Route::get('/tambahruangan', [RoomController::class, 'tambahruangan'])->name('tambahruangan');
 Route::post('/masukkanruangan', [RoomController::class, 'masukkanruangan'])->name('masukkanruangan');
 Route::get('/editruangan/{id}', [RoomController::class, 'editruangan'])->name('editruangan');
@@ -87,10 +106,10 @@ Route::resource('admins', AdminController::class);
 Route::resource('wares', WareController::class);
 
 Route::controller(LoginRegisterController::class)->group(function () {
-    Route::get('/login', 'login')->name('login');
+    Route::get('/', 'login')->name('login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
-    Route::get('/dashboard', function () {
-        return view('auth.dashboard');
+    Route::get('/dashboard-admin', function () {
+        return view('dashboard-admin');
     })->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });

@@ -31,8 +31,15 @@
                 <span id="expand" class="material-icons group-hover:text-[#dba9a9]" style="">expand_more</span>
             </div>
                 
-            <div id="logout" class="transform scale-90 w-[187px] h-[47px] hidden justify-evenly cursor-pointer hover:bg-[#ec3c3c] items-center bg-[#FF0000] text-white rounded-lg ml-[161px] absolute">
-                <p class="font-bold m-0">Log Out</p>
+            <div id="logout" class="transform scale-90 w-[187px] h-[47px] hidden justify-center gap-2 cursor-pointer hover:bg-[#ec3c3c] items-center bg-[#FF0000] text-white rounded-lg ml-[161px] absolute">
+                {{-- <p class="font-bold m-0">Log Out</p> --}}
+                <a class="font-bold m-0 text-white no-underline" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"
+                >Log Out</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                </form>
                 <span class="material-icons">logout</span>
             </div>
         </div>
