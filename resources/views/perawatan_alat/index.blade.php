@@ -1,18 +1,19 @@
 @extends('../layout2/main')
 
 @section('nav')
-    @include('../layout2/navpeminjaman')
+    @include('../layout2/navperawatan')
 @endsection
 
 @section('isi')
-    <div class="w-[1060px]">
+    <div class="w-[1040px]">
+
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>CRUD Peminjaman Alat Kesehatan</h2>
+                    <h2>CRUD Perawatan Alat Kesehatan</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-success" href="{{ route('pinjams.create') }}"> Tambahkan data pinjam</a>
+                    <a class="btn btn-success" href="{{ route('perawatan_alat.create') }}"> Tambahkan data perawatan</a>
                 </div>
             </div>
         </div>
@@ -26,33 +27,37 @@
         <table class="table table-bordered">
             <tr>
                 <th>No</th>
-                <th>ID Admin</th>
-                <th>ID User</th>
                 <th>Kode Alat</th>
+                <th>ID Admin</th>
+                <th>ID Keeper</th>
+                <th>ID User</th>
                 <th>Nama Alat</th>
-                <th>Nama Peminjam</th>
-                <th>Tanggal Pinjam</th>
-                <th>Status Peminjaman</th>
-                <th>Alasan Peminjaman</th>
+                <th>Lokasi Alat</th>
+                <th>Jenis Perawatan</th>
+                <th>Status Perawatan</th>
+                <th>Riwayat Perawatan</th>
+                <th>Catatan Perawatan</th>
                 <th width="280px">Action</th>
             </tr>
-            @foreach ($pinjams as $pinjam)
+            @foreach ($perawatan_alat as $perawatan)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $pinjam->kode_alat }}</td>
-                <td>{{ $pinjam->id_admin }}</td>
-                <td>{{ $pinjam->id_user }}</td>
-                <td>{{ $pinjam->nama_alat }}</td>
-                <td>{{ $pinjam->nama_peminjam }}</td>
-                <td>{{ $pinjam->tanggal_peminjam }}</td>
-                <td>{{ $pinjam->status_peminjaman }}</td>
-                <td>{{ $pinjam->alasan_peminjaman }}</td>
+                <td>{{ $perawatan->kode_alat }}</td>
+                <td>{{ $perawatan->id_admin }}</td>
+                <td>{{ $perawatan->id_keeper }}</td>
+                <td>{{ $perawatan->id_user }}</td>
+                <td>{{ $perawatan->nama_alat }}</td>
+                <td>{{ $perawatan->lokasi_alat }}</td>
+                <td>{{ $perawatan->jenis_perawatan }}</td>
+                <td>{{ $perawatan->status_perawatan }}</td>
+                <td>{{ $perawatan->riwayat_perawatan }}</td>
+                <td>{{ $perawatan->catatan_perawatan }}</td>
                 <td>
-                    <form action="{{ route('pinjams.destroy',$pinjam->kode_alat) }}" method="POST">
+                    <form action="{{ route('perawatan_alat.destroy',$perawatan->kode_alat) }}" method="POST">
        
-                        <a class="btn btn-info" href="{{ route('pinjams.show',$pinjam->kode_alat) }}">Show</a>
+                        <a class="btn btn-info" href="{{ route('perawatan_alat.show',$perawatan->kode_alat) }}">Show</a>
         
-                        <a class="btn btn-primary" href="{{ route('pinjams.edit',$pinjam->kode_alat) }}">Edit</a>
+                        <a class="btn btn-primary" href="{{ route('perawatan_alat.edit',$perawatan->kode_alat) }}">Edit</a>
        
                         @csrf
                         @method('DELETE')
@@ -63,8 +68,6 @@
             </tr>
             @endforeach
         </table>
-      
-        {!! $pinjams->links() !!}
     </div>
       
 @endsection

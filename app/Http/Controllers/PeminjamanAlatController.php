@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pinjam;
+use App\Models\PeminjamanAlat;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class PinjamController extends Controller
+class PeminjamanAlatController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $pinjams = Pinjam::latest()->paginate(5);
+        $peminjaman_alat = PeminjamanAlat::latest()->paginate(5);
         
-        return view('pinjams.index',compact('pinjams'))
+        return view('peminjaman_alat.index',compact('peminjaman_alat'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
     }
   
@@ -25,7 +25,7 @@ class PinjamController extends Controller
      */
     public function create(): View
     {
-        return view('pinjams.create');
+        return view('peminjaman_alat.create');
     }
   
     /**
@@ -44,32 +44,32 @@ class PinjamController extends Controller
             'alasan_peminjaman' => 'required',
         ]);
         
-        Pinjam::create($request->all());
+        PeminjamanAlat::create($request->all());
          
-        return redirect()->route('pinjams.index')
+        return redirect()->route('peminjaman_alat.index')
                         ->with('success','Data pinjam berhasil ditambahkan');
     }
   
     /**
      * Display the specified resource.
      */
-    public function show(Pinjam $pinjam): View
+    public function show(PeminjamanAlat $peminjaman_alat): View
     {
-        return view('pinjams.show',compact('pinjam'));
+        return view('peminjaman_alat.show',compact('peminjaman_alat'));
     }
   
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pinjam $pinjam): View
+    public function edit(PeminjamanAlat $peminjaman_alat): View
     {
-        return view('pinjams.edit',compact('pinjam'));
+        return view('peminjaman_alat.edit',compact('peminjaman_alat'));
     }
   
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pinjam $pinjam): RedirectResponse
+    public function update(Request $request, PeminjamanAlat $peminjaman_alat): RedirectResponse
     {
         $request->validate([
             'kode_alat' => 'required',
@@ -82,21 +82,21 @@ class PinjamController extends Controller
             'alasan_peminjaman' => 'required',
         ]);
         
-        $pinjam->update($request->all());
+        $peminjaman_alat->update($request->all());
         
-        return redirect()->route('pinjams.index')
+        return redirect()->route('peminjaman_alat.index')
                         ->with('success','Data pinjam berhasil diperbarui');
     }
   
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pinjam $pinjam): RedirectResponse
+    public function destroy(PeminjamanAlat $peminjaman_alat): RedirectResponse
     {
         $confirmDelete = true; // tambahkan variabel untuk menandai konfirmasi
-        $pinjam->delete();
+        $peminjaman_alat->delete();
 
-        return redirect()->route('pinjams.index')
+        return redirect()->route('peminjaman_alat.index')
                         ->with('success', 'Data telah berhasil dihapus')
                         ->with('confirmDelete', $confirmDelete); // tambahkan variabel ke session
     }

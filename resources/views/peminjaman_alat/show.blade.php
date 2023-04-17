@@ -1,11 +1,11 @@
 @extends('../layout2/main')
 
 @section('nav')
-    @include('../layout2/navperawatan')
+    @include('../layout2/navpeminjaman')
 @endsection
 
 @section('isi')
-    <div class="w-[1040px]">
+    <div class="w-[1060px]">
 
         <div class="row">
             <div class="col-lg-12 margin-tb">
@@ -13,7 +13,7 @@
                     <h2> Show Data</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('perawatans.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('peminjaman_alat.index') }}"> Back</a>
                 </div>
             </div>
         </div>
@@ -22,61 +22,49 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Kode Alat:</strong>
-                    {{ $perawatan->kode_alat }}
+                    {{ $peminjaman_alat->kode_alat }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>ID Admin:</strong>
-                    {{ $perawatan->id_admin }}
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>ID Keeper:</strong>
-                    {{ $perawatan->id_keeper }}
+                    {{ $peminjaman_alat->id_admin }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>ID User:</strong>
-                    {{ $perawatan->id_user }}
+                    {{ $peminjaman_alat->id_user }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Nama Alat:</strong>
-                    {{ $perawatan->nama_alat }}
+                    {{ $peminjaman_alat->nama_alat }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Lokasi Alat:</strong>
-                    {{ $perawatan->lokasi_alat }}
+                    <strong>Nama Peminjam:</strong>
+                    {{ $peminjaman_alat->nama_peminjam }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Jenis Perawatan:</strong>
-                    {{ $perawatan->jenis_perawatan }}
+                    <strong>Tanggal peminjaman_alat:</strong>
+                    {{ $peminjaman_alat->tanggal_peminjam }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Status Perawatan:</strong>
-                    {{ $perawatan->status_perawatan }}
+                    <strong>Status Peminjaman:</strong>
+                    {{ $peminjaman_alat->status_peminjaman }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Riwayat Perawatan:</strong>
-                    {{ $perawatan->riwayat_perawatan }}
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Catatan Perawatan:</strong>
-                    {{ $perawatan->catatan_perawatan }}
+                    <strong>Alasan Peminjaman:</strong>
+                    {{ $peminjaman_alat->alasan_peminjaman }}
                 </div>
             </div>
         </div>

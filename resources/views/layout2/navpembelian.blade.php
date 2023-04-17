@@ -6,11 +6,11 @@
     <span class="material-icons h-23 mt-2 " style="font-size: 38px;">vaccines</span>
     <p class="text-lg font-bold mt-3 ml-5">Sumber Daya Alat</p>
 </a>
-<a id="menu" href="/sda/pinjams" tabindex="0" class="cursor-pointer text-black hover:text-white no-underline flex items-center pl-10 hover:bg-[#5479F7]">
+<a id="menu" href="/sda/peminjaman_alat" tabindex="0" class="cursor-pointer text-black hover:text-white no-underline flex items-center pl-10 hover:bg-[#5479F7]">
     <span class="material-icons h-23" style="font-size: 22px;">chevron_right</span>
     <p class="text-md font-bold ml-3 mt-3 ">Peminjaman Pengembalian</p>
 </a>
-<a id="menu" href="/sda/perawatans" tabindex="0" class="cursor-pointer text-black hover:text-white no-underline flex items-center pl-10 hover:bg-[#5479F7]">
+<a id="menu" href="/sda/perawatan_alat" tabindex="0" class="cursor-pointer text-black hover:text-white no-underline flex items-center pl-10 hover:bg-[#5479F7]">
     <span class="material-icons h-23" style="font-size: 22px;">chevron_right</span>
     <p class="text-md font-bold mt-3 ml-3">Perawatan Pemeliharaan</p>
 </a>

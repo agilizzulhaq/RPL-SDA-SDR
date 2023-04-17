@@ -16,7 +16,7 @@ class RuangansController extends Controller
      */
     public function index()
     {
-        'ruangans' -> Ruangans::all()
+        'ruangans' -> Ruangans::all();
     }
 
     /**

@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Perawatan;
+use App\Models\PerawatanAlat;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class PerawatanController extends Controller
+class PerawatanAlatController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $perawatans = Perawatan::latest()->paginate(5);
+        $perawatan_alat = PerawatanAlat::latest()->paginate(5);
         
-        return view('perawatans.index',compact('perawatans'))
+        return view('perawatan_alat.index',compact('perawatan_alat'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
     }
   
@@ -25,7 +25,7 @@ class PerawatanController extends Controller
      */
     public function create(): View
     {
-        return view('perawatans.create');
+        return view('perawatan_alat.create');
     }
   
     /**
@@ -46,32 +46,32 @@ class PerawatanController extends Controller
             'catatan_perawatan' => 'required',
         ]);
         
-        Perawatan::create($request->all());
+        PerawatanAlat::create($request->all());
          
-        return redirect()->route('perawatans.index')
+        return redirect()->route('perawatan_alat.index')
                         ->with('success','Data perawatan berhasil ditambahkan');
     }
   
     /**
      * Display the specified resource.
      */
-    public function show(Perawatan $perawatan): View
+    public function show(PerawatanAlat $perawatan_alat): View
     {
-        return view('perawatans.show',compact('perawatan'));
+        return view('perawatan_alat.show',compact('perawatan_alat'));
     }
   
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Perawatan $perawatan): View
+    public function edit(PerawatanAlat $perawatan_alat): View
     {
-        return view('perawatans.edit',compact('perawatan'));
+        return view('perawatan_alat.edit',compact('perawatan_alat'));
     }
   
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Perawatan $perawatan): RedirectResponse
+    public function update(Request $request, PerawatanAlat $perawatan_alat): RedirectResponse
     {
         $request->validate([
             'kode_alat' => 'required',
@@ -86,21 +86,21 @@ class PerawatanController extends Controller
             'catatan_perawatan' => 'required',
         ]);
         
-        $perawatan->update($request->all());
+        $perawatan_alat->update($request->all());
         
-        return redirect()->route('perawatans.index')
+        return redirect()->route('perawatan_alat.index')
                         ->with('success','Data perawatan berhasil diperbarui');
     }
   
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Perawatan $perawatan): RedirectResponse
+    public function destroy(PerawatanAlat $perawatan_alat): RedirectResponse
     {
         $confirmDelete = true; // tambahkan variabel untuk menandai konfirmasi
-        $perawatan->delete();
+        $perawatan_alat->delete();
 
-        return redirect()->route('perawatans.index')
+        return redirect()->route('perawatan_alat.index')
                         ->with('success', 'Data telah berhasil dihapus')
                         ->with('confirmDelete', $confirmDelete); // tambahkan variabel ke session
     }
