@@ -5,7 +5,7 @@
 @endsection
 
 @section('isi')
-<h1>Edit Data Alat</h1>
+<h1 class="text-center">Edit Data Alat</h1>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
