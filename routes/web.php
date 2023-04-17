@@ -7,7 +7,6 @@ use App\Http\Controllers\WareController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PeminjamanAlatController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\RuangansController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PerawatanAlatController;
@@ -64,7 +63,6 @@ Route::get('/dashboard-user', function () {
 
 Route::resource('/sdr/pemeliharaanr', PemeliharaansController::class);
 Route::resource('/sdr/penjadwalanr', PenjadwalansController::class);
-Route::resource('ruangans', RuangansController::class);
 
 Route::resource('/sda/peminjaman_alat', PeminjamanAlatController::class);
 Route::resource('/sda/perawatan_alat', PerawatanAlatController::class);
