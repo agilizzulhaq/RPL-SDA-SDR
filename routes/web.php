@@ -13,6 +13,7 @@ use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PerawatanAlatController;
 use App\Http\Controllers\PenjadwalansController;
 use App\Http\Controllers\PemeliharaansController;
+use App\Http\Controllers\Auth\LoginRegisterController;
 
 /*
 |--------------------------------------------------------------------------
