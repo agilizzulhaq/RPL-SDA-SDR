@@ -1,12 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CRUD LARAVEL VENDOR</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  </head>
-  <body>
+@extends('layout2.main')
+
+@section('nav')
+    @include('layout2.navmdvendor')
+@endsection
+@section('isi')
     <h1>Data Vendor</h1>
         <div class="container">
             <a href="/addvendor" class="btn btn-primary mb-2">Tambah Data</a>
@@ -84,4 +81,4 @@
       toastr.success("{{ Session::get('success') }}");
     @endif
   </script>
-</html>
+@endsection

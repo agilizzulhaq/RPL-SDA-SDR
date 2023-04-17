@@ -11,7 +11,7 @@
     <span class="material-icons h-23" style="font-size: 22px;">chevron_right</span>
     <p class="text-md font-bold mt-3 ml-3">Alat</p>
 </a>
-<a id="menu" href="/mdlokasialat" tabindex="0" class="cursor-pointer text-black hover:text-white no-underline flex items-center pl-10 hover:bg-[#5479F7]">
+<a id="menu" href="/lokasi_alat" tabindex="0" class="cursor-pointer text-black hover:text-white no-underline flex items-center pl-10 hover:bg-[#5479F7]">
     <span class="material-icons h-23" style="font-size: 22px;">chevron_right</span>
     <p class="text-md font-bold mt-3 ml-3">Lokasi Alat</p>
 </a>
@@ -19,7 +19,7 @@
     <span class="material-icons h-23" style="font-size: 22px;">chevron_right</span>
     <p class="text-md font-bold mt-3 ml-3">Ruangan</p>
 </a>
-<a id="menu" href="/mdlokasiruangan" tabindex="0" class="cursor-pointer text-black hover:text-white no-underline flex items-center pl-10 hover:bg-[#5479F7]">
+<a id="menu" href="/lokasi_ruangan" tabindex="0" class="cursor-pointer text-black hover:text-white no-underline flex items-center pl-10 hover:bg-[#5479F7]">
     <span class="material-icons h-23" style="font-size: 22px;">chevron_right</span>
     <p class="text-md font-bold mt-3 ml-3">Lokasi Ruangan</p>
 </a>

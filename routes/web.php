@@ -64,24 +64,24 @@ Route::get('/dashboard-warehouse', function () {
 Route::get('/dashboard-user', function () {
     return view('dashboard-user');
 });
-Route::get('/mdusers', function () {
-    return view('mdusers');
-});
+// Route::get('/mdusers', function () {
+//     return view('mdusers');
+// });
 // Route::get('/mdalat', function () {
 //     return view('mdalat');
 // });
-Route::get('/mdlokasialat', function () {
-    return view('mdlokasialat');
-});
+// Route::get('/mdlokasialat', function () {
+//     return view('mdlokasialat');
+// });
 // Route::get('/mdruangan', function () {
 //     return view('mdruangan');
 // });
-Route::get('/mdlokasiruangan', function () {
-    return view('mdlokasiruangan');
-});
-Route::get('/mdvendor', function () {
-    return view('mdvendor');
-});
+// Route::get('/mdlokasiruangan', function () {
+//     return view('mdlokasiruangan');
+// });
+// Route::get('/mdvendor', function () {
+//     return view('mdvendor');
+// });
 
 
 Route::resource('/sdr/pemeliharaanr', PemeliharaansController::class);
@@ -118,17 +118,17 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::resource('lokasi_alat', LokasiAlatController::class);
-Route::resource('lokasi_ruangan', LokasiRuanganController::class);
+Route::resource('/lokasi_alat', LokasiAlatController::class);
+Route::resource('/lokasi_ruangan', LokasiRuanganController::class);
 
-Route::get('/users', [PenggunaController::class, 'users'])->name('users');
+Route::get('/mdusers', [PenggunaController::class, 'users'])->name('users');
 Route::get('/addusers', [PenggunaController::class, 'addusers'])->name('addusers');
 Route::post('/insertusers', [PenggunaController::class, 'insertusers'])->name('insertusers');
 Route::get('/editusers/{id}', [PenggunaController::class, 'editusers'])->name('editusers');
 Route::post('/updateusers/{id}', [PenggunaController::class, 'updateusers'])->name('updateusers');
 Route::get('/deleteusers/{id}', [PenggunaController::class, 'deleteusers'])->name('deleteusers');
 
-Route::get('/vendor', [VendorController::class, 'vendor'])->name('vendor');
+Route::get('/mdvendor', [VendorController::class, 'vendor'])->name('vendor');
 Route::get('/addvendor', [VendorController::class, 'addvendor'])->name('addvendor');
 Route::post('/insertvendor', [VendorController::class, 'insertvendor'])->name('insertvendor');
 Route::get('/editvendor/{id}', [VendorController::class, 'editvendor'])->name('editvendor');
