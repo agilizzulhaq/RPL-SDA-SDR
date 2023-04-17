@@ -14,6 +14,8 @@ use App\Http\Controllers\PerawatanAlatController;
 use App\Http\Controllers\PenjadwalansController;
 use App\Http\Controllers\PemeliharaansController;
 use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Controllers\LokasiAlatController;
+use App\Http\Controllers\LokasiRuanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,3 +98,7 @@ Route::controller(LoginRegisterController::class)->group(function () {
     })->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
+
+Route::resource('lokasi_alat', LokasiAlatController::class);
+Route::resource('lokasi_ruangan', LokasiRuanganController::class);
+
