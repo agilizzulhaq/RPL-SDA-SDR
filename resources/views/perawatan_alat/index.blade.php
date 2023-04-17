@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>CRUD Perawatan Alat Kesehatan</h2>
+                    <h2>Perawatan Alat Kesehatan</h2>
                 </div>
                 <div class="pull-right">
                     <a class="btn btn-success" href="{{ route('perawatan_alat.create') }}"> Tambahkan data perawatan</a>
@@ -28,9 +28,6 @@
             <tr>
                 <th>No</th>
                 <th>Kode Alat</th>
-                <th>ID Admin</th>
-                <th>ID Keeper</th>
-                <th>ID User</th>
                 <th>Nama Alat</th>
                 <th>Lokasi Alat</th>
                 <th>Jenis Perawatan</th>
@@ -43,9 +40,6 @@
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $perawatan->kode_alat }}</td>
-                <td>{{ $perawatan->id_admin }}</td>
-                <td>{{ $perawatan->id_keeper }}</td>
-                <td>{{ $perawatan->id_user }}</td>
                 <td>{{ $perawatan->nama_alat }}</td>
                 <td>{{ $perawatan->lokasi_alat }}</td>
                 <td>{{ $perawatan->jenis_perawatan }}</td>

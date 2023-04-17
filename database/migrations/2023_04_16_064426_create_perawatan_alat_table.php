@@ -15,9 +15,6 @@ return new class extends Migration
     {
         Schema::create('perawatan_alat', function (Blueprint $table) {
             $table->char('kode_alat', 25);
-            $table->char('id_admin', 25);
-            $table->char('id_keeper', 25);
-            $table->char('id_user', 25);
             $table->string('nama_alat', 100);
             $table->string('lokasi_alat', 100);
             $table->enum('jenis_perawatan', ['Perawatan rutin', 'Pembersihan alat', 'Perawatan kerusakan']);

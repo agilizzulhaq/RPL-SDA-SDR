@@ -13,7 +13,7 @@ class PeminjamanAlat extends Model
     public $incrementing = false;
 
     protected $primaryKey = 'kode_alat';
-    protected $fillable = ['kode_alat', 'id_admin', 'id_user','nama_alat', 'nama_peminjam', 'tanggal_peminjam', 'status_peminjaman', 'alasan_peminjaman'];
+    protected $fillable = ['kode_alat', 'nama_alat', 'nama_peminjam', 'tanggal_peminjam', 'status_peminjaman', 'alasan_peminjaman'];
 
 
 }

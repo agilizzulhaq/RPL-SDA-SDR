@@ -42,24 +42,6 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>ID Admin:</strong>
-                        <input type="text" name="id_admin" value="{{ $perawatan_alat->id_admin }}" class="form-control" placeholder="ID Admin">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>ID Keeper:</strong>
-                        <input type="text" name="id_keeper" value="{{ $perawatan_alat->id_keeper }}" class="form-control" placeholder="ID Keeper">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>ID User:</strong>
-                        <input type="text" name="id_user" value="{{ $perawatan_alat->id_user }}" class="form-control" placeholder="ID User">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
                         <strong>Nama Alat:</strong>
                         <input type="text" value="{{ $perawatan_alat->nama_alat }}" class="form-control" name="nama_alat" placeholder="Nama Alat">
                     </div>

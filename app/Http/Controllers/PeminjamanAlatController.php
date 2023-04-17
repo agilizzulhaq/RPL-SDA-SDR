@@ -35,8 +35,6 @@ class PeminjamanAlatController extends Controller
     {
         $request->validate([
             'kode_alat' => 'required',
-            'id_admin' => 'required',
-            'id_user' => 'required',
             'nama_alat' => 'required',
             'nama_peminjam' => 'required',
             'tanggal_peminjam' => 'required',
@@ -73,8 +71,6 @@ class PeminjamanAlatController extends Controller
     {
         $request->validate([
             'kode_alat' => 'required',
-            'id_admin' => 'required',
-            'id_user' => 'required',
             'nama_alat' => 'required',
             'nama_peminjam' => 'required',
             'tanggal_peminjam' => 'required',

@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('peminjaman_alat', function (Blueprint $table) {
             $table->char('kode_alat', 25);
-            $table->char('id_admin', 25);
-            $table->char('id_user', 25);
             $table->string('nama_alat', 100);
             $table->string('nama_peminjam', 100);
             $table->dateTime('tanggal_peminjam');

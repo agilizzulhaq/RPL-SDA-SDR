@@ -13,6 +13,10 @@ use App\Http\Controllers\PerawatanAlatController;
 use App\Http\Controllers\PenjadwalansController;
 use App\Http\Controllers\PemeliharaansController;
 use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Controllers\LokasiAlatController;
+use App\Http\Controllers\LokasiRuanganController;
+use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\VendorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,3 +117,20 @@ Route::controller(LoginRegisterController::class)->group(function () {
     })->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
+
+Route::resource('lokasi_alat', LokasiAlatController::class);
+Route::resource('lokasi_ruangan', LokasiRuanganController::class);
+
+Route::get('/users', [PenggunaController::class, 'users'])->name('users');
+Route::get('/addusers', [PenggunaController::class, 'addusers'])->name('addusers');
+Route::post('/insertusers', [PenggunaController::class, 'insertusers'])->name('insertusers');
+Route::get('/editusers/{id}', [PenggunaController::class, 'editusers'])->name('editusers');
+Route::post('/updateusers/{id}', [PenggunaController::class, 'updateusers'])->name('updateusers');
+Route::get('/deleteusers/{id}', [PenggunaController::class, 'deleteusers'])->name('deleteusers');
+
+Route::get('/vendor', [VendorController::class, 'vendor'])->name('vendor');
+Route::get('/addvendor', [VendorController::class, 'addvendor'])->name('addvendor');
+Route::post('/insertvendor', [VendorController::class, 'insertvendor'])->name('insertvendor');
+Route::get('/editvendor/{id}', [VendorController::class, 'editvendor'])->name('editvendor');
+Route::post('/updatevendor/{id}', [VendorController::class, 'updatevendor'])->name('updatevendor');
+Route::get('/deletevendor/{id}', [VendorController::class, 'deletevendor'])->name('deletevendor');

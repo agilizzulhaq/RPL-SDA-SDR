@@ -27,18 +27,6 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>ID Admin:</strong>
-                    {{ $peminjaman_alat->id_admin }}
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>ID User:</strong>
-                    {{ $peminjaman_alat->id_user }}
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
                     <strong>Nama Alat:</strong>
                     {{ $peminjaman_alat->nama_alat }}
                 </div>
