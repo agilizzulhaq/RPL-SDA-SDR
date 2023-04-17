@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>CRUD Peminjaman Alat Kesehatan</h2>
+                    <h2>Peminjaman Alat Kesehatan</h2>
                 </div>
                 <div class="pull-right">
                     <a class="btn btn-success" href="{{ route('peminjaman_alat.create') }}"> Tambahkan data peminjaman alat</a>
