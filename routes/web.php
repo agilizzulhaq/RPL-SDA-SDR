@@ -92,7 +92,7 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard', function () {
-        return view('dashboard-admin');
+        return view('dashboard');
     })->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
