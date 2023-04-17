@@ -25,10 +25,6 @@ class LoginRegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function register()
-    {
-        return view('auth.register');
-    }
 
     /**
      * Store a new user.
