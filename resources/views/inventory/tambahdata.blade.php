@@ -1,7 +1,7 @@
 @extends('../layout2/main')
 
 @section('nav')
-    @include('../layout2/navmdalat')
+    @include('../layout2/navsda')
 @endsection
 
 @section('isi')
@@ -18,12 +18,22 @@
                 <input type="number" name="kodeAlat" class="form-control" id="exampleInputEmail">
               </div>
               <div class="mb-3">
-                <label for="exampleInputEmail" class="form-label">Nama Alat</label>
-                <input type="text" name="namaAlat" class="form-control" id="exampleInputEmail">
+                <label for="namaAlat" class="form-label">Nama Alat</label>
+                <select class="form-select" name="namaAlat" aria-label="Default select example">
+                  <option selected>Pilih Nama alat</option>
+                  @foreach ($nama_alat as $item)
+                    <option value="{{ $item->kode_nama_alat }}">{{ $item->nama_alat}}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="mb-3">
                 <label for="lokasiAlat" class="form-label">Lokasi Alat</label>
-                <input type="text" name="lokasiAlat" class="form-control" id="exampleInputEmail">
+                <select class="form-select" name="lokasiAlat" aria-label="Default select example">
+                  <option selected>Pilih Lokasi</option>
+                  @foreach ($lokasi_alat as $item)
+                    <option value="{{ $item->kode_lokasi }}">{{ $item->nama_gedung}}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="mb-3">
                 <label for="stok" class="form-label">Stok</label>

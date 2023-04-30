@@ -13,8 +13,8 @@ use App\Http\Controllers\PerawatanAlatController;
 use App\Http\Controllers\PenjadwalansController;
 use App\Http\Controllers\PemeliharaansController;
 use App\Http\Controllers\Auth\LoginRegisterController;
-use App\Http\Controllers\LokasiAlatController;
-use App\Http\Controllers\LokasiRuanganController;
+use App\Http\Controllers\NamaAlatController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\VendorController;
 
@@ -92,14 +92,14 @@ Route::resource('/sda/perawatan_alat', PerawatanAlatController::class);
 Route::resource('products', ProductController::class);
 Route::resource('/sda/pembelian', PembelianController::class);
 
-Route::get('/mdalat', [InventoryController::class, 'alat'])->name('alat');
+Route::get('/sda/alat', [InventoryController::class, 'alat'])->name('alat');
 Route::get('/tambahalat', [InventoryController::class, 'tambahalat'])->name('tambahalat');
 Route::post('/masukkanalat', [InventoryController::class, 'masukkanalat'])->name('masukkanalat');
 Route::get('/editalat/{id}', [InventoryController::class, 'editalat'])->name('editalat');
 Route::post('/updatealat/{id}', [InventoryController::class, 'updatealat'])->name('updatealat');
 Route::get('/hapusalat/{id}', [InventoryController::class, 'hapusalat'])->name('hapusalat');
 
-Route::get('/mdruangan', [RoomController::class, 'ruangan'])->name('ruangan');
+Route::get('/sdr/ruangan', [RoomController::class, 'ruangan'])->name('ruangan');
 Route::get('/tambahruangan', [RoomController::class, 'tambahruangan'])->name('tambahruangan');
 Route::post('/masukkanruangan', [RoomController::class, 'masukkanruangan'])->name('masukkanruangan');
 Route::get('/editruangan/{id}', [RoomController::class, 'editruangan'])->name('editruangan');
@@ -118,8 +118,9 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::resource('/lokasi_alat', LokasiAlatController::class);
-Route::resource('/lokasi_ruangan', LokasiRuanganController::class);
+Route::resource('/nama_alat', NamaAlatController::class);
+Route::resource('/lokasi', LokasiController::class);
+//Route::post('/lokasi', [LokasiController::class, 'store']);
 
 Route::get('/mdusers', [PenggunaController::class, 'users'])->name('users');
 Route::get('/addusers', [PenggunaController::class, 'addusers'])->name('addusers');

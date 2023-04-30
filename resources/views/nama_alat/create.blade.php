@@ -1,25 +1,25 @@
 @extends('../layout2/main')
 
 @section('nav')
-    @include('../layout2/navmdlokasialat')
+    @include('../layout2/navmdnamaalat')
 @endsection
 
 @section('isi')
-<h1 class="text-center">Tambah Data Lokasi Alat</h1>
+<h1 class="text-center">Tambah Data Nama Alat</h1>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
         <div class="card">
           <div class="card-body">
-            <form action="{{ route('lokasi_alat.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('nama_alat.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="mb-3">
-                <label for="kode_lokasi_alat" class="form-label">Kode Lokasi Alat</label>
-                <input type="number" name="kode_lokasi_alat" class="form-control" id="exampleInputEmail">
+                <label for="kode_nama_alat" class="form-label">Kode Nama Alat</label>
+                <input type="number" name="kode_nama_alat" class="form-control" id="exampleInputEmail">
               </div>
               <div class="mb-3">
-                <label for="lokasi_alat" class="form-label">Lokasi Alat</label>
-                <input type="text" name="lokasi_alat" class="form-control" id="exampleInputEmail">
+                <label for="nama_alat" class="form-label">Nama Alat</label>
+                <input type="text" name="nama_alat" class="form-control" id="exampleInputEmail">
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>

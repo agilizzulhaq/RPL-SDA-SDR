@@ -1,7 +1,7 @@
 @extends('../layout2/main')
 
 @section('nav')
-    @include('../layout2/navmdlokasiruangan')
+    @include('../layout2/navmdlokasialat')
 @endsection
 
 @section('isi')
@@ -13,7 +13,7 @@
                     <h2> Show Data</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('lokasi_ruangan.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('nama_alat.index') }}"> Back</a>
                 </div>
             </div>
         </div>
@@ -21,14 +21,14 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Kode Lokasi Alat:</strong>
-                    {{ $lokasi_ruangan->kode_lokasi_ruangan }}
+                    <strong>Kode Nama Alat:</strong>
+                    {{ $nama_alat->kode_nama_alat }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Lokasi Alat:</strong>
-                    {{ $lokasi_ruangan->lokasi_ruangan }}
+                    <strong>Nama Alat:</strong>
+                    {{ $nama_alat->nama_alat }}
                 </div>
             </div>
         </div>

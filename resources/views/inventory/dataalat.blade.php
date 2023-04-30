@@ -1,15 +1,14 @@
 @extends('../layout2/main')
 
 @section('nav')
-    @include('../layout2/navmdalat')
+    @include('../layout2/navsda')
 @endsection
 
 @section('isi')
 <h1>Data Alat</h1>
   
   <div class="container bg-[#F7F7F7]">   
-
-    <a href="/tambahalat" class="bg-[#007bff] mt-2 ml-2">Tambah +</a>
+    <a href="/tambahalat" class="btn btn-success mb-2">Tambah +</a>
     <div class="bg-white">
         <div class="row">
           <table class="table">
@@ -29,28 +28,29 @@
             </thead>
             <tbody>
               @php
-                $no = 1;
+                $i = 0;
               @endphp
-              @foreach ($data as $alat => $row)
+              @foreach ($data as $alat)
                 <tr>
-                  <th scope="row">{{$alat + $data -> firstItem()}}</th>
-                  <td>{{$row -> kodeAlat}}</td>
-                  <td>{{$row -> namaAlat}}</td>
-                  <td>{{$row -> lokasiAlat}}</td>
-                  <td>{{$row -> stok}} / {{$row -> limit}}</td>
-                  <td>{{$row -> jenisAlat}}</td>
-                  <td>{{$row -> pemakaianAlat}}</td>
-                  <td>{{$row -> kondisiAlat}}</td>
-                  <td>{{$row -> statusAlat}}</td>
+                  {{-- <th scope="row">{{$alat + $data -> firstItem()}}</th> --}}
+                  <td>{{ ++$i }}</td>
+                  <td>{{$alat -> kodeAlat}}</td>
+                  <td>{{$alat -> namaAlat}}</td>
+                  <td>{{$alat -> lokasiAlat}}</td>
+                  <td>{{$alat -> stok}} / {{$alat -> limit}}</td>
+                  <td>{{$alat -> jenisAlat}}</td>
+                  <td>{{$alat -> pemakaianAlat}}</td>
+                  <td>{{$alat -> kondisiAlat}}</td>
+                  <td>{{$alat -> statusAlat}}</td>
                   <td>
-                    <a href="/editalat/{{$row -> id}}" class="btn btn-secondary">Edit</a>
-                    <a href="#" class="btn btn-danger delete" data-id="{{$row -> id}}" data-nama="{{$row -> namaAlat}}">Hapus</a>
+                    <a href="/editalat/{{$alat -> id}}" class="btn btn-secondary">Edit</a>
+                    <a href="#" class="btn btn-danger delete" data-id="{{$alat -> id}}" data-nama="{{$alat -> namaAlat}}">Hapus</a>
                   </td>
                 </tr>
               @endforeach
             </tbody>
           </table>
-          {{ $data->links() }}
+          {{-- {{ $data->links() }} --}}
         </div>
     </div>
   </div>
@@ -88,3 +88,6 @@
     @endif
   </script>
 @endsection
+
+
+  

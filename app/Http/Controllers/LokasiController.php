@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LokasiAlat;
+use App\Models\Lokasi;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class LokasiAlatController extends Controller
+class LokasiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $lokasi_alat = LokasiAlat::latest()->paginate(5);
+        $lokasi = Lokasi::latest()->paginate(5);
         
-        return view('lokasi_alat.index',compact('lokasi_alat'))
+        return view('lokasi.index',compact('lokasi'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
     }
   
@@ -25,7 +25,7 @@ class LokasiAlatController extends Controller
      */
     public function create(): View
     {
-        return view('lokasi_alat.create');
+        return view('lokasi.create');
     }
   
     /**
@@ -34,59 +34,61 @@ class LokasiAlatController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'kode_lokasi_alat' => 'required',
-            'lokasi_alat' => 'required',
+            'kode_lokasi' => 'required',
+            'nama_gedung' => 'required',
+            'lantai' => 'required',
         ]);
         
-        LokasiAlat::create($request->all());
+        Lokasi::create($request->all());
          
-        return redirect()->route('lokasi_alat.index')
-                        ->with('success','Data lokasi alat berhasil ditambahkan');
+        return redirect()->route('lokasi.index')
+                        ->with('success','Data lokasi berhasil ditambahkan');
     }
   
     /**
      * Display the specified resource.
      */
     
-    public function show(LokasiAlat $lokasi_alat): View
+    public function show(Lokasi $lokasi): View
     {
-        return view('lokasi_alat.show',compact('lokasi_alat'));
+        return view('lokasi.show',compact('lokasi'));
     }
     
   
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(LokasiAlat $lokasi_alat): View
+    public function edit(Lokasi $lokasi): View
     {
-        return view('lokasi_alat.edit',compact('lokasi_alat'));
+        return view('lokasi.edit',compact('lokasi'));
     }
   
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, LokasiAlat $lokasi_alat): RedirectResponse
+    public function update(Request $request, Lokasi $lokasi): RedirectResponse
     {
         $request->validate([
-            'kode_lokasi_alat' => 'required',
-            'lokasi_alat' => 'required',
+            'kode_lokasi' => 'required',
+            'nama_gedung' => 'required',
+            'lantai' => 'required',
         ]);
         
-        $lokasi_alat->update($request->all());
+        $lokasi->update($request->all());
         
-        return redirect()->route('lokasi_alat.index')
-                        ->with('success','Data lokasi alat berhasil diperbarui');
+        return redirect()->route('lokasi.index')
+                        ->with('success','Data lokasi berhasil diperbarui');
     }
   
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LokasiAlat $lokasi_alat): RedirectResponse
+    public function destroy(Lokasi $lokasi): RedirectResponse
     {
         $confirmDelete = true; // tambahkan variabel untuk menandai konfirmasi
-        $lokasi_alat->delete();
+        $lokasi->delete();
 
-        return redirect()->route('lokasi_alat.index')
+        return redirect()->route('lokasi.index')
                         ->with('success', 'Data telah berhasil dihapus')
                         ->with('confirmDelete', $confirmDelete); // tambahkan variabel ke session
     }

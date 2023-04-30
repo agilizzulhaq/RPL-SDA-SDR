@@ -1,7 +1,7 @@
 @extends('../layout2/main')
 
 @section('nav')
-    @include('../layout2/navmdruangan')
+    @include('../layout2/navsdr')
 @endsection
 
 @section('isi')
