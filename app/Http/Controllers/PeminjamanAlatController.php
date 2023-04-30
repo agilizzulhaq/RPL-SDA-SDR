@@ -27,8 +27,7 @@ class PeminjamanAlatController extends Controller
             'peminjaman_alat' => $this->PeminjamanAlat->allData()->first() ?? '',
         ];
 
-        return view('peminjaman_alat.index',compact('peminjaman_alat'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('peminjaman_alat.index',compact('peminjaman_alat'));
     }
   
     /**
