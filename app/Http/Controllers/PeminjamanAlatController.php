@@ -21,7 +21,7 @@ class PeminjamanAlatController extends Controller
      */
     public function index(): View
     {
-        //$peminjaman_alat = PeminjamanAlat::latest()->paginate(5)->allData();
+        $peminjaman_alat = PeminjamanAlat::latest()->paginate(5);
         
         $peminjaman_alat = [
             'peminjaman_alat' => $this->PeminjamanAlat->allData()->first() ?? '',
