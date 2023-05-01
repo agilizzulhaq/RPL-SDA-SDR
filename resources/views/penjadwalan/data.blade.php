@@ -1,8 +1,4 @@
-@extends('../layout2/main')
-
-@section('nav')
-    @include('../layout2/navpenjadwalanr')
-@endsection
+@extends('../layout2/mainnew')
 
 @section('isi')
 <h3> Data Penjadwalan</h3>

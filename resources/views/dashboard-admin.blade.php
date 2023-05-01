@@ -1,8 +1,6 @@
-@extends('layout2.main')
+@extends('layout2.mainnew')
 
-@section('nav')
-    @include('layout2.navd')
-@endsection
+
 @section('isi')
     <div class="flex bg-[#5479F7] w-[120px] h-[38px] rounded-lg text-[12px] text-white font-bold justify-evenly items-center">
         <span class="material-icons" style="">home</span>

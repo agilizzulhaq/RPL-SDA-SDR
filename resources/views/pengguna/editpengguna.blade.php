@@ -1,8 +1,4 @@
-@extends('layout2.main')
-
-@section('nav')
-    @include('layout2.navmdusers')
-@endsection
+@extends('../layout2/mainnew')
 @section('isi')
   <body>
     <h1 class="text-center mb-4">Edit Data User</h1>

@@ -1,8 +1,4 @@
-@extends('../layout2/main')
-
-@section('nav')
-    @include('../layout2/navmdruangan')
-@endsection
+@extends('../layout2/mainnew')
 
 @section('isi')
     <h1 class="text-center mb-4">Tambah Data Ruangan</h1>

@@ -38,7 +38,7 @@ Route::get('/rpl', function () {
 //     return view('rpl');
 // });
 
-Route::get('/ruangans', function () {
+Route::post('/ruangans', function () {
     return view('layout.ruangan');
 });
 
@@ -92,14 +92,14 @@ Route::resource('/sda/perawatan_alat', PerawatanAlatController::class);
 Route::resource('products', ProductController::class);
 Route::resource('/sda/pembelian', PembelianController::class);
 
-Route::get('/mdalat', [InventoryController::class, 'alat'])->name('alat');
+Route::get('/data-master/alat', [InventoryController::class, 'alat'])->name('alat');
 Route::get('/tambahalat', [InventoryController::class, 'tambahalat'])->name('tambahalat');
 Route::post('/masukkanalat', [InventoryController::class, 'masukkanalat'])->name('masukkanalat');
 Route::get('/editalat/{id}', [InventoryController::class, 'editalat'])->name('editalat');
 Route::post('/updatealat/{id}', [InventoryController::class, 'updatealat'])->name('updatealat');
 Route::get('/hapusalat/{id}', [InventoryController::class, 'hapusalat'])->name('hapusalat');
 
-Route::get('/mdruangan', [RoomController::class, 'ruangan'])->name('ruangan');
+Route::get('/data-master/ruangan', [RoomController::class, 'ruangan'])->name('ruangan');
 Route::get('/tambahruangan', [RoomController::class, 'tambahruangan'])->name('tambahruangan');
 Route::post('/masukkanruangan', [RoomController::class, 'masukkanruangan'])->name('masukkanruangan');
 Route::get('/editruangan/{id}', [RoomController::class, 'editruangan'])->name('editruangan');
@@ -121,14 +121,14 @@ Route::controller(LoginRegisterController::class)->group(function () {
 Route::resource('/lokasi_alat', LokasiAlatController::class);
 Route::resource('/lokasi_ruangan', LokasiRuanganController::class);
 
-Route::get('/mdusers', [PenggunaController::class, 'users'])->name('users');
+Route::get('/data-master/users', [PenggunaController::class, 'users'])->name('users');
 Route::get('/addusers', [PenggunaController::class, 'addusers'])->name('addusers');
 Route::post('/insertusers', [PenggunaController::class, 'insertusers'])->name('insertusers');
 Route::get('/editusers/{id}', [PenggunaController::class, 'editusers'])->name('editusers');
 Route::post('/updateusers/{id}', [PenggunaController::class, 'updateusers'])->name('updateusers');
 Route::get('/deleteusers/{id}', [PenggunaController::class, 'deleteusers'])->name('deleteusers');
 
-Route::get('/mdvendor', [VendorController::class, 'vendor'])->name('vendor');
+Route::get('/data-master/vendor', [VendorController::class, 'vendor'])->name('vendor');
 Route::get('/addvendor', [VendorController::class, 'addvendor'])->name('addvendor');
 Route::post('/insertvendor', [VendorController::class, 'insertvendor'])->name('insertvendor');
 Route::get('/editvendor/{id}', [VendorController::class, 'editvendor'])->name('editvendor');

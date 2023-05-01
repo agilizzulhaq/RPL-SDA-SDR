@@ -1,8 +1,5 @@
-@extends('../layout2/main')
+@extends('../layout2/mainnew')
 
-@section('nav')
-    @include('../layout2/navmdalat')
-@endsection
 
 @section('isi')
 <h1>Data Alat</h1>

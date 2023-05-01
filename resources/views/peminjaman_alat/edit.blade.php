@@ -1,8 +1,4 @@
-@extends('../layout2/main')
-
-@section('nav')
-    @include('../layout2/navpeminjaman')
-@endsection
+@extends('../layout2/mainnew')
 
 @section('isi')
     <div class="w-[1040px]">

@@ -1,6 +1,6 @@
-{{-- @extends('layout.main')
+@extends('../layout2/mainnew')
 
-@section('content')
+@section('isi')
 <h3> From tambah Data Pemeliharaan</h3>
     <div class="card">
         <div class="card-header">
@@ -95,4 +95,4 @@
             </form>
         </div>
     </div>
-@endsection --}}
+@endsection
