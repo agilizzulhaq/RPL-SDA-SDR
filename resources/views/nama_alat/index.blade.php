@@ -1,12 +1,20 @@
+<<<<<<< HEAD:resources/views/lokasi_alat/index.blade.php
 @extends('../layout2/mainnew')
+=======
+@extends('../layout2/main')
+
+@section('nav')
+    @include('../layout2/navmdnamaalat')
+@endsection
+>>>>>>> 55855882647e2a50d32a251f753741ade7551045:resources/views/nama_alat/index.blade.php
 
 @section('isi')
-<h1>Data Alat</h1>
+<h1>Tambah Data Nama Alat</h1>
   <div class="container">
-    <a href="{{ route('lokasi_ruangan.create') }}" class="btn btn-success mb-2">Tambah +</a>
+    <a href="{{ route('nama_alat.create') }}" class="btn btn-success mb-2">Tambah +</a>
       <div class="row g-3 align-items-center">
         <div class="col-auto">
-          <form action="/lokasi_ruangan" method="GET">
+          <form action="/nama_alat" method="GET">
             <input type="search" id="inputSearch" name="search" class="form-control" aria-labelledby="searchHelpInline">
           </form>
         </div>
@@ -16,23 +24,23 @@
           <thead>
             <tr>
               <th scope="col">No</th>
-              <th scope="col">Kode Lokasi Ruangan</th>
-              <th scope="col">Lokasi Ruangan</th>
+              <th scope="col">Kode Nama Alat</th>
+              <th scope="col">Nama Alat</th>
             </tr>
           </thead>
           <tbody>
             @php
               $no = 1;
             @endphp
-            @foreach ($lokasi_ruangan as $alat => $row)
+            @foreach ($nama_alat as $alat => $row)
               <tr>
-                <th scope="row">{{$alat + $lokasi_ruangan -> firstItem()}}</th>
-                <td>{{$row -> kode_lokasi_ruangan}}</td>
-                <td>{{$row -> lokasi_ruangan}}</td>
+                <th scope="row">{{$alat + $nama_alat -> firstItem()}}</th>
+                <td>{{$row -> kode_nama_alat}}</td>
+                <td>{{$row -> nama_alat}}</td>
                 <td>
-                    <form action="{{ route('lokasi_ruangan.destroy',$row->kode_lokasi_ruangan) }}" method="POST">
+                    <form action="{{ route('nama_alat.destroy',$row->kode_nama_alat) }}" method="POST">
         
-                        <a href="{{ route('lokasi_ruangan.edit',$row->kode_lokasi_ruangan) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('nama_alat.edit',$row->kode_nama_alat) }}" class="btn btn-primary">Edit</a>
        
                         @csrf
                         @method('DELETE')
@@ -44,7 +52,7 @@
             @endforeach
           </tbody>
         </table>
-        {{ $lokasi_ruangan->links() }}
+        {{ $nama_alat->links() }}
       </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

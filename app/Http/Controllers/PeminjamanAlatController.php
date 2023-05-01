@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\PeminjamanAlat;
+use App\Models\NamaAlat;
+use App\Models\Pengguna;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PeminjamanAlatController extends Controller
 {
+    public function __construct() {
+        $this->PeminjamanAlat = new PeminjamanAlat();
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -16,8 +23,11 @@ class PeminjamanAlatController extends Controller
     {
         $peminjaman_alat = PeminjamanAlat::latest()->paginate(5);
         
-        return view('peminjaman_alat.index',compact('peminjaman_alat'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+        $peminjaman_alat = [
+            'peminjaman_alat' => $this->PeminjamanAlat->allData()->first() ?? '',
+        ];
+
+        return view('peminjaman_alat.index',compact('peminjaman_alat'));
     }
   
     /**
