@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\DB;
 
 class PeminjamanAlatController extends Controller
 {
-    public function __construct() {
-        $this->PeminjamanAlat = new PeminjamanAlat();
-    }
-
     /**
      * Display a listing of the resource.
      */
@@ -23,13 +19,10 @@ class PeminjamanAlatController extends Controller
     {
         $peminjaman_alat = PeminjamanAlat::latest()->paginate(5);
         
-        $peminjaman_alat = [
-            'peminjaman_alat' => $this->PeminjamanAlat->allData()->first() ?? '',
-        ];
-
-        return view('peminjaman_alat.index',compact('peminjaman_alat'));
+        return view('peminjaman_alat.index',compact('peminjaman_alat'))
+                    ->with('i', (request()->input('page', 1) - 1) * 5);
     }
-  
+    
     /**
      * Show the form for creating a new resource.
      */

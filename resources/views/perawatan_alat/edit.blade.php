@@ -51,13 +51,24 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Jenis Perawatan:</strong>
-                        <input type="text" value="{{ $perawatan_alat->jenis_perawatan }}" class="form-control" name="jenis_perawatan" placeholder="Jenis Perawatan">
+                        <select class="form-select" name="jenis_perawatan" aria-label="Default select example">
+                            <option selected>{{ $perawatan_alat -> jenis_perawatan }}</option>
+                            <option value="Perawatan rutin">Perawatan rutin</option>
+                            <option value="Pembersihan alat">Pembersihan alat</option>
+                            <option value="Perawatan kerusakan">Perawatan kerusakan</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Status Perawatan:</strong>
-                        <input type="text" value="{{ $perawatan_alat->status_perawatan }}" class="form-control" name="status_perawatan" placeholder="Status Perawatan">
+                        <select class="form-select" name="status_perawatan" aria-label="Default select example">
+                            <option selected>{{ $perawatan_alat -> status_perawatan }}</option>
+                            <option value="Belum konfirmasi">Belum konfirmasi</option>
+                            <option value="Konfirmasi untuk perawatan">Konfirmasi untuk perawatan</option>
+                            <option value="Sedang dalam perawatan">Sedang dalam perawatan</option>
+                            <option value="Perawatan selesai">Perawatan selesai</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">

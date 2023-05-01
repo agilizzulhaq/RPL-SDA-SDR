@@ -4,7 +4,7 @@
 @extends('../layout2/main')
 
 @section('nav')
-    @include('../layout2/navsda')
+    @include('../layout2/navalat')
 @endsection
 >>>>>>> 55855882647e2a50d32a251f753741ade7551045
 
@@ -22,22 +22,12 @@
                 <input type="number" name="kodeAlat" class="form-control" id="kodeAlat" value="{{ $data -> kodeAlat }}">
               </div>
               <div class="mb-3">
-                <label for="namaAlat" class="form-label">Nama Alat</label>
-                <select class="form-select" name="namaAlat" class="form-control" id="namaAlat" aria-label="Default select example"> 
-                  @foreach ($nama_alat as $item)
-                    <option selected>{{ $item ->nama_alat }}</option>
-                    <option value="{{ $item->kode_nama_alat }}">{{ $item->nama_alat}}</option>
-                  @endforeach
-                </select>
+                <label for="exampleInputEmail" class="form-label">Nama Alat</label>
+                <input type="text" name="namaAlat" class="form-control" id="namaAlat" value="{{ $data -> namaAlat }}">
               </div>
               <div class="mb-3">
                 <label for="lokasiAlat" class="form-label">Lokasi Alat</label>
-                <select class="form-select" name="lokasiAlat" class="form-control" id="lokasiAlat" aria-label="Default select example">
-                  @foreach ($lokasi_alat as $item)
-                    <option selected>{{ $item->nama_gedung }}</option>
-                    <option value="{{ $item->kode_lokasi }}">{{ $item->nama_gedung}}</option>
-                  @endforeach
-                </select>
+                <input type="text" name="lokasiAlat" class="form-control" id="lokasiAlat" value="{{ $data -> lokasiAlat }}">
               </div>
               <div class="mb-3">
                 <label for="stok" class="form-label">Stok</label>
