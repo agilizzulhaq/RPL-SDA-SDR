@@ -1,12 +1,4 @@
-<<<<<<< HEAD
 @extends('../layout2/mainnew')
-=======
-@extends('../layout2/main')
-
-@section('nav')
-    @include('../layout2/navalat')
-@endsection
->>>>>>> 55855882647e2a50d32a251f753741ade7551045
 
 @section('isi')
 <h1 class="text-center">Tambah Data Alat</h1>

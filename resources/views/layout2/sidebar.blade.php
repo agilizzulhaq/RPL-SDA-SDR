@@ -16,7 +16,7 @@
           <li><a class="link_name" href="/dashboard-admin">Dashboard</a></li>
         </ul>
       </li>
-      <li class="{{ Request::is('data-master*', '*lokasi*') ? 'showMenu aktif' : '' }}">
+      <li class="{{ Request::is('data-master*', '*lokasi*', 'nama_alat') ? 'showMenu aktif' : '' }}">
         <div class="iocn-link">
           <a>
             <i class='bx bx-git-repo-forked bx-sm'></i>
@@ -26,10 +26,8 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name">Data Master</a></li>
-          <li><a href="/data-master/alat">Alat</a></li>
-          <li><a href="/lokasi_alat">Lokasi Alat</a></li>
-          <li><a href="/data-master/ruangan">Ruangan</a></li>
-          <li><a href="/lokasi_ruangan">Lokasi Ruangan</a></li>
+          <li><a href="/nama_alat">Nama Alat</a></li>
+          <li><a href="/lokasi">Lokasi</a></li>
           <li><a href="/data-master/users">Users</a></li>
           <li><a href="/data-master/vendor">Vendor</a></li>
         </ul>
@@ -44,6 +42,7 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name">SDA</a></li>
+          <li><a href="/sda/alat">Data Alat</a></li>
           <li><a href="/sda/peminjaman_alat">Peminjaman</a></li>
           <li><a href="/sda/perawatan_alat">Perawatan</a></li>
           <li><a href="/sda/pembelian">Pengadaan</a></li>
@@ -59,6 +58,7 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name">SDR</a></li>
+          <li><a href="/sdr/ruangan">Data Ruangan</a></li>
           <li><a href="/sdr/penjadwalanr">Penjadwalan</a></li>
           <li><a href="/sdr/pemeliharaanr">Pemeliharaan</a></li>
         </ul>

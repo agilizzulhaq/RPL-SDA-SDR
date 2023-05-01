@@ -1,15 +1,15 @@
 @extends('../layout2/mainnew')
 @section('isi')
-    <h1>Data User</h1>
+    <h1 class="mt-20 text-white font-bold text-4xl ml-12 mb-5">Data User</h1>
         <div class="container">
             <a href="/addusers" class="btn btn-primary mb-2">Tambah Data</a>
             <div class="row g-3 align-items-center">
               <div class="col-auto">
               </div>
             </div>
-            <div class="row">
-                <table class="table">
-                    <thead>
+            <div class="row text-white mt-4 rounded-md overflow-auto">
+                <table class="table text-white">
+                    <thead class="bg-[#11101d] text-center">
                       <tr>
                         <th scope="col">No</th>
                         <th scope="col">ID User</th>
@@ -21,19 +21,19 @@
                         <th scope="col">Aksi</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                       @php
                         $no = 1;
                       @endphp
                         @foreach ($data as $pengguna => $row)
-                        <tr>
+                        <tr class="border-b border-gray-500">
                             <th scope="row">{{$pengguna + $data -> firstItem()}}</th>
-                            <td>{{$row -> id_user}}</td>
-                            <td>{{$row -> nama_user}}</td>
-                            <td>{{$row -> tanggal_lahir}}</td>
-                            <td>{{$row -> alamat_user}}</td>
-                            <td>{{$row -> email_user}}</td>
-                            <td>{{$row -> role_user}}</td>
+                            <td class="text-white ">{{$row -> id_user}}</td>
+                            <td class="text-white ">{{$row -> nama_user}}</td>
+                            <td class="text-white ">{{$row -> tanggal_lahir}}</td>
+                            <td class="text-white ">{{$row -> alamat_user}}</td>
+                            <td class="text-white ">{{$row -> email_user}}</td>
+                            <td class="text-white ">{{$row -> role_user}}</td>
                             <td>
                                 <a href="/editusers/{{$row -> id}}" class="btn btn-secondary">Edit</a>
                                 <a href="#" class="btn btn-danger delete" data-id="{{$row -> id}}" data-nama="{{$row -> nama_user}}">Hapus</a>

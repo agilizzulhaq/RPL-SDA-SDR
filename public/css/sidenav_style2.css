@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 .sidebar{
   position: fixed;
@@ -161,7 +161,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #1d1b31;
+  background: #11101d;
   padding: 12px 0;
   transition: all 0.5s ease;
 }
@@ -208,7 +208,6 @@
   height: 100vh;
   left: 260px;
   width: calc(100% - 260px);
-  z-index: 100;
 }
 .sidebar.close ~ .home-section{
   left: 78px;

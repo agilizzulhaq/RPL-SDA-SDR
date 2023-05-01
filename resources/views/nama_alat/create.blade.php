@@ -1,12 +1,4 @@
-<<<<<<< HEAD:resources/views/lokasi_alat/create.blade.php
 @extends('../layout2/mainnew')
-=======
-@extends('../layout2/main')
-
-@section('nav')
-    @include('../layout2/navmdnamaalat')
-@endsection
->>>>>>> 55855882647e2a50d32a251f753741ade7551045:resources/views/nama_alat/create.blade.php
 
 @section('isi')
 <h1 class="text-center">Tambah Data Nama Alat</h1>

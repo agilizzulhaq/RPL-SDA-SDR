@@ -1,15 +1,15 @@
 @extends('../layout2/mainnew')
 @section('isi')
-    <h1>Data Vendor</h1>
+    <h1 class="mt-20 text-white font-bold text-4xl ml-12 mb-5">Data Vendor</h1>
         <div class="container">
             <a href="/addvendor" class="btn btn-primary mb-2">Tambah Data</a>
             <div class="row g-3 align-items-center">
               <div class="col-auto">
               </div>
             </div>
-            <div class="row">
-                <table class="table">
-                    <thead>
+            <div class="row text-white mt-4 rounded-md overflow-auto">
+                <table class="table text-white">
+                    <thead class="bg-[#11101d] text-center">
                       <tr>
                         <th scope="col">No</th>
                         <th scope="col">ID Vendor</th>
@@ -20,18 +20,18 @@
                         <th scope="col">Aksi</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                       @php
                         $no = 1;
                       @endphp
                         @foreach ($data as $vendor => $row)
-                        <tr>
+                        <tr class="border-b border-gray-500">
                             <th scope="row">{{$vendor + $data -> firstItem()}}</th>
-                            <td>{{$row -> id_vendor}}</td>
-                            <td>{{$row -> nama_vendor}}</td>
-                            <td>{{$row -> alamat_vendor}}</td>
-                            <td>{{$row -> email_vendor}}</td>
-                            <td>{{$row -> nomor_telepon}}</td>
+                            <td class="text-white">{{$row -> id_vendor}}</td>
+                            <td class="text-white">{{$row -> nama_vendor}}</td>
+                            <td class="text-white">{{$row -> alamat_vendor}}</td>
+                            <td class="text-white">{{$row -> email_vendor}}</td>
+                            <td class="text-white">{{$row -> nomor_telepon}}</td>
                             <td>
                                 <a href="/editvendor/{{$row -> id}}" class="btn btn-secondary">Edit</a>
                                 <a href="#" class="btn btn-danger delete" data-id="{{$row -> id}}" data-nama="{{$row -> nama_vendor}}">Hapus</a>

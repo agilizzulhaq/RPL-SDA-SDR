@@ -1,22 +1,16 @@
 @extends('../layout2/mainnew')
 
-<<<<<<< HEAD
-=======
-@section('nav')
-    @include('../layout2/navalat')
-@endsection
->>>>>>> 55855882647e2a50d32a251f753741ade7551045
 
 @section('isi')
-<h1>Data Alat</h1>
+<h1 class="mt-20 text-white font-bold text-4xl ml-12 mb-5">Data Alat</h1>
   
-  <div class="container bg-[#F7F7F7]">   
+  <div class="container">   
 
     <a href="/tambahalat" class="btn btn-success">Tambah +</a>
-    <div class="bg-white">
-        <div class="row">
-          <table class="table">
-            <thead>
+    <div>
+        <div class="row text-white mt-4 rounded-md overflow-auto">
+          <table class="table text-white">
+            <thead class="bg-[#11101d] text-center">
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Kode Alat</th>
@@ -30,21 +24,21 @@
                 <th scope="col">Aksi</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center">
               @php
                 $no = 1;
               @endphp
               @foreach ($data as $alat => $row)
-                <tr>
+                <tr class="border-b border-gray-500">
                   <th scope="row">{{$alat + $data -> firstItem()}}</th>
-                  <td>{{$row -> kodeAlat}}</td>
-                  <td>{{$row -> namaAlat}}</td>
-                  <td>{{$row -> lokasiAlat}}</td>
-                  <td>{{$row -> stok}} / {{$row -> limit}}</td>
-                  <td>{{$row -> jenisAlat}}</td>
-                  <td>{{$row -> pemakaianAlat}}</td>
-                  <td>{{$row -> kondisiAlat}}</td>
-                  <td>{{$row -> statusAlat}}</td>
+                  <td class="text-white">{{$row -> kodeAlat}}</td>
+                  <td class="text-white">{{$row -> namaAlat}}</td>
+                  <td class="text-white">{{$row -> lokasiAlat}}</td>
+                  <td class="text-white">{{$row -> stok}} / {{$row -> limit}}</td>
+                  <td class="text-white">{{$row -> jenisAlat}}</td>
+                  <td class="text-white">{{$row -> pemakaianAlat}}</td>
+                  <td class="text-white">{{$row -> kondisiAlat}}</td>
+                  <td class="text-white">{{$row -> statusAlat}}</td>
                   <td>
                     <a href="/editalat/{{$row -> id}}" class="btn btn-secondary">Edit</a>
                     <a href="#" class="btn btn-danger delete" data-id="{{$row -> id}}" data-nama="{{$row -> namaAlat}}">Hapus</a>

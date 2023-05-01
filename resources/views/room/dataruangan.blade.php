@@ -1,32 +1,24 @@
-<<<<<<< HEAD
 @extends('../layout2/mainnew')
-=======
-@extends('../layout2/main')
-
-@section('nav')
-    @include('../layout2/navsdr')
-@endsection
->>>>>>> 55855882647e2a50d32a251f753741ade7551045
 
 @section('isi')
-    <h1 class="text-center mt-4 mb-4">Data Ruangan</h1>
+    <h1 class="mt-20 text-white font-bold text-4xl ml-12 mb-5">Data Ruangan</h1>
         <div class="container">
             <a href="/tambahruangan" class="btn btn-success mb-2">Tambah +</a>
-            <div class="row g-3 align-items-center">
+            {{-- <div class="row g-3 align-items-center">
               <div class="col-auto">
                 <form action="/ruangan" method="GET">
                   <input type="search" id="inputSearch" name="search" class="form-control" aria-labelledby="searchHelpInline">
                 </form>
               </div>
-            </div>
-            <div class="row">
+            </div> --}}
+            <div class="row text-white mt-4 rounded-md overflow-auto">
               {{-- @if ($message = Session::get('success'))
                 <div class="alert alert-success" role="alert">
                   {{ $message }}
                 </div>
               @endif --}}
-                <table class="table">
-                    <thead>
+                <table class="table text-white">
+                    <thead class="bg-[#11101d] text-center">
                       <tr>
                         <th scope="col">No</th>
                         <th scope="col">Kode Ruangan</th>
@@ -38,19 +30,19 @@
                         <th scope="col">Aksi</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                       @php
                         $no = 1;
                       @endphp
                         @foreach ($data as $ruangan => $row)
                         <tr>
                             <th scope="row">{{$ruangan + $data -> firstItem()}}</th>
-                            <td>{{$row -> kodeRuangan}}</td>
-                            <td>{{$row -> jenisRuangan}}</td>
-                            <td>{{$row -> namaRuangan}}</td>
-                            <td>{{$row -> lokasiRuangan}}</td>
-                            <td>{{$row -> statusRuangan}}</td>
-                            <td>{{$row -> created_at -> diffForHumans()}}</td>
+                            <td class="text-white">{{$row -> kodeRuangan}}</td>
+                            <td class="text-white">{{$row -> jenisRuangan}}</td>
+                            <td class="text-white">{{$row -> namaRuangan}}</td>
+                            <td class="text-white">{{$row -> lokasiRuangan}}</td>
+                            <td class="text-white">{{$row -> statusRuangan}}</td>
+                            <td class="text-white">{{$row -> created_at -> diffForHumans()}}</td>
                             <td>
                                 <a href="/editruangan/{{$row -> id}}" class="btn btn-primary">Edit</a>
                                 <a href="#" class="btn btn-danger delete" data-id="{{$row -> id}}" data-nama="{{$row -> namaRuangan}}">Hapus</a>

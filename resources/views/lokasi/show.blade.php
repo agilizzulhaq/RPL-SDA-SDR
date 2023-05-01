@@ -1,12 +1,4 @@
-<<<<<<< HEAD:resources/views/lokasi_ruangan/show.blade.php
 @extends('../layout2/mainnew')
-=======
-@extends('../layout2/main')
-
-@section('nav')
-    @include('../layout2/navmdlokasi')
-@endsection
->>>>>>> 55855882647e2a50d32a251f753741ade7551045:resources/views/lokasi/show.blade.php
 
 @section('isi')
     <div class="w-[1060px]">

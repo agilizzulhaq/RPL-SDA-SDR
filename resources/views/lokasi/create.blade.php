@@ -1,8 +1,5 @@
-@extends('../layout2/main')
+@extends('../layout2/mainnew')
 
-@section('nav')
-    @include('../layout2/navmdlokasi')
-@endsection
 
 @section('isi')
 <h1 class="text-center">Tambah Data Lokasi</h1>

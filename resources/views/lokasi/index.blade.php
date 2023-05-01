@@ -1,44 +1,37 @@
-<<<<<<< HEAD:resources/views/lokasi_ruangan/index.blade.php
 @extends('../layout2/mainnew')
-=======
-@extends('../layout2/main')
-
-@section('nav')
-    @include('../layout2/navmdlokasi')
-@endsection
->>>>>>> 55855882647e2a50d32a251f753741ade7551045:resources/views/lokasi/index.blade.php
 
 @section('isi')
-<h1>Tambah Data Lokasi</h1>
+<h1 class="mt-20 text-white font-bold text-4xl ml-12 mb-5">Data Lokasi</h1>
   <div class="container">
     <a href="{{ route('lokasi.create') }}" class="btn btn-success mb-2">Tambah +</a>
-      <div class="row g-3 align-items-center">
+      {{-- <div class="row g-3 align-items-center">
         <div class="col-auto">
           <form action="/lokasi" method="GET">
             <input type="search" id="inputSearch" name="search" class="form-control" aria-labelledby="searchHelpInline">
           </form>
         </div>
-      </div>
-      <div class="row">
-        <table class="table">
-          <thead>
+      </div> --}}
+      <div class="row text-white mt-4 rounded-md overflow-auto">
+        <table class="table text-white">
+          <thead  class="bg-[#11101d] text-center">
             <tr>
               <th scope="col">No</th>
               <th scope="col">Kode Lokasi</th>
               <th scope="col">Nama Gedung</th>
               <th scope="col">Nama Lantai</th>
+              <th scope="col">Aksi</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="text-center">
             @php
               $no = 1;
             @endphp
             @foreach ($lokasi as $alat => $row)
-              <tr>
+              <tr class="border-b border-gray-500">
                 <th scope="row">{{$alat + $lokasi -> firstItem()}}</th>
-                <td>{{$row -> kode_lokasi}}</td>
-                <td>{{$row -> nama_gedung}}</td>
-                <td>{{$row -> lantai}}</td>
+                <td  class="text-white ">{{$row -> kode_lokasi}}</td>
+                <td  class="text-white ">{{$row -> nama_gedung}}</td>
+                <td  class="text-white ">{{$row -> lantai}}</td>
                 <td>
                     <form action="{{ route('lokasi.destroy',$row->kode_lokasi) }}" method="POST">
         

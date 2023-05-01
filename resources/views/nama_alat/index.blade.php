@@ -1,43 +1,36 @@
-<<<<<<< HEAD:resources/views/lokasi_alat/index.blade.php
 @extends('../layout2/mainnew')
-=======
-@extends('../layout2/main')
-
-@section('nav')
-    @include('../layout2/navmdnamaalat')
-@endsection
->>>>>>> 55855882647e2a50d32a251f753741ade7551045:resources/views/nama_alat/index.blade.php
 
 @section('isi')
-<h1>Tambah Data Nama Alat</h1>
+<h1 class="mt-20 text-white font-bold text-4xl ml-12 mb-5">Data Nama Alat</h1>
   <div class="container">
     <a href="{{ route('nama_alat.create') }}" class="btn btn-success mb-2">Tambah +</a>
-      <div class="row g-3 align-items-center">
+      {{-- <div class="row g-3 align-items-center">
         <div class="col-auto">
           <form action="/nama_alat" method="GET">
             <input type="search" id="inputSearch" name="search" class="form-control" aria-labelledby="searchHelpInline">
           </form>
         </div>
-      </div>
-      <div class="row">
-        <table class="table">
-          <thead>
+      </div> --}}
+      <div class="row text-white mt-4 rounded-md overflow-auto">
+        <table class="table text-white">
+          <thead class="bg-[#11101d] text-center">
             <tr>
               <th scope="col">No</th>
               <th scope="col">Kode Nama Alat</th>
               <th scope="col">Nama Alat</th>
+              <th scope="col">Aksi</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="text-center">
             @php
               $no = 1;
             @endphp
             @foreach ($nama_alat as $alat => $row)
-              <tr>
-                <th scope="row">{{$alat + $nama_alat -> firstItem()}}</th>
-                <td>{{$row -> kode_nama_alat}}</td>
-                <td>{{$row -> nama_alat}}</td>
-                <td>
+              <tr class="border-b border-gray-500">
+                <th scope="row" class="text-white ">{{$alat + $nama_alat -> firstItem()}}</th>
+                <td class="text-white ">{{$row -> kode_nama_alat}}</td>
+                <td class="text-white ">{{$row -> nama_alat}}</td>
+                <td class="text-white ">
                     <form action="{{ route('nama_alat.destroy',$row->kode_nama_alat) }}" method="POST">
         
                         <a href="{{ route('nama_alat.edit',$row->kode_nama_alat) }}" class="btn btn-primary">Edit</a>
