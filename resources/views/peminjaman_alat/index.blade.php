@@ -36,9 +36,6 @@
             </tr>
             @foreach ($peminjaman_alat as $peminjamanalat)
             <tr>
-                @php
-                $i = 0;
-                @endphp
                 <td>{{ ++$i }}</td>
                 <td>{{ $peminjamanalat->kode_alat }}</td>
                 <td>{{ $peminjamanalat->nama_alat }}</td>

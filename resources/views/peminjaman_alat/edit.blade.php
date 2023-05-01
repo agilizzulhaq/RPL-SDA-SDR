@@ -60,7 +60,11 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Status Peminjaman:</strong>
-                        <input type="text" value="{{ $peminjaman_alat->status_peminjaman }}" class="form-control" name="status_peminjaman" placeholder="Status Peminjaman">
+                        <select class="form-select" name="status_peminjaman" aria-label="Default select example">
+                            <option selected>{{ $peminjaman_alat -> status_peminjaman }}</option>
+                            <option value="Dipinjam">Dipinjam</option>
+                            <option value="Tersedia">Tersedia</option>
+                          </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
