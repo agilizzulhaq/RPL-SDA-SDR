@@ -38,7 +38,12 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Nama Alat:</strong>
-                        <input type="text" name="nama_alat" class="form-control" placeholder="Nama Alat">
+                        <select class="form-select" name="nama_alat" aria-label="Default select example">
+                            <option selected>Pilih nama alat</option>
+                            @foreach ($namaalat as $item)
+                              <option value="{{ $item->kode_nama_alat }}">{{ $item->nama_alat}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">

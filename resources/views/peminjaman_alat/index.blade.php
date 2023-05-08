@@ -35,7 +35,7 @@
                 <tr class="text-center border-b border-gray-500">
                     <td  class="text-white">{{ ++$i }}</td>
                     <td  class="text-white">{{ $peminjamanalat->kode_alat }}</td>
-                    <td  class="text-white">{{ $peminjamanalat->nama_alat }}</td>
+                    <td  class="text-white">{{ $peminjamanalat->namaAlat->nama_alat }}</td>
                     <td  class="text-white">{{ $peminjamanalat->nama_peminjam }}</td>
                     <td  class="text-white">{{ $peminjamanalat->tanggal_peminjam }}</td>
                     <td  class="text-white">{{ $peminjamanalat->status_peminjaman }}</td>

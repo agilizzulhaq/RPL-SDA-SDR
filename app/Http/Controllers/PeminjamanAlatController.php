@@ -17,6 +17,7 @@ class PeminjamanAlatController extends Controller
      */
     public function index(): View
     {
+        $peminjaman_alat = PeminjamanAlat::with('namaAlat')->get();
         $peminjaman_alat = PeminjamanAlat::latest()->paginate(5);
         
         return view('peminjaman_alat.index',compact('peminjaman_alat'))
@@ -28,7 +29,8 @@ class PeminjamanAlatController extends Controller
      */
     public function create(): View
     {
-        return view('peminjaman_alat.create');
+        $namaalat = NamaAlat::all();
+        return view('peminjaman_alat.create', compact('namaalat'));
     }
   
     /**
@@ -64,7 +66,8 @@ class PeminjamanAlatController extends Controller
      */
     public function edit(PeminjamanAlat $peminjaman_alat): View
     {
-        return view('peminjaman_alat.edit',compact('peminjaman_alat'));
+        $nama_alat = NamaAlat::all();
+        return view('peminjaman_alat.edit',compact('peminjaman_alat', 'nama_alat'));
     }
   
     /**
