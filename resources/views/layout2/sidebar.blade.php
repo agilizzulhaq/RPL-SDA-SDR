@@ -59,8 +59,8 @@
         <ul class="sub-menu">
           <li><a class="link_name">SDR</a></li>
           <li><a href="/sdr/ruangan">Data Ruangan</a></li>
-          <li><a href="/sdr/penjadwalanr">Penjadwalan</a></li>
-          <li><a href="/sdr/pemeliharaanr">Pemeliharaan</a></li>
+          <li><a href="/penjadwalanruangan">Penjadwalan</a></li>
+          <li><a href="/perawatanruangan">Pemeliharaan</a></li>
         </ul>
       </li>
       <li>

@@ -3,10 +3,10 @@
 @section('isi')
     <div class="mt-16">
         <div class="container">
-            <h3> Data Penjadwalan</h3>
+            <h3> Data Perawatan</h3>
             <div class="card">
                 <div class="card-header">
-                  <button type ="button" class="btn btn-sm btn-primary" onclick="window.location='{{ url('tambahdatapenjadwalanruangan') }}'">
+                  <button type ="button" class="btn btn-sm btn-primary" onclick="window.location='{{ url('tambahdataperawatanruangan') }}'">
                     <i class="fa-solid fa-plus"></i> Add New Data
                   </button>
                 </div>
@@ -22,9 +22,9 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Kode Ruangan</th>
                                 <th scope="col">Nama Ruangan</th>
-                                <th scope="col">Jenis Ruangan</th>
                                 <th scope="col">Lokasi Ruangan</th>
-                                <th scope="col">Kapasitas Ruangan</th>
+                                <th scope="col">Kondisi Ruangan</th>
+                                <th scope="col">Terakhir Dirawat</th>
                                 <th scope="col">status</th>
                                 <th scope="col">#</th>
                             </tr>
@@ -38,15 +38,15 @@
                                 <th scope="row">{{ $no++ }}</th>
                                 <td scope="row">{{ $row->kodeRuangan }}</td>
                                 <td scope="row">{{ $row->namaRuangan }}</td>
-                                <td scope="row">{{ $row->jenisRuangan }}</td>
                                 <td scope="row">{{ $row->lokasiRuangan }}</td>
-                                <td scope="row">{{ $row->kapasitas }}</td>
-                                <td scope="row">{{ $row->statusRuangan }}</td>
+                                <td scope="row">{{ (($row->kondisi=='B') ? 'Baik' : (($row->kondisi=='S') ? 'Sedang' : 'Rusak')) }}</td>
+                                <td scope="row">{{ $row->history }}</td>
+                                <td scope="row">{{ $row->statusperawatan }}</td>
                                 <td>
-                                    <a href="/showdatapenjadwalanruangan/{{ $row ->id }}" class="btn btn-info" title="Edit data">
+                                    <a href="/showdataperawatanruangan/{{ $row ->id }}" class="btn btn-info" title="Edit data">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <a href="/deletedatapenjadwalanruangan/{{ $row ->id }}" class="btn btn-danger" title="Delete data">
+                                    <a href="/deletedataperawatanruangan/{{ $row ->id }}" class="btn btn-danger" title="Delete data">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>

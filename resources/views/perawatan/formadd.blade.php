@@ -3,15 +3,15 @@
 @section('isi')
     <div class="mt-16">
         <div class="container">
-            <h3> Form Tambah Data Penjadwalan</h3>
+            <h3> Form Tambah Data Perawatan</h3>
             <div class="card">
                 <div class="card-header">
-                  <button type ="button" class="btn btn-sm btn-warning" onclick="window.location='{{ url('penjadwalanruangan') }}'">
+                  <button type ="button" class="btn btn-sm btn-warning" onclick="window.location='{{ url('perawatanruangan') }}'">
                     Kembali
                   </button>
                 </div>
                 <div class="card-body">
-                    <form action="/storedatapenjadwalanruangan" method="POST">
+                    <form action="/storedataperawatanruangan" method="POST">
                         @csrf
                         <div class="row mb-3">
                             <label for="txtkode" class="col-sm-2 col-form-label">kode Ruangan</label>
@@ -38,29 +38,6 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtjenis" class="col-sm-2 col-form-label">Jenis Ruangan</label>
-                            <div class="col-sm-10">
-                                <select class="form-select form-select-sm @error('txtjenis') is-invalid @enderror"
-                                name="txtjenis" id="txtjenis" value="{{ old('txtjenis') }}">
-                                    <option value="" selected>-Pilih-</option>
-                                    <option value="UGD" {{ (old('txtjenis')=='UGD' ? 'selected' : '') }}>UGD</option>
-                                    <option value="ICU" {{ (old('txtjenis')=='ICU' ? 'selected' : '') }}>ICU</option>
-                                    <option value="HCU" {{ (old('txtjenis')=='HCU' ? 'selected' : '') }}>HCU</option>
-                                    <option value="ICCU" {{ (old('txtjenis')=='ICCU' ? 'selected' : '') }}>ICCU</option>
-                                    <option value="NICU" {{ (old('txtjenis')=='NICU' ? 'selected' : '') }}>NICU</option>
-                                    <option value="PICU" {{ (old('txtjenis')=='PICU' ? 'selected' : '') }}>PICU</option>
-                                    <option value="Kamar Operasi" {{ (old('txtjenis')=='Kamar Operasi' ? 'selected' : '') }}>Kamar Operasi</option>
-                                    <option value="Kamar Perawatan" {{ (old('txtjenis')=='Kamar Perawatan' ? 'selected' : '') }}>Kamar Perawatan</option>
-                                    <option value="Klinik Rawat Jalan" {{ (old('txtjenis')=='Klinik Rawat Jalan' ? 'selected' : '') }}>Klinik Rawat Jalan</option>
-                                </select>
-                                @error('txtjenis')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-3">
                             <label for="txtlokasi" class="col-sm-2 col-form-label">Lokasi Ruangan</label>
                             <div class="col-sm-10">
                                 <input type="text" name="txtlokasi" class="from-control form-control @error('txtlokasi') is-invalid @enderror"
@@ -73,11 +50,28 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtkapasitas" class="col-sm-2 col-form-label">Kapasitas Ruangan</label>
+                            <label for="txtkondisi" class="col-sm-2 col-form-label">Kondisi</label>
                             <div class="col-sm-10">
-                                <input type="number" class="from-control form-control @error('txtkapasitas') is-invalid @enderror"
-                                id="txtkapasitas" name="txtkapasitas" value="{{ old('txtkapasitas') }}">
-                                @error('txtkapasitas')
+                                <select class="form-select form-select-sm @error('txtkondisi') is-invalid @enderror"
+                                name="txtkondisi" id="txtkondisi" value="{{ old('txtkondisi') }}">
+                                    <option value="" selected>-Pilih-</option>
+                                    <option value="B" {{ (old('txtkondisi')=='B' ? 'selected' : '') }}>Baik</option>
+                                    <option value="S" {{ (old('txtkondisi')=='S' ? 'selected' : '') }}>Sedang</option>
+                                    <option value="R" {{ (old('txtkondisi')=='R' ? 'selected' : '') }}>Rusak</option>
+                                </select>
+                                @error('txtkondisi')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txthistory" class="col-sm-2 col-form-label">Terakhir Dirawat</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="txthistory" class="from-control form-control @error('txthistory') is-invalid @enderror"
+                                id="txthistory" value="{{ old('txthistory') }}">
+                                @error('txthistory')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -85,19 +79,20 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtstatus" class="col-sm-2 col-form-label">Status</label>
+                            <label for="txtstatusp" class="col-sm-2 col-form-label">Status Perawatan</label>
                             <div class="col-sm-10">
-                                <select class="form-select form-select-sm @error('txtstatus') is-invalid @enderror"
-                                name="txtstatus" id="txtstatus" value="{{ old('txtstatus') }}">
+                                <select class="form-select form-select-sm @error('txtstatusp') is-invalid @enderror"
+                                name="txtstatusp" id="txtstatusp" value="{{ old('txtstatusp') }}">
                                     <option value="" selected>-Pilih-</option>
-                                    <option value="Tersedia" {{ (old('txtstatus')=='Tersedia' ? 'selected' : '') }}>Tersedia</option>
-                                    <option value="Tidak Tersedia" {{ (old('txtstatus')=='Tidak Tersedia' ? 'selected' : '') }}>Tidak Tersedia</option>
+                                    <option value="Belum dirawat" {{ (old('txtstatusp')=='Belum dirawat' ? 'selected' : '') }}>Belum dirawat</option>
+                                    <option value="Sedang dirawat" {{ (old('txtstatusp')=='Sedang dirawat' ? 'selected' : '') }}>Sedang dirawat</option>
+                                    <option value="Selesai dirawat" {{ (old('txtstatusp')=='Selesai dirawat' ? 'selected' : '') }}>Selesai dirawat</option>
                                 </select>
-                                @error('txtstatus')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                @error('txtstatusp')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

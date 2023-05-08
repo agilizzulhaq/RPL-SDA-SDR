@@ -5,18 +5,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\WareController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PeminjamanAlatController;
+use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\NamaAlatController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PembelianController;
-use App\Http\Controllers\PerawatanAlatController;
 use App\Http\Controllers\PenjadwalansController;
 use App\Http\Controllers\PemeliharaansController;
+use App\Http\Controllers\PerawatanAlatController;
+use App\Http\Controllers\PeminjamanAlatController;
+use App\Http\Controllers\PerawatanRuanganController;
 use App\Http\Controllers\Auth\LoginRegisterController;
-use App\Http\Controllers\NamaAlatController;
-use App\Http\Controllers\LokasiController;
-use App\Http\Controllers\PenggunaController;
-use App\Http\Controllers\VendorController;
+use App\Http\Controllers\PenjadwalanRuanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,3 +139,25 @@ Route::post('/insertvendor', [VendorController::class, 'insertvendor'])->name('i
 Route::get('/editvendor/{id}', [VendorController::class, 'editvendor'])->name('editvendor');
 Route::post('/updatevendor/{id}', [VendorController::class, 'updatevendor'])->name('updatevendor');
 Route::get('/deletevendor/{id}', [VendorController::class, 'deletevendor'])->name('deletevendor');
+
+Route::get('/perawatanruangan', [PerawatanRuanganController::class, 'index'])->name('dataperawatan');
+
+Route::get('/tambahdataperawatanruangan', [PerawatanRuanganController::class, 'create'])->name('tambahdataperawatanruangan');
+Route::post('/storedataperawatanruangan', [PerawatanRuanganController::class, 'store'])->name('storedataperawatanruangan');
+
+Route::get('/showdataperawatanruangan/{id}', [PerawatanRuanganController::class, 'show'])->name('showdataperawatanruangan');
+Route::post('/updatedataperawatanruangan/{id}', [PerawatanRuanganController::class, 'update'])->name('updatedataperawatanruangan');
+
+Route::get('/deletedataperawatanruangan/{id}', [PerawatanRuanganController::class, 'destroy'])->name('deletedataperawatanruangan');
+
+
+
+Route::get('/penjadwalanruangan', [PenjadwalanRuanganController::class, 'index'])->name('datapenjadwalan');
+
+Route::get('/tambahdatapenjadwalanruangan', [PenjadwalanRuanganController::class, 'create'])->name('tambahdatapenjadwalanruangan');
+Route::post('/storedatapenjadwalanruangan', [PenjadwalanRuanganController::class, 'store'])->name('storedatapenjadwalanruangan');
+
+Route::get('/showdatapenjadwalanruangan/{id}', [PenjadwalanRuanganController::class, 'show'])->name('showdatapenjadwalanruangan');
+Route::post('/updatedatapenjadwalanruangan/{id}', [PenjadwalanRuanganController::class, 'update'])->name('updatedatapenjadwalanruangan');
+
+Route::get('/deletedatapenjadwalanruangan/{id}', [PenjadwalanRuanganController::class, 'destroy'])->name('deletedatapenjadwalanruangan');
