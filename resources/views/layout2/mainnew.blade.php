@@ -9,6 +9,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+
+    
     
     <script async src="https://basicons.xyz/embed.js"> </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +25,7 @@
             <i class='bx bx-menu hover:bg-[#282733] rounded-full w-12 h-12 pt-[6px] text-center' ></i>
             
             <div class="w-full h-16 bg-[#11101D] absolute top-0">
-                <form class="flex items-center mt-[11px] ml-20">   
+                {{-- <form class="flex items-center mt-[11px] ml-20">   
                     <label for="simple-search" class="sr-only">Search</label>
                     <div class="relative w-[400px]">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -35,7 +37,7 @@
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         <span class="sr-only">Search</span>
                     </button>
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>
@@ -86,8 +88,22 @@
             
         });
 
+        let editButton = document.getElementById('edit');
+        let editDanHapus = document.querySelectorAll('#hapus-edit')
         
-        console.log(sidebar.classList);
+        editDanHapus.forEach(element => {
+                element.classList.toggle('hidden');                
+            });
+        // if(editButton3) console.log('aku mau')
+        editButton.addEventListener('click', function(){
+            editDanHapus.forEach(element => {
+                element.classList.toggle('hidden');                
+            });
+        })
+        
+        console.log(editButton)
+        
+        
     </script>
 </body>
 </html>
