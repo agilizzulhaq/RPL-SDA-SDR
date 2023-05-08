@@ -40,7 +40,7 @@
                             <td class="text-white">{{$row -> kodeRuangan}}</td>
                             <td class="text-white">{{$row -> jenisRuangan}}</td>
                             <td class="text-white">{{$row -> namaRuangan}}</td>
-                            <td class="text-white">{{$row -> lokasiRuangan}}</td>
+                            <td class="text-white">{{$row ->lokasi->nama_gedung . " Lantai " . $row->lokasi->lantai}}</td>
                             <td class="text-white">{{$row -> statusRuangan}}</td>
                             <td class="text-white">{{$row -> created_at -> diffForHumans()}}</td>
                             <td>

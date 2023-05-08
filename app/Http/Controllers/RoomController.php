@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use Illuminate\Http\Request;
+use App\Models\Lokasi;
 
 class RoomController extends Controller
 {
     public function ruangan(Request $request) {
+        $data = Room::with('lokasi')->get();
         if($request -> has ('search')) {
             $data = Room::where('namaRuangan','LIKE','%' .$request -> search.'%') -> paginate(5);
         } else {
@@ -17,7 +19,8 @@ class RoomController extends Controller
     }
 
     public function tambahruangan() {
-        return view('room.tambahdata');
+        $lokasi = Lokasi::all();
+        return view('room.tambahdata', compact('lokasi'));
     }
 
     public function masukkanruangan(Request $request) {
@@ -28,8 +31,9 @@ class RoomController extends Controller
     # Controller Edit Data
     public function editruangan($id) {
         $data = Room::find($id);
+        $lokasi = Lokasi::all();
         //dd($data);
-        return view('room.editdata', compact('data'));
+        return view('room.editdata', compact('data', 'lokasi'));
     }
     
     public function updateruangan(Request $request, $id) {

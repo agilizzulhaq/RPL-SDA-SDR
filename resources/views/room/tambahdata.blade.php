@@ -34,7 +34,12 @@
                       </div>
                       <div class="mb-3">
                         <label for="lokasiRuangan" class="form-label">Lokasi Ruangan</label>
-                        <input type="text" name="lokasiRuangan" class="form-control" id="exampleInputEmail">
+                        <select class="form-select" name="lokasiRuangan" aria-label="Default select example">
+                            <option selected>Pilih Lokasi Ruangan</option>
+                            @foreach ($lokasi as $item)
+                              <option value="{{ $item->kode_lokasi }}">{{ $item->nama_gedung . " Lantai " . $item->lantai}}</option>
+                            @endforeach
+                        </select>
                       </div>
                       <div class="mb-3">
                         <label for="statusRuangan" class="form-label">Status Ruangan</label>
