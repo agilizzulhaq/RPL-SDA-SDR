@@ -48,7 +48,7 @@
           <li><a href="/sda/pembelian">Pengadaan</a></li>
         </ul>
       </li>
-      <li class="{{ Request::is('sdr*') ? 'showMenu aktif' : '' }}">
+      <li class="{{ Request::is('*ruangan*') ? 'showMenu aktif' : '' }}">
         <div class="iocn-link">
           <a>
             <i class='bx bx-buildings bx-sm' ></i>
