@@ -1,44 +1,43 @@
 @extends('../layout2/mainnew')
 
 @section('isi')
-<h1 class="text-center">Edit Data Alat</h1>
+<h1 class="text-center">Tambah Data Alat</h1>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
         <div class="card">
           <div class="card-body">
-            <form action="/updatealat/{{ $data -> id }}" method="POST" enctype="multipart/form-data">
+            <form action="/masukkanalat" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="mb-3">
                 <label for="kodeAlat" class="form-label">Kode Alat</label>
-                <input type="number" name="kodeAlat" class="form-control" id="kodeAlat" value="{{ $data -> kodeAlat }}">
+                <input type="number" name="kodeAlat" class="form-control" id="exampleInputEmail">
               </div>
               <div class="mb-3">
                 <label for="namaAlat" class="form-label">Nama Alat</label>
-                <select class="form-select" name="namaAlat" class="form-control" id="namaAlat" value="{{ $data->namaAlat }}" aria-label="Default select example"> 
+                <select class="form-select" name="namaAlat" aria-label="Default select example">
+                  <option selected>Pilih Nama Alat</option>
                   @foreach ($nama_alat as $item)
-                      <option value="{{ $item->kode_nama_alat }}" @if ($item->kode_nama_alat == $data->namaAlat) selected @endif>
-                          {{ $item->nama_alat }}
-                      </option>
+                    <option value="{{ $item->kode_nama_alat }}">{{ $item->nama_alat}}</option>
                   @endforeach
               </select>
               </div>
               <div class="mb-3">
                 <label for="lokasiAlat" class="form-label">Lokasi Alat</label>
-                <input type="text" name="lokasiAlat" class="form-control" id="lokasiAlat" value="{{ $data -> lokasiAlat }}">
+                <input type="text" name="lokasiAlat" class="form-control" id="exampleInputEmail">
               </div>
               <div class="mb-3">
                 <label for="stok" class="form-label">Stok</label>
-                <input type="text" name="stok" class="form-control" id="stok" value="{{ $data -> stok }}">
+                <input type="text" name="stok" class="form-control" id="exampleInputEmail">
               </div>
               <div class="mb-3">
                 <label for="limit" class="form-label">Limit</label>
-                <input type="text" name="limit" class="form-control" id="limit" value="{{ $data -> limit }}">
+                <input type="text" name="limit" class="form-control" id="exampleInputEmail">
               </div>
               <div class="mb-3">
                 <label for="jenisAlat" class="form-label">Jenis Alat</label>
                 <select class="form-select" name="jenisAlat" aria-label="Default select example">
-                  <option selected>{{ $data -> jenisAlat }}</option>
+                  <option selected>Pilih Jenis</option>
                   <option value="Medis">Medis</option>
                   <option value="Non-Medis">Non-Medis</option>
                 </select>
@@ -46,7 +45,7 @@
               <div class="mb-3">
                 <label for="pemakaianAlat" class="form-label">Pemakaian Alat</label>
                 <select class="form-select" name="pemakaianAlat" aria-label="Default select example">
-                  <option selected>{{ $data -> pemakaianAlat }}</option>
+                  <option selected>Pilih Pemakaian</option>
                   <option value="Reusable">Reusable</option>
                   <option value="Disposable">Disposable</option>
                 </select>
@@ -54,7 +53,7 @@
               <div class="mb-3">
                 <label for="kondisiAlat" class="form-label">Kondisi Alat</label>
                 <select class="form-select" name="kondisiAlat" aria-label="Default select example">
-                  <option selected>{{ $data -> kondisiAlat }}</option>
+                  <option selected>Pilih Kondisi</option>
                   <option value="Layak">Layak</option>
                   <option value="Tidak Layak">Tidak Layak</option>
                 </select>
@@ -62,7 +61,7 @@
               <div class="mb-3">
                 <label for="statusAlat" class="form-label">Status Alat</label>
                 <select class="form-select" name="statusAlat" aria-label="Default select example">
-                  <option selected>{{ $data -> statusAlat }}</option>
+                  <option selected>Pilih Status</option>
                   <option value="Tersedia">Tersedia</option>
                   <option value="Tidak Tersedia">Tidak Tersedia</option>
                 </select>
