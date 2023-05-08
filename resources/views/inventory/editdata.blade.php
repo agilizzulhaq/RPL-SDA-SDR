@@ -14,8 +14,14 @@
                 <input type="number" name="kodeAlat" class="form-control" id="kodeAlat" value="{{ $data -> kodeAlat }}">
               </div>
               <div class="mb-3">
-                <label for="exampleInputEmail" class="form-label">Nama Alat</label>
-                <input type="text" name="namaAlat" class="form-control" id="namaAlat" value="{{ $data -> namaAlat }}">
+                <label for="namaAlat" class="form-label">Nama Alat</label>
+                <select class="form-select" name="namaAlat" class="form-control" id="namaAlat" value="{{ $data->namaAlat }}" aria-label="Default select example"> 
+                  @foreach ($nama_alat as $item)
+                      <option value="{{ $item->kode_nama_alat }}" @if ($item->kode_nama_alat == $data->namaAlat) selected @endif>
+                          {{ $item->nama_alat }}
+                      </option>
+                  @endforeach
+              </select>
               </div>
               <div class="mb-3">
                 <label for="lokasiAlat" class="form-label">Lokasi Alat</label>

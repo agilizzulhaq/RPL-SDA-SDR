@@ -32,7 +32,7 @@
                 <tr class="border-b border-gray-500">
                   <th scope="row">{{$alat + $data -> firstItem()}}</th>
                   <td class="text-white">{{$row -> kodeAlat}}</td>
-                  <td class="text-white">{{$row -> namaAlat}}</td>
+                  <td class="text-white">{{$row ->nama_alat->nama_alat }}</td>
                   <td class="text-white">{{$row -> lokasiAlat}}</td>
                   <td class="text-white">{{$row -> stok}} / {{$row -> limit}}</td>
                   <td class="text-white">{{$row -> jenisAlat}}</td>
@@ -41,7 +41,7 @@
                   <td class="text-white">{{$row -> statusAlat}}</td>
                   <td>
                     <a href="/editalat/{{$row -> id}}" class="btn btn-secondary">Edit</a>
-                    <a href="#" class="btn btn-danger delete" data-id="{{$row -> id}}" data-nama="{{$row -> namaAlat}}">Hapus</a>
+                    <a href="#" class="btn btn-danger delete" data-id="{{$row -> id}}" data-nama="{{$row ->nama_alat->nama_alat}}">Hapus</a>
                   </td>
                 </tr>
               @endforeach
