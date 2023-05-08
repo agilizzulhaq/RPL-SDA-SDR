@@ -33,7 +33,7 @@
                   <th scope="row">{{$alat + $data -> firstItem()}}</th>
                   <td class="text-white">{{$row -> kodeAlat}}</td>
                   <td class="text-white">{{$row ->nama_alat->nama_alat }}</td>
-                  <td class="text-white">{{$row -> lokasiAlat}}</td>
+                  <td class="text-white">{{ " Ruang " . $row->room->namaRuangan ." ". $row->room->lokasi->nama_gedung . " Lantai " . $row->room->lokasi->lantai }}</td>
                   <td class="text-white">{{$row -> stok}} / {{$row -> limit}}</td>
                   <td class="text-white">{{$row -> jenisAlat}}</td>
                   <td class="text-white">{{$row -> pemakaianAlat}}</td>

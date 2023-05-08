@@ -18,4 +18,14 @@ class Inventory extends Model
     {
         return $this->belongsTo(NamaAlat::class, 'namaAlat', 'kode_nama_alat');
     }
+
+    public function lokasi(): BelongsTo
+    {
+        return $this->belongsTo(Lokasi::class, 'lokasiRuangan', 'kode_lokasi');
+    }
+
+    public function room(): BelongsTo
+    {
+        return $this->belongsTo(Room::class, 'lokasiAlat', 'kodeRuangan');
+    }
 }

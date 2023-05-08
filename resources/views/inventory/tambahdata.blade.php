@@ -20,11 +20,16 @@
                   @foreach ($nama_alat as $item)
                     <option value="{{ $item->kode_nama_alat }}">{{ $item->nama_alat}}</option>
                   @endforeach
-              </select>
+                </select>
               </div>
               <div class="mb-3">
                 <label for="lokasiAlat" class="form-label">Lokasi Alat</label>
-                <input type="text" name="lokasiAlat" class="form-control" id="exampleInputEmail">
+                <select class="form-select" name="lokasiAlat" aria-label="Default select example">
+                  <option selected>Pilih Lokasi Alat</option>
+                  @foreach ($room as $item)
+                    <option value="{{ $item->kodeRuangan }}"> {{ " Ruang " . $item->namaRuangan ." ". $item->lokasi->nama_gedung . " Lantai " . $item->lokasi->lantai}}
+                  @endforeach
+                </select>
               </div>
               <div class="mb-3">
                 <label for="stok" class="form-label">Stok</label>

@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
 use App\Models\NamaAlat;
+use App\Models\Room;
+use App\Models\Lokasi;
 
 class InventoryController extends Controller
 {
     # Controller Data Alat
     public function alat(Request $request) {
         $data = Inventory::with('nama_alat')->get();
+        $data = Inventory::with('lokasi')->get();
+        $data = Inventory::with('room')->get();
         if($request -> has ('search')) {
             $data = Inventory::where('namaAlat','LIKE','%' .$request -> search.'%') -> paginate(5);
         } else {
@@ -22,7 +26,9 @@ class InventoryController extends Controller
     # Controller Input Data
     public function tambahalat() {
         $nama_alat = NamaAlat::all();
-        return view('inventory.tambahdata', compact('nama_alat'));
+        $room = Room::all();
+        $lokasi = Lokasi::all();
+        return view('inventory.tambahdata', compact('nama_alat', 'lokasi', 'room'));
     }
 
     public function masukkanalat(Request $request) {
@@ -35,8 +41,10 @@ class InventoryController extends Controller
     public function editalat($id) {
         $data = Inventory::find($id);
         $nama_alat = NamaAlat::all();
+        $room = Room::all();
+        $lokasi = Lokasi::all();
         //dd($data);
-        return view('inventory.editdata', compact('data', 'nama_alat'));
+        return view('inventory.editdata', compact('data', 'nama_alat', 'lokasi', 'room'));
     }
     
     public function updatealat(Request $request, $id) {

@@ -21,11 +21,17 @@
                           {{ $item->nama_alat }}
                       </option>
                   @endforeach
-              </select>
+                </select>
               </div>
               <div class="mb-3">
                 <label for="lokasiAlat" class="form-label">Lokasi Alat</label>
-                <input type="text" name="lokasiAlat" class="form-control" id="lokasiAlat" value="{{ $data -> lokasiAlat }}">
+                <select class="form-select" name="lokasiAlat" class="form-control" id="lokasiAlat" value="{{ $data->lokasiAlat }}" aria-label="Default select example"> 
+                  @foreach ($room as $item)
+                      <option value="{{ $item->kodeRuangan }}" @if ($item->kodeRuangan == $data->lokasiAlat) selected @endif>
+                          {{ " Ruang " . $item->namaRuangan ." ". $item->lokasi->nama_gedung . " Lantai " . $item->lokasi->lantai}}
+                      </option>
+                  @endforeach
+                </select>
               </div>
               <div class="mb-3">
                 <label for="stok" class="form-label">Stok</label>
