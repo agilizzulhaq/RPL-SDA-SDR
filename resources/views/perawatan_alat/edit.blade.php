@@ -39,7 +39,13 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Nama Alat:</strong>
-                        <input type="text" value="{{ $perawatan_alat->nama_alat }}" class="form-control" name="nama_alat" placeholder="Nama Alat">
+                        <select class="form-select" name="nama_alat" class="form-control" id="nama_alat" value="{{ $perawatan_alat->nama_alat }}" aria-label="Default select example"> 
+                            @foreach ($namaalat as $item)
+                                <option value="{{ $item->kode_nama_alat }}" @if ($item->kode_nama_alat == $perawatan_alat->nama_alat) selected @endif>
+                                    {{ $item->nama_alat }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">

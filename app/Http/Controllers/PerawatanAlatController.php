@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PerawatanAlat;
+use App\Models\NamaAlat;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ class PerawatanAlatController extends Controller
      */
     public function index(): View
     {
+        $perawatan_alat = PerawatanAlat::with('namaAlat')->get();
         $perawatan_alat = PerawatanAlat::latest()->paginate(5);
         
         return view('perawatan_alat.index',compact('perawatan_alat'))
@@ -25,7 +27,8 @@ class PerawatanAlatController extends Controller
      */
     public function create(): View
     {
-        return view('perawatan_alat.create');
+        $namaalat = NamaAlat::all();
+        return view('perawatan_alat.create', compact('namaalat'));
     }
   
     /**
@@ -62,7 +65,8 @@ class PerawatanAlatController extends Controller
      */
     public function edit(PerawatanAlat $perawatan_alat): View
     {
-        return view('perawatan_alat.edit',compact('perawatan_alat'));
+        $namaalat = NamaAlat::all();
+        return view('perawatan_alat.edit',compact('perawatan_alat', 'namaalat'));
     }
   
     /**

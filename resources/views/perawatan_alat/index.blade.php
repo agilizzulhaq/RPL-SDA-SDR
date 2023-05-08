@@ -37,7 +37,7 @@
                 <tr class="text-center border-b border-gray-500">
                     <td class="text-white">{{ ++$i }}</td>
                     <td class="text-white">{{ $perawatan->kode_alat }}</td>
-                    <td class="text-white">{{ $perawatan->nama_alat }}</td>
+                    <td class="text-white">{{ $perawatan->namaAlat->nama_alat }}</td>
                     <td class="text-white">{{ $perawatan->lokasi_alat }}</td>
                     <td class="text-white">{{ $perawatan->jenis_perawatan }}</td>
                     <td class="text-white">{{ $perawatan->status_perawatan }}</td>

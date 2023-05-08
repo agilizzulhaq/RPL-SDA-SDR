@@ -24,7 +24,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Nama Alat:</strong>
-                    {{ $perawatan_alat->nama_alat }}
+                    {{ $perawatan_alat->namaAlat->nama_alat }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
