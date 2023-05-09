@@ -27,8 +27,10 @@ class StorePenjadwalanRuanganRequest extends FormRequest
             'txtnama' => 'required',
             'txtjenis' => 'required',
             'txtlokasi' => 'required',
+            'txtnamaorang' => 'required',
             'txtkapasitas' => 'required',
             'txtstatus' => 'required',
+            'txttanggal' => 'required',
         ];
     }
     public function messages(): array
@@ -42,8 +44,10 @@ class StorePenjadwalanRuanganRequest extends FormRequest
             'txtnama.required' => 'Oops, :attribute  tidak boleh kosong',
             'txtjenis.required' => 'Oops, :attribute tidak boleh kosong',
             'txtlokasi.required' => 'Oops, :attribute  tidak boleh kosong',
+            'txtnamaorang.required' => 'Oops, :attribute tidak boleh kosong',
             'txtkapasitas.required' => 'Oops, :attribute tidak boleh kosong',
             'txtstatus.required' => 'Oops, :attribute tidak boleh kosong',
+            'txttanggal.required' => 'Oops, :attribute tidak boleh kosong',
 
         ];
     }
@@ -54,8 +58,10 @@ class StorePenjadwalanRuanganRequest extends FormRequest
             'txtnama' => 'Nama Alat',
             'txtjenis' => 'Jenis Ruangan',
             'txtlokasi' => 'lokasi',
+            'txtnamaorang' => 'Nama Peminjam',
             'txtkapasitas' => 'Kapasitas Ruangan',
             'txtstatus' => 'Status',
+            'txttanggal' => 'Tanggal Dipinjam',
 
         ];
     }

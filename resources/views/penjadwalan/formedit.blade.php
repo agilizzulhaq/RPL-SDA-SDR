@@ -68,6 +68,18 @@
                             </div>
                         </div>
                         <div class="row mb-3">
+                            <label for="txtnamaorang" class="col-sm-2 col-form-label">Nama Peminjam</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtnamaorang" class="from-control form-control @error('txtnamaorang') is-invalid @enderror"
+                                    id="txtnamaorang" value="{{ $data->namaPeminjam }}">
+                                    @error('txtnamaorang')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
                             <label for="txtkapasitas" class="col-sm-2 col-form-label">Kapasitas Ruangan</label>
                             <div class="col-sm-10">
                                 <input type="number" class="from-control form-control @error('txtkapasitas') is-invalid @enderror"
@@ -80,7 +92,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="txtstatus" class="col-sm-2 col-form-label">Status Perawatan</label>
+                            <label for="txtstatus" class="col-sm-2 col-form-label">Status</label>
                             <div class="col-sm-10">
                                 <select class="form-select form-select-sm @error('txtstatus') is-invalid @enderror"
                                 name="txtstatus" id="txtstatus" value="{{ $data->statusRuangan }}">
@@ -92,6 +104,18 @@
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="txttanggal" class="col-sm-2 col-form-label">Tanggal Dipinjam</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="txttanggal" class="from-control form-control @error('txttanggal') is-invalid @enderror"
+                                id="txttanggal" value="{{ $data->tanggalDipinjam }}">
+                                @error('txttanggal')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
                         </div>

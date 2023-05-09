@@ -24,9 +24,9 @@
               </div>
             </div>
         </div>
-        
+
             {{-- <h3> Data Penjadwalan</h3> --}}
-            
+
                 {{-- <div class="card-header">
                   <button type ="button" class="btn btn-sm btn-primary" onclick="window.location='{{ url('tambahdatapenjadwalanruangan') }}'">
                     <i class="fa-solid fa-plus"></i> Add New Data
@@ -46,8 +46,10 @@
                         <th scope="col">Nama Ruangan</th>
                         <th scope="col">Jenis Ruangan</th>
                         <th scope="col">Lokasi Ruangan</th>
+                        <th scope="col">Nama Peminjam</th>
                         <th scope="col">Kapasitas Ruangan</th>
                         <th scope="col">status</th>
+                        <th scope="col">Tanggal Dipinjam</th>
                         <th scope="col" class="border-b-2 border-[#1d1b31] w-32"></th>
                     </tr>
                 </thead>
@@ -62,8 +64,10 @@
                         <td scope="row">{{ $row->namaRuangan }}</td>
                         <td scope="row">{{ $row->jenisRuangan }}</td>
                         <td scope="row">{{ $row->lokasiRuangan }}</td>
+                        <td scope="row">{{ $row->namaPeminjam }}</td>
                         <td scope="row">{{ $row->kapasitas }}</td>
                         <td scope="row">{{ $row->statusRuangan }}</td>
+                        <td scope="row">{{ $row->tanggalDipinjam }}</td>
                         <td id="hapus-edit" class="text-white">
                             <a href="/showdatapenjadwalanruangan/{{ $row ->id }}" title="Edit data">
                                 <i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i>
@@ -76,7 +80,7 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>        
+        </div>
     </div>
     {{-- <script src="{{ asset('/') }}assets/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> --}}
 @endsection

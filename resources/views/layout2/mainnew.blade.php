@@ -9,23 +9,25 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link href="{{ asset('/') }}assets/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="{{ asset('/') }}assets/plugin/fontawesome/css/all.min.css" rel="stylesheet">
 
-    
-    
+
     <script async src="https://basicons.xyz/embed.js"> </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-  
+
     @include('layout2.sidebar')
 
     <div class="nav fixed w-full le z-[50000]">
         <div class="home-content">
             <i class='bx bx-menu hover:bg-[#282733] rounded-full w-12 h-12 pt-[6px] text-center' ></i>
-            
+
             <div class="w-full h-16 bg-[#11101D] absolute top-0">
-                {{-- <form class="flex items-center mt-[11px] ml-20">   
+                {{-- <form class="flex items-center mt-[11px] ml-20">
                     <label for="simple-search" class="sr-only">Search</label>
                     <div class="relative w-[400px]">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -60,7 +62,7 @@
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".bx-menu");
         let nav = document.querySelector(".nav")
-        
+
         let isClose = localStorage.getItem('isClose');
 
         if (isClose === 'true') {
@@ -72,7 +74,7 @@
         }
 
         sidebarBtn.addEventListener("click", ()=>{
-            
+
             if (sidebar.classList.contains('close')) {
                 sidebar.classList.remove('close');
                 nav.classList.remove('ml-[78px]')
@@ -85,25 +87,25 @@
                 localStorage.setItem('isClose', 'true');
             }
 
-            
+
         });
 
         let editButton = document.getElementById('edit');
         let editDanHapus = document.querySelectorAll('#hapus-edit')
-        
+
         editDanHapus.forEach(element => {
-                element.classList.toggle('hidden');                
+                element.classList.toggle('hidden');
             });
         // if(editButton3) console.log('aku mau')
         editButton.addEventListener('click', function(){
             editDanHapus.forEach(element => {
-                element.classList.toggle('hidden');                
+                element.classList.toggle('hidden');
             });
         })
-        
+
         console.log(editButton)
-        
-        
+
+
     </script>
 </body>
 </html>
