@@ -17,7 +17,7 @@ class PembelianController extends Controller
      */
     public function index(): View
     {
-        $pembelians = Pembelian::latest()->paginate(5);
+        $pembelians = Pembelian::latest()->paginate(10);
         
         return view('pembelian.index',compact('pembelians'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);

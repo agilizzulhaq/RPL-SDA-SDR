@@ -14,7 +14,7 @@ class LokasiController extends Controller
      */
     public function index(): View
     {
-        $lokasi = Lokasi::latest()->paginate(5);
+        $lokasi = Lokasi::latest()->paginate(10);
         
         return view('lokasi.index',compact('lokasi'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);

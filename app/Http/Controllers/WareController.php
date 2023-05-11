@@ -15,7 +15,7 @@ class WareController extends Controller
      */
     public function index(): View
     {
-        $wares = Ware::latest()->paginate(5);
+        $wares = Ware::latest()->paginate(10);
 
         return view('wares.index', compact('wares'))
             ->with('i', (request()->input('page', 1) - 1) * 5);

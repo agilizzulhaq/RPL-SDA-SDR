@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index(): View
     {
-        $admins = Admin::latest()->paginate(5);
+        $admins = Admin::latest()->paginate(10);
 
         return view('admins.index', compact('admins'))
             ->with('i', (request()->input('page', 1) - 1) * 5);

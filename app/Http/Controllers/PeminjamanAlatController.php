@@ -18,7 +18,7 @@ class PeminjamanAlatController extends Controller
     public function index(): View
     {
         $peminjaman_alat = PeminjamanAlat::with('namaAlat')->get();
-        $peminjaman_alat = PeminjamanAlat::latest()->paginate(5);
+        $peminjaman_alat = PeminjamanAlat::latest()->paginate(10);
         
         return view('peminjaman_alat.index',compact('peminjaman_alat'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);

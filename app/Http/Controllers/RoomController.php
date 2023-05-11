@@ -11,9 +11,9 @@ class RoomController extends Controller
     public function ruangan(Request $request) {
         $data = Room::with('lokasi')->get();
         if($request -> has ('search')) {
-            $data = Room::where('namaRuangan','LIKE','%' .$request -> search.'%') -> paginate(5);
+            $data = Room::where('namaRuangan','LIKE','%' .$request -> search.'%') -> paginate(10);
         } else {
-            $data = Room::paginate(5);
+            $data = Room::paginate(10);
         }
         return view('room.dataruangan', compact('data'));
     }

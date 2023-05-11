@@ -16,7 +16,7 @@ class PerawatanAlatController extends Controller
     public function index(): View
     {
         $perawatan_alat = PerawatanAlat::with('namaAlat')->get();
-        $perawatan_alat = PerawatanAlat::latest()->paginate(5);
+        $perawatan_alat = PerawatanAlat::latest()->paginate(10);
         
         return view('perawatan_alat.index',compact('perawatan_alat'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);

@@ -10,9 +10,9 @@ class VendorController extends Controller
     # Controller Data Vendor
     public function vendor(Request $request) {
         if($request -> has ('search')) {
-            $data = Vendor::where('nama_user','LIKE','%' .$request -> search.'%') -> paginate(5);
+            $data = Vendor::where('nama_user','LIKE','%' .$request -> search.'%') -> paginate(10);
         } else {
-            $data = Vendor::paginate(5);
+            $data = Vendor::paginate(10);
         }
         return view('vendor.datavendor', compact('data'));
     }

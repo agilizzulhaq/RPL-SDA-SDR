@@ -10,9 +10,9 @@ class PenggunaController extends Controller
     # Controller Data Pengguna
     public function users(Request $request) {
         if($request -> has ('search')) {
-            $data = Pengguna::where('nama_user','LIKE','%' .$request -> search.'%') -> paginate(5);
+            $data = Pengguna::where('nama_user','LIKE','%' .$request -> search.'%') -> paginate(10);
         } else {
-            $data = Pengguna::paginate(5);
+            $data = Pengguna::paginate(10);
         }
         return view('pengguna.datapengguna', compact('data'));
     }

@@ -16,9 +16,9 @@ class InventoryController extends Controller
         $data = Inventory::with('lokasi')->get();
         $data = Inventory::with('room')->get();
         if($request -> has ('search')) {
-            $data = Inventory::where('namaAlat','LIKE','%' .$request -> search.'%') -> paginate(5);
+            $data = Inventory::where('namaAlat','LIKE','%' .$request -> search.'%') -> paginate(10);
         } else {
-            $data = Inventory::paginate(5);
+            $data = Inventory::paginate(10);
         }
         return view('inventory.dataalat', compact('data'));
     }
