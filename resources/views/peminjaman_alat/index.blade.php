@@ -78,6 +78,7 @@
                 </tr>
                 @endforeach
             </table>
+            {{ $peminjaman_alat->links() }}
         </div>
 
     </div>

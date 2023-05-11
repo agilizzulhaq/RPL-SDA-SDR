@@ -49,9 +49,6 @@
               </tr>
             </thead>
             <tbody class="text-center">
-              @php
-                $no = 1;
-              @endphp
               @foreach ($data as $alat => $row)
                 <tr class="border-b border-gray-500">
                   <th scope="row">{{$alat + $data -> firstItem()}}</th>

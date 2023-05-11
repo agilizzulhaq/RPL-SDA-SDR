@@ -21,7 +21,7 @@ class PeminjamanAlatController extends Controller
         $peminjaman_alat = PeminjamanAlat::latest()->paginate(10);
         
         return view('peminjaman_alat.index',compact('peminjaman_alat'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+                    ->with('i', (request()->input('page', 1) - 1) * 10);
     }
     
     /**

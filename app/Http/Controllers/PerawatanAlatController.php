@@ -19,7 +19,7 @@ class PerawatanAlatController extends Controller
         $perawatan_alat = PerawatanAlat::latest()->paginate(10);
         
         return view('perawatan_alat.index',compact('perawatan_alat'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+                    ->with('i', (request()->input('page', 1) - 1) * 10);
     }
   
     /**

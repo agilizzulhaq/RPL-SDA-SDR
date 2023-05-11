@@ -81,6 +81,7 @@
                 </tr>
                 @endforeach
             </table>
+            {{ $perawatan_alat->links() }}
         </div>
     </div>
       
