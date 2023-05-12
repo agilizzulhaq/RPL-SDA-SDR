@@ -16,7 +16,7 @@
 
     <script async src="https://basicons.xyz/embed.js"> </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Sistem Sumber Daya Alat dan Ruangan Rumah Sakit ROSATI</title>
 </head>
 <body>
 
