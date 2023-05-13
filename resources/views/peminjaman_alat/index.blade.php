@@ -59,15 +59,15 @@
                 <tr class="text-center">
                     <td  class="text-white">{{ ++$i }}</td>
                     <td  class="text-white">{{ $peminjamanalat->id_peminjaman }}</td>
-                    <td  class="text-white">{{ $peminjamanalat->kode_alat }}</td>
+                    <td  class="text-white">{{ $peminjamanalat->kodeAlat }}</td>
                     <td>
                         @foreach ($inventory as $item)
-                            @if ($item->kodeAlat === $peminjamanalat->kode_alat)
+                            @if ($item->kodeAlat === $peminjamanalat->kodeAlat)
                                 {{ $item->nama_alat->nama_alat }}
                             @endif
                         @endforeach
                     </td>
-                    <td  class="text-white">{{ $peminjamanalat->pengguna->nama_user }}</td>
+                    <td  class="text-white">{{ $peminjamanalat->nama_user }}</td>
                     <td  class="text-white">{{ $peminjamanalat->tanggal_peminjaman }}</td>
                     <td  class="text-white">{{ $peminjamanalat->tanggal_pengembalian }}</td>
                     <td  class="text-white">{{ $peminjamanalat->status_peminjaman }}</td>

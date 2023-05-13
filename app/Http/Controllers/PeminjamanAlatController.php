@@ -18,22 +18,25 @@ class PeminjamanAlatController extends Controller
      */
     public function index(): View
     {
-        $peminjaman_alat = DB::table('peminjaman_alat')
+        $peminjaman_alat = PeminjamanAlat::with('Inventory', 'NamaAlat', 'Pengguna')
                     ->join('inventories', 'peminjaman_alat.kode_alat', '=', 'inventories.kodeAlat')
                     ->join('nama_alat', 'inventories.kodeAlat', '=', 'nama_alat.kode_nama_alat')
-                    ->join('pengguna', 'peminjaman_alat.nama_peminjam', '=', 'pengguna.id_user')
+                    ->join('penggunas', 'peminjaman_alat.nama_peminjam', '=', 'penggunas.id_user')
                     ->select(
                         'inventories.kodeAlat',
                         'nama_alat.nama_alat',
                         'inventories.namaAlat',
-                        'pengguna.id_user',
+                        'penggunas.id_user',
+                        'penggunas.nama_user',
                         'peminjaman_alat.id_peminjaman',
                         'peminjaman_alat.tanggal_peminjaman',
                         'peminjaman_alat.tanggal_pengembalian',
+                        'peminjaman_alat.status_peminjaman',
                         'peminjaman_alat.alasan_peminjaman'
-        );
+                    )
+                    ->latest('peminjaman_alat.created_at')
+                    ->paginate(10);
 
-        //$peminjaman_alat = PeminjamanAlat::latest()->paginate(10);
         $inventory = Inventory::all();
         $pengguna = Pengguna::all();
         

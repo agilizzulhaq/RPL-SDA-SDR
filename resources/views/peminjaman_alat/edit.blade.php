@@ -50,7 +50,13 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Nama Peminjam:</strong>
-                        <input type="text" value="{{ $peminjaman_alat->nama_peminjam }}" class="form-control" name="nama_peminjam" placeholder="Nama Peminjam">
+                        <select class="form-select" name="nama_peminjam" class="form-control" id="nama_peminjam" value="{{ $peminjaman_alat->nama_peminjam }}" aria-label="Default select example"> 
+                            @foreach ($pengguna as $item)
+                                <option value="{{ $item->id_user }}" @if ($item->id_user == $peminjaman_alat->nama_peminjam) selected @endif>
+                                    {{ $item->nama_user}}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
