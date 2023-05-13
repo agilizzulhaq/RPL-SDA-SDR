@@ -18,9 +18,6 @@ class PeminjamanAlatController extends Controller
      */
     public function index(): View
     {
-        $peminjaman_alat = PeminjamanAlat::with('Inventory')->get();
-        $peminjaman_alat = PeminjamanAlat::with('NamaAlat')->get();
-        $peminjaman_alat = PeminjamanAlat::with('Pengguna')->get();
         $peminjaman_alat = DB::table('peminjaman_alat')
                     ->join('inventories', 'peminjaman_alat.kode_alat', '=', 'inventories.kodeAlat')
                     ->join('nama_alat', 'inventories.kodeAlat', '=', 'nama_alat.kode_nama_alat')
