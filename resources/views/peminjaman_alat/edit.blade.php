@@ -77,7 +77,7 @@
                         <select class="form-select" name="status_peminjaman" aria-label="Default select example">
                             <option selected>{{ $peminjaman_alat -> status_peminjaman }}</option>
                             <option value="Dipinjam">Dipinjam</option>
-                            <option value="Tersedia">Tersedia</option>
+                            <option value="Dikembalikan">Dikembalikan</option>
                           </select>
                     </div>
                 </div>
