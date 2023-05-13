@@ -124,7 +124,7 @@ Route::controller(LoginRegisterController::class)->group(function () {
 Route::controller(AdminController::class)->group(function() {
     Route::get('/register-user', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
-    Route::get('/login', 'login')->name('login');
+    Route::get('/login-user', 'login')->name('login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard-user', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
