@@ -110,7 +110,6 @@ Route::get('/editruangan/{id}', [RoomController::class, 'editruangan'])->name('e
 Route::post('/updateruangan/{id}', [RoomController::class, 'updateruangan'])->name('updateruangan');
 Route::get('/hapusruangan/{id}', [RoomController::class, 'hapusruangan'])->name('hapusruangan');
 
-Route::resource('admins', AdminController::class);
 Route::resource('wares', WareController::class);
 
 Route::controller(LoginRegisterController::class)->group(function () {
@@ -119,6 +118,15 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/dashboard-admin', function () {
         return view('dashboard-admin');
     })->name('dashboard');
+    Route::post('/logout', 'logout')->name('logout');
+});
+
+Route::controller(AdminController::class)->group(function() {
+    Route::get('/register-user', 'register')->name('register');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/authenticate', 'authenticate')->name('authenticate');
+    Route::get('/dashboard-user', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
 
