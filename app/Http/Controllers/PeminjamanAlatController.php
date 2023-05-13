@@ -33,7 +33,7 @@ class PeminjamanAlatController extends Controller
                         'peminjaman_alat.alasan_peminjaman'
         );
 
-        $peminjaman_alat = PeminjamanAlat::latest()->paginate(10);
+        //$peminjaman_alat = PeminjamanAlat::latest()->paginate(10);
         $inventory = Inventory::all();
         $pengguna = Pengguna::all();
         
