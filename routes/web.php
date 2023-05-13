@@ -114,12 +114,12 @@ Route::resource('wares', WareController::class);
 
 Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/login-admin', 'login')->name('login');
-    Route::post('/store', 'store')->name('store');
+    Route::post('/store', 'store')->name('store-admin');
     Route::get('/register-admin', 'register')->name('register');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard-admin', function () {
         return view('dashboard-admin');
-    })->name('dashboard');
+    })->name('dashboard');  
     Route::post('/logout', 'logout')->name('logout');
 });
 
