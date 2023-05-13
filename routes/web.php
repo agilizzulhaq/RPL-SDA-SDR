@@ -113,7 +113,9 @@ Route::get('/hapusruangan/{id}', [RoomController::class, 'hapusruangan'])->name(
 Route::resource('wares', WareController::class);
 
 Route::controller(LoginRegisterController::class)->group(function () {
-    Route::get('/', 'login')->name('login');
+    Route::get('/login-admin', 'login')->name('login');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/register-admin', 'register')->name('register');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard-admin', function () {
         return view('dashboard-admin');
@@ -121,7 +123,7 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::controller(AdminController::class)->group(function() {
+Route::controller(AdminController::class)->group(function () {
     Route::get('/register-user', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
     Route::get('/login-user', 'login')->name('login');
