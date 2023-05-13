@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('peminjaman_alat', function (Blueprint $table) {
             $table->integer('id_peminjaman');
             $table->integer('kode_alat');
-            $table->string('nama_alat')->nullable();
             $table->string('nama_peminjam', 100);
             $table->dateTime('tanggal_peminjaman');
             $table->dateTime('tanggal_pengembalian')->nullable();

@@ -49,12 +49,6 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Nama Alat :</strong>
-                        <input type="text" name="nama_alat" id="nama_alat" value="{{ $peminjaman_alat->nama_alat }}" class="form-control" readonly>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
                         <strong>Nama Peminjam:</strong>
                         <input type="text" value="{{ $peminjaman_alat->nama_peminjam }}" class="form-control" name="nama_peminjam" placeholder="Nama Peminjam">
                     </div>
@@ -94,24 +88,4 @@
        
         </form>
     </div>
-    <script>
-        // Mengambil elemen select kode_alat
-        var kodeAlatSelect = document.getElementById('kode_alat');
-    
-        // Menambahkan event listener ketika nilai kode_alat berubah
-        kodeAlatSelect.addEventListener('change', function() {
-            // Mengambil nilai yang dipilih
-            var selectedValue = kodeAlatSelect.value;
-    
-            // Mengambil opsi terpilih berdasarkan nilai yang dipilih
-            var selectedOption = Array.from(kodeAlatSelect.options).find(function(option) {
-                return option.value === selectedValue;
-            });
-    
-            // Mengubah nilai input nama_alat
-            var selectedText = selectedOption.text;
-            var namaAlat = selectedText.split(' | ')[1];
-            document.getElementById('nama_alat').value = namaAlat;
-        });
-    </script>
 @endsection

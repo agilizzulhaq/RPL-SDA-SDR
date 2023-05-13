@@ -15,7 +15,7 @@ class PeminjamanAlat extends Model
     public $incrementing = false;
 
     protected $primaryKey = 'id_peminjaman';
-    protected $fillable = ['id_peminjaman', 'kode_alat', 'nama_alat', 'nama_peminjam', 'tanggal_peminjaman', 'tanggal_pengembalian', 'status_peminjaman', 'alasan_peminjaman'];
+    protected $fillable = ['id_peminjaman', 'kode_alat', 'nama_peminjam', 'tanggal_peminjaman', 'tanggal_pengembalian', 'status_peminjaman', 'alasan_peminjaman'];
 
     public function Inventory(): BelongsTo
     {

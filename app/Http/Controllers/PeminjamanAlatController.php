@@ -27,8 +27,9 @@ class PeminjamanAlatController extends Controller
                     ->get();
 
         $peminjaman_alat = PeminjamanAlat::latest()->paginate(10);
+        $inventory = Inventory::all();
         
-        return view('peminjaman_alat.index',compact('peminjaman_alat'))
+        return view('peminjaman_alat.index',compact('peminjaman_alat', 'inventory'))
                     ->with('i', (request()->input('page', 1) - 1) * 10);
     }
     
