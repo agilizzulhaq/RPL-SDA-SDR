@@ -20,16 +20,27 @@ class PeminjamanAlatController extends Controller
     {
         $peminjaman_alat = PeminjamanAlat::with('Inventory')->get();
         $peminjaman_alat = PeminjamanAlat::with('NamaAlat')->get();
-        $peminjaman_alat = DB::table('inventories')
-                    ->join('peminjaman_alat', 'inventories.kodeAlat', '=', 'peminjaman_alat.kode_alat')
+        $peminjaman_alat = PeminjamanAlat::with('Pengguna')->get();
+        $peminjaman_alat = DB::table('peminjaman_alat')
+                    ->join('inventories', 'peminjaman_alat.kode_alat', '=', 'inventories.kodeAlat')
                     ->join('nama_alat', 'inventories.kodeAlat', '=', 'nama_alat.kode_nama_alat')
-                    ->select('inventories.kodeAlat', 'nama_alat.nama_alat', 'inventories.namaAlat', 'peminjaman_alat.id_peminjaman', 'peminjaman_alat.nama_peminjam', 'peminjaman_alat.tanggal_peminjaman', 'peminjaman_alat.tanggal_pengembalian', 'peminjaman_alat.alasan_peminjaman')
-                    ->get();
+                    ->join('pengguna', 'peminjaman_alat.nama_peminjam', '=', 'pengguna.id_user')
+                    ->select(
+                        'inventories.kodeAlat',
+                        'nama_alat.nama_alat',
+                        'inventories.namaAlat',
+                        'pengguna.id_user',
+                        'peminjaman_alat.id_peminjaman',
+                        'peminjaman_alat.tanggal_peminjaman',
+                        'peminjaman_alat.tanggal_pengembalian',
+                        'peminjaman_alat.alasan_peminjaman'
+        );
 
         $peminjaman_alat = PeminjamanAlat::latest()->paginate(10);
         $inventory = Inventory::all();
+        $pengguna = Pengguna::all();
         
-        return view('peminjaman_alat.index',compact('peminjaman_alat', 'inventory'))
+        return view('peminjaman_alat.index',compact('peminjaman_alat', 'inventory', 'pengguna'))
                     ->with('i', (request()->input('page', 1) - 1) * 10);
     }
     
@@ -40,7 +51,8 @@ class PeminjamanAlatController extends Controller
     {
         $inventory = Inventory::all();
         $namaalat = NamaAlat::all();
-        return view('peminjaman_alat.create', compact('inventory', 'namaalat'));
+        $pengguna = Pengguna::all();
+        return view('peminjaman_alat.create', compact('inventory', 'namaalat', 'pengguna'));
     }
   
     /**
@@ -80,7 +92,8 @@ class PeminjamanAlatController extends Controller
     {
         $inventory = Inventory::all();
         $namaalat = NamaAlat::all();
-        return view('peminjaman_alat.edit',compact('peminjaman_alat', 'inventory', 'namaalat'));
+        $pengguna = Pengguna::all();
+        return view('peminjaman_alat.edit',compact('peminjaman_alat', 'inventory', 'namaalat', 'pengguna'));
     }
   
     /**

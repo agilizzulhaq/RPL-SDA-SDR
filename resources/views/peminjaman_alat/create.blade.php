@@ -38,7 +38,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Kode Alat :</strong>
-                        <select class="form-select" name="kode_alat" id="kode_alat" aria-label="Default select example">
+                        <select class="form-select" name="kode_alat" aria-label="Default select example">
                             <option selected>Pilih Kode Alat</option>
                             @foreach ($inventory as $item)
                                 <option value="{{ $item->kodeAlat }}">
@@ -51,7 +51,12 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Nama Peminjam:</strong>
-                        <input type="text" name="nama_peminjam" class="form-control" placeholder="Nama Peminjam">
+                        <select class="form-select" name="nama_peminjam" aria-label="Default select example">
+                            <option selected>Masukkan Nama Peminjam</option>
+                            @foreach ($pengguna as $item)
+                              <option value="{{ $item->id_user }}">{{ $item->nama_user}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">

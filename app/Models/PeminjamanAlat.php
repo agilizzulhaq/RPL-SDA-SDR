@@ -1,28 +1,40 @@
 <?php
 
-namespace App\Models;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
-class PeminjamanAlat extends Model
+return new class extends Migration
 {
-    use HasFactory;
-
-    protected $table="peminjaman_alat";
-    public $incrementing = false;
-
-    protected $primaryKey = 'id_peminjaman';
-    protected $fillable = ['id_peminjaman', 'kode_alat', 'nama_peminjam', 'tanggal_peminjaman', 'tanggal_pengembalian', 'status_peminjaman', 'alasan_peminjaman'];
-
-    public function Inventory(): BelongsTo
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
     {
-        return $this->belongsTo(Inventory::class);
+        Schema::create('peminjaman_alat', function (Blueprint $table) {
+            $table->integer('id_peminjaman');
+            $table->integer('kode_alat');
+            $table->bigInteger('nama_peminjam');
+            $table->dateTime('tanggal_peminjaman');
+            $table->dateTime('tanggal_pengembalian')->nullable();
+            $table->enum('status_peminjaman', ['dipinjam','dikembalikan']);
+            $table->string('alasan_peminjaman', 100);
+            $table->primary('id_peminjaman');
+            $table->foreign('kode_alat')->references('kodeAlat')->on('inventories');
+            $table->foreign('nama_peminjam')->references('id_user')->on('penggunas');
+            $table->timestamps();
+        });
     }
-    public function NamaAlat(): BelongsTo
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
     {
-        return $this->belongsTo(NamaAlat::class);
+        Schema::dropIfExists('peminjaman_alat');
     }
-}
+};
