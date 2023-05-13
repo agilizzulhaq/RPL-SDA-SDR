@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PeminjamanAlat;
 use App\Models\NamaAlat;
+use App\Models\Inventory;
 use App\Models\Pengguna;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -17,7 +18,14 @@ class PeminjamanAlatController extends Controller
      */
     public function index(): View
     {
-        $peminjaman_alat = PeminjamanAlat::with('namaAlat')->get();
+        $peminjaman_alat = PeminjamanAlat::with('Inventory')->get();
+        $peminjaman_alat = PeminjamanAlat::with('NamaAlat')->get();
+        $peminjaman_alat = DB::table('inventories')
+                    ->join('peminjaman_alat', 'inventories.kodeAlat', '=', 'peminjaman_alat.kode_alat')
+                    ->join('nama_alat', 'inventories.kodeAlat', '=', 'nama_alat.kode_nama_alat')
+                    ->select('inventories.kodeAlat', 'nama_alat.nama_alat', 'inventories.namaAlat', 'peminjaman_alat.id_peminjaman', 'peminjaman_alat.nama_peminjam', 'peminjaman_alat.tanggal_peminjaman', 'peminjaman_alat.tanggal_pengembalian', 'peminjaman_alat.alasan_peminjaman')
+                    ->get();
+
         $peminjaman_alat = PeminjamanAlat::latest()->paginate(10);
         
         return view('peminjaman_alat.index',compact('peminjaman_alat'))
@@ -29,8 +37,9 @@ class PeminjamanAlatController extends Controller
      */
     public function create(): View
     {
+        $inventory = Inventory::all();
         $namaalat = NamaAlat::all();
-        return view('peminjaman_alat.create', compact('namaalat'));
+        return view('peminjaman_alat.create', compact('inventory', 'namaalat'));
     }
   
     /**
@@ -38,16 +47,18 @@ class PeminjamanAlatController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $validatedData = $request->validate([
+            'id_peminjaman' => 'required',
             'kode_alat' => 'required',
-            'nama_alat' => 'required',
             'nama_peminjam' => 'required',
-            'tanggal_peminjam' => 'required',
+            'tanggal_peminjaman' => 'required',
+            'tanggal_pengembalian',
             'status_peminjaman' => 'required',
             'alasan_peminjaman' => 'required',
         ]);
         
         PeminjamanAlat::create($request->all());
+        $inventory = Inventory::all();
          
         return redirect()->route('peminjaman_alat.index')
                         ->with('success','Data pinjam berhasil ditambahkan');
@@ -66,8 +77,9 @@ class PeminjamanAlatController extends Controller
      */
     public function edit(PeminjamanAlat $peminjaman_alat): View
     {
-        $nama_alat = NamaAlat::all();
-        return view('peminjaman_alat.edit',compact('peminjaman_alat', 'nama_alat'));
+        $inventory = Inventory::all();
+        $namaalat = NamaAlat::all();
+        return view('peminjaman_alat.edit',compact('peminjaman_alat', 'inventory', 'namaalat'));
     }
   
     /**
@@ -76,10 +88,11 @@ class PeminjamanAlatController extends Controller
     public function update(Request $request, PeminjamanAlat $peminjaman_alat): RedirectResponse
     {
         $request->validate([
+            'id_peminjaman' => 'required',
             'kode_alat' => 'required',
-            'nama_alat' => 'required',
             'nama_peminjam' => 'required',
-            'tanggal_peminjam' => 'required',
+            'tanggal_peminjaman' => 'required',
+            'tanggal_pengembalian',
             'status_peminjaman' => 'required',
             'alasan_peminjaman' => 'required',
         ]);

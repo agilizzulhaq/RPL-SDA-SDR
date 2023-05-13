@@ -14,13 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('peminjaman_alat', function (Blueprint $table) {
-            $table->char('kode_alat', 25);
-            $table->string('nama_alat', 100);
+            $table->integer('id_peminjaman');
+            $table->integer('kode_alat');
+            $table->string('nama_alat')->nullable();
             $table->string('nama_peminjam', 100);
-            $table->dateTime('tanggal_peminjam');
-            $table->enum('status_peminjaman', ['dipinjam','tersedia']);
+            $table->dateTime('tanggal_peminjaman');
+            $table->dateTime('tanggal_pengembalian')->nullable();
+            $table->enum('status_peminjaman', ['dipinjam','dikembalikan']);
             $table->string('alasan_peminjaman', 100);
-            $table->primary('kode_alat');
+            $table->primary('id_peminjaman');
+            $table->foreign('kode_alat')->references('kodeAlat')->on('inventories');
             $table->timestamps();
         });
     }

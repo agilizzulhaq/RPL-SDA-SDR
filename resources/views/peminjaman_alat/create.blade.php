@@ -31,19 +31,27 @@
              <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Kode Alat:</strong>
-                        <input type="text" name="kode_alat" class="form-control" placeholder="Kode Alat">
+                        <strong>Id Peminjaman:</strong>
+                        <input type="text" name="id_peminjaman" class="form-control" placeholder="ID Peminjaman">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Nama Alat:</strong>
-                        <select class="form-select" name="nama_alat" aria-label="Default select example">
-                            <option selected>Pilih nama alat</option>
-                            @foreach ($namaalat as $item)
-                              <option value="{{ $item->kode_nama_alat }}">{{ $item->nama_alat}}</option>
+                        <strong>Kode Alat :</strong>
+                        <select class="form-select" name="kode_alat" id="kode_alat" aria-label="Default select example">
+                            <option selected>Pilih Kode Alat</option>
+                            @foreach ($inventory as $item)
+                                <option value="{{ $item->kodeAlat }}">
+                                    {{ $item->kodeAlat . ' | ' . $item->nama_alat->nama_alat }}
+                                </option>
                             @endforeach
                         </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12" style="display: none;">
+                    <div class="form-group">
+                        <strong>Nama Alat :</strong>
+                        <input type="text" name="nama_alat" id="nama_alat" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -55,7 +63,13 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Tanggal Pinjam:</strong>
-                        <input type="datetime-local" class="form-control" name="tanggal_peminjam" placeholder="Tanggal Pinjam">
+                        <input type="datetime-local" class="form-control" name="tanggal_peminjaman" placeholder="Tanggal Pinjam">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Tanggal Kembali:</strong>
+                        <input type="datetime-local" class="form-control" name="tanggal_pengembalian" placeholder="Tanggal Kembali">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -64,7 +78,7 @@
                         <select class="form-select" name="status_peminjaman" aria-label=".form-select-sm example">
                             <option selected>Pilih Status Peminjaman</option>
                             <option value="Dipinjam">Dipinjam</option>
-                            <option value="Tersedia">Tersedia</option>
+                            <option value="Dikembalikan">Dikembalikan</option>
                         </select>
                     </div>
                 </div>
@@ -81,4 +95,24 @@
            
         </form>
     </div>
+    <script>
+        // Mengambil elemen select kode_alat
+        var kodeAlatSelect = document.getElementById('kode_alat');
+    
+        // Menambahkan event listener ketika nilai kode_alat berubah
+        kodeAlatSelect.addEventListener('change', function() {
+            // Mengambil nilai yang dipilih
+            var selectedValue = kodeAlatSelect.value;
+    
+            // Mengambil opsi terpilih berdasarkan nilai yang dipilih
+            var selectedOption = Array.from(kodeAlatSelect.options).find(function(option) {
+                return option.value === selectedValue;
+            });
+    
+            // Mengubah nilai input nama_alat
+            var selectedText = selectedOption.text;
+            var namaAlat = selectedText.split(' | ')[1];
+            document.getElementById('nama_alat').value = namaAlat;
+        });
+    </script>
 @endsection
