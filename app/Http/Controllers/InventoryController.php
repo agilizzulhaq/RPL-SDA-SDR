@@ -39,7 +39,7 @@ class InventoryController extends Controller
 
     # Controller Edit Data
     public function editalat($id) {
-        $data = Inventory::where('kodeAlat', $id)->first();
+        $data = Inventory::find($id);
         $nama_alat = NamaAlat::all();
         $room = Room::all();
         $lokasi = Lokasi::all();
@@ -48,19 +48,13 @@ class InventoryController extends Controller
     }
     
     public function updatealat(Request $request, $id) {
-        $data = Inventory::where('kodeAlat', $id);
-        $data->update([
-            'kodeAlat' => $request->kodeAlat,
-            'namaAlat' => $request->namaAlat,
-            'lokasiAlat' => $request->lokasiAlat,
-            'kondisiAlat' => $request->kondisiAlat,
-            'statusAlat' => $request->statusAlat,
-        ]);
+        $data = Inventory::find($id);
+        $data -> update($request -> all());
         return redirect()->route('alat') -> with('success','Data berhasil diperbaharui');
     }
 
     public function hapusalat($id) {
-        $data = Inventory::where('kodeAlat', $id);
+        $data = Inventory::find($id);
         $data -> delete();
         return redirect()->route('alat') -> with('success','Data berhasil dihapus');
     }

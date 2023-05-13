@@ -29,25 +29,18 @@ class PenggunaController extends Controller
 
     # Controller Edit Data
     public function editusers($id) {
-        $data = Pengguna::where('id_user', $id)->first();
+        $data = Pengguna::find($id);
         return view('pengguna.editpengguna', compact('data'));
     }
     
     public function updateusers(Request $request, $id) {
-        $data = Pengguna::where('id_user', $id);
-        $data->update([
-            'id_user' => $request->id_user,
-            'nama_user' => $request->nama_user,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'alamat_user' => $request->alamat_user,
-            'email_user' => $request->email_user,
-            'role_user' => $request->role_user
-        ]);
+        $data = Pengguna::find($id);
+        $data -> update($request -> all());
         return redirect()->route('users') -> with('success','Data berhasil diperbaharui');
     }
 
     public function deleteusers($id) {
-        $data = Pengguna::where('id_user', $id);
+        $data = Pengguna::find($id);
         $data -> delete();
         return redirect()->route('users') -> with('success','Data berhasil dihapus');
     }

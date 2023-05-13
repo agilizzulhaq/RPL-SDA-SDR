@@ -67,7 +67,7 @@
                             @endif
                         @endforeach
                     </td>
-                    <td  class="text-white">{{ $peminjamanalat->nama_user }}</td>
+                    <td  class="text-white">{{ $peminjamanalat->nama_peminjam }}</td>
                     <td  class="text-white">{{ $peminjamanalat->tanggal_peminjaman }}</td>
                     <td  class="text-white">{{ $peminjamanalat->tanggal_pengembalian }}</td>
                     <td  class="text-white">{{ $peminjamanalat->status_peminjaman }}</td>
