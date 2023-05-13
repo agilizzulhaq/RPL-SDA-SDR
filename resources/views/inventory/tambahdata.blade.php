@@ -32,30 +32,6 @@
                 </select>
               </div>
               <div class="mb-3">
-                <label for="stok" class="form-label">Stok</label>
-                <input type="text" name="stok" class="form-control" id="exampleInputEmail">
-              </div>
-              <div class="mb-3">
-                <label for="limit" class="form-label">Limit</label>
-                <input type="text" name="limit" class="form-control" id="exampleInputEmail">
-              </div>
-              <div class="mb-3">
-                <label for="jenisAlat" class="form-label">Jenis Alat</label>
-                <select class="form-select" name="jenisAlat" aria-label="Default select example">
-                  <option selected>Pilih Jenis</option>
-                  <option value="Medis">Medis</option>
-                  <option value="Non-Medis">Non-Medis</option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="pemakaianAlat" class="form-label">Pemakaian Alat</label>
-                <select class="form-select" name="pemakaianAlat" aria-label="Default select example">
-                  <option selected>Pilih Pemakaian</option>
-                  <option value="Reusable">Reusable</option>
-                  <option value="Disposable">Disposable</option>
-                </select>
-              </div>
-              <div class="mb-3">
                 <label for="kondisiAlat" class="form-label">Kondisi Alat</label>
                 <select class="form-select" name="kondisiAlat" aria-label="Default select example">
                   <option selected>Pilih Kondisi</option>

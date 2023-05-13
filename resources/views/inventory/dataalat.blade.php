@@ -40,9 +40,6 @@
                 <th scope="col">Kode Alat</th>
                 <th scope="col">Nama Alat</th>
                 <th scope="col">Lokasi Alat</th>
-                <th scope="col">Stok / Limit</th>
-                <th scope="col">Jenis Alat</th>
-                <th scope="col">Pemakaian Alat</th>
                 <th scope="col">Kondisi Alat</th>
                 <th scope="col">Status Alat</th>
                 <th scope="col">Aksi</th>
@@ -55,9 +52,6 @@
                   <td class="text-white">{{$row -> kodeAlat}}</td>
                   <td class="text-white">{{$row -> nama_alat-> nama_alat }}</td>
                   <td class="text-white">{{ " Ruang " . $row -> room -> namaRuangan ." ". $row -> room -> lokasi -> nama_gedung . " Lantai " . $row -> room -> lokasi -> lantai }}</td>
-                  <td class="text-white">{{$row -> stok}} / {{$row -> limit}}</td>
-                  <td class="text-white">{{$row -> jenisAlat}}</td>
-                  <td class="text-white">{{$row -> pemakaianAlat}}</td>
                   <td class="text-white">{{$row -> kondisiAlat}}</td>
                   <td class="text-white">{{$row -> statusAlat}}</td>
                   <td>
