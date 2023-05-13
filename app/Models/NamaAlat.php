@@ -12,5 +12,5 @@ class NamaAlat extends Model
     public $incrementing = false;
 
     protected $primaryKey = 'kode_nama_alat';
-    protected $fillable = ['kode_nama_alat', 'nama_alat'];
+    protected $fillable = ['kode_nama_alat', 'nama_alat', 'stok', 'limit', 'satuan', 'jenis_alat', 'pemakaian_alat'];
 }

@@ -36,6 +36,10 @@ class NamaAlatController extends Controller
         $request->validate([
             'kode_nama_alat' => 'required',
             'nama_alat' => 'required',
+            'stok' => 'required',
+            'limit' => 'required',
+            'jenis_alat' => 'required',
+            'pemakaian_alat' => 'required',
         ]);
         
         NamaAlat::create($request->all());
@@ -70,6 +74,10 @@ class NamaAlatController extends Controller
         $request->validate([
             'kode_nama_alat' => 'required',
             'nama_alat' => 'required',
+            'stok' => 'required',
+            'limit' => 'required',
+            'jenis_alat' => 'required',
+            'pemakaian_alat' => 'required',
         ]);
         
         $nama_alat->update($request->all());

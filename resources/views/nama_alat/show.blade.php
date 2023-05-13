@@ -27,6 +27,24 @@
                     {{ $nama_alat->nama_alat }}
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Stok / Limit:</strong>
+                    {{ $nama_alat->stok ."/". $nama_alat->limit }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Jenis Alat:</strong>
+                    {{ $nama_alat->jenis_alat }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Pemakaian Alat:</strong>
+                    {{ $nama_alat->pemakaian_alat }}
+                </div>
+            </div>
         </div>
     </div>
 @endsection

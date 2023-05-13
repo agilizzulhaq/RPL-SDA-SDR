@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('nama_alat', function (Blueprint $table) {
             $table->integer('kode_nama_alat');
             $table->string('nama_alat');
+            $table->integer('stok');
+            $table->integer('limit');
+            $table->enum('satuan', ['Unit', 'Set', 'Dus', 'Lusin', 'Kg']);
+            $table->enum('jenis_alat', ['Medis', 'Non-Medis']);
+            $table->enum('pemakaian_alat', ['Reusable', 'Disposable']);
             $table->primary('kode_nama_alat');
             $table->timestamps();
         });
