@@ -14,7 +14,7 @@ class PerawatanRuanganController extends Controller
      */
     public function index()
     {
-        $data = PerawatanRuangan::all();
+        $data = PerawatanRuangan::paginate(10);
         return view('perawatan.data',compact('data'));
     }
 
@@ -43,7 +43,7 @@ class PerawatanRuanganController extends Controller
         $PerawatanRuangan->save();
         //dd($request->all());
         // PerawatanRuangan::create($request->all());
-        return redirect()->route('dataperawatan')->with('msg','Data Berhasil Di Tambahkan');
+        return redirect()->route('dataperawatan')->with('msg','Data dengan Nama '.$PerawatanRuangan->namaRuangan.' Berhasil Di Tambahkan');
     }
 
     /**
@@ -79,7 +79,7 @@ class PerawatanRuanganController extends Controller
 
         // $data->update($request->all());
 
-        return redirect()->route('dataperawatan')->with('msg','Data Berhasil Di Update');
+        return redirect()->route('dataperawatan')->with('msg','Data dengan Nama '.$PerawatanRuangan->namaRuangan.' Berhasil Di Update');
     }
 
     /**
@@ -87,9 +87,9 @@ class PerawatanRuanganController extends Controller
      */
     public function destroy($id)
     {
-        $data = PerawatanRuangan::find($id);
-        $data->delete();
+        $PerawatanRuangan = PerawatanRuangan::find($id);
+        $PerawatanRuangan->delete();
 
-        return redirect()->route('dataperawatan')->with('msg','Data Berhasil Di Hapus');
+        return redirect()->route('dataperawatan')->with('msgdelete','Data dengan Nama '.$PerawatanRuangan->namaRuangan.' Berhasil Di Hapus');
     }
 }

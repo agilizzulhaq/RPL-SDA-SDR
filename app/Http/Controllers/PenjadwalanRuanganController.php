@@ -14,7 +14,7 @@ class PenjadwalanRuanganController extends Controller
      */
     public function index()
     {
-        $data = PenjadwalanRuangan::all();
+        $data = PenjadwalanRuangan::paginate(10);
         return view('penjadwalan.data',compact('data'));
     }
 
@@ -44,7 +44,7 @@ class PenjadwalanRuanganController extends Controller
         $PenjadwalanRuangan->tanggalDipinjam = $request->txttanggal;
         $PenjadwalanRuangan->save();
 
-        return redirect()->route('datapenjadwalan')->with('msg','Data Berhasil Di Tambahkan');
+        return redirect()->route('datapenjadwalan')->with('msg','Data dengan Nama '.$PenjadwalanRuangan->namaRuangan.' Berhasil Di Tambahkan');
     }
 
     /**
@@ -80,7 +80,7 @@ class PenjadwalanRuanganController extends Controller
         $PenjadwalanRuangan->tanggalDipinjam = $request->txttanggal;
         $PenjadwalanRuangan->save();
 
-        return redirect()->route('datapenjadwalan')->with('msg','Data Berhasil Di Update');
+        return redirect()->route('datapenjadwalan')->with('msg','Data dengan Nama '.$PenjadwalanRuangan->namaRuangan.' Berhasil Di Update');
     }
 
     /**
@@ -88,9 +88,9 @@ class PenjadwalanRuanganController extends Controller
      */
     public function destroy($id)
     {
-        $data = PenjadwalanRuangan::find($id);
-        $data->delete();
+        $PenjadwalanRuangan = PenjadwalanRuangan::find($id);
+        $PenjadwalanRuangan->delete();
 
-        return redirect()->route('datapenjadwalan')->with('msg','Data Berhasil Di Hapus');
+        return redirect()->route('datapenjadwalan')->with('msgdelete','Data dengan Nama '.$PenjadwalanRuangan->namaRuangan.' Telah Di Hapus');
     }
 }

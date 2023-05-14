@@ -22,8 +22,7 @@ class StorePerawatanRuanganRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'txtkode' => 'required|numeric',
-            // |unique:pemeliharaans',
+            'txtkode' => 'required|numeric|unique:perawatan_ruangans,kodeRuangan',
             'txtnama' => 'required',
             'txtlokasi' => 'required',
             'txtkondisi' => 'required',
@@ -35,10 +34,10 @@ class StorePerawatanRuanganRequest extends FormRequest
     {
         return [
             'txtkode.required' => 'Oops, :attribute tidak boleh kosong',
-            'txtkode.numeric' => 'Oops, kode tidak valid',
-            //'txtkode.unique' => 'Oops, kode sudah ada',
-            // 'txtkode.min' => 'Oops, kode tidak valid',
-            // 'txtkode.max' => 'Oops, kode tidak valid',
+            'txtkode.numeric' => 'Oops, :attribute tidak valid',
+            'txtkode.unique' => 'Oops, :attribute sudah ada',
+            // 'txtkode.min' => 'Oops, :attribute kurang 7 karakter',
+            // 'txtkode.max' => 'Oops, :attribute lebih 7 karakter',
             'txtnama.required' => 'Oops, :attribute  tidak boleh kosong',
             'txtlokasi.required' => 'Oops, :attribute  tidak boleh kosong',
             'txtkondisi.required' => 'Pilih salah satu',
@@ -49,10 +48,10 @@ class StorePerawatanRuanganRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'txtkode' => 'Kode Alat',
-            'txtnama' => 'Nama Alat',
+            'txtkode' => 'Kode Ruangan',
+            'txtnama' => 'Nama Ruangan',
             'txtlokasi' => 'lokasi',
-            'txtkondisi' => 'Kondisi Alat',
+            'txtkondisi' => 'Kondisi Ruangan',
             'txtstatusp' => 'Status Perawatan',
             'txthistory' => 'Tanggal Terakhir Dirawat',
         ];

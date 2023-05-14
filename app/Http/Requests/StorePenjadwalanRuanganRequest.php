@@ -22,13 +22,12 @@ class StorePenjadwalanRuanganRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'txtkode' => 'required|numeric',
-            // |unique:pemeliharaans',
+            'txtkode' => 'required|numeric|unique:penjadwalan_ruangans,kodeRuangan',
             'txtnama' => 'required',
             'txtjenis' => 'required',
             'txtlokasi' => 'required',
             'txtnamaorang' => 'required',
-            'txtkapasitas' => 'required',
+            'txtkapasitas' => 'required|numeric',
             'txtstatus' => 'required',
             'txttanggal' => 'required',
         ];
@@ -37,15 +36,16 @@ class StorePenjadwalanRuanganRequest extends FormRequest
     {
         return [
             'txtkode.required' => 'Oops, :attribute tidak boleh kosong',
-            'txtkode.numeric' => 'Oops, kode tidak valid',
-            //'txtkode.unique' => 'Oops, kode sudah ada',
-            // 'txtkode.min' => 'Oops, kode tidak valid',
-            // 'txtkode.max' => 'Oops, kode tidak valid',
+            'txtkode.numeric' => 'Oops, :attribute tidak valid',
+            'txtkode.unique' => 'Oops, :attribute sudah ada',
+            // 'txtkode.min' => 'Oops, :attribute harus 7 karakter',
+            // 'txtkode.max' => 'Oops, :attribute harus 7 karakter',
             'txtnama.required' => 'Oops, :attribute  tidak boleh kosong',
             'txtjenis.required' => 'Oops, :attribute tidak boleh kosong',
             'txtlokasi.required' => 'Oops, :attribute  tidak boleh kosong',
             'txtnamaorang.required' => 'Oops, :attribute tidak boleh kosong',
             'txtkapasitas.required' => 'Oops, :attribute tidak boleh kosong',
+            'txtkapasitas.numeric' => 'Oops, :attribute harus di isi angka',
             'txtstatus.required' => 'Oops, :attribute tidak boleh kosong',
             'txttanggal.required' => 'Oops, :attribute tidak boleh kosong',
 
@@ -54,8 +54,8 @@ class StorePenjadwalanRuanganRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'txtkode' => 'Kode Alat',
-            'txtnama' => 'Nama Alat',
+            'txtkode' => 'Kode Ruangan',
+            'txtnama' => 'Nama Ruangan',
             'txtjenis' => 'Jenis Ruangan',
             'txtlokasi' => 'lokasi',
             'txtnamaorang' => 'Nama Peminjam',

@@ -23,10 +23,10 @@
                 </div>
               </div>
             </div>
-        </div>  
-        
+        </div>
+
             {{-- <h3> Data Perawatan</h3> --}}
-        
+
             {{-- <div class="card-header">
                 {{-- <button type ="button" class="btn btn-sm btn-primary" onclick="window.location='{{ url('tambahdataperawatanruangan') }}'">
                 <i class="fa-solid fa-plus"></i> Add New Data
@@ -55,9 +55,9 @@
                     @php
                         $no = 1;
                     @endphp
-                    @foreach ($data as $row)
+                    @foreach ($data as $index => $row)
                     <tr>
-                        <th scope="row">{{ $no++ }}</th>
+                        <th scope="row">{{ $index + $data->firstItem() }}</th>
                         <td scope="row">{{ $row->kodeRuangan }}</td>
                         <td scope="row">{{ $row->namaRuangan }}</td>
                         <td scope="row">{{ $row->lokasiRuangan }}</td>
@@ -77,8 +77,51 @@
                 </tbody>
             </table>
         </div>
-        
-        
     </div>
-    {{-- <script src="{{ asset('/') }}assets/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> --}}
+    {{ $data->links() }}
+    {{-- <script src="{{ asset('/') }}assets/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+    {{-- <script>
+        $('.delete').click( function(){
+            var idruangan = $(this).attr('data-id');
+            var namaruangan = $(this).attr('data-nama');
+            swal({
+                title: "Apakah Anda yakin?",
+                text: "Anda akan menghapus data ruangan dengan nama "+namaruangan+"",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location = "/deletedataperawatanruangan/"+idruangan+""
+                    swal("Data ruangan berhasil dihapus", {
+                    icon: "success",
+                    });
+                } else {
+                    swal("Penghapusan data ruangan dibatalkan");
+                }
+            });
+        })
+      </script>
+        <script>
+            @if (Session::has('msg'))
+                toastr.options = {
+                    "progressBar" : true,
+                    "closeButton" : true,
+                }
+                toastr.success("{{ Session::get('msg') }}",{timeOut:12000});
+            @endif
+        </script>
+        <script>
+            @if (Session::has('msgdelete'))
+                toastr.options = {
+                    "progressBar" : true,
+                    "closeButton" : true,
+                }
+                toastr.error("{{ Session::get('msgdelete') }}",{timeOut:12000});
+            @endif
+        </script> --}}
 @endsection
