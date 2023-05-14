@@ -55,8 +55,8 @@
                   <td class="text-white">{{$row -> kondisiAlat}}</td>
                   <td class="text-white">{{$row -> statusAlat}}</td>
                   <td>
-                    <a href="/editalat/{{$row -> id}}" class="btn btn-secondary">Edit</a>
-                    <a href="#" class="btn btn-danger delete" data-id="{{$row -> id}}" data-nama="{{$row -> nama_alat -> nama_alat}}">Hapus</a>
+                    <a href="/editalat/{{$row -> kodeAlat}}" class="btn btn-secondary">Edit</a>
+                    <a href="#" class="btn btn-danger delete" data-id="{{$row -> kodeAlat}}" data-nama="{{$row -> nama_alat -> nama_alat}}">Hapus</a>
                   </td>
                 </tr>
               @endforeach
