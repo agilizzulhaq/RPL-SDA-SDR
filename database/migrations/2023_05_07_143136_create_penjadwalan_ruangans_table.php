@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('tanggalKeluar');
             $table->enum('statusRuangan', ['Tersedia', 'Tidak Tersedia']);
             $table->primary('kodeRuangan');
-            $table->foreign('namaPeminjam')->references('id_user')->on('Penggunas');
+            $table->foreign('namaPeminjam')->references('id_user')->on('penggunas');
             $table->timestamps();
         });
     }
