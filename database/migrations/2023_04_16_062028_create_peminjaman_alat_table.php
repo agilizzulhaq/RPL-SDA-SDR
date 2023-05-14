@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('peminjaman_alat', function (Blueprint $table) {
             $table->integer('id_peminjaman');
             $table->integer('kode_alat');
-            $table->string('nama_peminjam', 100);
+            $table->integer('nama_peminjam');
             $table->dateTime('tanggal_peminjaman');
             $table->dateTime('tanggal_pengembalian')->nullable();
             $table->enum('status_peminjaman', ['dipinjam','dikembalikan']);
             $table->string('alasan_peminjaman', 100);
             $table->primary('id_peminjaman');
             $table->foreign('kode_alat')->references('kodeAlat')->on('inventories');
+            $table->foreign('nama_peminjam')->references('id_user')->on('penggunas');
             $table->timestamps();
         });
     }

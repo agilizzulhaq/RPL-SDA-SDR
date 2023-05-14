@@ -23,6 +23,10 @@ class PeminjamanAlat extends Model
     }
     public function NamaAlat(): BelongsTo
     {
-        return $this->belongsTo(NamaAlat::class);
+        return $this->belongsTo(NamaAlat::class, 'nama_alat', 'kode_nama_alat');
+    }
+    public function Pengguna(): BelongsTo
+    {
+        return $this->belongsTo(Pengguna::class, 'nama_peminjam', 'id_user');
     }
 }
