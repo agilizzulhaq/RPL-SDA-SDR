@@ -49,7 +49,6 @@
                     <th>ID Perawatan</th>
                     <th>Kode Alat</th>
                     <th>Nama Alat</th>
-                    <th>Lokasi Alat</th>
                     <th>Jenis Perawatan</th>
                     <th>Status Perawatan</th>
                     <th>Tanggal Perawatan</th>
@@ -66,13 +65,6 @@
                         @foreach ($inventory as $item)
                             @if ($item->kodeAlat === $perawatan->kodeAlat)
                                 {{ $item->nama_alat->nama_alat }}
-                            @endif
-                        @endforeach
-                    </td>
-                    <td>
-                        @foreach ($inventory as $item)
-                            @if ($item->kodeAlat === $perawatan->kodeAlat)
-                                {{ $item->lokasiAlat }}
                             @endif
                         @endforeach
                     </td>

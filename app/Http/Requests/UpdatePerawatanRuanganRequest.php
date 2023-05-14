@@ -32,9 +32,6 @@ class UpdatePerawatanRuanganRequest extends FormRequest
     public function messages(): array
     {
         return [
-            //'txtkode.unique' => 'Oops, kode sudah ada',
-            // 'txtkode.min' => 'Oops, kode tidak valid',
-            // 'txtkode.max' => 'Oops, kode tidak valid',
             'txtnama.required' => 'Oops, :attribute  tidak boleh kosong',
             'txtlokasi.required' => 'Oops, :attribute  tidak boleh kosong',
             'txtkondisi.required' => 'Pilih salah satu',
@@ -45,9 +42,9 @@ class UpdatePerawatanRuanganRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'txtnama' => 'Nama Alat',
-            'txtlokasi' => 'lokasi',
-            'txtkondisi' => 'Kondisi Alat',
+            'txtnama' => 'Nama Ruangan',
+            'txtlokasi' => 'lokasi Ruangan',
+            'txtkondisi' => 'Kondisi Ruangan',
             'txtstatus' => 'Status',
             'txtstatusp' => 'Status Perawatan',
             'txthistory' => 'Tanggal Terakhir Dirawat',

@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pembelians', function (Blueprint $table) {
-            $table->id();
-            $table->string('idPembelianAlat');
-            $table->string('namaAlat');
-            $table->text('tanggalPembelian');
-            $table->string('vendor');
-            $table->string('harga');
-            $table->text('alasan');
-            $table->enum('status', ['Tersedia', 'Tidak Tersedia']);
+            $table->integer('id_pembelian');
+            $table->integer('nama_alat');
+            $table->text('tanggal_pembelian')->nullable();
+            $table->integer('vendor');
+            $table->integer('harga_satuan');
+            $table->integer('jumlah_pembelian');
+            $table->text('keterangan');
+            $table->enum('status', ['Belum konfirmasi','Konfirmasi untuk pembelian','Sedang dalam pemesanan', 'Barang datang', 'Barang masuk database']);
+            $table->primary('id_pembelian');
+            $table->foreign('nama_alat')->references('kode_nama_alat')->on('nama_alat');
+            $table->foreign('vendor')->references('id_vendor')->on('vendors');
             $table->timestamps();
         });
     }

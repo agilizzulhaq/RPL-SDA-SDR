@@ -25,79 +25,73 @@
             </div>
         @endif
       
-        <form action="{{ route('pembelian.update',$pembelian->id) }}" method="POST">
+        <form action="{{ route('pembelian.update',$pembelian->id_pembelian) }}" method="POST">
             @csrf
             @method('PUT')
        
              <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label for="idPembelianAlat">ID Pembelian Alat:</label>
-                        <input type="text" class="form-control" name="idPembelianAlat" value="{{ $pembelian->idPembelianAlat }}" placeholder="Kode Alat">
+                        <label for="id_pembelian">ID Pembelian:</label>
+                        <input type="number" class="form-control" name="id_pembelian" value="{{ $pembelian->id_pembelian }}" placeholder="ID Pembelian">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label for="namaAlat">Nama Alat:</label>
-                        <input type="text" class="form-control" name="namaAlat" value="{{ $pembelian->namaAlat }}" placeholder="Kode Alat">
+                        <label for="nama_alat">Nama Alat:</label>
+                        <select class="form-select" name="nama_alat" class="form-control" id="nama_alat" value="{{ $pembelian->nama_alat }}" aria-label="Default select example"> 
+                            @foreach ($nama_alat as $item)
+                                <option value="{{ $item->kode_nama_alat }}" @if ($item->kode_nama_alat == $pembelian->nama_alat) selected @endif>
+                                    {{ $item->nama_alat }}
+                                </option>
+                            @endforeach
+                          </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label for="tanggalPembelian">Tanggal Pembelian:</label>
-                        <input type="text" class="form-control" name="tanggalPembelian" value="{{ $pembelian->tanggalPembelian }}" placeholder="Kode Alat">
+                        <label for="tanggal_pembelian">Tanggal Pembelian:</label>
+                        <input type="date" class="form-control" name="tanggal_pembelian" value="{{ $pembelian->tanggal_pembelian }}" placeholder="Tanggal Pembelian">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <label for="vendor">Vendor:</label>
-                        <input type="text" class="form-control" name="vendor" value="{{ $pembelian->vendor }}" placeholder="Kode Alat">
+                        <select class="form-select" name="vendor" class="form-control" id="vendor" value="{{ $pembelian->vendor }}" aria-label="Default select example"> 
+                            @foreach ($vendor as $item)
+                                <option value="{{ $item->id_vendor }}" @if ($item->id_vendor == $pembelian->vendor) selected @endif>
+                                    {{ $item->nama_vendor }}
+                                </option>
+                            @endforeach
+                          </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label for="harga">Harga:</label>
-                        <input type="text" class="form-control" name="harga" value="{{ $pembelian->harga }}" placeholder="Kode Alat">
+                        <label for="harga_satuan">Harga_satuan:</label>
+                        <input type="number" class="form-control" name="harga_satuan" value="{{ $pembelian->harga_satuan }}" placeholder="Harga satuan">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label for="alasan">Alasan:</label>
-                        <input type="text" class="form-control" name="alasan" value="{{ $pembelian->alasan }}" placeholder="Kode Alat">
-                    </div>
-                </div>
-                {{-- <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <label for="kodeAlat">Kode Alat:</label>
-                        <input type="text" class="form-control" name="kodeAlat" value="{{ $pembelian->kodeAlat }}" placeholder="Kode Alat">
+                        <label for="jumlah_pembelian">Jumlah_pembelian:</label>
+                        <input type="number" class="form-control" name="jumlah_pembelian" value="{{ $pembelian->jumlah_pembelian }}" placeholder="Jumlah Pembelian">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label for="namaAlat">Nama Alat:</label>
-                        <input type="text" class="form-control" id="namaAlat" name="namaAlat" value="{{ $pembelian->namaAlat }}" placeholder="Nama Alat">
+                        <label for="keterangan">Keterangan:</label>
+                        <input type="text" class="form-control" name="keterangan" value="{{ $pembelian->keterangan }}" placeholder="Keterangan">
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <label for="namaAlat">Lokasi:</label>
-                        <textarea class="form-control" name="lokasi" value="{{ $pembelian->lokasi }}" placeholder="Input Lokasi"></textarea>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <label for="kondisi">Kondisi:</label>
-                        <select class="form-control" name="kondisi" value="{{ $pembelian->kondisi }}" >
-                            <option value="Layak">Layak</option>
-                            <option value="Rusak">Rusak</option>
-                        </select>
-                    </div>
-                </div> --}}
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <label for="status">Status:</label>
                     <select class="form-control" name="status" value="{{ $pembelian->status }}">
-                        <option value="Tersedia">Tersedia</option>
-                        <option value="Tidak Tersedia">Tidak Tersedia</option>
+                        <option value="Belum konfirmasi">Belum konfirmasi</option>
+                        <option value="Konfirmasi untuk pembelian">Konfirmasi untuk pembelian</option>
+                        <option value="Sedang dalam pemesanan">Sedang dalam pemesanan</option>
+                        <option value="Barang datang">Barang datang</option>
+                        <option value="Barang masuk database">Barang masuk database</option>
                     </select>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

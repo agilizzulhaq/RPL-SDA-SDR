@@ -12,15 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('penjadwalan_ruangans', function (Blueprint $table) {
-            $table->id();
-            $table->char('kodeRuangan',7);
-            $table->string('namaRuangan',30);
-            $table->enum('jenisRuangan', ['UGD', 'ICU', 'HCU', 'ICCU', 'NICU', 'PICU', 'Kamar Operasi', 'Kamar Perawatan', 'Klinik Rawat Jalan']);
-            $table->string('lokasiRuangan',30);
-            $table->string('namaPeminjam',30);
-            $table->integer('kapasitas');
+            $table->integer('kodeRuangan');
+            $table->integer('namaPeminjam');
+            $table->date('tanggalMasuk');
+            $table->date('tanggalKeluar');
             $table->enum('statusRuangan', ['Tersedia', 'Tidak Tersedia']);
-            $table->date('tanggalDipinjam');
+            $table->primary('kodeRuangan');
+            $table->foreign('namaPeminjam')->references('id_user')->on('penggunas');
             $table->timestamps();
         });
     }

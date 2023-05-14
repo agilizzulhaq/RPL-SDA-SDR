@@ -26,7 +26,7 @@ class UpdatePenjadwalanRuanganRequest extends FormRequest
             'txtjenis' => 'required',
             'txtlokasi' => 'required',
             'txtnamaorang' => 'required',
-            'txtkapasitas' => 'required',
+            'txtkapasitas' => 'required|numeric',
             'txtstatus' => 'required',
             'txttanggal' => 'required',
         ];
@@ -39,6 +39,7 @@ class UpdatePenjadwalanRuanganRequest extends FormRequest
             'txtlokasi.required' => 'Oops, :attribute  tidak boleh kosong',
             'txtnamaorang.required' => 'Oops, :attribute tidak boleh kosong',
             'txtkapasitas.required' => 'Oops, :attribute tidak boleh kosong',
+            'txtkapasitas.numeric' => 'Oops, :attribute harus di isi angka',
             'txtstatus.required' => 'Oops, :attribute tidak boleh kosong',
             'txttanggal.required' => 'Oops, :attribute tidak boleh kosong',
 
@@ -47,7 +48,7 @@ class UpdatePenjadwalanRuanganRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'txtnama' => 'Nama Alat',
+            'txtnama' => 'Nama Ruangan',
             'txtjenis' => 'Jenis Ruangan',
             'txtlokasi' => 'lokasi',
             'txtnamaorang' => 'Nama Peminjam',

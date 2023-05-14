@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rooms', function (Blueprint $table) {
-            $table->id();
             $table->integer('kodeRuangan');
             $table->enum('jenisRuangan', ['UGD', 'ICU', 'HCU', 'ICCU', 'NICU', 'PICU', 'Kamar Operasi', 'Kamar Perawatan', 'Klinik Rawat Jalan']);
             $table->string('namaRuangan');
-            $table->text('lokasiRuangan');
+            $table->integer('lokasiRuangan');
+            $table->integer('kapasitas');
             $table->enum('statusRuangan', ['Tersedia', 'Tidak Tersedia']);
+            $table->primary('kodeRuangan');
+            $table->foreign('lokasiRuangan')->references('kode_lokasi')->on('lokasi');
             $table->timestamps();
         });
     }

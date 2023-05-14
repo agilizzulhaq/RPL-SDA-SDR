@@ -12,9 +12,20 @@ class InventoryController extends Controller
 {
     # Controller Data Alat
     public function alat(Request $request) {
-        $data = Inventory::with('nama_alat')->get();
-        $data = Inventory::with('lokasi')->get();
-        $data = Inventory::with('room')->get();
+        $data = Inventory::with('nama_alat', 'room', 'lokasi')
+                    ->join('room', 'room.kodeRuangan', '=', 'inventories.lokasiAlat')
+                    ->join('lokasi', 'room.lokasiRuangan', '=', 'lokasi.kode_lokasi')
+                    ->join('nama_alat', 'nama_alat.kode_nama_alat', '=', 'inventories.namaAlat')
+                    ->select(
+                        'lokasi.nama_gedung',
+                        'lokasi.lantai',
+                        'nama_alat.nama_alat',
+                        'room.kodeRuangan',
+                        'inventories.kodeAlat',
+                        'inventories.kondisiAlat',
+                        'inventories.statusAlat',
+                    );
+
         if($request -> has ('search')) {
             $data = Inventory::where('namaAlat','LIKE','%' .$request -> search.'%') -> paginate(10);
         } else {

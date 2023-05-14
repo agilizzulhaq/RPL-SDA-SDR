@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->integer('kodeAlat');
             $table->integer('namaAlat');
-            $table->text('lokasiAlat');
+            $table->integer('lokasiAlat');
             $table->enum('kondisiAlat', ['Layak', 'Tidak Layak']);
             $table->enum('statusAlat', ['Tersedia', 'Tidak Tersedia']);
             $table->primary('kodeAlat');
             $table->foreign('namaAlat')->references('kode_nama_alat')->on('nama_alat');
+            $table->foreign('lokasiAlat')->references('kodeRuangan')->on('rooms');
             $table->timestamps();
         });
     }
