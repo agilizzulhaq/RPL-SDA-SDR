@@ -3,94 +3,123 @@
 namespace App\Http\Controllers;
 
 use App\Models\PenjadwalanRuangan;
-use App\Http\Requests\StorePenjadwalanRuanganRequest;
-use App\Http\Requests\UpdatePenjadwalanRuanganRequest;
-use illuminate\Http\Request;
+use App\Models\Room;
+use App\Models\Pengguna;
+use App\Models\Lokasi;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class PenjadwalanRuanganController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        $data = PenjadwalanRuangan::paginate(10);
-        return view('penjadwalan.data',compact('data'));
-    }
+        $penjadwalanruangan = PenjadwalanRuangan::with('Room', 'Pengguna', 'lokasi')
+                    ->join('rooms', 'rooms.kodeRuangan', '=', 'penjadwalan_ruangans.kodeRuangan')
+                    ->join('penggunas', 'penggunas.id_user', '=', 'penjadwalan_ruangans.namaPeminjam')
+                    ->join('lokasi', 'room.lokasiRuangan', '=', 'lokasi.kode_lokasi')
+                    ->select(
+                        'rooms.kodeRuangan',
+                        'rooms.namaRuangan',
+                        'rooms.jenisRuangan',
+                        'rooms.lokasiRuangan',
+                        'lokasi.nama_gedung',
+                        'lokasi.lantai',
+                        'penggunas.nama_user',
+                        'penjadwalan_ruangans.statusRuangan',
+                        'penjadwalan_ruangans.tanggalMasuk',
+                        'penjadwalan_ruangans.tanggalKeluar',
+                    );
 
+        $room = Room::all();
+        $pengguna = Pengguna::all();
+        $lokasi = Lokasi::all();
+
+        $penjadwalanruangan = PenjadwalanRuangan::paginate(10);
+        return view('penjadwalanruangan.index',compact('penjadwalanruangan', 'room', 'pengguna', 'lokasi'));
+    }
+  
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        return view('penjadwalan.formadd');
+        $room = Room::all();
+        $pengguna = Pengguna::all();
+        return view('penjadwalanruangan.create', compact('room', 'pengguna'));
     }
-
+  
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePenjadwalanRuanganRequest $request)
+    public function store(Request $request): RedirectResponse
     {
-        $validate = $request->validated();
-
-        $PenjadwalanRuangan = new PenjadwalanRuangan;
-        $PenjadwalanRuangan->kodeRuangan = $request->txtkode;
-        $PenjadwalanRuangan->namaRuangan = $request->txtnama;
-        $PenjadwalanRuangan->jenisRuangan = $request->txtjenis;
-        $PenjadwalanRuangan->lokasiRuangan = $request->txtlokasi;
-        $PenjadwalanRuangan->namaPeminjam = $request->txtnamaorang;
-        $PenjadwalanRuangan->kapasitas = $request->txtkapasitas;
-        $PenjadwalanRuangan->statusRuangan = $request->txtstatus;
-        $PenjadwalanRuangan->tanggalDipinjam = $request->txttanggal;
-        $PenjadwalanRuangan->save();
-
-        return redirect()->route('datapenjadwalan')->with('msg','Data dengan Nama '.$PenjadwalanRuangan->namaRuangan.' Berhasil Di Tambahkan');
+        $request->validate([
+            'id_penjadwalan' => 'required',
+            'kodeRuangan' => 'required',
+            'namaPeminjam' => 'required',
+            'statusRuangan' => 'required',
+            'tanggalMasuk' => 'required',
+            'tanggalKeluar',
+        ]);
+        
+        PenjadwalanRuangan::create($request->all());
+         
+        return redirect()->route('penjadwalanruangan.index')
+                        ->with('success','Data penjadwalan berhasil ditambahkan');
     }
-
+  
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(PenjadwalanRuangan $penjadwalanruangan): View
     {
-        $data = PenjadwalanRuangan::find($id);
-        return view('penjadwalan.formedit', compact('data'));
+        return view('penjadwalanruangan.show',compact('penjadwalanruangan'));
     }
-
+  
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PenjadwalanRuangan $penjadwalanRuangan)
+    public function edit(PenjadwalanRuangan $penjadwalanruangan): View
     {
-        //
+        $room = Room::all();
+        $pengguna = Pengguna::all();
+        return view('penjadwalanruangan.edit',compact('penjadwalanruangan', 'room', 'pengguna'));
     }
-
+  
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePenjadwalanRuanganRequest $request, $id)
+    public function update(Request $request, PenjadwalanRuangan $penjadwalanruangan): RedirectResponse
     {
-        $PenjadwalanRuangan = PenjadwalanRuangan::find($id);
-        $PenjadwalanRuangan->kodeRuangan = $request->txtkode;
-        $PenjadwalanRuangan->namaRuangan = $request->txtnama;
-        $PenjadwalanRuangan->jenisRuangan = $request->txtjenis;
-        $PenjadwalanRuangan->lokasiRuangan = $request->txtlokasi;
-        $PenjadwalanRuangan->namaPeminjam = $request->txtnamaorang;
-        $PenjadwalanRuangan->kapasitas = $request->txtkapasitas;
-        $PenjadwalanRuangan->statusRuangan = $request->txtstatus;
-        $PenjadwalanRuangan->tanggalDipinjam = $request->txttanggal;
-        $PenjadwalanRuangan->save();
-
-        return redirect()->route('datapenjadwalan')->with('msg','Data dengan Nama '.$PenjadwalanRuangan->namaRuangan.' Berhasil Di Update');
+        $request->validate([
+            'id_penjadwalan' => 'required',
+            'kodeRuangan' => 'required',
+            'namaPeminjam' => 'required',
+            'statusRuangan' => 'required',
+            'tanggalMasuk' => 'required',
+            'tanggalKeluar',
+        ]);
+        
+        $penjadwalanruangan->update($request->all());
+        
+        return redirect()->route('penjadwalanruangan.index')
+                        ->with('success','Data penjadwalan berhasil diperbarui');
     }
-
+  
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(PenjadwalanRuangan $penjadwalanruangan): RedirectResponse
     {
-        $PenjadwalanRuangan = PenjadwalanRuangan::find($id);
-        $PenjadwalanRuangan->delete();
+        $confirmDelete = true; // tambahkan variabel untuk menandai konfirmasi
+        $penjadwalanruangan->delete();
 
-        return redirect()->route('datapenjadwalan')->with('msgdelete','Data dengan Nama '.$PenjadwalanRuangan->namaRuangan.' Telah Di Hapus');
+        return redirect()->route('penjadwalanruangan.index')
+                        ->with('success', 'Data telah berhasil dihapus')
+                        ->with('confirmDelete', $confirmDelete); // tambahkan variabel ke session
     }
 }
