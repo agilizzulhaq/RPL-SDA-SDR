@@ -51,7 +51,7 @@
     </div>
 
     <section class="home-section">
-        <div class="px-4 py-4 bg-[#b4f2f1] text-[#bcbcbc] min-h-screen">
+        <div class="px-4 py-4 bg-[#eaeaea] text-[#bcbcbc] min-h-screen">
             @yield('isi')
         </div>
     </section>
@@ -96,7 +96,7 @@
 
         });
 
-        let editButton = document.getElementById('edit');
+        let editButton = document.getElementById('hapus-edit-icon');
         let editDanHapus = document.querySelectorAll('#hapus-edit')
 
         editDanHapus.forEach(element => {
