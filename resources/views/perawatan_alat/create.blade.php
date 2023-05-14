@@ -50,7 +50,7 @@
                     <div class="form-group">
                         <strong>Jenis Perawatan:</strong>
                         <select class="form-select" name="jenis_perawatan" aria-label=".form-select-sm example">
-                            <option selected>Pilih Status Perawatan</option>
+                            <option selected>Pilih Jenis Perawatan</option>
                             <option value="Perawatan rutin">Perawatan rutin</option>
                             <option value="Pembersihan alat">Pembersihan alat</option>
                             <option value="Perawatan kerusakan">Perawatan kerusakan</option>
