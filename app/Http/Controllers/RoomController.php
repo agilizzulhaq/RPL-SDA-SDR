@@ -15,6 +15,7 @@ class RoomController extends Controller
                         'lokasi.nama_gedung',
                         'lokasi.lantai',
                         'room.kodeRuangan',
+                        'room.kapasitas',
                         'room.jenisRuangan',
                         'room.namaRuangan',
                         'room.statusRuangan',

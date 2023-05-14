@@ -38,6 +38,7 @@
               <th scope="col">Jenis Ruangan</th>
               <th scope="col">Nama Ruangan</th>
               <th scope="col">Lokasi Ruangan</th>
+              <th scope="col">Kapasitas Ruangan</th>
               <th scope="col">Status Ruangan</th>
               <th scope="col" class="border-b-2 border-[#1d1b31] w-32"></th>
             </tr>
@@ -53,6 +54,7 @@
                   <td class="text-white">{{$row -> jenisRuangan}}</td>
                   <td class="text-white">{{$row -> namaRuangan}}</td>
                   <td class="text-white">{{$row ->lokasi->nama_gedung . " Lantai " . $row->lokasi->lantai}}</td>
+                  <td class="text-white">{{$row -> kapasitas}}</td>
                   <td class="text-white">{{$row -> statusRuangan}}</td>
                   <td id="hapus-edit" class="text-white">
                       <a href="/editruangan/{{$row -> kodeRuangan}}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>

@@ -43,6 +43,10 @@
                       </select>
                       </div>
                       <div class="mb-3">
+                        <label for="kapasitas" class="form-label">Kapasitas Ruangan</label>
+                        <input type="number" name="kapasitas" class="form-control" id="kapasitas" value="{{ $data -> kapasitas }}">
+                      </div>
+                      <div class="mb-3">
                         <label for="statusRuangan" class="form-label">Status Ruangan</label>
                         <select class="form-select" name="statusRuangan" aria-label="Default select example">
                           <option selected>{{ $data -> statusRuangan }}</option>
