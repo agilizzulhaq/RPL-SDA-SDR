@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 //namespace App\Http\Controllers\Admin;
 
 use App\Models\Pembelian;
+use App\Models\NamaAlat;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
   
 class PembelianController extends Controller
 {
@@ -17,10 +20,27 @@ class PembelianController extends Controller
      */
     public function index(): View
     {
-        $pembelians = Pembelian::latest()->paginate(10);
+        $pembelians = Pembelian::with('NamaAlat')
+                    ->join('nama_alat', 'pembelians.nama_alat', '=', 'nama_alat.kode_nama_alat')
+                    ->join('vendors', 'pembelians.vendor', '=', 'vendors.id_vendor')
+                    ->select(
+                        'nama_alat.nama_alat',
+                        'vendors.nama_vendor',
+                        'pembelians.id_pembelian',
+                        'pembelians.tanggal_pembelian',
+                        'pembelians.harga_satuan',
+                        'pembelians.jumlah_pembelian',
+                        'pembelians.keterangan',
+                        'pembelians.status',
+                    )
+                    ->latest('pembelians.created_at')
+                    ->paginate(10);
+
+        $nama_alat = NamaAlat::all();
+        $vendor = Vendor::all();
         
-        return view('pembelian.index',compact('pembelians'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('pembelian.index',compact('pembelians', 'nama_alat', 'vendor'))
+                    ->with('i', (request()->input('page', 1) - 1) * 10);
     }
   
     /**
@@ -28,7 +48,9 @@ class PembelianController extends Controller
      */
     public function create(): View
     {
-        return view('pembelian.create');
+        $nama_alat = NamaAlat::all();
+        $vendor = Vendor::all();
+        return view('pembelian.create', compact('nama_alat', 'vendor'));
     }
   
     /**
@@ -37,12 +59,13 @@ class PembelianController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'idPembelianAlat' => 'required',
-            'namaAlat' => 'required',
-            'tanggalPembelian' => 'required',
+            'id_pembelian' => 'required',
+            'nama_alat' => 'required',
+            'tanggal_pembelian',
             'vendor' => 'required',
-            'harga' => 'required',
-            'alasan' => 'required',
+            'harga_satuan' => 'required',
+            'jumlah_pembelian' => 'required',
+            'keterangan' => 'required',
             'status' => 'required',
         ]);
         
@@ -63,28 +86,31 @@ class PembelianController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pembelian $pembelian): View
+    public function edit($id): View
     {
-        return view('pembelian.edit',compact('pembelian'));
+        $pembelian = Pembelian::where('id_pembelian', $id)->first();
+        $nama_alat = NamaAlat::all();
+        $vendor = Vendor::all();
+        return view('pembelian.edit',compact('pembelian', 'nama_alat', 'vendor'));
     }
   
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pembelian $pembelian): RedirectResponse
+    public function update(Request $request, $id): RedirectResponse
     {
-        $request->validate([
-            'idPembelianAlat' => 'required',
-            'namaAlat' => 'required',
-            'tanggalPembelian' => 'required',
-            'vendor' => 'required',
-            'harga' => 'required',
-            'alasan' => 'required',
-            'status' => 'required',
+        $pembelian = Pembelian::where('id_pembelian', $id);
+        $pembelian->update([
+            'id_pembelian' => $request->id_pembelian,
+            'nama_alat' => $request->nama_alat,
+            'tanggal_pembelian' => $request->tanggal_pembelian,
+            'vendor' => $request->vendor,
+            'harga_satuan' => $request->harga_satuan,
+            'jumlah_pembelian' => $request->jumlah_pembelian,
+            'keterangan' => $request->keterangan,
+            'status' => $request->status,
         ]);
-        
-        $pembelian->update($request->all());
-        
+
         return redirect()->route('pembelian.index')
                         ->with('success','Pembelian updated successfully');
     }
@@ -92,11 +118,11 @@ class PembelianController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pembelian $pembelian): RedirectResponse
+    public function destroy($id): RedirectResponse
     {
+        $pembelian = Pembelian::where('id_pembelian', $id);
         $pembelian->delete();
-         
-        return redirect()->route('pembelian.index')
-                        ->with('success','Pembelian deleted successfully');
+
+        return redirect()->route('alat') -> with('success','Data berhasil dihapus');
     }
 }

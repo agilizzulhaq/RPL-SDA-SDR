@@ -44,31 +44,33 @@
         <table class="w-full leading-10 text-sm text-white">
             <tr class="text-center border-b-2 border-white">
                 <th>No</th>
-                <th>ID Pembelian Alat</th>
+                <th>ID Pembelian</th>
                 <th>Nama Alat</th>
-                <th>Tanggal Pembelian</th>
+                <th>Tanggal Beli</th>
                 <th>Vendor</th>
-                <th>Harga</th>
-                <th>Alasan</th>
+                <th>Harga Satuan</th>
+                <th>Jumlah Beli</th>
+                <th>Keterangan</th>
                 <th>Status</th>
                 <th class="border-b-2 border-[#1d1b31]"></th>
             </tr>
             @foreach ($pembelians as $pembelian)
             <tr class="text-center">
                 <td  class="text-white">{{ ++$i }}</td>
-                <td  class="text-white">{{ $pembelian->idPembelianAlat }}</td>
-                <td  class="text-white">{{ $pembelian->namaAlat }}</td>
-                <td  class="text-white">{{ $pembelian->tanggalPembelian }}</td>
-                <td  class="text-white">{{ $pembelian->vendor }}</td>
-                <td  class="text-white">{{ $pembelian->harga }}</td>
-                <td  class="text-white">{{ $pembelian->alasan }}</td>
+                <td  class="text-white">{{ $pembelian->id_pembelian }}</td>
+                <td  class="text-white">{{ $pembelian->nama_alat }}</td>
+                <td  class="text-white">{{ $pembelian->tanggal_pembelian }}</td>
+                <td  class="text-white">{{ $pembelian->nama_vendor }}</td>
+                <td  class="text-white">{{ $pembelian->harga_satuan }}</td>
+                <td  class="text-white">{{ $pembelian->jumlah_pembelian }}</td>
+                <td  class="text-white">{{ $pembelian->keterangan }}</td>
                 <td  class="text-white">{{ $pembelian->status }}</td>
                 <td id="hapus-edit" class="text-white">
-                    <form action="{{ route('pembelian.destroy',$pembelian->id) }}" method="POST">
+                    <form action="{{ route('pembelian.destroy',$pembelian->id_pembelian) }}" method="POST">
        
-                        {{-- <a class="btn btn-info" href="{{ route('pembelian.show',$pembelian->id) }}">Show</a> --}}
+                        {{-- <a class="btn btn-info" href="{{ route('pembelian.show',$pembelian->id_pembelian) }}">Show</a> --}}
         
-                        <a href="{{ route('pembelian.edit',$pembelian->id) }}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
+                        <a href="{{ route('pembelian.edit',$pembelian->id_pembelian) }}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
        
                         @csrf
                         @method('DELETE')
