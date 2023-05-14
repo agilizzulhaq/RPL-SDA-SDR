@@ -24,24 +24,24 @@
             </div>
         @endif
       
-        <form action="{{ route('peminjaman_alat.update',$peminjaman_alat->kode_alat) }}" method="POST">
+        <form action="{{ route('peminjaman_alat.update',$peminjaman_alat->id_peminjaman) }}" method="POST">
             @csrf
             @method('PUT')
        
              <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Kode Alat:</strong>
-                        <input type="text" name="kode_alat" value="{{ $peminjaman_alat->kode_alat }}" class="form-control" placeholder="Kode Alat">
+                        <strong>ID Peminjaman:</strong>
+                        <input type="text" name="id_peminjaman" value="{{ $peminjaman_alat->id_peminjaman }}" class="form-control" placeholder="Id Peminjaman">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Nama Alat:</strong>
-                        <select class="form-select" name="nama_alat" class="form-control" id="nama_alat" value="{{ $peminjaman_alat->nama_alat }}" aria-label="Default select example"> 
-                            @foreach ($nama_alat as $item)
-                                <option value="{{ $item->kode_nama_alat }}" @if ($item->kode_nama_alat == $peminjaman_alat->nama_alat) selected @endif>
-                                    {{ $item->nama_alat }}
+                        <strong>Kode Alat:</strong>
+                        <select class="form-select" name="kode_alat" class="form-control" id="kode_alat" value="{{ $peminjaman_alat->nama_alat }}" aria-label="Default select example"> 
+                            @foreach ($inventory as $item)
+                                <option value="{{ $item->kodeAlat }}" @if ($item->kodeAlat == $peminjaman_alat->kode_alat) selected @endif>
+                                    {{ $item->kodeAlat . ' | ' . $item->nama_alat->nama_alat}}
                                 </option>
                             @endforeach
                         </select>
@@ -50,13 +50,25 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Nama Peminjam:</strong>
-                        <input type="text" value="{{ $peminjaman_alat->nama_peminjam }}" class="form-control" name="nama_peminjam" placeholder="Nama Peminjam">
+                        <select class="form-select" name="nama_peminjam" class="form-control" id="nama_peminjam" value="{{ $peminjaman_alat->nama_peminjam }}" aria-label="Default select example"> 
+                            @foreach ($pengguna as $item)
+                                <option value="{{ $item->id_user }}" @if ($item->id_user == $peminjaman_alat->nama_peminjam) selected @endif>
+                                    {{ $item->nama_user}}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Tanggal Pinjam:</strong>
-                        <input type="datetime-local" value="{{ $peminjaman_alat->tanggal_peminjam }}" class="form-control" name="tanggal_peminjam" placeholder="Tanggal Pinjam">
+                        <input type="datetime-local" value="{{ $peminjaman_alat->tanggal_peminjaman }}" class="form-control" name="tanggal_peminjaman" placeholder="Tanggal Pinjam">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Tanggal Kembali:</strong>
+                        <input type="datetime-local" value="{{ $peminjaman_alat->tanggal_pengembalian }}" class="form-control" name="tanggal_pengembalian" placeholder="Tanggal Kembali">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -65,7 +77,7 @@
                         <select class="form-select" name="status_peminjaman" aria-label="Default select example">
                             <option selected>{{ $peminjaman_alat -> status_peminjaman }}</option>
                             <option value="Dipinjam">Dipinjam</option>
-                            <option value="Tersedia">Tersedia</option>
+                            <option value="Dikembalikan">Dikembalikan</option>
                           </select>
                     </div>
                 </div>

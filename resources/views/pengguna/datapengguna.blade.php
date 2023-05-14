@@ -38,9 +38,6 @@
         </tr>
       </thead>
       <tbody class="text-center">
-        @php
-          $no = 1;
-        @endphp
           @foreach ($data as $pengguna => $row)
           <tr>
               <th scope="row">{{$pengguna + $data -> firstItem()}}</th>
@@ -51,8 +48,8 @@
               <td class="text-white ">{{$row -> email_user}}</td>
               <td class="text-white ">{{$row -> role_user}}</td>
               <td id="hapus-edit" class="text-white">
-                  <a href="/editusers/{{$row -> id}}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
-                  <a href="/deleteusers/{{$row -> id}}" class="ml-3" data-id="{{$row -> id}}" data-nama="{{$row -> nama_user}}"><i class='bx bx-trash text-2xl text-white bg-slate-600 hover:bg-slate-700 p-1 rounded' ></i></a>
+                  <a href="/editusers/{{$row -> id_user}}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
+                  <a href="/deleteusers/{{$row -> id_user}}" class="ml-3" data-id="{{$row -> id_user}}" data-nama="{{$row -> nama_user}}"><i class='bx bx-trash text-2xl text-white bg-slate-600 hover:bg-slate-700 p-1 rounded' ></i></a>
               </td>
             </tr>
           @endforeach

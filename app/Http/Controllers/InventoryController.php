@@ -16,9 +16,9 @@ class InventoryController extends Controller
         $data = Inventory::with('lokasi')->get();
         $data = Inventory::with('room')->get();
         if($request -> has ('search')) {
-            $data = Inventory::where('namaAlat','LIKE','%' .$request -> search.'%') -> paginate(5);
+            $data = Inventory::where('namaAlat','LIKE','%' .$request -> search.'%') -> paginate(10);
         } else {
-            $data = Inventory::paginate(5);
+            $data = Inventory::paginate(10);
         }
         return view('inventory.dataalat', compact('data'));
     }
@@ -39,7 +39,7 @@ class InventoryController extends Controller
 
     # Controller Edit Data
     public function editalat($id) {
-        $data = Inventory::find($id);
+        $data = Inventory::where('kodeAlat', $id)->first();
         $nama_alat = NamaAlat::all();
         $room = Room::all();
         $lokasi = Lokasi::all();
@@ -48,13 +48,19 @@ class InventoryController extends Controller
     }
     
     public function updatealat(Request $request, $id) {
-        $data = Inventory::find($id);
-        $data -> update($request -> all());
+        $data = Inventory::where('kodeAlat', $id);
+        $data->update([
+            'kodeAlat' => $request->kodeAlat,
+            'namaAlat' => $request->namaAlat,
+            'lokasiAlat' => $request->lokasiAlat,
+            'kondisiAlat' => $request->kondisiAlat,
+            'statusAlat' => $request->statusAlat,
+        ]);
         return redirect()->route('alat') -> with('success','Data berhasil diperbaharui');
     }
 
     public function hapusalat($id) {
-        $data = Inventory::find($id);
+        $data = Inventory::where('kodeAlat', $id);
         $data -> delete();
         return redirect()->route('alat') -> with('success','Data berhasil dihapus');
     }

@@ -25,33 +25,27 @@
             </div>
         @endif
       
-        <form action="{{ route('perawatan_alat.update',$perawatan_alat->kode_alat)  }}" method="POST">
+        <form action="{{ route('perawatan_alat.update',$perawatan_alat->id_perawatan)  }}" method="POST">
             @csrf
             @method('PUT')
        
              <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Kode Alat:</strong>
-                        <input type="text" name="kode_alat" value="{{ $perawatan_alat->kode_alat }}" class="form-control" placeholder="Kode Alat">
+                        <strong>ID Perawatan:</strong>
+                        <input type="text" name="id_perawatan" value="{{ $perawatan_alat->id_perawatan }}" class="form-control" placeholder="Kode Alat">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Nama Alat:</strong>
-                        <select class="form-select" name="nama_alat" class="form-control" id="nama_alat" value="{{ $perawatan_alat->nama_alat }}" aria-label="Default select example"> 
-                            @foreach ($namaalat as $item)
-                                <option value="{{ $item->kode_nama_alat }}" @if ($item->kode_nama_alat == $perawatan_alat->nama_alat) selected @endif>
-                                    {{ $item->nama_alat }}
+                        <strong>Kode Alat:</strong>
+                        <select class="form-select" name="kode_alat" class="form-control" id="kode_alat" value="{{ $perawatan_alat->kode_alat }}" aria-label="Default select example"> 
+                            @foreach ($inventory as $item)
+                                <option value="{{ $item->kodeAlat }}" @if ($item->kodeAlat == $perawatan_alat->kode_alat) selected @endif>
+                                    {{ $item->kodeAlat . ' | ' . $item->nama_alat->nama_alat }}
                                 </option>
                             @endforeach
                         </select>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Lokasi Alat:</strong>
-                        <input type="text" value="{{ $perawatan_alat->lokasi_alat }}" class="form-control" name="lokasi_alat" placeholder="Lokasi Alat">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -75,6 +69,12 @@
                             <option value="Sedang dalam perawatan">Sedang dalam perawatan</option>
                             <option value="Perawatan selesai">Perawatan selesai</option>
                         </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Tanggal Perawatan:</strong>
+                        <input type="datetime-local" value="{{ $perawatan_alat->tanggal_perawatan }}" class="form-control" name="tanggal_perawatan" placeholder="Tanggal Perawatan">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">

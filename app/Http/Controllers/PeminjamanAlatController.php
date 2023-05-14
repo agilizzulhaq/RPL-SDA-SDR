@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\PeminjamanAlat;
 use App\Models\NamaAlat;
+use App\Models\Inventory;
 use App\Models\Pengguna;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class PeminjamanAlatController extends Controller
@@ -17,11 +19,30 @@ class PeminjamanAlatController extends Controller
      */
     public function index(): View
     {
-        $peminjaman_alat = PeminjamanAlat::with('namaAlat')->get();
-        $peminjaman_alat = PeminjamanAlat::latest()->paginate(5);
+        $peminjaman_alat = PeminjamanAlat::with('Inventory', 'NamaAlat', 'Pengguna')
+                    ->join('inventories', 'peminjaman_alat.kode_alat', '=', 'inventories.kodeAlat')
+                    ->join('nama_alat', 'inventories.kodeAlat', '=', 'nama_alat.kode_nama_alat')
+                    ->join('penggunas', 'peminjaman_alat.nama_peminjam', '=', 'penggunas.id_user')
+                    ->select(
+                        'inventories.kodeAlat',
+                        'nama_alat.nama_alat',
+                        'inventories.namaAlat',
+                        'penggunas.id_user',
+                        'penggunas.nama_user',
+                        'peminjaman_alat.id_peminjaman',
+                        'peminjaman_alat.tanggal_peminjaman',
+                        'peminjaman_alat.tanggal_pengembalian',
+                        'peminjaman_alat.status_peminjaman',
+                        'peminjaman_alat.alasan_peminjaman'
+                    )
+                    ->latest('peminjaman_alat.created_at')
+                    ->paginate(10);
+
+        $inventory = Inventory::all();
+        $pengguna = Pengguna::all();
         
-        return view('peminjaman_alat.index',compact('peminjaman_alat'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('peminjaman_alat.index',compact('peminjaman_alat', 'inventory', 'pengguna'))
+                    ->with('i', (request()->input('page', 1) - 1) * 10);
     }
     
     /**
@@ -29,8 +50,10 @@ class PeminjamanAlatController extends Controller
      */
     public function create(): View
     {
+        $inventory = Inventory::all();
         $namaalat = NamaAlat::all();
-        return view('peminjaman_alat.create', compact('namaalat'));
+        $pengguna = Pengguna::all();
+        return view('peminjaman_alat.create', compact('inventory', 'namaalat', 'pengguna'));
     }
   
     /**
@@ -38,16 +61,18 @@ class PeminjamanAlatController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $validatedData = $request->validate([
+            'id_peminjaman' => 'required',
             'kode_alat' => 'required',
-            'nama_alat' => 'required',
             'nama_peminjam' => 'required',
-            'tanggal_peminjam' => 'required',
+            'tanggal_peminjaman' => 'required',
+            'tanggal_pengembalian',
             'status_peminjaman' => 'required',
             'alasan_peminjaman' => 'required',
         ]);
         
         PeminjamanAlat::create($request->all());
+        $inventory = Inventory::all();
          
         return redirect()->route('peminjaman_alat.index')
                         ->with('success','Data pinjam berhasil ditambahkan');
@@ -66,8 +91,10 @@ class PeminjamanAlatController extends Controller
      */
     public function edit(PeminjamanAlat $peminjaman_alat): View
     {
-        $nama_alat = NamaAlat::all();
-        return view('peminjaman_alat.edit',compact('peminjaman_alat', 'nama_alat'));
+        $inventory = Inventory::all();
+        $namaalat = NamaAlat::all();
+        $pengguna = Pengguna::all();
+        return view('peminjaman_alat.edit',compact('peminjaman_alat', 'inventory', 'namaalat', 'pengguna'));
     }
   
     /**
@@ -76,10 +103,11 @@ class PeminjamanAlatController extends Controller
     public function update(Request $request, PeminjamanAlat $peminjaman_alat): RedirectResponse
     {
         $request->validate([
+            'id_peminjaman' => 'required',
             'kode_alat' => 'required',
-            'nama_alat' => 'required',
             'nama_peminjam' => 'required',
-            'tanggal_peminjam' => 'required',
+            'tanggal_peminjaman' => 'required',
+            'tanggal_pengembalian',
             'status_peminjaman' => 'required',
             'alasan_peminjaman' => 'required',
         ]);

@@ -12,16 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('inventories', function (Blueprint $table) {
-            $table->id();
             $table->integer('kodeAlat');
-            $table->string('namaAlat');
+            $table->integer('namaAlat');
             $table->text('lokasiAlat');
-            $table->integer('stok');
-            $table->integer('limit');
-            $table->enum('jenisAlat', ['Medis', 'Non-Medis']);
-            $table->enum('pemakaianAlat', ['Reusable', 'Disposable']);
             $table->enum('kondisiAlat', ['Layak', 'Tidak Layak']);
             $table->enum('statusAlat', ['Tersedia', 'Tidak Tersedia']);
+            $table->primary('kodeAlat');
+            $table->foreign('namaAlat')->references('kode_nama_alat')->on('nama_alat');
             $table->timestamps();
         });
     }

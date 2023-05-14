@@ -3,7 +3,7 @@
 @section('isi')
 <div class="mt-16 mx-10">  
   <div class="flex justify-between items-start">
-    <h1 class="text-white font-bold text-3xl mb-5">Data Nama Alat</h1>
+    <h1 class="text-white font-bold text-3xl mb-5">Data Master Alat</h1>
     <div class="flex gap-3 items-center">
       <div class="w-10 h-10 bg-[#1e6261] hover:bg-[#184D4C] ease-in-out transition duration-150 text-center rounded-full">
         <a href="{{ route('nama_alat.create') }}" class="text-4xl no-underline text-white">+</a>
@@ -33,6 +33,10 @@
             <th scope="col">No</th>
             <th scope="col">Kode Nama Alat</th>
             <th scope="col">Nama Alat</th>
+            <th scope="col">Stok / Limit</th>
+            <th scope="col">Satuan</th>
+            <th scope="col">Jenis Alat</th>
+            <th scope="col">Pemakaian Alat</th>
             <th class="border-b-2 border-[#1d1b31] w-32" scope="col"></th>
           </tr>
         </thead>
@@ -45,6 +49,10 @@
               <th scope="row" class="text-white">{{$alat + $nama_alat -> firstItem()}}</th>
               <td class="text-white">{{$row -> kode_nama_alat}}</td>
               <td class="text-white">{{$row -> nama_alat}}</td>
+              <td class="text-white">{{$row -> stok}} / {{$row -> limit}}</td>
+              <td class="text-white">{{$row -> satuan}}</td>
+              <td class="text-white">{{$row -> jenis_alat}}</td>
+              <td class="text-white">{{$row -> pemakaian_alat}}</td>
               <td id="hapus-edit" class="text-white">
                   <form action="{{ route('nama_alat.destroy',$row->kode_nama_alat) }}" method="POST">
       

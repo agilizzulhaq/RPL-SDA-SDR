@@ -46,11 +46,13 @@
             <table class="w-full leading-10 text-sm text-white">
                 <tr class="text-center border-b-2 border-white">
                     <th>No</th>
+                    <th>ID Perawatan</th>
                     <th>Kode Alat</th>
                     <th>Nama Alat</th>
                     <th>Lokasi Alat</th>
                     <th>Jenis Perawatan</th>
                     <th>Status Perawatan</th>
+                    <th>Tanggal Perawatan</th>
                     <th>Riwayat Perawatan</th>
                     <th>Catatan Perawatan</th>
                     <th class="border-b-2 border-[#1d1b31]"></th>
@@ -58,19 +60,33 @@
                 @foreach ($perawatan_alat as $perawatan)
                 <tr class="text-center">
                     <td class="text-white">{{ ++$i }}</td>
-                    <td class="text-white">{{ $perawatan->kode_alat }}</td>
-                    <td class="text-white">{{ $perawatan->namaAlat->nama_alat }}</td>
-                    <td class="text-white">{{ $perawatan->lokasi_alat }}</td>
+                    <td class="text-white">{{ $perawatan->id_perawatan }}</td>
+                    <td class="text-white">{{ $perawatan->kodeAlat }}</td>
+                    <td>
+                        @foreach ($inventory as $item)
+                            @if ($item->kodeAlat === $perawatan->kodeAlat)
+                                {{ $item->nama_alat->nama_alat }}
+                            @endif
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach ($inventory as $item)
+                            @if ($item->kodeAlat === $perawatan->kodeAlat)
+                                {{ $item->lokasiAlat }}
+                            @endif
+                        @endforeach
+                    </td>
                     <td class="text-white">{{ $perawatan->jenis_perawatan }}</td>
                     <td class="text-white">{{ $perawatan->status_perawatan }}</td>
+                    <td class="text-white">{{ $perawatan->tanggal_perawatan }}</td>
                     <td class="text-white">{{ $perawatan->riwayat_perawatan }}</td>
                     <td class="text-white">{{ $perawatan->catatan_perawatan }}</td>
                     <td id="hapus-edit" class="text-white">
-                        <form action="{{ route('perawatan_alat.destroy',$perawatan->kode_alat) }}" method="POST">
+                        <form action="{{ route('perawatan_alat.destroy',$perawatan->id_perawatan) }}" method="POST">
            
-                            {{-- <a class="btn btn-info" href="{{ route('perawatan_alat.show',$perawatan->kode_alat) }}">Show</a> --}}
+                            {{-- <a class="btn btn-info" href="{{ route('perawatan_alat.show',$perawatan->id_perawatan) }}">Show</a> --}}
             
-                            <a href="{{ route('perawatan_alat.edit',$perawatan->kode_alat) }}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
+                            <a href="{{ route('perawatan_alat.edit',$perawatan->id_perawatan) }}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
            
                             @csrf
                             @method('DELETE')
@@ -81,6 +97,7 @@
                 </tr>
                 @endforeach
             </table>
+            {{ $perawatan_alat->links() }}
         </div>
     </div>
       

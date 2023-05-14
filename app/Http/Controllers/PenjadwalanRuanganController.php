@@ -38,8 +38,10 @@ class PenjadwalanRuanganController extends Controller
         $PenjadwalanRuangan->namaRuangan = $request->txtnama;
         $PenjadwalanRuangan->jenisRuangan = $request->txtjenis;
         $PenjadwalanRuangan->lokasiRuangan = $request->txtlokasi;
+        $PenjadwalanRuangan->namaPeminjam = $request->txtnamaorang;
         $PenjadwalanRuangan->kapasitas = $request->txtkapasitas;
         $PenjadwalanRuangan->statusRuangan = $request->txtstatus;
+        $PenjadwalanRuangan->tanggalDipinjam = $request->txttanggal;
         $PenjadwalanRuangan->save();
 
         return redirect()->route('datapenjadwalan')->with('msg','Data Berhasil Di Tambahkan');
@@ -72,8 +74,10 @@ class PenjadwalanRuanganController extends Controller
         $PenjadwalanRuangan->namaRuangan = $request->txtnama;
         $PenjadwalanRuangan->jenisRuangan = $request->txtjenis;
         $PenjadwalanRuangan->lokasiRuangan = $request->txtlokasi;
+        $PenjadwalanRuangan->namaPeminjam = $request->txtnamaorang;
         $PenjadwalanRuangan->kapasitas = $request->txtkapasitas;
         $PenjadwalanRuangan->statusRuangan = $request->txtstatus;
+        $PenjadwalanRuangan->tanggalDipinjam = $request->txttanggal;
         $PenjadwalanRuangan->save();
 
         return redirect()->route('datapenjadwalan')->with('msg','Data Berhasil Di Update');

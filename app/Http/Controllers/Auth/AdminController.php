@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class LoginRegisterController extends Controller
+class AdminController extends Controller
 {
     /**
      * Instantiate a new LoginRegisterController instance.
@@ -20,22 +20,11 @@ class LoginRegisterController extends Controller
         ]);
     }
 
-    /**
-     * Display a registration form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function register()
     {
-        return view('auth.register');
+        return view('admins.register');
     }
-    /**
-     * Store a new user.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -44,7 +33,7 @@ class LoginRegisterController extends Controller
             'password' => 'required|min:8|confirmed'
         ]);
 
-        User::create([
+        Admin::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
@@ -57,22 +46,13 @@ class LoginRegisterController extends Controller
             ->withSuccess('You have successfully registered & logged in!');
     }
 
-    /**
-     * Display a login form.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function login()
     {
-        return view('auth.login');
+        return view('admins.login');
     }
 
-    /**
-     * Authenticate the user.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
@@ -91,15 +71,10 @@ class LoginRegisterController extends Controller
         ])->onlyInput('email');
     }
 
-    /**
-     * Display a dashboard to authenticated users.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function dashboard()
     {
         if (Auth::check()) {
-            return view('auth.dashboard');
+            return view('dashboard-admin');
         }
 
         return redirect()->route('login')
@@ -108,12 +83,6 @@ class LoginRegisterController extends Controller
             ])->onlyInput('email');
     }
 
-    /**
-     * Log out the user from application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function logout(Request $request)
     {
         Auth::logout();

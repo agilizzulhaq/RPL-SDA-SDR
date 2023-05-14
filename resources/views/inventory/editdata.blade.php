@@ -7,7 +7,7 @@
       <div class="col-8">
         <div class="card">
           <div class="card-body">
-            <form action="/updatealat/{{ $data -> id }}" method="POST" enctype="multipart/form-data">
+            <form action="/updatealat/{{ $data -> kodeAlat }}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="mb-3">
                 <label for="kodeAlat" class="form-label">Kode Alat</label>
@@ -31,30 +31,6 @@
                           {{ " Ruang " . $item->namaRuangan ." ". $item->lokasi->nama_gedung . " Lantai " . $item->lokasi->lantai}}
                       </option>
                   @endforeach
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="stok" class="form-label">Stok</label>
-                <input type="text" name="stok" class="form-control" id="stok" value="{{ $data -> stok }}">
-              </div>
-              <div class="mb-3">
-                <label for="limit" class="form-label">Limit</label>
-                <input type="text" name="limit" class="form-control" id="limit" value="{{ $data -> limit }}">
-              </div>
-              <div class="mb-3">
-                <label for="jenisAlat" class="form-label">Jenis Alat</label>
-                <select class="form-select" name="jenisAlat" aria-label="Default select example">
-                  <option selected>{{ $data -> jenisAlat }}</option>
-                  <option value="Medis">Medis</option>
-                  <option value="Non-Medis">Non-Medis</option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="pemakaianAlat" class="form-label">Pemakaian Alat</label>
-                <select class="form-select" name="pemakaianAlat" aria-label="Default select example">
-                  <option selected>{{ $data -> pemakaianAlat }}</option>
-                  <option value="Reusable">Reusable</option>
-                  <option value="Disposable">Disposable</option>
                 </select>
               </div>
               <div class="mb-3">

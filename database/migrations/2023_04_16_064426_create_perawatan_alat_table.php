@@ -14,14 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('perawatan_alat', function (Blueprint $table) {
-            $table->char('kode_alat', 25);
-            $table->string('nama_alat', 100);
-            $table->string('lokasi_alat', 100);
+            $table->integer('id_perawatan');
+            $table->integer('kode_alat');
             $table->enum('jenis_perawatan', ['Perawatan rutin', 'Pembersihan alat', 'Perawatan kerusakan']);
             $table->enum('status_perawatan', ['Belum konfirmasi','Konfirmasi untuk perawatan','Sedang dalam perawatan', 'Perawatan selesai']);
+            $table->dateTime('tanggal_perawatan')->nullable();
             $table->string('riwayat_perawatan', 255);
             $table->string('catatan_perawatan', 100);
-            $table->primary('kode_alat');
+            $table->primary('id_perawatan');
+            $table->foreign('kode_alat')->references('kodeAlat')->on('inventories');
             $table->timestamps();
         });
     }

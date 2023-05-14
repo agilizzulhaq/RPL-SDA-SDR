@@ -14,11 +14,19 @@ class PeminjamanAlat extends Model
     protected $table="peminjaman_alat";
     public $incrementing = false;
 
-    protected $primaryKey = 'kode_alat';
-    protected $fillable = ['kode_alat', 'nama_alat', 'nama_peminjam', 'tanggal_peminjam', 'status_peminjaman', 'alasan_peminjaman'];
+    protected $primaryKey = 'id_peminjaman';
+    protected $fillable = ['id_peminjaman', 'kode_alat', 'nama_peminjam', 'tanggal_peminjaman', 'tanggal_pengembalian', 'status_peminjaman', 'alasan_peminjaman'];
 
-    public function namaAlat(): BelongsTo
+    public function Inventory(): BelongsTo
+    {
+        return $this->belongsTo(Inventory::class);
+    }
+    public function NamaAlat(): BelongsTo
     {
         return $this->belongsTo(NamaAlat::class, 'nama_alat', 'kode_nama_alat');
+    }
+    public function Pengguna(): BelongsTo
+    {
+        return $this->belongsTo(Pengguna::class, 'nama_peminjam', 'id_user');
     }
 }

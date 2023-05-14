@@ -45,10 +45,12 @@
             <table class="w-full leading-10 text-sm text-white">
                 <tr class="text-center  border-b-2 border-white">
                     <th>No</th>
+                    <th>ID Peminjaman</th>
                     <th>Kode Alat</th>
                     <th>Nama Alat</th>
                     <th>Nama Peminjam</th>
                     <th>Tanggal Pinjam</th>
+                    <th>Tanggal Kembali</th>
                     <th>Status Peminjaman</th>
                     <th>Alasan Peminjaman</th>
                     <th width="280px" class="border-b-2 border-[#1d1b31] w-32"></th>
@@ -56,18 +58,26 @@
                 @foreach ($peminjaman_alat as $peminjamanalat)
                 <tr class="text-center">
                     <td  class="text-white">{{ ++$i }}</td>
-                    <td  class="text-white">{{ $peminjamanalat->kode_alat }}</td>
-                    <td  class="text-white">{{ $peminjamanalat->namaAlat->nama_alat }}</td>
-                    <td  class="text-white">{{ $peminjamanalat->nama_peminjam }}</td>
-                    <td  class="text-white">{{ $peminjamanalat->tanggal_peminjam }}</td>
+                    <td  class="text-white">{{ $peminjamanalat->id_peminjaman }}</td>
+                    <td  class="text-white">{{ $peminjamanalat->kodeAlat }}</td>
+                    <td>
+                        @foreach ($inventory as $item)
+                            @if ($item->kodeAlat === $peminjamanalat->kodeAlat)
+                                {{ $item->nama_alat->nama_alat }}
+                            @endif
+                        @endforeach
+                    </td>
+                    <td  class="text-white">{{ $peminjamanalat->nama_user }}</td>
+                    <td  class="text-white">{{ $peminjamanalat->tanggal_peminjaman }}</td>
+                    <td  class="text-white">{{ $peminjamanalat->tanggal_pengembalian }}</td>
                     <td  class="text-white">{{ $peminjamanalat->status_peminjaman }}</td>
                     <td  class="text-white">{{ $peminjamanalat->alasan_peminjaman }}</td>
                     <td id="hapus-edit" class="text-white">
-                        <form action="{{ route('peminjaman_alat.destroy',$peminjamanalat->kode_alat) }}" method="POST">
+                        <form action="{{ route('peminjaman_alat.destroy',$peminjamanalat->id_peminjaman) }}" method="POST">
            
-                            {{-- <a class="btn btn-info" href="{{ route('peminjaman_alat.show',$peminjamanalat->kode_alat) }}">Show</a> --}}
+                            {{-- <a class="btn btn-info" href="{{ route('peminjaman_alat.show',$peminjamanalat->id_peminjaman) }}">Show</a> --}}
             
-                            <a href="{{ route('peminjaman_alat.edit',$peminjamanalat->kode_alat) }}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
+                            <a href="{{ route('peminjaman_alat.edit',$peminjamanalat->id_peminjaman) }}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
            
                             @csrf
                             @method('DELETE')
@@ -78,6 +88,7 @@
                 </tr>
                 @endforeach
             </table>
+            {{ $peminjaman_alat->links() }}
         </div>
 
     </div>
