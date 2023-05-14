@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PerawatanAlat;
-use App\Models\NamaAlat;
+use App\Models\Inventory;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,10 +15,25 @@ class PerawatanAlatController extends Controller
      */
     public function index(): View
     {
-        $perawatan_alat = PerawatanAlat::with('namaAlat')->get();
-        $perawatan_alat = PerawatanAlat::latest()->paginate(10);
+        $perawatan_alat = PerawatanAlat::with('Inventory')
+                    ->join('inventories', 'perawatan_alat.kode_alat', '=', 'inventories.kodeAlat')
+                    ->select(
+                        'inventories.kodeAlat',
+                        'inventories.namaAlat',
+                        'inventories.lokasiAlat',
+                        'perawatan_alat.id_perawatan',
+                        'perawatan_alat.jenis_perawatan',
+                        'perawatan_alat.status_perawatan',
+                        'perawatan_alat.tanggal_perawatan',
+                        'perawatan_alat.riwayat_perawatan',
+                        'perawatan_alat.catatan_perawatan',
+                    )
+                    ->latest('perawatan_alat.created_at')
+                    ->paginate(10);
+
+        $inventory = Inventory::all();
         
-        return view('perawatan_alat.index',compact('perawatan_alat'))
+        return view('perawatan_alat.index',compact('perawatan_alat', 'inventory'))
                     ->with('i', (request()->input('page', 1) - 1) * 10);
     }
   
@@ -27,8 +42,8 @@ class PerawatanAlatController extends Controller
      */
     public function create(): View
     {
-        $namaalat = NamaAlat::all();
-        return view('perawatan_alat.create', compact('namaalat'));
+        $inventory = Inventory::all();
+        return view('perawatan_alat.create', compact('inventory'));
     }
   
     /**
@@ -37,11 +52,11 @@ class PerawatanAlatController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
+            'id_perawatan' => 'required',
             'kode_alat' => 'required',
-            'nama_alat' => 'required',
-            'lokasi_alat' => 'required',
             'jenis_perawatan' => 'required',
             'status_perawatan' => 'required',
+            'tanggal_perawatan',
             'riwayat_perawatan' => 'required',
             'catatan_perawatan' => 'required',
         ]);
@@ -65,8 +80,8 @@ class PerawatanAlatController extends Controller
      */
     public function edit(PerawatanAlat $perawatan_alat): View
     {
-        $namaalat = NamaAlat::all();
-        return view('perawatan_alat.edit',compact('perawatan_alat', 'namaalat'));
+        $inventory = Inventory::all();
+        return view('perawatan_alat.edit',compact('perawatan_alat', 'inventory'));
     }
   
     /**
@@ -75,11 +90,11 @@ class PerawatanAlatController extends Controller
     public function update(Request $request, PerawatanAlat $perawatan_alat): RedirectResponse
     {
         $request->validate([
+            'id_perawatan' => 'required',
             'kode_alat' => 'required',
-            'nama_alat' => 'required',
-            'lokasi_alat' => 'required',
             'jenis_perawatan' => 'required',
             'status_perawatan' => 'required',
+            'tanggal_perawatan',
             'riwayat_perawatan' => 'required',
             'catatan_perawatan' => 'required',
         ]);

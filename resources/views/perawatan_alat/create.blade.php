@@ -31,25 +31,19 @@
              <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Kode Alat:</strong>
-                        <input type="text" name="kode_alat" class="form-control" placeholder="Kode Alat">
+                        <strong>ID Perawatan:</strong>
+                        <input type="text" name="id_perawatan" class="form-control" placeholder="ID Perawatan">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Nama Alat:</strong>
-                        <select class="form-select" name="nama_alat" aria-label="Default select example">
-                            <option selected>Pilih Nama Alat</option>
-                            @foreach ($namaalat as $item)
-                              <option value="{{ $item->kode_nama_alat }}">{{ $item->nama_alat}}</option>
+                        <strong>Kode Alat:</strong>
+                        <select class="form-select" name="kode_alat" aria-label="Default select example">
+                            <option selected>Pilih Alat</option>
+                            @foreach ($inventory as $item)
+                              <option value="{{ $item->kodeAlat }}">{{ $item->kodeAlat . ' | ' . $item->nama_alat->nama_alat}}</option>
                             @endforeach
                         </select>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Lokasi Alat:</strong>
-                        <input type="text" name="lokasi_alat" class="form-control" placeholder="Lokasi Alat">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -73,6 +67,12 @@
                             <option value="Sedang dalam perawatan">Sedang dalam perawatan</option>
                             <option value="Perawatan selesai">Perawatan selesai</option>
                         </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Tanggal Perawatan:</strong>
+                        <input type="datetime-local" class="form-control" name="tanggal_perawatan" placeholder="Tanggal Perawatan">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">

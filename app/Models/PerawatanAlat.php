@@ -12,10 +12,10 @@ class PerawatanAlat extends Model
 
     protected $table="perawatan_alat";
     protected $primaryKey = 'kode_alat';
-    protected $fillable = ['kode_alat', 'nama_alat', 'lokasi_alat','jenis_perawatan','status_perawatan','riwayat_perawatan', 'catatan_perawatan'];
+    protected $fillable = ['id_perawatan', 'kode_alat', 'jenis_perawatan','status_perawatan', 'tanggal_perawatan','riwayat_perawatan', 'catatan_perawatan'];
 
-    public function namaAlat(): BelongsTo
+    public function Inventory(): BelongsTo
     {
-        return $this->belongsTo(NamaAlat::class, 'nama_alat', 'kode_nama_alat');
+        return $this->belongsTo(Inventory::class, 'kode_alat', 'kodeAlat');
     }
 }
