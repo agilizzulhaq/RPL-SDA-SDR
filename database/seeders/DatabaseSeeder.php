@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@rosati.com',
             'password' => bcrypt(12345678),
         ]);
+        
 
         
     }

@@ -4,6 +4,6 @@
 
 @layer components{
     .aktif{
-        @apply bg-[#1d1b31]
+        @apply bg-[#5479f7]
     }
 }

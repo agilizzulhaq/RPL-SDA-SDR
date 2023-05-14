@@ -12,7 +12,7 @@
   left: 0;
   height: 100%;
   width: 260px;
-  background: #11101d;
+  background: white;
   z-index: 100;
 }
 .sidebar.close{
@@ -26,7 +26,7 @@
 }
 .sidebar .logo-details i{
   font-size: 30px;
-  color: #fff;
+  color: black;
   height: 50px;
   min-width: 78px;
   text-align: center;
@@ -58,7 +58,13 @@
   list-style: none;
 }
 .sidebar .nav-links li:hover{
-  background: #1d1b31;
+  background: #5479f7;
+}
+.sidebar .nav-links li:hover .link_name{
+  color: white;
+}
+.sidebar .nav-links li:hover i{
+  color: white;
 }
 .sidebar .nav-links li .iocn-link{
   display: flex;
@@ -73,7 +79,7 @@
   min-width: 78px;
   text-align: center;
   line-height: 50px;
-  color: #fff;
+  color: black;
   font-size: 20px;
   cursor: pointer;
 }
@@ -91,7 +97,7 @@
 .sidebar .nav-links li a .link_name{
   font-size: 17px;
   font-weight: 400;
-  color: #fff;
+  color: black;
 }
 .sidebar.close .nav-links li a .link_name{
   opacity: 0;
@@ -100,7 +106,7 @@
 .sidebar .nav-links li .sub-menu{
   padding: 6px 6px 14px 80px;
   margin-top: -10px;
-  background: #1d1b31;
+  background: #5479f7;
   display: none;
 }
 .sidebar .nav-links li.showMenu .sub-menu{
@@ -111,11 +117,10 @@
   font-size: 15px;
   padding: 5px 0;
   white-space: nowrap;
-  opacity: 0.6;
   transition: all 0.3s ease;
 }
 .sidebar .nav-links li .sub-menu a:hover{
-  opacity: 1;
+  color: #eaeaea;
 }
 .sidebar.close .nav-links li .sub-menu{
   position: absolute;
@@ -160,10 +165,8 @@
   width: 260px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: #11101d;
+  background: white;
   padding: 12px 0;
-  transition: all 0.5s ease;
 }
 .sidebar.close .profile-details{
   background: none;
@@ -181,7 +184,7 @@
   object-fit: cover;
   border-radius: 16px;
   margin: 0 14px 0 12px;
-  background: #1d1b31;
+  background: #eaeaea;
   transition: all 0.5s ease;
 }
 .sidebar.close .profile-details img{
@@ -189,7 +192,7 @@
 }
 .sidebar .profile-details .profile_name,
 .sidebar .profile-details .job{
-  color: #fff;
+  color: #1a1a1a;
   font-size: 18px;
   font-weight: 500;
   white-space: nowrap;

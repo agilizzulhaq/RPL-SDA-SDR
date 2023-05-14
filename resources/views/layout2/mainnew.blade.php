@@ -14,17 +14,21 @@
     
     <script async src="https://basicons.xyz/embed.js"> </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>Rosati | Sumber Daya Alat & Ruangan</title>
 </head>
 <body>
   
     @include('layout2.sidebar')
-
-    <div class="nav fixed w-full le z-[50000]">
+    
+    
+    <div class="nav fixed w-full z-[50000]">
         <div class="home-content">
-            <i class='bx bx-menu hover:bg-[#282733] rounded-full w-12 h-12 pt-[6px] text-center' ></i>
             
-            <div class="w-full h-16 bg-[#11101D] absolute top-0">
+            <i class='bx bx-menu hover:bg-[#eaeaea] rounded-full w-12 h-12 pt-[6px] text-center' style="color: black;" ></i>
+
+            <div class="w-4 h-[75px] bg-white -left-4 absolute z-[100000]"></div>
+            <div class="w-full h-16 bg-white absolute top-0 drop-shadow-[0_1px_5px_rgba(0,0,0,0.25)]">
                 {{-- <form class="flex items-center mt-[11px] ml-20">   
                     <label for="simple-search" class="sr-only">Search</label>
                     <div class="relative w-[400px]">
@@ -43,7 +47,7 @@
     </div>
 
     <section class="home-section">
-        <div class="px-4 py-4 bg-[#1d1b31] text-[#bcbcbc] min-h-screen">
+        <div class="px-4 py-4 bg-[#b4f2f1] text-[#bcbcbc] min-h-screen">
             @yield('isi')
         </div>
     </section>
