@@ -3,93 +3,117 @@
 namespace App\Http\Controllers;
 
 use App\Models\PerawatanRuangan;
-use App\Http\Requests\StorePerawatanRuanganRequest;
-use App\Http\Requests\UpdatePerawatanRuanganRequest;
-use illuminate\Http\Request;
+use App\Models\Room;
+use App\Models\Pengguna;
+use App\Models\Lokasi;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class PerawatanRuanganController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        $data = PerawatanRuangan::paginate(10);
-        return view('perawatan.data',compact('data'));
-    }
+        $perawatanruangan = PerawatanRuangan::with('Room', 'lokasi')
+                    ->join('rooms', 'rooms.kodeRuangan', '=', 'perawatan_ruangans.kodeRuangan')
+                    ->join('lokasi', 'room.lokasiRuangan', '=', 'lokasi.kode_lokasi')
+                    ->select(
+                        'rooms.kodeRuangan',
+                        'rooms.namaRuangan',
+                        'rooms.lokasiRuangan',
+                        'lokasi.nama_gedung',
+                        'lokasi.lantai',
+                        'perawatan_ruangans.id_perawatan',
+                        'perawatan_ruangans.statusPerawatan',
+                        'perawatan_ruangans.history',
+                        'perawatan_ruangans.kondisi',
+                    );
 
+        $room = Room::all();
+        $lokasi = Lokasi::all();
+
+        $perawatanruangan = PerawatanRuangan::paginate(10);
+        return view('perawatanruangan.index',compact('perawatanruangan', 'room', 'lokasi'));
+    }
+  
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        return view('perawatan.formadd');
+        $room = Room::all();
+        return view('perawatanruangan.create', compact('room'));
     }
-
+  
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePerawatanRuanganRequest $request)
+    public function store(Request $request): RedirectResponse
     {
-        $validate = $request->validated();
-
-        $PerawatanRuangan = new PerawatanRuangan;
-        $PerawatanRuangan->kodeRuangan = $request->txtkode;
-        $PerawatanRuangan->namaRuangan = $request->txtnama;
-        $PerawatanRuangan->lokasiRuangan = $request->txtlokasi;
-        $PerawatanRuangan->kondisi = $request->txtkondisi;
-        $PerawatanRuangan->history = $request->txthistory;
-        $PerawatanRuangan->statusperawatan = $request->txtstatusp;
-        $PerawatanRuangan->save();
-        //dd($request->all());
-        // PerawatanRuangan::create($request->all());
-        return redirect()->route('dataperawatan')->with('msg','Data dengan Nama '.$PerawatanRuangan->namaRuangan.' Berhasil Di Tambahkan');
+        $request->validate([
+            'id_perawatan' => 'required',
+            'kodeRuangan' => 'required',
+            'kondisi' => 'required',
+            'history',
+            'statusPerawatan' => 'required',
+        ]);
+        
+        PerawatanRuangan::create($request->all());
+         
+        return redirect()->route('perawatanruangan.index')
+                        ->with('success','Data perawatan berhasil ditambahkan');
     }
-
+  
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(PerawatanRuangan $perawatanruangan): View
     {
-        $data = PerawatanRuangan::find($id);
-        return view('perawatan.formedit', compact('data'));
+        return view('perawatanruangan.show',compact('perawatanruangan'));
     }
-
+  
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PerawatanRuangan $perawatanRuangan)
+    public function edit(PerawatanRuangan $perawatanruangan): View
     {
-        //
+        $room = Room::all();
+        $pengguna = Pengguna::all();
+        return view('perawatanruangan.edit',compact('perawatanruangan', 'room', 'pengguna'));
     }
-
+  
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePerawatanRuanganRequest $request, $id)
+    public function update(Request $request, PerawatanRuangan $perawatanruangan): RedirectResponse
     {
-        $PerawatanRuangan = PerawatanRuangan::find($id);
-        $PerawatanRuangan->kodeRuangan = $request->txtkode;
-        $PerawatanRuangan->namaRuangan = $request->txtnama;
-        $PerawatanRuangan->lokasiRuangan = $request->txtlokasi;
-        $PerawatanRuangan->kondisi = $request->txtkondisi;
-        $PerawatanRuangan->history = $request->txthistory;
-        $PerawatanRuangan->statusperawatan = $request->txtstatusp;
-        $PerawatanRuangan->save();
-
-        // $data->update($request->all());
-
-        return redirect()->route('dataperawatan')->with('msg','Data dengan Nama '.$PerawatanRuangan->namaRuangan.' Berhasil Di Update');
+        $request->validate([
+            'id_perawatan' => 'required',
+            'kodeRuangan' => 'required',
+            'kondisi' => 'required',
+            'history',
+            'statusPerawatan' => 'required',
+        ]);
+        
+        $perawatanruangan->update($request->all());
+        
+        return redirect()->route('perawatanruangan.index')
+                        ->with('success','Data perawatan berhasil diperbarui');
     }
-
+  
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(PerawatanRuangan $perawatanruangan): RedirectResponse
     {
-        $PerawatanRuangan = PerawatanRuangan::find($id);
-        $PerawatanRuangan->delete();
+        $confirmDelete = true; // tambahkan variabel untuk menandai konfirmasi
+        $perawatanruangan->delete();
 
-        return redirect()->route('dataperawatan')->with('msgdelete','Data dengan Nama '.$PerawatanRuangan->namaRuangan.' Berhasil Di Hapus');
+        return redirect()->route('perawatanruangan.index')
+                        ->with('success', 'Data telah berhasil dihapus')
+                        ->with('confirmDelete', $confirmDelete); // tambahkan variabel ke session
     }
 }
