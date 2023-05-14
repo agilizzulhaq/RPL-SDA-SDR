@@ -20,7 +20,6 @@ class PerawatanAlatController extends Controller
                     ->select(
                         'inventories.kodeAlat',
                         'inventories.namaAlat',
-                        'inventories.lokasiAlat',
                         'perawatan_alat.id_perawatan',
                         'perawatan_alat.jenis_perawatan',
                         'perawatan_alat.status_perawatan',
