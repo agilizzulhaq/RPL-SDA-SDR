@@ -29,18 +29,24 @@ class VendorController extends Controller
 
     # Controller Edit Data
     public function editvendor($id) {
-        $data = Vendor::find($id);
+        $data = Vendor::where('id_vendor', $id)->first();
         return view('vendor.editvendor', compact('data'));
     }
-    
+
     public function updatevendor(Request $request, $id) {
-        $data = Vendor::find($id);
-        $data -> update($request -> all());
+        $data = Vendor::where('id_vendor', $id);
+        $data->update([
+            'id_vendor' => $request->id_vendor,
+            'nama_vendor' => $request->nama_vendor,
+            'alamat_vendor' => $request->alamat_vendor,
+            'email_vendor' => $request->email_vendor,
+            'nomor_telepon' => $request->nomor_telepon,
+        ]);
         return redirect()->route('vendor') -> with('success','Data berhasil diperbaharui');
     }
 
     public function deletevendor($id) {
-        $data = Vendor::find($id);
+        $data = Vendor::where('id_vendor', $id);
         $data -> delete();
         return redirect()->route('vendor') -> with('success','Data berhasil dihapus');
     }

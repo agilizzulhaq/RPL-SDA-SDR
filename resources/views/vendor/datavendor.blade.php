@@ -49,8 +49,8 @@
                   <td class="text-white">{{$row -> email_vendor}}</td>
                   <td class="text-white">{{$row -> nomor_telepon}}</td>
                   <td id="hapus-edit" class="text-white">
-                      <a href="/editvendor/{{$row -> id}}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
-                      <a href="/deletevendor/{{$row -> id}}" class="ml-3" data-id="{{$row -> id}}" data-nama="{{$row -> nama_vendor}}"><i class='bx bx-trash text-2xl text-white bg-slate-600 hover:bg-slate-700 p-1 rounded' ></i></a>
+                      <a href="/editvendor/{{$row -> id_vendor}}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
+                      <a href="/deletevendor/{{$row -> id_vendor}}" class="ml-3" data-id="{{$row -> id_vendor}}" data-nama="{{$row -> nama_vendor}}"><i class='bx bx-trash text-2xl text-white bg-slate-600 hover:bg-slate-700 p-1 rounded' ></i></a>
                   </td>
                 </tr>
               @endforeach
