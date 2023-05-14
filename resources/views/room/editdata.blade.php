@@ -7,7 +7,7 @@
               <div class="col-8">
                 <div class="card">
                   <div class="card-body">
-                    <form action="/updateruangan/{{ $data -> id }}" method="POST" enctype="multipart/form-data">
+                    <form action="/updateruangan/{{ $data -> kodeRuangan }}" method="POST" enctype="multipart/form-data">
                       @csrf
                       <div class="mb-3">
                         <label for="kodeRuangan" class="form-label">Kode Ruangan</label>

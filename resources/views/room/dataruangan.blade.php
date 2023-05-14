@@ -39,7 +39,6 @@
               <th scope="col">Nama Ruangan</th>
               <th scope="col">Lokasi Ruangan</th>
               <th scope="col">Status Ruangan</th>
-              <th scope="col">Dibuat</th>
               <th scope="col" class="border-b-2 border-[#1d1b31] w-32"></th>
             </tr>
           </thead>
@@ -55,10 +54,9 @@
                   <td class="text-white">{{$row -> namaRuangan}}</td>
                   <td class="text-white">{{$row ->lokasi->nama_gedung . " Lantai " . $row->lokasi->lantai}}</td>
                   <td class="text-white">{{$row -> statusRuangan}}</td>
-                  <td class="text-white">{{$row -> created_at -> diffForHumans()}}</td>
                   <td id="hapus-edit" class="text-white">
-                      <a href="/editruangan/{{$row -> id}}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
-                      <a href="/hapusruangan/{{$row -> id}}" class="ml-3" data-id="{{$row -> id}}" data-nama="{{$row -> namaRuangan}}"><i class='bx bx-trash text-2xl text-white bg-slate-600 hover:bg-slate-700 p-1 rounded' ></i></a>
+                      <a href="/editruangan/{{$row -> kodeRuangan}}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
+                      <a href="/hapusruangan/{{$row -> kodeRuangan}}" class="ml-3" data-id="{{$row -> kodeRuangan}}" data-nama="{{$row -> namaRuangan}}"><i class='bx bx-trash text-2xl text-white bg-slate-600 hover:bg-slate-700 p-1 rounded' ></i></a>
                   </td>
                 </tr>
               @endforeach
