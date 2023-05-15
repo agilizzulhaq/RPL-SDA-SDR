@@ -2,10 +2,12 @@
 
 
 @section('isi')
+<a href="{{ url('/dashboard-admin') }}" style="text-decoration: none; color: inherit;">
     <div class="flex bg-[#5479f7] mt-16 w-[120px] h-[38px] rounded-lg text-[12px] text-[#fecbcf] font-bold justify-evenly items-center">
         <span class="material-icons" style="">home</span>
         Dashboard
     </div>
+</a>
     <div class="grid grid-cols-4 gap-4 rounded mt-4 text-md font-bold text-[#fecbcf] w-full">
     <a href="{{ url('/sda/alat') }}" class="text-white" style="text-decoration: none; color: inherit;">
         <div class="bg-[#5479f7] flex gap-3 pl-5 justify-start items-center rounded-lg h-[110px]">

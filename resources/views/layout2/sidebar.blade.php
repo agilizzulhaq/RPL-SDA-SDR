@@ -1,3 +1,4 @@
+<a href="{{ url('/dashboard-admin') }}">
 <div class="fixed w-[50px] top-3 left-3 z-[2000]">
     <img src="/img/hanyalogo.png" class="" alt="">
 </div>
@@ -6,7 +7,7 @@
       <!-- <i class='bx bxl-c-plus-plus bg-red-600'></i> -->
       <span class="w-32 ml-20 mt-3"><img src="/img/rosationly.png" alt=""></span>
     </div>
-    
+</a>
     <ul class="nav-links">
       <li class="{{ Request::is('dashboard-*') ? 'aktif' : '' }}" style="">
         <a href="/dashboard-admin">
@@ -70,7 +71,7 @@
             <img src="/img/Rasikh Khalil Pasha.jpg" alt="profileImg">
           </div>
           <div class="name-job">
-            <div class="profile_name">Rasikh K.P</div>
+            <div class="profile_name">Rasikh K. P.</div>
             <div class="job">Admin</div>
           </div>
           <div class="i w-12 h-12 rounded-full ml-[40px] hover:bg-[#eaeaea] ease-in-out transition duration-150 cursor-pointer flex justify-center items-center">
