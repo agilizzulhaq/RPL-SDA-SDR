@@ -34,9 +34,9 @@ Route::get('/rpl', function () {
     return view('rpl');
 });
 
-// Route::get('/', function () {
-//     return view('rpl');
-// });
+Route::get('/', function () {
+     return view('auth.login');
+ });
 
 Route::post('/ruangans', function () {
     return view('layout.ruangan');
@@ -132,8 +132,8 @@ Route::controller(AdminController::class)->group(function () {
 
 Route::resource('/nama_alat', NamaAlatController::class);
 Route::resource('/lokasi', LokasiController::class);
-Route::resource('/penjadwalanruangan', PenjadwalanRuanganController::class);
-Route::resource('/perawatanruangan', PerawatanRuanganController::class);
+Route::resource('/sdr/penjadwalanruangan', PenjadwalanRuanganController::class);
+Route::resource('/sdr/perawatanruangan', PerawatanRuanganController::class);
 //Route::post('/lokasi', [LokasiController::class, 'store']);
 
 Route::get('/data-master/users', [PenggunaController::class, 'users'])->name('users');
@@ -150,7 +150,7 @@ Route::get('/editvendor/{id}', [VendorController::class, 'editvendor'])->name('e
 Route::post('/updatevendor/{id}', [VendorController::class, 'updatevendor'])->name('updatevendor');
 Route::get('/deletevendor/{id}', [VendorController::class, 'deletevendor'])->name('deletevendor');
 
-// Route::get('/perawatanruangan', [PerawatanRuanganController::class, 'index'])->name('dataperawatan');
+// Route::get('/sdr/perawatanruangan', [PerawatanRuanganController::class, 'index'])->name('dataperawatan');
 
 // Route::get('/tambahdataperawatanruangan', [PerawatanRuanganController::class, 'create'])->name('tambahdataperawatanruangan');
 // Route::post('/storedataperawatanruangan', [PerawatanRuanganController::class, 'store'])->name('storedataperawatanruangan');
@@ -162,7 +162,7 @@ Route::get('/deletevendor/{id}', [VendorController::class, 'deletevendor'])->nam
 
 
 
-// Route::get('/penjadwalanruangan', [PenjadwalanRuanganController::class, 'index'])->name('datapenjadwalan');
+// Route::get('/sdr/penjadwalanruangan', [PenjadwalanRuanganController::class, 'index'])->name('datapenjadwalan');
 
 // Route::get('/tambahdatapenjadwalanruangan', [PenjadwalanRuanganController::class, 'create'])->name('tambahdatapenjadwalanruangan');
 // Route::post('/storedatapenjadwalanruangan', [PenjadwalanRuanganController::class, 'store'])->name('storedatapenjadwalanruangan');
