@@ -62,7 +62,7 @@
                                 @csrf
                                 @method('DELETE')
                   
-                                <button type="submit" class="ml-3"><i class='bx bx-trash text-2xl text-black hover:bg-[#eaeaea] p-1 rounded' ></i></button>
+                                <button type="submit"><i class='bx bx-trash text-2xl text-black hover:bg-[#eaeaea] p-1 rounded' ></i></button>
                             </form>
                         </div>
                     </td>
