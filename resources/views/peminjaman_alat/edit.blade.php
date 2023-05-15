@@ -87,9 +87,6 @@
                         <input type="text" value="{{ $peminjaman_alat->alasan_peminjaman }}" class="rounded text-sm py-1 px-2 text-black w-[700px]  border-1 border-black" name="alasan_peminjaman" placeholder="Alasan Peminjaman">
                     </div>
                 </div>
-                <div class="">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
                 <div class="w-full flex justify-end">
                     <a class="px-4 py-2 bg-[#af0e0e] hover:bg-[#c11f1f] no-underline rounded text-white" href="{{ route('peminjaman_alat.index') }}">Cancel</a>
                     <button type="submit" class="ml-5 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded text-white">Submit</button>
