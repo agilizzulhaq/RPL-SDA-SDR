@@ -17,7 +17,7 @@
     <script async src="https://basicons.xyz/embed.js"> </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="icon" type="image/png" href="/img/hanyalogo.png">
     <title>Sistem Sumber Daya Alat dan Ruangan Rumah Sakit ROSATI</title>
 
 </head>

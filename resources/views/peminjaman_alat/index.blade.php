@@ -51,17 +51,20 @@
                     <td  class="px-3 py-2">{{ $peminjamanalat->status_peminjaman }}</td>
                     <td  class="px-3 py-2">{{ $peminjamanalat->alasan_peminjaman }}</td>
                     <td  class="px-3 py-2">
-                        <form action="{{ route('peminjaman_alat.destroy',$peminjamanalat->id_peminjaman) }}" method="POST">
-           
-                            {{-- <a class="btn btn-info" href="{{ route('peminjaman_alat.show',$peminjamanalat->id_peminjaman) }}">Show</a> --}}
-            
-                            <a href="{{ route('peminjaman_alat.edit',$peminjamanalat->id_peminjaman) }}"><i class='bx bx-edit text-2xl text-white hover:bg-slate-700 bg-slate-600 p-1 rounded'></i></a>
-           
-                            @csrf
-                            @method('DELETE')
-              
-                            <button type="submit" class="ml-3"><i class='bx bx-trash text-2xl text-white bg-slate-600 hover:bg-slate-700 p-1 rounded' ></i></button>
-                        </form>
+                        <div class="rounded-md group py-1 hover:bg-[#f5f5f5] cursor-pointer w-10">
+                            <span class="material-icons">more_vert</span>
+                            <form class="shadow-md p-1 hidden z-[9000] group-hover:block mt-1 rounded-md absolute bg-white" action="{{ route('peminjaman_alat.destroy',$peminjamanalat->id_peminjaman) }}" method="POST">
+               
+                                {{-- <a class="btn btn-info" href="{{ route('peminjaman_alat.show',$peminjamanalat->id_peminjaman) }}">Show</a> --}}
+                
+                                <a href="{{ route('peminjaman_alat.edit',$peminjamanalat->id_peminjaman) }}"><i class='bx bx-edit text-2xl text-black hover:bg-[#eaeaea] p-1 rounded'></i></a>
+               
+                                @csrf
+                                @method('DELETE')
+                  
+                                <button type="submit" class="ml-3"><i class='bx bx-trash text-2xl text-black hover:bg-[#eaeaea] p-1 rounded' ></i></button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
