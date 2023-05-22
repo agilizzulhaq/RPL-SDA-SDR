@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RoomController;
-use App\Http\Controllers\WareController;
-use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProductController;
@@ -16,6 +14,7 @@ use App\Http\Controllers\PerawatanAlatController;
 use App\Http\Controllers\PeminjamanAlatController;
 use App\Http\Controllers\PerawatanRuanganController;
 use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenjadwalanRuanganController;
 
 /*
@@ -34,9 +33,9 @@ Route::get('/rpl', function () {
     return view('rpl');
 });
 
-Route::get('/', function () {
-     return view('auth.login');
- });
+// Route::get('/', function () {
+//      return view('auth.login')->name('login');
+//  });
 
 Route::post('/ruangans', function () {
     return view('layout.ruangan');
@@ -108,27 +107,19 @@ Route::get('/editruangan/{id}', [RoomController::class, 'editruangan'])->name('e
 Route::post('/updateruangan/{id}', [RoomController::class, 'updateruangan'])->name('updateruangan');
 Route::get('/hapusruangan/{id}', [RoomController::class, 'hapusruangan'])->name('hapusruangan');
 
-Route::resource('wares', WareController::class);
 
 Route::controller(LoginRegisterController::class)->group(function () {
-    Route::get('/login-admin', 'login')->name('login');
+    Route::get('/', 'index')->name('login');
     Route::post('/store', 'store')->name('store-admin');
-    Route::get('/register-admin', 'register')->name('register');
+    // Route::get('/register-admin', 'register')->name('register');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
-    Route::get('/dashboard-admin', function () {
-        return view('dashboard-admin');
-    })->name('dashboard');  
+    // Route::get('/dashboard-admin', function () {
+    //     return view('dashboard-admin');
+    // })->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
 
-Route::controller(AdminController::class)->group(function () {
-    Route::get('/register-user', 'register')->name('register');
-    Route::post('/store', 'store')->name('store');
-    Route::get('/login-user', 'login')->name('login');
-    Route::post('/authenticate', 'authenticate')->name('authenticate');
-    Route::get('/dashboard-user', 'dashboard')->name('dashboard');
-    Route::post('/logout', 'logout')->name('logout');
-});
+// Route::get('/', [LoginController::class, 'index'])->name('login');
 
 Route::resource('/nama_alat', NamaAlatController::class);
 Route::resource('/lokasi', LokasiController::class);

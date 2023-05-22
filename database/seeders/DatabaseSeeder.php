@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'admin@rosati.com',
+            'level' => 'satu',
             'password' => bcrypt(12345678),
         ]);
         

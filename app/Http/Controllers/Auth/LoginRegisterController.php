@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginRegisterController extends Controller
 {
+
     /**
      * Instantiate a new LoginRegisterController instance.
      */
@@ -62,8 +63,18 @@ class LoginRegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function login()
+    public function index()
     {
+        if ($user = Auth::user()) {
+            if ($user->level == '1') {
+                return redirect()->intended('dashboard-admin');
+            } elseif ($user->level == '2') {
+                return redirect()->intended('dashboard-warehouse');
+            } elseif ($user->level == '3') {
+                return redirect()->intended('dashboard-user');
+            }
+        }
+
         return view('auth.login');
     }
 
@@ -75,15 +86,24 @@ class LoginRegisterController extends Controller
      */
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('dashboard')
-                ->withSuccess('You have successfully logged in!');
+        $kredensial = $request->only('email', 'password');
+
+        if (Auth::attempt($kredensial)) {
+            if ($user = Auth::user()) {
+                if ($user->level == '1') {
+                    return redirect()->intended('dashboard-admin');
+                } elseif ($user->level == '2') {
+                    return redirect()->intended('dashboard-warehouse');
+                } elseif ($user->level == '3') {
+                    return redirect()->intended('dashboard-user');
+                }
+            }
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([
