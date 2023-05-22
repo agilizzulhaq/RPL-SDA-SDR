@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@rosati.com',
-            'level' => 'satu',
-            'password' => bcrypt(12345678),
-        ]);
+        // User::create([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@rosati.com',
+        //     'level' => 'satu',
+        //     'password' => bcrypt(12345678),
+        // ]);
         
 
         

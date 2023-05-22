@@ -15,14 +15,14 @@ class UserData extends Seeder
     {
         $user = [
             [
-                'name' => 'Admin',
+                'name' => 'admin',
                 'email' => 'admin@rosati.com',
                 'password' => bcrypt('12345678'),
                 'level' => '1',
 
             ],
             [
-                'name' => 'Ware',
+                'name' => 'ware',
                 'email' => 'ware@rosati.com',
                 'password' => bcrypt('12345678'),
                 'level' => '2',
