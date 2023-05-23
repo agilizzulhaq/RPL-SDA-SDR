@@ -3,18 +3,19 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\NamaAlatController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PerawatanAlatController;
 use App\Http\Controllers\PeminjamanAlatController;
 use App\Http\Controllers\PerawatanRuanganController;
 use App\Http\Controllers\Auth\LoginRegisterController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenjadwalanRuanganController;
 
 /*
@@ -54,9 +55,10 @@ Route::get('/pemeliharaans/add', function () {
 // Route::get('/sdr', function () {
 //     return view('sdr');
 // });
-Route::get('/dashboard-admin', function () {
-    return view('dashboard-admin');
-});
+// Route::get('/dashboard-admin', function () {
+//     return view('dashboard-admin');
+// });
+Route::get('/dashboard-admin',[DashboardController::class, 'index']);
 Route::get('/dashboard-warehouse', function () {
     return view('dashboard-warehouse');
 });

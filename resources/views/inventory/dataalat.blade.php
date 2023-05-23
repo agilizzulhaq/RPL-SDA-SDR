@@ -46,7 +46,7 @@
                 <span class="material-icons">more_vert</span>
                 <div class="shadow-md p-1 hidden z-[9000] group-hover:block mt-1 rounded-md absolute bg-white">
                   <a href="/editalat/{{$row -> kodeAlat}}"><i class='bx bx-edit text-2xl text-black hover:bg-[#eaeaea] p-1 rounded'></i></a>
-                  <a href="/deletealat/{{$row -> kodeAlat}}" data-id="{{$row -> kodeAlat}}" data-nama="{{$row -> nama_alat -> nama_alat}}"><i class='bx bx-trash text-2xl text-black hover:bg-[#eaeaea] p-1 rounded' ></i></a>
+                  <a href="/hapusalat/{{$row -> kodeAlat}}" data-id="{{$row -> kodeAlat}}" data-nama="{{$row -> nama_alat -> nama_alat}}"><i class='bx bx-trash text-2xl text-black hover:bg-[#eaeaea] p-1 rounded' ></i></a>
                 </div>
               </div>
             </td>
@@ -65,7 +65,7 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script>
+  {{-- <script>
     $('.delete').click(function(){
       var inventoryid = $(this).attr('data-id');
       var inventorynama = $(this).attr('data-nama');
@@ -92,5 +92,5 @@
     @if (Session::has('success'))
       toastr.success("{{ Session::get('success') }}");
     @endif
-  </script>
+  </script> --}}
 @endsection
