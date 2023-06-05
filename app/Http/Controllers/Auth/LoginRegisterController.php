@@ -54,6 +54,7 @@ class LoginRegisterController extends Controller
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
+        $request->session()->put('nama', $request->name);
         return redirect()->route('dashboard')
             ->withSuccess('You have successfully registered & logged in!');
     }
@@ -94,16 +95,17 @@ class LoginRegisterController extends Controller
         $kredensial = $request->only('email', 'password');
 
         if (Auth::attempt($kredensial)) {
-            if ($user = Auth::user()) {
-                if ($user->level == '1') {
-                    return redirect()->intended('dashboard-admin');
-                } elseif ($user->level == '2') {
-                    return redirect()->intended('dashboard-warehouse');
-                } elseif ($user->level == '3') {
-                    return redirect()->intended('dashboard-user');
-                }
-            }
-            return redirect()->intended('/');
+            // if ($user = Auth::user()) {
+            //     // if ($user->level == '1') {
+            //     //     return redirect()->intended('dashboard-admin');
+            //     // } elseif ($user->level == '2') {
+            //     //     return redirect()->intended('dashboard-warehouse');
+            //     // } elseif ($user->level == '3') {
+            //     //     return redirect()->intended('dashboard-user');
+            //     // }
+            // }
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard');
         }
 
         return back()->withErrors([

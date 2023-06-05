@@ -3,18 +3,19 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\NamaAlatController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PerawatanAlatController;
 use App\Http\Controllers\PeminjamanAlatController;
 use App\Http\Controllers\PerawatanRuanganController;
 use App\Http\Controllers\Auth\LoginRegisterController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenjadwalanRuanganController;
 
 /*
@@ -54,15 +55,8 @@ Route::get('/pemeliharaans/add', function () {
 // Route::get('/sdr', function () {
 //     return view('sdr');
 // });
-Route::get('/dashboard-admin', function () {
-    return view('dashboard-admin');
-});
-Route::get('/dashboard-warehouse', function () {
-    return view('dashboard-warehouse');
-});
-Route::get('/dashboard-user', function () {
-    return view('dashboard-user');
-});
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
 // Route::get('/mdusers', function () {
 //     return view('mdusers');
 // });
@@ -121,20 +115,20 @@ Route::controller(LoginRegisterController::class)->group(function () {
 
 // Route::get('/', [LoginController::class, 'index'])->name('login');
 
-Route::resource('/nama_alat', NamaAlatController::class);
-Route::resource('/lokasi', LokasiController::class);
+Route::resource('/nama_alat', NamaAlatController::class)->middleware('admin');
+Route::resource('/lokasi', LokasiController::class)->middleware('admin');
 Route::resource('/sdr/penjadwalanruangan', PenjadwalanRuanganController::class);
 Route::resource('/sdr/perawatanruangan', PerawatanRuanganController::class);
 //Route::post('/lokasi', [LokasiController::class, 'store']);
 
-Route::get('/data-master/users', [PenggunaController::class, 'users'])->name('users');
+Route::get('/data-master/users', [PenggunaController::class, 'users'])->name('users')->middleware('admin');
 Route::get('/addusers', [PenggunaController::class, 'addusers'])->name('addusers');
 Route::post('/insertusers', [PenggunaController::class, 'insertusers'])->name('insertusers');
 Route::get('/editusers/{id}', [PenggunaController::class, 'editusers'])->name('editusers');
 Route::post('/updateusers/{id}', [PenggunaController::class, 'updateusers'])->name('updateusers');
 Route::get('/deleteusers/{id}', [PenggunaController::class, 'deleteusers'])->name('deleteusers');
 
-Route::get('/data-master/vendor', [VendorController::class, 'vendor'])->name('vendor');
+Route::get('/data-master/vendor', [VendorController::class, 'vendor'])->name('vendor')->middleware('admin');
 Route::get('/addvendor', [VendorController::class, 'addvendor'])->name('addvendor');
 Route::post('/insertvendor', [VendorController::class, 'insertvendor'])->name('insertvendor');
 Route::get('/editvendor/{id}', [VendorController::class, 'editvendor'])->name('editvendor');

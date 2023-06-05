@@ -16,7 +16,7 @@
             </div>
             <div>
                 <div class="self-center text-start">Jumlah Alat</div>
-                <div class="self-center text-start">0</div>
+                <div class="self-center text-start">{{ $totalAlat }}</div>
             </div>
         </div>
     </a>
@@ -28,7 +28,7 @@
             </div>
             <div>
                 <div class="self-center text-start">Alat Dipinjam</div>
-                <div class="self-center text-start">0</div>
+                <div class="self-center text-start">{{ $totalPeminjamanAlat }}</div>
             </div>
         </div>
     </a>
@@ -40,7 +40,7 @@
             </div>
             <div>
                 <div class="self-center text-start">Jumlah Ruangan</div>
-                <div class="self-center text-start">0</div>
+                <div class="self-center text-start">{{ $totalRuangan }}</div>
             </div>
         </div>
     <a href="{{ url('/sdr/penjadwalanruangan') }}" class="text-white" style="text-decoration: none; color: inherit;">
@@ -50,7 +50,7 @@
             </div>
             <div>
                 <div class="self-center text-start">Ruangan Dipakai</div>
-                <div class="self-center text-start">0</div>
+                <div class="self-center text-start">{{ $totalPenjadwalanRuangan }}</div>
             </div>
         </div>
     </a>

@@ -10,7 +10,7 @@
 </a>
     <ul class="nav-links">
       <li class="{{ Request::is('dashboard-*') ? 'aktif' : '' }}" style="">
-        <a href="/dashboard-admin">
+        <a href="/dashboard">
           <i class='bx bx-home-alt bx-sm' style="{{ Request::is('dashboard-*') ? 'color: white' : '' }}"></i>
           <span class="link_name " style="{{ Request::is('dashboard-*') ? 'color: white' : '' }}">Dashboard</span>
         </a>
@@ -18,6 +18,7 @@
           <li><a class="link_name" href="/dashboard-admin">Dashboard</a></li>
         </ul>
       </li>
+      @can('admin')
       <li class="{{ Request::is('data-master*', '*lokasi*', 'nama_alat') ? 'showMenu aktif' : '' }}">
         <div class="iocn-link">
           <a>
@@ -34,6 +35,7 @@
           <li><a href="/data-master/vendor">Vendor</a></li>
         </ul>
       </li>
+      @endcan
       <li class="{{ Request::is('sda*') ? 'showMenu aktif' : '' }}">
         <div class="iocn-link">
           <a>
@@ -66,15 +68,17 @@
         </ul>
       </li>
       <li>
-        <div class="profile-details">
-          <div class="profile-content">
-            <img src="/img/Rasikh Khalil Pasha.jpg" alt="profileImg">
+        <div class="profile-details flex justify-between">
+          <div class="flex">
+            <div class="profile-content">
+              <img src="/img/Rasikh Khalil Pasha.jpg" alt="profileImg">
+            </div>
+            <div class="name-job">
+              <div class="profile_name">{{ Auth::user()->name }}</div>
+              <div class="job">{{ Auth::user()->name }}</div>
+            </div>
           </div>
-          <div class="name-job">
-            <div class="profile_name">Rasikh K. P.</div>
-            <div class="job">Admin</div>
-          </div>
-          <div class="i w-12 h-12 rounded-full ml-[40px] hover:bg-[#eaeaea] ease-in-out transition duration-150 cursor-pointer flex justify-center items-center">
+          <div class="i w-12 h-12 rounded-full mr-2 hover:bg-[#eaeaea] ease-in-out transition duration-150 cursor-pointer flex justify-center items-center">
             <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();"><span class="material-icons text-[#1a1a1a]">logout</span></a>

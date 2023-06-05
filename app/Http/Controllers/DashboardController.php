@@ -27,6 +27,6 @@ class DashboardController extends Controller
         $totalPenjadwalanRuangan = PenjadwalanRuangan::count();
         $todayPenjadwalanRuangan = PenjadwalanRuangan::whereDate('created_at', $todayDate)->count();
 
-        return view('dashboard-admin', compact('totalAlat', 'totalRuangan', 'totalPeminjamanAlat', 'todayPeminjamanAlat', 'totalPenjadwalanRuangan', 'todayPenjadwalanRuangan'));
+        return view('dashboard', compact('totalAlat', 'totalRuangan', 'totalPeminjamanAlat', 'todayPeminjamanAlat', 'totalPenjadwalanRuangan', 'todayPenjadwalanRuangan'));
     }
 }

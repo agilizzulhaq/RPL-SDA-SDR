@@ -19,6 +19,7 @@ class PeminjamanAlatController extends Controller
      */
     public function index(): View
     {
+        
         $peminjaman_alat = PeminjamanAlat::with('Inventory', 'NamaAlat', 'Pengguna')
                     ->join('inventories', 'peminjaman_alat.kode_alat', '=', 'inventories.kodeAlat')
                     ->join('nama_alat', 'inventories.kodeAlat', '=', 'nama_alat.kode_nama_alat')
@@ -40,7 +41,7 @@ class PeminjamanAlatController extends Controller
 
         $inventory = Inventory::all();
         $pengguna = Pengguna::all();
-        
+       
         return view('peminjaman_alat.index',compact('peminjaman_alat', 'inventory', 'pengguna'))
                     ->with('i', (request()->input('page', 1) - 1) * 10);
     }
