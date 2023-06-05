@@ -38,6 +38,7 @@
                     </div>
                     
                 </form>
+                <a href="{{ route('auth.google') }}">
                 <button class="flex font-bold hover:bg-slate-200 justify-center items-center gap-3 py-3 w-full h-[40px] mt-3 border-black border-[1px] rounded">
                     <div class="w-7">
                         <img src="/img/google.png" alt="">

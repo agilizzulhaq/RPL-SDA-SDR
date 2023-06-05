@@ -1,22 +1,22 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\RoomController;
+use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokasiController;
-use App\Http\Controllers\VendorController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\NamaAlatController;
-use App\Http\Controllers\PenggunaController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PembelianController;
-use App\Http\Controllers\PerawatanAlatController;
 use App\Http\Controllers\PeminjamanAlatController;
-use App\Http\Controllers\PerawatanRuanganController;
-use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\PenjadwalanRuanganController;
+use App\Http\Controllers\PerawatanAlatController;
+use App\Http\Controllers\PerawatanRuanganController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\VendorController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,36 +49,8 @@ Route::get('/penjadwalans/add', function () {
 Route::get('/pemeliharaans/add', function () {
     return view('pemeliharaan.formadd');
 });
-// Route::get('/sda', function () {
-//     return view('sda');
-// });
-// Route::get('/sdr', function () {
-//     return view('sdr');
-// });
+
 Route::get('/dashboard', [DashboardController::class, 'index']);
-
-// Route::get('/mdusers', function () {
-//     return view('mdusers');
-// });
-// Route::get('/mdalat', function () {
-//     return view('mdalat');
-// });
-// Route::get('/mdlokasialat', function () {
-//     return view('mdlokasialat');
-// });
-// Route::get('/mdruangan', function () {
-//     return view('mdruangan');
-// });
-// Route::get('/mdlokasiruangan', function () {
-//     return view('mdlokasiruangan');
-// });
-// Route::get('/mdvendor', function () {
-//     return view('mdvendor');
-// });
-
-
-// Route::resource('/sdr/pemeliharaanr', PemeliharaansController::class);
-// Route::resource('/sdr/penjadwalanr', PenjadwalansController::class);
 
 Route::resource('/sda/peminjaman_alat', PeminjamanAlatController::class);
 Route::resource('/sda/perawatan_alat', PerawatanAlatController::class);
@@ -135,24 +107,8 @@ Route::get('/editvendor/{id}', [VendorController::class, 'editvendor'])->name('e
 Route::post('/updatevendor/{id}', [VendorController::class, 'updatevendor'])->name('updatevendor');
 Route::get('/deletevendor/{id}', [VendorController::class, 'deletevendor'])->name('deletevendor');
 
-// Route::get('/sdr/perawatanruangan', [PerawatanRuanganController::class, 'index'])->name('dataperawatan');
-
-// Route::get('/tambahdataperawatanruangan', [PerawatanRuanganController::class, 'create'])->name('tambahdataperawatanruangan');
-// Route::post('/storedataperawatanruangan', [PerawatanRuanganController::class, 'store'])->name('storedataperawatanruangan');
-
-// Route::get('/showdataperawatanruangan/{id}', [PerawatanRuanganController::class, 'show'])->name('showdataperawatanruangan');
-// Route::post('/updatedataperawatanruangan/{id}', [PerawatanRuanganController::class, 'update'])->name('updatedataperawatanruangan');
-
-// Route::get('/deletedataperawatanruangan/{id}', [PerawatanRuanganController::class, 'destroy'])->name('deletedataperawatanruangan');
-
-
-
-// Route::get('/sdr/penjadwalanruangan', [PenjadwalanRuanganController::class, 'index'])->name('datapenjadwalan');
-
-// Route::get('/tambahdatapenjadwalanruangan', [PenjadwalanRuanganController::class, 'create'])->name('tambahdatapenjadwalanruangan');
-// Route::post('/storedatapenjadwalanruangan', [PenjadwalanRuanganController::class, 'store'])->name('storedatapenjadwalanruangan');
-
-// Route::get('/showdatapenjadwalanruangan/{id}', [PenjadwalanRuanganController::class, 'show'])->name('showdatapenjadwalanruangan');
-// Route::post('/updatedatapenjadwalanruangan/{id}', [PenjadwalanRuanganController::class, 'update'])->name('updatedatapenjadwalanruangan');
-
-// Route::get('/deletedatapenjadwalanruangan/{id}', [PenjadwalanRuanganController::class, 'destroy'])->name('deletedatapenjadwalanruangan');
+// Login Google
+Route::controller(GoogleController::class)->group(function(){
+    Route::get('/auth/google', 'redirectToGoogle')->name('auth.google');
+    Route::get('/auth/google/callback', 'handleGoogleCallback')->name('handleGoogleCallback');
+});
