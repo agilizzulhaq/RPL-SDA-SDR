@@ -28,7 +28,8 @@
             </div>
             <div>
                 <div class="self-center text-start">Alat Dipinjam</div>
-                <div class="self-center text-start">{{ $totalPeminjamanAlat }}</div>
+                {{-- <div class="self-center text-start">{{ $totalPeminjamanAlat }}</div> --}}
+                <div class="self-center text-start">{{ $todayPeminjamanAlat }}</div>
             </div>
         </div>
     </a>
@@ -50,7 +51,8 @@
             </div>
             <div>
                 <div class="self-center text-start">Ruangan Dipakai</div>
-                <div class="self-center text-start">{{ $totalPenjadwalanRuangan }}</div>
+                {{-- <div class="self-center text-start">{{ $totalPenjadwalanRuangan }}</div> --}}
+                <div class="self-center text-start">{{ $todayPenjadwalanRuangan }}</div>
             </div>
         </div>
     </a>

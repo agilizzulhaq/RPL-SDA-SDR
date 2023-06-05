@@ -17,15 +17,13 @@ class DashboardController extends Controller
         $totalAlat = Inventory::count();
         $totalRuangan = Room::count();
 
-        $todayDate = Carbon::now()->format('d-m-Y');
-        $thisMonth = Carbon::now()->format('m');
-        $thisYear = Carbon::now()->format('Y');
+        // $todayDate = Carbon::now()->format('d-m-Y');
 
         $totalPeminjamanAlat = PeminjamanAlat::count();
-        $todayPeminjamanAlat = PeminjamanAlat::whereDate('created_at', $todayDate)->count();
+        $todayPeminjamanAlat = PeminjamanAlat::where('status_peminjaman', 'dipinjam')->count();
 
         $totalPenjadwalanRuangan = PenjadwalanRuangan::count();
-        $todayPenjadwalanRuangan = PenjadwalanRuangan::whereDate('created_at', $todayDate)->count();
+        $todayPenjadwalanRuangan = PenjadwalanRuangan::where('statusRuangan', 'Tidak Tersedia')->count();
 
         return view('dashboard', compact('totalAlat', 'totalRuangan', 'totalPeminjamanAlat', 'todayPeminjamanAlat', 'totalPenjadwalanRuangan', 'todayPenjadwalanRuangan'));
     }
