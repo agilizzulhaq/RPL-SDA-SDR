@@ -1,17 +1,24 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginRegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\InventoryController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\VendorController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\NamaAlatController;
-use App\Http\Controllers\PembelianController;
-use App\Http\Controllers\PeminjamanAlatController;
 use App\Http\Controllers\PenggunaController;
-use App\Http\Controllers\PenjadwalanRuanganController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\ProdiReginaController;
+use App\Http\Controllers\AlamatReginaController;
+use App\Http\Controllers\MatkulReginaController;
+use App\Http\Controllers\MahasiswaAgilController;
 use App\Http\Controllers\PerawatanAlatController;
+use App\Http\Controllers\PeminjamanAlatController;
+use App\Http\Controllers\MahasiswaReginaController;
 use App\Http\Controllers\PerawatanRuanganController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoomController;
@@ -20,10 +27,15 @@ use App\Http\Controllers\CrudRasikhController;
 use App\Http\Controllers\ProdiReginaController;
 use App\Http\Controllers\MatkulReginaController;
 use App\Http\Controllers\TempatLahirReginaController;
+<<<<<<< HEAD
 use App\Http\Controllers\AlamatReginaController;
 use App\Http\Controllers\MahasiswaReginaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentsController;
+=======
+use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Controllers\PenjadwalanRuanganController;
+>>>>>>> 9a2c6ea7942a30095460ee5f9f74c49543180b27
 
 /*
 |--------------------------------------------------------------------------
@@ -129,8 +141,20 @@ Route::resource('/tempatlahirregina', TempatLahirReginaController::class);
 Route::resource('/alamatregina', AlamatReginaController::class);
 Route::resource('/mahasiswaregina', MahasiswaReginaController::class);
 
+<<<<<<< HEAD
 Route::get('/mahasiswa_alyzar/add', function () {
     return view('students.formadd');
 });
 
 Route::resource('mahasiswa_alyzar', StudentsController::class);
+=======
+// Route Agil
+Route::prefix('mahasiswa-agil')->group(function () {
+    Route::get('/', [MahasiswaAgilController::class, 'index']);
+    Route::get('/create', [MahasiswaAgilController::class, 'create']);
+    Route::post('/store', [MahasiswaAgilController::class, 'store']);
+    Route::get('/edit/{IDMahasiswa}', [MahasiswaAgilController::class, 'edit']);
+    Route::put('/{IDMahasiswa}', [MahasiswaAgilController::class, 'update']);
+    Route::delete('delete/{IDMahasiswa}', [MahasiswaAgilController::class, 'destroy']);
+});
+>>>>>>> 9a2c6ea7942a30095460ee5f9f74c49543180b27

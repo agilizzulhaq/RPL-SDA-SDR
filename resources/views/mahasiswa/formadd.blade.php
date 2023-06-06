@@ -1,6 +1,6 @@
-@extends('layout.navbar')
+@extends('../layout2/mainnew')
 
-@section('content')
+@section('isi')
 
     <body>
         <div class="pt-3 pb-2 mb-3 border-bottom">
