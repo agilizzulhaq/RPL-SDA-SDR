@@ -1,22 +1,34 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginRegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\InventoryController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\VendorController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\NamaAlatController;
-use App\Http\Controllers\PembelianController;
-use App\Http\Controllers\PeminjamanAlatController;
 use App\Http\Controllers\PenggunaController;
-use App\Http\Controllers\PenjadwalanRuanganController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\ProdiReginaController;
+use App\Http\Controllers\AlamatReginaController;
+use App\Http\Controllers\MatkulReginaController;
+use App\Http\Controllers\MahasiswaAgilController;
 use App\Http\Controllers\PerawatanAlatController;
+use App\Http\Controllers\PeminjamanAlatController;
+use App\Http\Controllers\MahasiswaReginaController;
 use App\Http\Controllers\PerawatanRuanganController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\VendorController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CrudRasikhController;
+use App\Http\Controllers\ProdiReginaController;
+use App\Http\Controllers\MatkulReginaController;
+use App\Http\Controllers\TempatLahirReginaController;
+use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Controllers\PenjadwalanRuanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,4 +123,23 @@ Route::get('/deletevendor/{id}', [VendorController::class, 'deletevendor'])->nam
 Route::controller(GoogleController::class)->group(function(){
     Route::get('/auth/google', 'redirectToGoogle')->name('auth.google');
     Route::get('/auth/google/callback', 'handleGoogleCallback')->name('handleGoogleCallback');
+});
+
+// Route Rasikh
+Route::resource('crudrasikhs', CrudRasikhController::class);
+// Route Regina
+Route::resource('/prodiregina', ProdiReginaController::class);
+Route::resource('/matkulregina', MatkulReginaController::class);
+Route::resource('/tempatlahirregina', TempatLahirReginaController::class);
+Route::resource('/alamatregina', AlamatReginaController::class);
+Route::resource('/mahasiswaregina', MahasiswaReginaController::class);
+
+// Route Agil
+Route::prefix('mahasiswa-agil')->group(function () {
+    Route::get('/', [MahasiswaAgilController::class, 'index']);
+    Route::get('/create', [MahasiswaAgilController::class, 'create']);
+    Route::post('/store', [MahasiswaAgilController::class, 'store']);
+    Route::get('/edit/{IDMahasiswa}', [MahasiswaAgilController::class, 'edit']);
+    Route::put('/{IDMahasiswa}', [MahasiswaAgilController::class, 'update']);
+    Route::delete('delete/{IDMahasiswa}', [MahasiswaAgilController::class, 'destroy']);
 });
