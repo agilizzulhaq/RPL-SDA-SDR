@@ -51,9 +51,9 @@ class StudentsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Students $mahasiswa_alyzar, $idstudents)
+    public function show(Students $students, $idstudents)
     {
-        $data = $mahasiswa_alyzar->find($idstudents);
+        $data = $students->find($idstudents);
         return view('students.formedit')->with([
             'txtid' => $idstudents,
             'txtfullname' => $data->fullname,
@@ -78,9 +78,9 @@ class StudentsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateStudentsRequest $request, Students $mahasiswa_alyzar, $idstudents)
+    public function update(UpdateStudentsRequest $request, Students $students, $idstudents)
     {
-        $data = $mahasiswa_alyzar->find($idstudents);
+        $data = $students->find($idstudents);
         $data-> idstudents = $request->txtid;
         $data-> fullname = $request->txtfullname;
         $data-> address = $request->txtaddress;
@@ -98,9 +98,9 @@ class StudentsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Students $mahasiswa_alyzar, $idstudents)
+    public function destroy(Students $students, $idstudents)
     {
-        $data = $mahasiswa_alyzar->find($idstudents);
+        $data = $students->find($idstudents);
         $data->delete();
         return redirect('mahasiswa_alyzar')->with('msg', 'Data Deleted');
     }
