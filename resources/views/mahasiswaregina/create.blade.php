@@ -42,7 +42,7 @@
           <strong  class="form-label text-black">Agama:</strong>
           <select class="rounded text-sm py-1 px-2 text-black w-[700px]  border-1 border-black" id="agama" name="agama" aria-label=".form-select-sm example">
               <option selected>Pilih Agama</option>
-              <option value="laki-laki">islam</option>
+              <option value="islam">islam</option>
               <option value="kristen">kristen</option>
               <option value="katholik">katholik</option>
               <option value="buddha">buddha</option>

@@ -69,6 +69,34 @@
         </ul>
       </li>
       <li>
+        <div class="iocn-link">
+          <a>
+            <i class='bx bx-buildings bx-sm' ></i>
+            <span class="link_name">UAS</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name">UAS</a></li>
+          <li class="dropdown">
+            <div class="iocn-link">
+                <a class="sub-menu-link">UAS_Regina</a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+            </div>
+            <ul class="sub-sub-menu">
+              <li><a href="/prodiregina">Data Prodi</a></li>
+              <li><a href="/tempatlahirregina">Data Tempat Lahir</a></li>
+              <li><a href="/mahasiswaregina">Data Mahasiswa</a></li>
+              <li><a href="/alamatregina">Data Alamat</a></li>
+              <li><a href="/matkulregina">Data Matkul</a></li>
+            </ul>
+          </li>
+          {{-- <li><a href="/sdr/ruangan">Data Ruangan</a></li> --}}
+        </ul>
+      </li>
+      
+      
+      <li>
         <div class="profile-details flex justify-between">
           <div class="flex">
             <div class="profile-content">
