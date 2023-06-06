@@ -16,6 +16,7 @@ use App\Http\Controllers\PerawatanRuanganController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\CrudRasikhController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -112,3 +113,6 @@ Route::controller(GoogleController::class)->group(function(){
     Route::get('/auth/google', 'redirectToGoogle')->name('auth.google');
     Route::get('/auth/google/callback', 'handleGoogleCallback')->name('handleGoogleCallback');
 });
+
+
+Route::resource('crudrasikhs', CrudRasikhController::class);
