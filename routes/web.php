@@ -133,3 +133,13 @@ Route::resource('/matkulregina', MatkulReginaController::class);
 Route::resource('/tempatlahirregina', TempatLahirReginaController::class);
 Route::resource('/alamatregina', AlamatReginaController::class);
 Route::resource('/mahasiswaregina', MahasiswaReginaController::class);
+
+// Route Agil
+Route::prefix('mahasiswa-agil')->group(function () {
+    Route::get('/', [MahasiswaAgilController::class, 'index']);
+    Route::get('/create', [MahasiswaAgilController::class, 'create']);
+    Route::post('/store', [MahasiswaAgilController::class, 'store']);
+    Route::get('/edit/{IDMahasiswa}', [MahasiswaAgilController::class, 'edit']);
+    Route::put('/{IDMahasiswa}', [MahasiswaAgilController::class, 'update']);
+    Route::delete('delete/{IDMahasiswa}', [MahasiswaAgilController::class, 'destroy']);
+});
