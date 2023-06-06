@@ -23,6 +23,7 @@ use App\Http\Controllers\TempatLahirReginaController;
 use App\Http\Controllers\AlamatReginaController;
 use App\Http\Controllers\MahasiswaReginaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,7 +115,7 @@ Route::post('/updatevendor/{id}', [VendorController::class, 'updatevendor'])->na
 Route::get('/deletevendor/{id}', [VendorController::class, 'deletevendor'])->name('deletevendor');
 
 // Login Google
-Route::controller(GoogleController::class)->group(function(){
+Route::controller(GoogleController::class)->group(function () {
     Route::get('/auth/google', 'redirectToGoogle')->name('auth.google');
     Route::get('/auth/google/callback', 'handleGoogleCallback')->name('handleGoogleCallback');
 });
@@ -127,3 +128,9 @@ Route::resource('/matkulregina', MatkulReginaController::class);
 Route::resource('/tempatlahirregina', TempatLahirReginaController::class);
 Route::resource('/alamatregina', AlamatReginaController::class);
 Route::resource('/mahasiswaregina', MahasiswaReginaController::class);
+
+Route::get('/mahasiswa_alyzar/add', function () {
+    return view('students.formadd');
+});
+
+Route::resource('mahasiswa_alyzar', StudentsController::class);
