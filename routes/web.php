@@ -17,6 +17,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CrudRasikhController;
+use App\Http\Controllers\ProdiReginaController;
+use App\Http\Controllers\MatkulReginaController;
+use App\Http\Controllers\TempatLahirReginaController;
+use App\Http\Controllers\AlamatReginaController;
+use App\Http\Controllers\MahasiswaReginaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -114,5 +119,11 @@ Route::controller(GoogleController::class)->group(function(){
     Route::get('/auth/google/callback', 'handleGoogleCallback')->name('handleGoogleCallback');
 });
 
-
+// Route Rasikh
 Route::resource('crudrasikhs', CrudRasikhController::class);
+// Route Regina
+Route::resource('/prodiregina', ProdiReginaController::class);
+Route::resource('/matkulregina', MatkulReginaController::class);
+Route::resource('/tempatlahirregina', TempatLahirReginaController::class);
+Route::resource('/alamatregina', AlamatReginaController::class);
+Route::resource('/mahasiswaregina', MahasiswaReginaController::class);

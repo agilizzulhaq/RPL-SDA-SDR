@@ -33,6 +33,7 @@
           <li><a href="/lokasi">Lokasi</a></li>
           <li><a href="/data-master/users">Users</a></li>
           <li><a href="/data-master/vendor">Vendor</a></li>
+          <li><a href="{{ url('mahasiswa') }}">UAS Arjuna</a></li>
         </ul>
       </li>
       @endcan
@@ -82,13 +83,13 @@
             <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();"><span class="material-icons text-[#1a1a1a]">logout</span></a>
-            
+
             <form id="logout-form" action="{{ route('logout') }}" method="POST">
               @csrf
             </form>
           </div>
         </div>
       </li>
-      
+
     </ul>
 </div>
