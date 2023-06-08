@@ -12,6 +12,7 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use App\Http\Middleware\CekUserLogin;
   
 class PembelianController extends Controller
 {
@@ -86,6 +87,12 @@ class PembelianController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    public function __construct()
+    {
+        $this->middleware(CekUserLogin::class . ':2')->only(['edit', 'destroy','update']);
+        // $this->middleware(CekUserLogin::class . ':1,2')->only(['create', 'store']);
+    }
+
     public function edit($id): View
     {
         $pembelian = Pembelian::where('id_pembelian', $id)->first();

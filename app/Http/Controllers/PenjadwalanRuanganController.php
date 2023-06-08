@@ -9,6 +9,7 @@ use App\Models\Lokasi;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Middleware\CekUserLogin;
 
 class PenjadwalanRuanganController extends Controller
 {
@@ -83,6 +84,13 @@ class PenjadwalanRuanganController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
+    public function __construct()
+    {
+        $this->middleware(CekUserLogin::class . ':2')->only(['edit', 'destroy','update']);
+        // $this->middleware(CekUserLogin::class . ':1,2,3')->only(['create', 'store']);
+    }
+
     public function edit(PenjadwalanRuangan $penjadwalanruangan): View
     {
         $room = Room::all();

@@ -9,6 +9,7 @@ use App\Models\Lokasi;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Middleware\CekUserLogin;
 
 class PerawatanRuanganController extends Controller
 {
@@ -18,27 +19,27 @@ class PerawatanRuanganController extends Controller
     public function index(): View
     {
         $perawatanruangan = PerawatanRuangan::with('Room', 'lokasi')
-                    ->join('rooms', 'rooms.kodeRuangan', '=', 'perawatan_ruangans.kodeRuangan')
-                    ->join('lokasi', 'room.lokasiRuangan', '=', 'lokasi.kode_lokasi')
-                    ->select(
-                        'rooms.kodeRuangan',
-                        'rooms.namaRuangan',
-                        'rooms.lokasiRuangan',
-                        'lokasi.nama_gedung',
-                        'lokasi.lantai',
-                        'perawatan_ruangans.id_perawatan',
-                        'perawatan_ruangans.statusPerawatan',
-                        'perawatan_ruangans.history',
-                        'perawatan_ruangans.kondisi',
-                    );
+            ->join('rooms', 'rooms.kodeRuangan', '=', 'perawatan_ruangans.kodeRuangan')
+            ->join('lokasi', 'room.lokasiRuangan', '=', 'lokasi.kode_lokasi')
+            ->select(
+                'rooms.kodeRuangan',
+                'rooms.namaRuangan',
+                'rooms.lokasiRuangan',
+                'lokasi.nama_gedung',
+                'lokasi.lantai',
+                'perawatan_ruangans.id_perawatan',
+                'perawatan_ruangans.statusPerawatan',
+                'perawatan_ruangans.history',
+                'perawatan_ruangans.kondisi',
+            );
 
         $room = Room::all();
         $lokasi = Lokasi::all();
 
         $perawatanruangan = PerawatanRuangan::paginate(10);
-        return view('perawatanruangan.index',compact('perawatanruangan', 'room', 'lokasi'));
+        return view('perawatanruangan.index', compact('perawatanruangan', 'room', 'lokasi'));
     }
-  
+
     /**
      * Show the form for creating a new resource.
      */
@@ -47,7 +48,7 @@ class PerawatanRuanganController extends Controller
         $room = Room::all();
         return view('perawatanruangan.create', compact('room'));
     }
-  
+
     /**
      * Store a newly created resource in storage.
      */
@@ -60,31 +61,38 @@ class PerawatanRuanganController extends Controller
             'history',
             'statusPerawatan' => 'required',
         ]);
-        
+
         PerawatanRuangan::create($request->all());
-         
+
         return redirect()->route('perawatanruangan.index')
-                        ->with('success','Data perawatan berhasil ditambahkan');
+            ->with('success', 'Data perawatan berhasil ditambahkan');
     }
-  
+
     /**
      * Display the specified resource.
      */
     public function show(PerawatanRuangan $perawatanruangan): View
     {
-        return view('perawatanruangan.show',compact('perawatanruangan'));
+        return view('perawatanruangan.show', compact('perawatanruangan'));
     }
-  
+
     /**
      * Show the form for editing the specified resource.
      */
+
+     public function __construct()
+     {
+        //  $this->middleware(CekUserLogin::class . ':1,2')->only(['create', 'store']);
+         $this->middleware(CekUserLogin::class . ':2')->only(['edit', 'destroy','update']);
+     }
+
     public function edit(PerawatanRuangan $perawatanruangan): View
     {
         $room = Room::all();
         $pengguna = Pengguna::all();
-        return view('perawatanruangan.edit',compact('perawatanruangan', 'room', 'pengguna'));
+        return view('perawatanruangan.edit', compact('perawatanruangan', 'room', 'pengguna'));
     }
-  
+
     /**
      * Update the specified resource in storage.
      */
@@ -97,13 +105,13 @@ class PerawatanRuanganController extends Controller
             'history',
             'statusPerawatan' => 'required',
         ]);
-        
+
         $perawatanruangan->update($request->all());
-        
+
         return redirect()->route('perawatanruangan.index')
-                        ->with('success','Data perawatan berhasil diperbarui');
+            ->with('success', 'Data perawatan berhasil diperbarui');
     }
-  
+
     /**
      * Remove the specified resource from storage.
      */
@@ -113,7 +121,7 @@ class PerawatanRuanganController extends Controller
         $perawatanruangan->delete();
 
         return redirect()->route('perawatanruangan.index')
-                        ->with('success', 'Data telah berhasil dihapus')
-                        ->with('confirmDelete', $confirmDelete); // tambahkan variabel ke session
+            ->with('success', 'Data telah berhasil dihapus')
+            ->with('confirmDelete', $confirmDelete); // tambahkan variabel ke session
     }
 }

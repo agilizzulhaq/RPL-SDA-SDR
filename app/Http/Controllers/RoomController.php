@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use App\Models\Lokasi;
+use App\Http\Middleware\CekUserLogin;
 
 class RoomController extends Controller
 {
@@ -29,6 +30,11 @@ class RoomController extends Controller
 
         $lokasi = Lokasi::all();
         return view('room.dataruangan', compact('data', 'lokasi'));
+    }
+
+    public function __construct()
+    {
+        $this->middleware(CekUserLogin::class . ':1')->only(['tambahruangan', 'massukanruangan','editruangan','editruangan','hapusruangan']);
     }
 
     public function tambahruangan() {

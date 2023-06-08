@@ -87,25 +87,25 @@ Route::get('/hapusruangan/{id}', [RoomController::class, 'hapusruangan'])->name(
 
 // Route::get('/', [LoginController::class, 'index'])->name('login');
 
-Route::resource('/nama_alat', NamaAlatController::class)->middleware('admin');
-Route::resource('/lokasi', LokasiController::class)->middleware('admin');
-Route::resource('/sdr/penjadwalanruangan', PenjadwalanRuanganController::class);
-Route::resource('/sdr/perawatanruangan', PerawatanRuanganController::class);
-//Route::post('/lokasi', [LokasiController::class, 'store']);
+// Route::resource('/nama_alat', NamaAlatController::class)->middleware('admin');
+// Route::resource('/lokasi', LokasiController::class)->middleware('admin');
+// Route::resource('/sdr/penjadwalanruangan', PenjadwalanRuanganController::class);
+// Route::resource('/sdr/perawatanruangan', PerawatanRuanganController::class);
+// //Route::post('/lokasi', [LokasiController::class, 'store']);
 
-Route::get('/data-master/users', [PenggunaController::class, 'users'])->name('users')->middleware('admin');
-Route::get('/addusers', [PenggunaController::class, 'addusers'])->name('addusers');
-Route::post('/insertusers', [PenggunaController::class, 'insertusers'])->name('insertusers');
-Route::get('/editusers/{id}', [PenggunaController::class, 'editusers'])->name('editusers');
-Route::post('/updateusers/{id}', [PenggunaController::class, 'updateusers'])->name('updateusers');
-Route::get('/deleteusers/{id}', [PenggunaController::class, 'deleteusers'])->name('deleteusers');
+// Route::get('/data-master/users', [PenggunaController::class, 'users'])->name('users')->middleware('admin');
+// Route::get('/addusers', [PenggunaController::class, 'addusers'])->name('addusers');
+// Route::post('/insertusers', [PenggunaController::class, 'insertusers'])->name('insertusers');
+// Route::get('/editusers/{id}', [PenggunaController::class, 'editusers'])->name('editusers');
+// Route::post('/updateusers/{id}', [PenggunaController::class, 'updateusers'])->name('updateusers');
+// Route::get('/deleteusers/{id}', [PenggunaController::class, 'deleteusers'])->name('deleteusers');
 
-Route::get('/data-master/vendor', [VendorController::class, 'vendor'])->name('vendor')->middleware('admin');
-Route::get('/addvendor', [VendorController::class, 'addvendor'])->name('addvendor');
-Route::post('/insertvendor', [VendorController::class, 'insertvendor'])->name('insertvendor');
-Route::get('/editvendor/{id}', [VendorController::class, 'editvendor'])->name('editvendor');
-Route::post('/updatevendor/{id}', [VendorController::class, 'updatevendor'])->name('updatevendor');
-Route::get('/deletevendor/{id}', [VendorController::class, 'deletevendor'])->name('deletevendor');
+// Route::get('/data-master/vendor', [VendorController::class, 'vendor'])->name('vendor')->middleware('admin');
+// Route::get('/addvendor', [VendorController::class, 'addvendor'])->name('addvendor');
+// Route::post('/insertvendor', [VendorController::class, 'insertvendor'])->name('insertvendor');
+// Route::get('/editvendor/{id}', [VendorController::class, 'editvendor'])->name('editvendor');
+// Route::post('/updatevendor/{id}', [VendorController::class, 'updatevendor'])->name('updatevendor');
+// Route::get('/deletevendor/{id}', [VendorController::class, 'deletevendor'])->name('deletevendor');
 
 // Login Google
 Route::controller(GoogleController::class)->group(function () {
@@ -136,17 +136,6 @@ Route::prefix('mahasiswa-agil')->group(function () {
     Route::delete('delete/{IDMahasiswa}', [MahasiswaAgilController::class, 'destroy']);
 });
 
-// Route::controller(LoginRegisterController::class)->group(function () {
-//     // Route::get('/', 'index')->name('login');
-//     Route::post('/store', 'store')->name('store-admin');
-//     // Route::get('/register-admin', 'register')->name('register');
-//     // Route::post('/authenticate', 'authenticate')->name('authenticate');
-//     // Route::get('/dashboard-admin', function () {
-//     //     return view('dashboard-admin');
-//     // })->name('dashboard');
-//     // Route::post('/logout', 'logout')->name('logout');
-// });
-
 Route::middleware('auth')->name('dashboard')->get('/', [DashboardController::class, 'index']);
 Route::middleware('auth')->name('dashboard')->get('/home', [DashboardController::class, 'index']);
 Route::middleware('auth')->name('dashboard')->get('/dashboard', [DashboardController::class, 'index']);
@@ -158,9 +147,27 @@ Route::controller(LoginControler::class)->group(function () {
     // Route::get('/', 'index')->name('login');
 });
 
+Route::resource('/sdr/penjadwalanruangan', PenjadwalanRuanganController::class);
+Route::resource('/sdr/perawatanruangan', PerawatanRuanganController::class);
+
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cekUserLogin:1']], function () {
-        Route::resource('admin', adminControler::class);
+        Route::resource('/nama_alat', NamaAlatController::class)->middleware('admin');
+        Route::resource('/lokasi', LokasiController::class)->middleware('admin');
+
+        Route::get('/data-master/users', [PenggunaController::class, 'users'])->name('users')->middleware('admin');
+        Route::get('/addusers', [PenggunaController::class, 'addusers'])->name('addusers');
+        Route::post('/insertusers', [PenggunaController::class, 'insertusers'])->name('insertusers');
+        Route::get('/editusers/{id}', [PenggunaController::class, 'editusers'])->name('editusers');
+        Route::post('/updateusers/{id}', [PenggunaController::class, 'updateusers'])->name('updateusers');
+        Route::get('/deleteusers/{id}', [PenggunaController::class, 'deleteusers'])->name('deleteusers');
+
+        Route::get('/data-master/vendor', [VendorController::class, 'vendor'])->name('vendor')->middleware('admin');
+        Route::get('/addvendor', [VendorController::class, 'addvendor'])->name('addvendor');
+        Route::post('/insertvendor', [VendorController::class, 'insertvendor'])->name('insertvendor');
+        Route::get('/editvendor/{id}', [VendorController::class, 'editvendor'])->name('editvendor');
+        Route::post('/updatevendor/{id}', [VendorController::class, 'updatevendor'])->name('updatevendor');
+        Route::get('/deletevendor/{id}', [VendorController::class, 'deletevendor'])->name('deletevendor');
     });
     Route::group(['middleware' => ['cekUserLogin:2']], function () {
         Route::resource('ware', wareControler::class);

@@ -6,6 +6,7 @@ use App\Models\NamaAlat;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Middleware\CekUserLogin;
 
 class NamaAlatController extends Controller
 {
@@ -23,6 +24,11 @@ class NamaAlatController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function __construct()
+    {
+        $this->middleware(CekUserLogin::class . ':1')->only(['create', 'store','show','edit','update','destroy']);
+    }
+
     public function create(): View
     {
         return view('nama_alat.create');

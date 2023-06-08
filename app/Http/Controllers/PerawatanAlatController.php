@@ -7,6 +7,7 @@ use App\Models\Inventory;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Middleware\CekUserLogin;
 
 class PerawatanAlatController extends Controller
 {
@@ -77,6 +78,12 @@ class PerawatanAlatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    public function __construct()
+    {
+        $this->middleware(CekUserLogin::class . ':2')->only(['edit', 'destroy','update']);
+        // $this->middleware(CekUserLogin::class . ':1,2')->only(['create', 'store']);
+    }
+
     public function edit(PerawatanAlat $perawatan_alat): View
     {
         $inventory = Inventory::all();

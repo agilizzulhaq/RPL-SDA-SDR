@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\NamaAlat;
 use App\Models\Room;
 use App\Models\Lokasi;
+use App\Http\Middleware\CekUserLogin;
 
 class InventoryController extends Controller
 {
@@ -34,6 +35,10 @@ class InventoryController extends Controller
         return view('inventory.dataalat', compact('data'));
     }
 
+    public function __construct()
+    {
+        $this->middleware(CekUserLogin::class . ':1')->only(['tambahalat', 'masukkanalat', 'editalat','updatealat','hapusalat']);
+    }
     # Controller Input Data
     public function tambahalat() {
         $nama_alat = NamaAlat::all();

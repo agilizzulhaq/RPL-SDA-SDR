@@ -38,6 +38,7 @@
                     <td>{{ $row->history }}</td>
                     <td>{{ $row->statusperawatan }}</td>
                     <td>
+                        @if($userLevel!=1)
                         <button
                         {{-- onclick="window.location='{{ url('pemeliharaans/'.$row->koderuangan) }}'"  --}}
                             type="button" class="btn btn-sm btn-info" title="Edit data">
@@ -50,6 +51,7 @@
                             </button>
                             </form>
                         </button>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

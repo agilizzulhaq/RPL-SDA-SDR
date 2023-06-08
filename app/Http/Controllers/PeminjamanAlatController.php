@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use App\Http\Middleware\CekUserLogin;
 
 class PeminjamanAlatController extends Controller
 {
@@ -90,6 +91,12 @@ class PeminjamanAlatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    public function __construct()
+    {
+        $this->middleware(CekUserLogin::class . ':2,3')->only(['edit', 'destroy','update']);
+        // $this->middleware(CekUserLogin::class . ':1,2,3')->only(['create', 'store']);
+    }
+
     public function edit(PeminjamanAlat $peminjaman_alat): View
     {
         $inventory = Inventory::all();

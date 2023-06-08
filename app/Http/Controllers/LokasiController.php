@@ -6,6 +6,7 @@ use App\Models\Lokasi;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Middleware\CekUserLogin;
 
 class LokasiController extends Controller
 {
@@ -23,6 +24,11 @@ class LokasiController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function __construct()
+    {
+        $this->middleware(CekUserLogin::class . ':1')->only(['create', 'store','show','edit','update','destroy']);
+    }
+    
     public function create(): View
     {
         return view('lokasi.create');
