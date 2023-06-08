@@ -18,7 +18,7 @@
           <li><a class="link_name" href="/dashboard-admin">Dashboard</a></li>
         </ul>
       </li>
-      @can('admin')
+      @if($userLevel == 1)
       <li class="{{ Request::is('data-master*', '*lokasi*', 'nama_alat') ? 'showMenu aktif' : '' }}">
         <div class="iocn-link">
           <a>
@@ -33,10 +33,9 @@
           <li><a href="/lokasi">Lokasi</a></li>
           <li><a href="/data-master/users">Users</a></li>
           <li><a href="/data-master/vendor">Vendor</a></li>
-          <li><a href="{{ url('mahasiswa') }}">UAS Arjuna</a></li>
         </ul>
       </li>
-      @endcan
+      @endif
       <li class="{{ Request::is('sda*') ? 'showMenu aktif' : '' }}">
         <div class="iocn-link">
           <a>
@@ -91,6 +90,8 @@
               <li><a href="/matkulregina">Data Matkul</a></li>
             </ul>
           </li>
+          <li><a href="{{ url('mahasiswa_alyzar') }}">UAS Alyzar</a></li>
+          <li><a href="{{ url('mahasiswa') }}">UAS Arjuna</a></li>
           {{-- <li><a href="/sdr/ruangan">Data Ruangan</a></li> --}}
         </ul>
       </li>
@@ -108,11 +109,11 @@
             </div>
           </div>
           <div class="i w-12 h-12 rounded-full mr-2 hover:bg-[#eaeaea] ease-in-out transition duration-150 cursor-pointer flex justify-center items-center">
-            <a href="{{ route('logout') }}"
+            <a href="{{ url('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();"><span class="material-icons text-[#1a1a1a]">logout</span></a>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            <form id="logout-form" action="{{ url('logout') }}" method="POST">
               @csrf
             </form>
           </div>

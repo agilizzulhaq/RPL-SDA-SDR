@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
@@ -24,8 +25,15 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        Gate::define('admin', function(User $user){
-            return $user->level === '1';
+        // Gate::define('admin', function(User $user){
+        //     return $user->level === '1';
+        // });
+
+        view()->composer('*', function (View $view) {
+            if (Auth::check()) {
+                $userLevel = Auth::user()->level;
+                $view->with('userLevel', $userLevel);
+            }
         });
     }
 }

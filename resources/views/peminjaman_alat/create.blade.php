@@ -2,7 +2,7 @@
 
 @section('isi')
     <div class="mt-16 mx-10">
-        <h1 class="text-3xl text-black font-bold mb-5">Tambah Data Perawatan Alat</h1>
+        <h1 class="text-3xl text-black font-bold mb-5">Tambah Data Peminjaman Alat</h1>
         {{-- <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">

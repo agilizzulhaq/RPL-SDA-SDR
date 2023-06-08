@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\NamaAlatController;
@@ -24,7 +23,12 @@ use App\Http\Controllers\AlamatReginaController;
 use App\Http\Controllers\MahasiswaReginaController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\Auth\LoginRegisterController;
+use App\Http\Controllers\LoginControler;
 use App\Http\Controllers\PenjadwalanRuanganController;
+use App\Http\Controllers\adminControler;
+use App\Http\Controllers\wareControler;
+use App\Http\Controllers\userControler;
+use App\Http\Middleware\CekUserLogin;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +62,6 @@ Route::get('/pemeliharaans/add', function () {
     return view('pemeliharaan.formadd');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::resource('/sda/peminjaman_alat', PeminjamanAlatController::class);
 Route::resource('/sda/perawatan_alat', PerawatanAlatController::class);
@@ -81,17 +84,6 @@ Route::get('/editruangan/{id}', [RoomController::class, 'editruangan'])->name('e
 Route::post('/updateruangan/{id}', [RoomController::class, 'updateruangan'])->name('updateruangan');
 Route::get('/hapusruangan/{id}', [RoomController::class, 'hapusruangan'])->name('hapusruangan');
 
-
-Route::controller(LoginRegisterController::class)->group(function () {
-    Route::get('/', 'index')->name('login');
-    Route::post('/store', 'store')->name('store-admin');
-    // Route::get('/register-admin', 'register')->name('register');
-    Route::post('/authenticate', 'authenticate')->name('authenticate');
-    // Route::get('/dashboard-admin', function () {
-    //     return view('dashboard-admin');
-    // })->name('dashboard');
-    Route::post('/logout', 'logout')->name('logout');
-});
 
 // Route::get('/', [LoginController::class, 'index'])->name('login');
 
@@ -142,4 +134,38 @@ Route::prefix('mahasiswa-agil')->group(function () {
     Route::get('/edit/{IDMahasiswa}', [MahasiswaAgilController::class, 'edit']);
     Route::put('/{IDMahasiswa}', [MahasiswaAgilController::class, 'update']);
     Route::delete('delete/{IDMahasiswa}', [MahasiswaAgilController::class, 'destroy']);
+});
+
+// Route::controller(LoginRegisterController::class)->group(function () {
+//     // Route::get('/', 'index')->name('login');
+//     Route::post('/store', 'store')->name('store-admin');
+//     // Route::get('/register-admin', 'register')->name('register');
+//     // Route::post('/authenticate', 'authenticate')->name('authenticate');
+//     // Route::get('/dashboard-admin', function () {
+//     //     return view('dashboard-admin');
+//     // })->name('dashboard');
+//     // Route::post('/logout', 'logout')->name('logout');
+// });
+
+Route::middleware('auth')->name('dashboard')->get('/', [DashboardController::class, 'index']);
+Route::middleware('auth')->name('dashboard')->get('/home', [DashboardController::class, 'index']);
+Route::middleware('auth')->name('dashboard')->get('/dashboard', [DashboardController::class, 'index']);
+
+Route::controller(LoginControler::class)->group(function () {
+    Route::get('login', 'index')->name('login');
+    Route::post('login/proses', 'proses')->name('login/proses');
+    Route::match(['get', 'post'], '/logout', 'logout');
+    // Route::get('/', 'index')->name('login');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['cekUserLogin:1']], function () {
+        Route::resource('admin', adminControler::class);
+    });
+    Route::group(['middleware' => ['cekUserLogin:2']], function () {
+        Route::resource('ware', wareControler::class);
+    });
+    Route::group(['middleware' => ['cekUserLogin:3']], function () {
+        Route::resource('user', userControler::class);
+    });
 });

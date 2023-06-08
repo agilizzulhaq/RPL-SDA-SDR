@@ -9,6 +9,7 @@ use App\Models\PenjadwalanRuangan;
 use App\Models\Room;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -25,6 +26,8 @@ class DashboardController extends Controller
         $totalPenjadwalanRuangan = PenjadwalanRuangan::count();
         $todayPenjadwalanRuangan = PenjadwalanRuangan::where('statusRuangan', 'Tidak Tersedia')->count();
 
-        return view('dashboard', compact('totalAlat', 'totalRuangan', 'totalPeminjamanAlat', 'todayPeminjamanAlat', 'totalPenjadwalanRuangan', 'todayPenjadwalanRuangan'));
+        $userLevel = Auth::user()->level;
+        
+        return view('dashboard', compact('totalAlat', 'totalRuangan', 'totalPeminjamanAlat', 'todayPeminjamanAlat', 'totalPenjadwalanRuangan', 'todayPenjadwalanRuangan','userLevel'));
     }
 }

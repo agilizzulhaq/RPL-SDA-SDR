@@ -10,7 +10,7 @@
             </div>
             <h1 class="font-bold text-4xl my-3">Login</h1>
             <div class=" mt-4">
-                <form action="{{ route('authenticate') }}" method="post">
+                <form action="{{ url('login/proses') }}" method="post">
                     @csrf
                     <div class="">
                         <label for="email" class="block font-bold mb-1">Email</label>

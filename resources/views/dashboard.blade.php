@@ -2,7 +2,7 @@
 
 
 @section('isi')
-<a href="{{ url('/dashboard-admin') }}" style="text-decoration: none; color: inherit;">
+<a href="{{ url('/') }}" style="text-decoration: none; color: inherit;">
     <div class="flex bg-[#5479f7] mt-16 w-[120px] h-[38px] rounded-lg text-[12px] text-[#fecbcf] font-bold justify-evenly items-center">
         <span class="material-icons" style="">home</span>
         Dashboard
