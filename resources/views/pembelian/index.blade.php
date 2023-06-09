@@ -36,7 +36,6 @@
           </form>
         </div>
     </div> 
-    {{ dd($pembelians->first()->nama_alat) }}
     <div class="rounded-lg overflow-x-auto border-1 border-slate-300">
         <table class="w-full text-sm text-left text-blue-100">
             <thead class="text-xs text-white text-center uppercase bg-[#5479f7]">

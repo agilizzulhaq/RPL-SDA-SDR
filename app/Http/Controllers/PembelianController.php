@@ -43,9 +43,6 @@ class PembelianController extends Controller
                     ->latest('pembelians.created_at')
                     ->paginate(10);
 
-        $nama_alat = NamaAlat::all();
-        $vendor = Vendor::all();
-        // dd($pembelians->first()->id_pembelian);
         return view('pembelian.index',compact('pembelians'))
                     ->with('i', (request()->input('page', 1) - 1) * 10);
     }
