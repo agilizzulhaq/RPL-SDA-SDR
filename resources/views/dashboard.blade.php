@@ -58,6 +58,120 @@
     </a>
     </div>
     <div class="flex justify-between items-center w-full my-3">
+        <p class="font-bold m-0 text-black">Status Peminjaman Alat</p>
+        <a href="{{ url('/sda/peminjaman_alat') }}" class="text-white" style="text-decoration: none; color: inherit;">
+            <div class="flex justify-center">
+                <span class="material-icons text-black mr-3">work_history</span>
+                <p class="text-sm underline m-0 text-black cursor-pointer hover:text-grey-900 hover:no-underline">History Peminjaman</p>
+            </div>
+        </a>
+    </div>
+    <div class="rounded-lg overflow-x-auto">
+        <table class="w-full text-sm text-left text-blue-100">
+            <thead class="text-xs text-[#fecbcf] text-center uppercase bg-[#5479f7] ">
+                <tr>
+                    <th scope="col" class="px-3 py-2">
+                        Kode Peminjaman
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Nama Alat
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Nama Peminjam
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Tanggal Pinjam
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-black text-center">
+                @foreach ($peminjaman_alat as $pinjam)
+                <tr class="bg-white border-b border-gray-500">
+                    <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
+                        {{ $pinjam->id_peminjaman }}
+                    </th>
+                    <td class="px-3 py-2">
+                        @foreach ($inventory as $item)
+                                @if ($item->kodeAlat === $pinjam->kode_alat)
+                                    {{ $item->nama_alat->nama_alat }}
+                                @endif
+                            @endforeach
+                    </td>
+                    <td class="px-3 py-2">
+                        {{ $pinjam->nama_peminjam }}
+                    </td>
+                    <td class="px-3 py-2">
+                        {{ $pinjam->tanggal_peminjaman }}
+                    </td>
+                    <td class="px-3 py-2">
+                        {{ $pinjam->status_peminjaman }}
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="flex justify-between items-center w-full my-3">
+        <p class="font-bold m-0 text-black">Status Perawatan Alat</p>
+        <a href="{{ url('/sda/perawatan_alat') }}" class="text-white" style="text-decoration: none; color: inherit;">
+            <div class="flex justify-center">
+                <span class="material-icons text-black mr-3">work_history</span>
+                <p class="text-sm underline m-0 text-black cursor-pointer hover:text-grey-900 hover:no-underline">History Perawatan</p>
+            </div>
+        </a>
+    </div>
+    <div class="rounded-lg overflow-x-auto">
+        <table class="w-full text-sm text-left text-blue-100">
+            <thead class="text-xs text-[#fecbcf] text-center uppercase bg-[#5479f7] ">
+                <tr>
+                    <th scope="col" class="px-3 py-2">
+                        Kode Perawatan
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Nama Alat
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Jenis Perawatan
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Tanggal Perawatan
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Status Perawatan
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-black text-center">
+                @foreach ($perawatan_alat as $rawatalat)
+                <tr class="bg-white border-b border-gray-500">
+                    <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
+                        {{ $rawatalat->id_perawatan }}
+                    </th>
+                    <td class="px-3 py-2">
+                        @foreach ($inventory as $item)
+                            @if ($item->kodeAlat === $rawatalat->kode_alat)
+                                {{ $item->nama_alat->nama_alat }}
+                            @endif
+                        @endforeach
+                    </td>
+                    <td class="px-3 py-2">
+                        {{ $rawatalat->jenis_perawatan }}
+                    </td>
+                    <td class="px-3 py-2">
+                        {{ $rawatalat->tanggal_perawatan }}
+                    </td>
+                    <td class="px-3 py-2">
+                        {{ $rawatalat->status_perawatan }}
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="flex justify-between items-center w-full my-3">
         <p class="font-bold m-0 text-black">Status Pembelian Alat</p>
         <a href="{{ url('/sda/pembelian') }}" class="text-white" style="text-decoration: none; color: inherit;">
             <div class="flex justify-center">
@@ -80,72 +194,100 @@
                         Jumlah
                     </th>
                     <th scope="col" class="px-3 py-2">
-                        Status
+                        Tanggal Dipesan
                     </th>
                     <th scope="col" class="px-3 py-2">
-                        Tanggal Dipesan
+                        Status
                     </th>
                 </tr>
             </thead>
             <tbody class="text-black text-center">
+                @foreach ($pembelian as $order)
                 <tr class="bg-white border-b border-gray-500">
                     <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
-                        3442
+                        {{ $order->id_pembelian }}
                     </th>
                     <td class="px-3 py-2">
-                        Suntik
+                        @foreach ($inventory as $item)
+                            @if ($item->kodeAlat === $order->kode_alat)
+                                {{ $item->nama_alat->nama_alat }}
+                            @endif
+                        @endforeach
                     </td>
                     <td class="px-3 py-2">
-                        32
+                        {{ $order->jumlah_pembelian }}
                     </td>
                     <td class="px-3 py-2">
-                        Bekas
+                        {{ $order->tanggal_pembelian }}
                     </td>
                     <td class="px-3 py-2">
-                        21/2/2021
+                        {{ $order->status }}
                     </td>
                 </tr>
-                <tr class="bg-[#EAEAEA] border-b border-gray-500">
-                    <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
-                        34446
-                    </th>
-                    <td class="px-3 py-2">
-                        Komputer
-                    </td>
-                    <td class="px-3 py-2">
-                        9
-                    </td>
-                    <td class="px-3 py-2">
-                        Baik
-                    </td>
-                    <td class="px-3 py-2">
-                        21/2/2021
-                    </td>
-                </tr>
-                <tr class="bg-white border-b border-gray-500">
-                    <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
-                        89543
-                    </th>
-                    <td class="px-3 py-2">
-                        Speaker
-                    </td>
-                    <td class="px-3 py-2">
-                        5
-                    </td>
-                    <td class="px-3 py-2">
-                        Kurang Baik
-                    </td>
-                    <td class="px-3 py-2">
-                        21/2/2021
-                    </td>
-                </tr>
-                
+                @endforeach
             </tbody>
         </table>
     </div>
     <div class="flex justify-between items-center w-full my-3">
-        <p class="font-bold m-0 text-black">Status Perawatan Alat</p>
-        <a href="{{ url('/sda/perawatan_alat') }}" class="text-white" style="text-decoration: none; color: inherit;">
+        <p class="font-bold m-0 text-black">Status Penjadwalan Ruangan</p>
+        <a href="{{ url('/sdr/penjadwalanruangan') }}" class="text-white" style="text-decoration: none; color: inherit;">
+            <div class="flex justify-center">
+                <span class="material-icons text-black mr-3">work_history</span>
+                <p class="text-sm underline m-0 text-black cursor-pointer hover:text-grey-900 hover:no-underline">History Penjadwalan</p>
+            </div>
+        </a>
+    </div>
+    <div class="rounded-lg overflow-x-auto">
+        <table class="w-full text-sm text-left text-blue-100">
+            <thead class="text-xs text-[#fecbcf] text-center uppercase bg-[#5479f7] ">
+                <tr>
+                    <th scope="col" class="px-3 py-2">
+                        Kode Penjadwalan
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Nama Ruangan
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Nama Pengguna
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Lokasi
+                    </th>
+                    <th scope="col" class="px-3 py-2">
+                        Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-black text-center">
+                @foreach ($penjadwalan_ruangan as $jadwal)
+                <tr class="bg-white border-b border-gray-500">
+                    <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
+                        {{ $jadwal->id_penjadwalan }}
+                    </th>
+                    <td class="px-3 py-2">
+                        @foreach ($room as $ruangan)
+                            @if ($ruangan->kodeRuangan === $jadwal->kodeRuangan)
+                                {{-- {{ $ruangan->nama_gedung->nama_gedung }} --}}
+                            @endif
+                        @endforeach
+                    </td>
+                    <td class="px-3 py-2">
+                        {{ $jadwal->namaPeminjam }}
+                    </td>
+                    <td class="px-3 py-2">
+                        {{ $jadwal->tanggalMasuk }}
+                    </td>
+                    <td class="px-3 py-2">
+                        {{ $jadwal->statusRuangan }}
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="flex justify-between items-center w-full my-3">
+        <p class="font-bold m-0 text-black">Status Perawatan Ruangan</p>
+        <a href="{{ url('/sdr/perawatanruangan') }}" class="text-white" style="text-decoration: none; color: inherit;">
             <div class="flex justify-center">
                 <span class="material-icons text-black mr-3">work_history</span>
                 <p class="text-sm underline m-0 text-black cursor-pointer hover:text-grey-900 hover:no-underline">History Perawatan</p>
@@ -157,101 +299,16 @@
             <thead class="text-xs text-[#fecbcf] text-center uppercase bg-[#5479f7] ">
                 <tr>
                     <th scope="col" class="px-3 py-2">
-                        Kode Alat
-                    </th>
-                    <th scope="col" class="px-3 py-2">
-                        Nama Alat
-                    </th>
-                    <th scope="col" class="px-3 py-2">
-                        Jenis Perawatan
-                    </th>
-                    <th scope="col" class="px-3 py-2">
-                        Status
-                    </th>
-                    <th scope="col" class="px-3 py-2">
-                        Tanggal Perawatan
-                    </th>
-                </tr>
-            </thead>
-            <tbody class="text-black text-center">
-                <tr class="bg-white border-b border-gray-500">
-                    <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
-                        3442
-                    </th>
-                    <td class="px-3 py-2">
-                        Suntik
-                    </td>
-                    <td class="px-3 py-2">
-                        32
-                    </td>
-                    <td class="px-3 py-2">
-                        Bekas
-                    </td>
-                    <td class="px-3 py-2">
-                        21/2/2021
-                    </td>
-                </tr>
-                <tr class="bg-[#EAEAEA] border-b border-gray-500">
-                    <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
-                        34446
-                    </th>
-                    <td class="px-3 py-2">
-                        Komputer
-                    </td>
-                    <td class="px-3 py-2">
-                        9
-                    </td>
-                    <td class="px-3 py-2">
-                        Baik
-                    </td>
-                    <td class="px-3 py-2">
-                        21/2/2021
-                    </td>
-                </tr>
-                <tr class="bg-white border-b border-gray-500">
-                    <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
-                        89543
-                    </th>
-                    <td class="px-3 py-2">
-                        Speaker
-                    </td>
-                    <td class="px-3 py-2">
-                        5
-                    </td>
-                    <td class="px-3 py-2">
-                        Kurang Baik
-                    </td>
-                    <td class="px-3 py-2">
-                        21/2/2021
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="flex justify-between items-center w-full my-3">
-        <p class="font-bold m-0 text-black">Status Pemeliharaan Ruangan</p>
-        <a href="{{ url('/sdr/perawatanruangan') }}" class="text-white" style="text-decoration: none; color: inherit;">
-            <div class="flex justify-center">
-                <span class="material-icons text-black mr-3">work_history</span>
-                <p class="text-sm underline m-0 text-black cursor-pointer hover:text-grey-900 hover:no-underline">History Pembelian</p>
-            </div>
-        </a>
-    </div>
-    <div class="rounded-lg overflow-x-auto">
-        <table class="w-full text-sm text-left text-blue-100">
-            <thead class="text-xs text-[#fecbcf] text-center uppercase bg-[#5479f7] ">
-                <tr>
-                    <th scope="col" class="px-3 py-2">
-                        Kode Ruangan
+                        Kode Perawatan
                     </th>
                     <th scope="col" class="px-3 py-2">
                         Nama Ruangan
                     </th>
                     <th scope="col" class="px-3 py-2">
-                        Lokasi Ruangan
+                        Kondisi Ruangan
                     </th>
                     <th scope="col" class="px-3 py-2">
-                        Kondisi
+                        Riwayat
                     </th>
                     <th scope="col" class="px-3 py-2">
                         Status
@@ -259,58 +316,29 @@
                 </tr>
             </thead>
             <tbody class="text-black text-center">
+                @foreach ($perawatan_ruangan as $rawat)
                 <tr class="bg-white border-b border-gray-500">
                     <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
-                        111
+                        {{ $rawat->id_perawatan }}
                     </th>
                     <td class="px-3 py-2">
-                        Abu Bakar
+                        @foreach ($room as $ruangan)
+                            @if ($ruangan->kodeRuangan === $rawat->kodeRuangan)
+                                {{-- {{ $ruangan->nama_gedung->nama_gedung }} --}}
+                            @endif
+                        @endforeach
                     </td>
                     <td class="px-3 py-2">
-                        Gedung Utara
+                        {{ $rawat->kondisi }}
                     </td>
                     <td class="px-3 py-2">
-                        Kotor
+                        {{ $rawat->history }}
                     </td>
                     <td class="px-3 py-2">
-                        Selesai
+                        {{ $rawat->statusperawatan }}
                     </td>
                 </tr>
-                <tr class="bg-[#EAEAEA] border-b border-gray-500">
-                    <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
-                        222
-                    </th>
-                    <td class="px-3 py-2">
-                        Umar
-                    </td>
-                    <td class="px-3 py-2">
-                        Gedung Timur
-                    </td>
-                    <td class="px-3 py-2">
-                        Kotor
-                    </td>
-                    <td class="px-3 py-2">
-                        Dalam Pemeliharaan
-                    </td>
-                </tr>
-                <tr class="bg-white border-b border-gray-500">
-                    <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">
-                        333
-                    </th>
-                    <td class="px-3 py-2">
-                        Usman
-                    </td>
-                    <td class="px-3 py-2">
-                        Gedung Selatan
-                    </td>
-                    <td class="px-3 py-2">
-                        Kotor
-                    </td>
-                    <td class="px-3 py-2">
-                        Telah Dikonfirmasi
-                    </td>
-                </tr>
-                
+                @endforeach
             </tbody>
         </table>
     </div>
