@@ -35,12 +35,12 @@ class UserData extends Seeder
                 'level' => '3',
 
             ],
-            [
-                'name' => 'alyzar',
-                'email' => 'alyzaraviandi@gmail.com',
-                'password' => bcrypt('12345678'),
-                'level' => '1',
-            ]
+            // [
+            //     'name' => 'alyzar',
+            //     'email' => 'alyzaraviandi@gmail.com',
+            //     'password' => bcrypt('12345678'),
+            //     'level' => '1',
+            // ]
         ];
         foreach ($user as $key => $value) {
             User::create($value);

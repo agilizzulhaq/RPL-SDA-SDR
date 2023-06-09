@@ -50,8 +50,9 @@ class GoogleController extends Controller
                 return redirect()->intended('dashboard');
             }
 
-        } catch (\Throwable $th) {
-            dd('HELP ME PLEASE'.$th->getMessage() );
-        }
+        } 
+        // catch (\Throwable $th) {
+        //     dd('HELP ME PLEASE'.$th->getMessage() );
+        // }
     }
 }

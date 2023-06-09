@@ -85,9 +85,7 @@ class PerawatanAlatController extends Controller
         return view('perawatan_alat.show',compact('perawatan_alat'));
     }
   
-    /**
-     * Show the form for editing the specified resource.
-     */
+  
     public function __construct()
     {
         $this->middleware(CekUserLogin::class . ':2')->only(['edit', 'destroy','update']);

@@ -43,30 +43,29 @@ use App\Http\Middleware\CekUserLogin;
 */
 
 
-Route::get('/rpl', function () {
-    return view('rpl');
-});
+// Route::get('/rpl', function () {
+//     return view('rpl');
+// });
 
 // Route::get('/', function () {
 //      return view('auth.login')->name('login');
 //  });
 
-Route::post('/ruangans', function () {
-    return view('layout.ruangan');
-});
+// Route::post('/ruangans', function () {
+//     return view('layout.ruangan');
+// });
 
-Route::get('/penjadwalans/add', function () {
-    return view('penjadwalan.formadd');
-});
+// Route::get('/penjadwalans/add', function () {
+//     return view('penjadwalan.formadd');
+// });
 
-Route::get('/pemeliharaans/add', function () {
-    return view('pemeliharaan.formadd');
-});
+// Route::get('/pemeliharaans/add', function () {
+//     return view('pemeliharaan.formadd');
+// });
 
 
 Route::resource('/sda/peminjaman_alat', PeminjamanAlatController::class);
 Route::resource('/sda/perawatan_alat', PerawatanAlatController::class);
-Route::resource('products', ProductController::class);
 Route::resource('/sda/pembelian', PembelianController::class);
 
 // Route::get('/data-master/alat', [InventoryController::class, 'alat'])->name('alat');
