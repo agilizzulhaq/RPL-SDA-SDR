@@ -40,13 +40,7 @@
                         <td  class="px-3 py-2">{{ ++$i }}</td>
                         <td  class="px-3 py-2">{{ $peminjamanalat->id_peminjaman }}</td>
                         <td  class="px-3 py-2">{{ $peminjamanalat->kode_alat }}</td>
-                        <td>
-                            @foreach ($inventory as $item)
-                                @if ($item->kodeAlat === $peminjamanalat->kode_alat)
-                                    {{ $item->nama_alat->nama_alat }}
-                                @endif
-                            @endforeach
-                        </td>
+                        <td  class="px-3 py-2">{{ $peminjamanalat->nama_alat }}</td>
                         <td  class="px-3 py-2">{{ $peminjamanalat->nama_user }}</td>
                         <td  class="px-3 py-2">{{ $peminjamanalat->tanggal_peminjaman }}</td>
                         <td  class="px-3 py-2">{{ $peminjamanalat->tanggal_pengembalian }}</td>

@@ -94,14 +94,10 @@
                         {{ $pinjam->id_peminjaman }}
                     </th>
                     <td class="px-3 py-2">
-                        @foreach ($inventory as $item)
-                                @if ($item->kodeAlat === $pinjam->kode_alat)
-                                    {{ $item->nama_alat->nama_alat }}
-                                @endif
-                            @endforeach
+                        {{ $pinjam->nama_alat }}
                     </td>
                     <td class="px-3 py-2">
-                        {{ $pinjam->nama_peminjam }}
+                        {{ $pinjam->nama_user }}
                     </td>
                     <td class="px-3 py-2">
                         {{ $pinjam->tanggal_peminjaman }}
@@ -151,11 +147,7 @@
                         {{ $rawatalat->id_perawatan }}
                     </th>
                     <td class="px-3 py-2">
-                        @foreach ($inventory as $item)
-                            @if ($item->kodeAlat === $rawatalat->kode_alat)
-                                {{ $item->nama_alat->nama_alat }}
-                            @endif
-                        @endforeach
+                        {{$rawatalat->nama_alat}}
                     </td>
                     <td class="px-3 py-2">
                         {{ $rawatalat->jenis_perawatan }}
@@ -208,11 +200,7 @@
                         {{ $order->id_pembelian }}
                     </th>
                     <td class="px-3 py-2">
-                        @foreach ($inventory as $item)
-                            @if ($item->kodeAlat === $order->kode_alat)
-                                {{ $item->nama_alat->nama_alat }}
-                            @endif
-                        @endforeach
+                        {{$order->nama_alat}}
                     </td>
                     <td class="px-3 py-2">
                         {{ $order->jumlah_pembelian }}
@@ -265,17 +253,13 @@
                         {{ $jadwal->id_penjadwalan }}
                     </th>
                     <td class="px-3 py-2">
-                        @foreach ($room as $ruangan)
-                            @if ($ruangan->kodeRuangan === $jadwal->kodeRuangan)
-                                {{-- {{ $ruangan->nama_gedung->nama_gedung }} --}}
-                            @endif
-                        @endforeach
+                        {{$jadwal->namaRuangan}}
                     </td>
                     <td class="px-3 py-2">
                         {{ $jadwal->namaPeminjam }}
                     </td>
                     <td class="px-3 py-2">
-                        {{ $jadwal->tanggalMasuk }}
+                        {{ $jadwal->nama_gedung . " Lantai " . $jadwal->lantai }}
                     </td>
                     <td class="px-3 py-2">
                         {{ $jadwal->statusRuangan }}
@@ -322,20 +306,16 @@
                         {{ $rawat->id_perawatan }}
                     </th>
                     <td class="px-3 py-2">
-                        @foreach ($room as $ruangan)
-                            @if ($ruangan->kodeRuangan === $rawat->kodeRuangan)
-                                {{-- {{ $ruangan->nama_gedung->nama_gedung }} --}}
-                            @endif
-                        @endforeach
+                        {{$rawat->namaRuangan}}
                     </td>
                     <td class="px-3 py-2">
-                        {{ $rawat->kondisi }}
+                        {{ (($rawat->kondisi=='B') ? 'Baik' : (($rawat->kondisi=='S') ? 'Sedang' : 'Rusak')) }}
                     </td>
                     <td class="px-3 py-2">
                         {{ $rawat->history }}
                     </td>
                     <td class="px-3 py-2">
-                        {{ $rawat->statusperawatan }}
+                        {{ $rawat->statusPerawatan }}
                     </td>
                 </tr>
                 @endforeach
