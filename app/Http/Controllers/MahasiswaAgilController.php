@@ -13,7 +13,9 @@ class MahasiswaAgilController extends Controller
     public function index()
     {
         $mahasiswaagil = MahasiswaAgil::all();
-        return view('mahasiswa_agil.index', compact('mahasiswaagil'));
+        $mahasiswaagil = MahasiswaAgil::latest()->paginate(5);
+        return view('mahasiswa_agil.index', compact('mahasiswaagil'))
+                    ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

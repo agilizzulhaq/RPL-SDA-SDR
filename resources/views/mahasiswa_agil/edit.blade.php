@@ -2,37 +2,29 @@
 
 @section('isi')
 <div class="mt-16 mx-10">
-    <h1 class="text-3xl text-black font-bold mb-5">Edit Data Matkul</h1>
-    <div class="card-header">
-        <a href="/mahasiswa-agil" class="btn btn-primary">Kembali</a>
+    <h1 class="text-3xl text-black font-bold mb-5">Edit Data Mahasiswa</h1>
+    <div>
+        <a href="/mahasiswa-agil" class="btn btn-primary mb-2">Kembali</a>
     </div>
     <div class="w-full bg-white rounded-xl text-sm text-black-md p-3 border-2 border-green-200">
-      <form action="/mahasiswa-agil/{{ $mahasiswaagil -> IDMahasiswa }}" method="POST" enctype="multipart/form-data">
+        <form action="/mahasiswa-agil/{{ $mahasiswaagil -> IDMahasiswa }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-3 flex justify-between">
             <label for="IDMahasiswa" class="form-label">NIM</label>
-            <input type="number" name="IDMahasiswa" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan NIM" value="{{ $mahasiswaagil -> IDMahasiswa }}"><br/>
+            <input type="number" name="IDMahasiswa" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan NIM" value="{{ $mahasiswaagil -> IDMahasiswa }}">
         </div>
         <div class="mb-3 flex justify-between">
             <label for="Nama" class="form-label">Nama Lengkap</label>
-            <input type="text" name="Nama" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan Nama" value="{{ $mahasiswaagil -> Nama }}"><br/>
+            <input type="text" name="Nama" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan Nama" value="{{ $mahasiswaagil -> Nama }}">
         </div>
         <div class="mb-3 flex justify-between">
             <label for="Prodi" class="form-label">Prodi</label>
-            <input type="text" name="Prodi" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan Prodi" value="{{ $mahasiswaagil -> Prodi }}"><br/>
-        </div>
-        <div class="mb-3 flex justify-between">
-            <label for="Jurusan" class="form-label">Jurusan</label>
-            <input type="text" name="Jurusan" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan Jurusan" value="{{ $mahasiswaagil -> Jurusan }}"><br/>
-        </div>
-        <div class="mb-3 flex justify-between">
-            <label for="Email" class="form-label">Alamat Email</label>
-            <input type="email" name="Email" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan Email" value="{{ $mahasiswaagil -> Email }}"><br/>
+            <input type="text" name="Prodi" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan Prodi" value="{{ $mahasiswaagil -> Prodi }}">
         </div>
         <div class="mb-3 flex justify-between">
             <label for="Tanggal_Lahir" class="form-label">Tanggal Lahir</label>
-            <input type="date" name="Tanggal_Lahir" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan Tanggal Lahir" value="{{ $mahasiswaagil -> Tanggal_Lahir }}"><br/>
+            <input type="date" name="Tanggal_Lahir" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan Tanggal Lahir" value="{{ $mahasiswaagil -> Tanggal_Lahir }}">
         </div>
         <div class="mb-3 flex justify-between">
             <label for="Agama" class="form-label">Agama</label>
@@ -44,19 +36,19 @@
                 <option value="Hindu">Hindu</option>
                 <option value="Budha">Budha</option>
                 <option value="Konghucu">Konghucu</option>
-            </select><br/>
+            </select>
         </div>
         <div class="mb-3 flex justify-between">
             <label for="NIK" class="form-label">NIK</label>
-            <input type="number" name="NIK" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan NIK" value="{{ $mahasiswaagil -> NIK }}"><br/>
+            <input type="number" name="NIK" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan NIK" value="{{ $mahasiswaagil -> NIK }}">
         </div>
         <div class="mb-3 flex justify-between">
             <label for="Telepon" class="form-label">Nomor Telepon</label>
-            <input type="number" name="Telepon" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan Nomor Telepon" value="{{ $mahasiswaagil -> Telepon }}"><br/>
+            <input type="number" name="Telepon" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" placeholder="Masukkan Nomor Telepon" value="{{ $mahasiswaagil -> Telepon }}">
         </div>
         <div class="mb-3 flex justify-between">
             <label for="Alamat" class="form-label">Alamat</label>
-            <textarea name="Alamat" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" {{ $mahasiswaagil -> Alamat }} placeholder="Masukkan Alamat"></textarea><br/>
+            <textarea name="Alamat" class="rounded text-sm py-1 px-2 text-black w-[700px] border-1 border-black" {{ $mahasiswaagil -> Alamat }} placeholder="Masukkan Alamat"></textarea>
         </div>
         <button type="submit" class="px-3 py-2 bg-blue-600 ml-[860px] rounded text-white">Simpan</button>
         </form>
