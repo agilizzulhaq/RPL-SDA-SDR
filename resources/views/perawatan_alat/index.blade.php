@@ -53,11 +53,11 @@
                             @if($userLevel==2)
                             <div class="rounded-md group py-1 hover:bg-[#f5f5f5] cursor-pointer w-10">
                                 <span class="material-icons">more_vert</span>
-                                <form class="shadow-md p-1 hidden z-[9000] group-hover:block mt-1 rounded-md absolute bg-white" action="{{ route('perawatan_alat.destroy',$perawatan->id_perawatan) }}" method="POST">
+                                <form class="shadow-md p-1 hidden z-[9000] group-hover:block mt-1 rounded-md absolute bg-white" action="{{ route('perawatan_alat.destroy', $perawatan->id_perawatan) }}" method="POST">
                    
                                     {{-- <a class="btn btn-info" href="{{ route('perawatan_alat.show',$perawatan->id_perawatan) }}">Show</a> --}}
                     
-                                    <a href="{{ route('perawatan_alat.edit',$perawatan->id_perawatan) }}"><i class='bx bx-edit text-2xl text-black hover:bg-[#eaeaea] p-1 rounded'></i></a>
+                                    <a href="{{ route('perawatan_alat.edit', $perawatan->id_perawatan) }}"><i class='bx bx-edit text-2xl text-black hover:bg-[#eaeaea] p-1 rounded'></i></a>
                    
                                     @csrf
                                     @method('DELETE')

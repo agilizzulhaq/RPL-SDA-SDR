@@ -1,7 +1,7 @@
 @extends('../layout2/mainnew')
 
 @section('isi')
-    <div class="w-[1040px]">
+    <div class="mt-16 mx-10">
 
         <div class="row">
             <div class="col-lg-12 margin-tb">
@@ -25,7 +25,7 @@
             </div>
         @endif
       
-        <form action="{{ route('perawatan_alat.update',$perawatan_alat->id_perawatan)  }}" method="POST">
+        <form action="{{ route('perawatan_alat.update', $perawatan_alat->id_perawatan)  }}" method="POST">
             @csrf
             @method('PUT')
        

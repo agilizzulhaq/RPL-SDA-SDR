@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Middleware\CekUserLogin;
+use App\Models\Perawatan;
 use Psy\Command\WhereamiCommand;
 use Illuminate\Support\Facades\DB;
 
@@ -93,29 +94,43 @@ class PerawatanAlatController extends Controller
         // $this->middleware(CekUserLogin::class . ':1,2')->only(['create', 'store']);
     }
 
-    public function edit(PerawatanAlat $perawatan_alat): View
+    public function edit($perawatan_alat): View
     {
+        // dd($perawatan_alat);
         $inventory = Inventory::all();
+        $perawatan_alat = PerawatanAlat::where('id_perawatan', 'like', $perawatan_alat);
+        $perawatan_alat = $perawatan_alat->first();
+        // dd($perawatan_alat->jenis_perawatan);
         return view('perawatan_alat.edit',compact('perawatan_alat', 'inventory'));
     }
   
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PerawatanAlat $perawatan_alat): RedirectResponse
+    public function update(Request $request, $perawatan_alat): RedirectResponse
     {
-        $request->validate([
+        // $request->validate([
+        //     'id_perawatan' => 'required',
+        //     'kode_alat' => 'required',
+        //     'jenis_perawatan' => 'required',
+        //     'status_perawatan' => 'required',
+        //     'tanggal_perawatan' => 'required',
+        //     'riwayat_perawatan' => 'required',
+        //     'catatan_perawatan' => 'required',
+        // ]);
+        
+        // $perawatan_alat->update($request->all());
+
+        PerawatanAlat::where('id_perawatan', $perawatan_alat)->update($request->validate([
             'id_perawatan' => 'required',
             'kode_alat' => 'required',
             'jenis_perawatan' => 'required',
             'status_perawatan' => 'required',
-            'tanggal_perawatan',
+            'tanggal_perawatan' => 'required',
             'riwayat_perawatan' => 'required',
             'catatan_perawatan' => 'required',
-        ]);
-        
-        $perawatan_alat->update($request->all());
-        
+        ]));
+
         return redirect()->route('perawatan_alat.index')
                         ->with('success','Data perawatan berhasil diperbarui');
     }
@@ -123,13 +138,12 @@ class PerawatanAlatController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PerawatanAlat $perawatan_alat): RedirectResponse
+    public function destroy($perawatan_alat): RedirectResponse
     {
-        $confirmDelete = true; // tambahkan variabel untuk menandai konfirmasi
-        $perawatan_alat->delete();
+        // $confirmDelete = true; // tambahkan variabel untuk menandai konfirmasi
+        // $perawatan_alat->delete();
+        PerawatanAlat::where('id_perawatan', $perawatan_alat)->delete();
 
-        return redirect()->route('perawatan_alat.index')
-                        ->with('success', 'Data telah berhasil dihapus')
-                        ->with('confirmDelete', $confirmDelete); // tambahkan variabel ke session
+        return redirect()->route('perawatan_alat.index');
     }
 }
