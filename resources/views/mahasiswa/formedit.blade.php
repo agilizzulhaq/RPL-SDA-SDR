@@ -3,7 +3,7 @@
 @section('isi')
 
     <body>
-        <div class="pt-3 pb-2 mb-3 border-bottom">
+        <div class="pt-5 pb-2 mb-3 border-bottom">
             <h1 class="h2">Form Edit Data Mahasiswa</h1>
         </div>
 

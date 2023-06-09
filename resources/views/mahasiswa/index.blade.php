@@ -3,7 +3,7 @@
 @section('isi')
 
     <body>
-        <div class="pt-3 pb-2 mb-3 border-bottom">
+        <div class="pt-5 pb-2 mb-3 border-bottom">
             <div class="d-flex justify-content-between">
                 <h1 class="h2">Data Mahasiswa</h1>
                 <button type="button" class="btn btn-sm btn-primary"
