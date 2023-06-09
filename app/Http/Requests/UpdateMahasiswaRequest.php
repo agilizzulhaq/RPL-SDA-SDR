@@ -47,7 +47,8 @@ class UpdateMahasiswaRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'txtnik' => 'Nama Mahasiswa',
+            'txtnik' => 'NIK',
+            'txtnama' => 'Nama Mahasiswa',
             'txtjenis' => 'Jenis Kelamin',
             'txtprodi' => 'Prodi',
             'txtagama' => 'Agama',

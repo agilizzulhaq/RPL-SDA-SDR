@@ -3,7 +3,7 @@
 @section('isi')
 <div class="mt-16 mx-10">
 
-  <h1 class="text-3xl text-black font-bold mb-5">Edit Data Matkul</h1>
+  <h1 class="text-3xl text-black font-bold mb-5">Edit Data Mahasiswa</h1>
   
   <div class="w-full bg-white rounded-xl text-sm text-black-md p-3 border-2 border-green-200">
     <form action="{{ route('mahasiswaregina.update',$mahasiswaregina->id) }}" method="POST" enctype="multipart/form-data">

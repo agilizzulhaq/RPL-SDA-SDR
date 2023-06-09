@@ -53,7 +53,8 @@ class StoreMahasiswaRequest extends FormRequest
     {
         return [
             'txtkode' => 'ID Mahasiswa',
-            'txtnik' => 'Nama Mahasiswa',
+            'txtnik' => 'NIK',
+            'txtnama' => 'Nama Mahasiswa',
             'txtjenis' => 'Jenis Kelamin',
             'txtprodi' => 'Prodi',
             'txtagama' => 'Agama',

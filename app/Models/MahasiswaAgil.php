@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class MahasiswaAgil extends Model
 {
-    protected $table = 'mahasiswa_agil';
+    protected $table = 'mahasiswaagil';
     protected $primaryKey='IDMahasiswa';
     protected $guarded=[];
     public $incrementing = false;

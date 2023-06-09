@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mahasiswa_agil', function (Blueprint $table) {
+        Schema::create('mahasiswaagil', function (Blueprint $table) {
             $table->char('IDMahasiswa', 10)->primary();
             $table->string('Nama', 50);
             $table->enum('Jenis_Kelamin', ['Laki-Laki', 'Perempuan']);
             $table->string('Prodi', 30);
-            $table->string('Jurusan', 30);
-            $table->string('Email', 50);
             $table->date('Tanggal_Lahir');
             $table->enum('Agama', ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Budha', 'Konghucu']);
             $table->char('NIK', 16);
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mahasiswa_agil');
+        Schema::dropIfExists('mahasiswaagil');
     }
 };
