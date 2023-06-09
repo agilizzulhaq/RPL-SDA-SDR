@@ -14,11 +14,9 @@
         <span class="material-icons text-white drop-shadow-[0_3px_2px_rgba(0,0,0,0.4)]">edit</span>
       </div>
       @endif --}}
-      <div class="">
-        <div class="h-10 w-20 min-w-[200px]">
-          <input type="text" class="px-3 py-[10px] block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
-        </div>
-      </div>
+      <form action="/sdr/ruangan" class="h-10 w-20 min-w-[200px]">
+        <input type="text" name="keyword" value="{{ request('keyword') }}" class="px-3 py-[10px] text-black block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
+      </form>
     </div>
   </div> 
   <div class="rounded-lg overflow-x-auto border-1 border-slate-300">
@@ -50,7 +48,7 @@
                   <td class="px-3 py-2">{{$row -> kodeRuangan}}</td>
                   <td class="px-3 py-2">{{$row -> jenisRuangan}}</td>
                   <td class="px-3 py-2">{{$row -> namaRuangan}}</td>
-                  <td class="px-3 py-2">{{$row ->lokasi->nama_gedung . " Lantai " . $row->lokasi->lantai}}</td>
+                  <td class="px-3 py-2">{{$row ->nama_gedung . " Lantai " . $row->lantai}}</td>
                   <td class="px-3 py-2">{{$row -> kapasitas}}</td>
                   <td class="px-3 py-2">{{$row -> statusRuangan}}</td>
                   <td class="px-3 py-2">

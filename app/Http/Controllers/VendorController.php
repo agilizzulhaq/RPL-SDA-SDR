@@ -9,13 +9,22 @@ class VendorController extends Controller
 {
     # Controller Data Vendor
     public function vendor(Request $request) {
-        if($request -> has ('search')) {
-            $data = Vendor::where('nama_user','LIKE','%' .$request -> search.'%') -> paginate(10);
-        } else {
-            $data = Vendor::paginate(10);
-        }
+        // if($request -> has ('search')) {
+        //     $data = Vendor::where('nama_user','LIKE','%' .$request -> search.'%') -> paginate(10);
+        // } else {
+        //     $data = Vendor::paginate(10);
+        // }
+
+        $keyword = '%' . request('keyword') . '%';
+        $data = Vendor::latest()
+                        ->where('vendors.nama_vendor', 'like', $keyword)
+                        ->orWhere('vendors.alamat_vendor', 'like', $keyword)
+                        ->orWhere('vendors.email_vendor', 'like', $keyword)
+                        ->paginate(10);
+
         return view('vendor.datavendor', compact('data'));
     }
+    
 
     # Controller Input Data
     public function addvendor() {

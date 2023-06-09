@@ -70,7 +70,7 @@
       <li>
         <div class="iocn-link">
           <a>
-            <i class='bx bx-buildings bx-sm' ></i>
+            <i class='bx bxs-book-content'></i>
             <span class="link_name">UAS</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
@@ -90,8 +90,10 @@
               <li><a href="/matkulregina">Data Matkul</a></li>
             </ul>
           </li>
+          <li><a href="/mahasiswa-agil">UAS Agil</a></li>
           <li><a href="{{ url('mahasiswa_alyzar') }}">UAS Alyzar</a></li>
           <li><a href="{{ url('mahasiswa') }}">UAS Arjuna</a></li>
+          <li><a href="{{ url('crudrasikhs') }}">UAS Rasikh</a></li>
           {{-- <li><a href="/sdr/ruangan">Data Ruangan</a></li> --}}
         </ul>
       </li>

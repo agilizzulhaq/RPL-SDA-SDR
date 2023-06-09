@@ -23,8 +23,8 @@ class PenjadwalanRuangan extends Model
     {
         return $this->belongsTo(Pengguna::class, 'namaPeminjam', 'id_user');
     }
-    public function lokasi(): BelongsTo
-    {
-        return $this->belongsTo(Lokasi::class, 'lokasiRuangan', 'kode_lokasi');
-    }
+    // public function lokasi(): BelongsTo
+    // {
+    //     return $this->belongsTo(Lokasi::class, 'lokasiRuangan', 'kode_lokasi');
+    // }
 }

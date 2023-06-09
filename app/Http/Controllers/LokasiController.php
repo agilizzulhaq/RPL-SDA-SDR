@@ -15,7 +15,8 @@ class LokasiController extends Controller
      */
     public function index(): View
     {
-        $lokasi = Lokasi::latest()->paginate(10);
+        $keyword = '%' . request('keyword') . '%';
+        $lokasi = Lokasi::latest()->where('lokasi.nama_gedung', 'like', $keyword)->paginate(10);
         
         return view('lokasi.index',compact('lokasi'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);

@@ -8,6 +8,9 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Middleware\CekUserLogin;
+use Psy\Command\WhereamiCommand;
+use Illuminate\Support\Facades\DB;
+
 
 class PerawatanAlatController extends Controller
 {
@@ -16,11 +19,14 @@ class PerawatanAlatController extends Controller
      */
     public function index(): View
     {
-        $perawatan_alat = PerawatanAlat::with('Inventory')
+        $keyword = '%' . request('keyword') . '%';
+
+        $perawatan_alat = DB::table('perawatan_alat')
                     ->join('inventories', 'perawatan_alat.kode_alat', '=', 'inventories.kodeAlat')
+                    ->join('nama_alat', 'nama_alat.kode_nama_alat', '=', 'inventories.namaAlat')
                     ->select(
                         'inventories.kodeAlat',
-                        'inventories.namaAlat',
+                        'nama_alat.nama_alat',
                         'perawatan_alat.id_perawatan',
                         'perawatan_alat.jenis_perawatan',
                         'perawatan_alat.status_perawatan',
@@ -28,12 +34,15 @@ class PerawatanAlatController extends Controller
                         'perawatan_alat.riwayat_perawatan',
                         'perawatan_alat.catatan_perawatan',
                     )
+                    ->where('perawatan_alat.jenis_perawatan', 'like', $keyword)
+                    ->orWhere('nama_alat.nama_alat', 'like', $keyword)
+                    ->orWhere('perawatan_alat.status_perawatan', 'like', $keyword)
+                    ->orWhere('perawatan_alat.riwayat_perawatan', 'like', $keyword)
+                    ->orWhere('perawatan_alat.catatan_perawatan', 'like', $keyword)
                     ->latest('perawatan_alat.created_at')
                     ->paginate(10);
-
-        $inventory = Inventory::all();
         
-        return view('perawatan_alat.index',compact('perawatan_alat', 'inventory'))
+        return view('perawatan_alat.index',compact('perawatan_alat'))
                     ->with('i', (request()->input('page', 1) - 1) * 10);
     }
   
