@@ -135,6 +135,16 @@ Route::prefix('mahasiswa-agil')->group(function () {
     Route::put('/{IDMahasiswa}', [MahasiswaAgilController::class, 'update']);
     Route::delete('delete/{IDMahasiswa}', [MahasiswaAgilController::class, 'destroy']);
 });
+// Route Arjuna
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('datamahasiswa');
+Route::get('/tambahdatamahasiswa', [MahasiswaController::class, 'create'])->name('tambahdataMahasiswa');
+Route::post('/storedatamahasiswa', [MahasiswaController::class, 'store'])->name('storedatamahasiswa');
+
+Route::get('/showdatamahasiswa/{id}', [MahasiswaController::class, 'show'])->name('showdatamahasiswa');
+Route::post('/updatedatamahasiswa/{id}', [MahasiswaController::class, 'update'])->name('updatedatamahasiswa');
+
+Route::get('/deletedatamahasiswa/{id}', [MahasiswaController::class, 'destroy'])->name('deletedatamahasiswa');
+
 
 Route::middleware('auth')->name('dashboard')->get('/', [DashboardController::class, 'index']);
 Route::middleware('auth')->name('dashboard')->get('/home', [DashboardController::class, 'index']);
