@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use App\Http\Middleware\CekUserLogin;
-
+use Illuminate\Support\Facades\Auth;
 class PeminjamanAlatController extends Controller
 {
     /**
@@ -95,18 +95,25 @@ class PeminjamanAlatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function __construct()
-    {
-        $this->middleware(CekUserLogin::class . ':2,3')->only(['edit', 'destroy','update']);
-        // $this->middleware(CekUserLogin::class . ':1,2,3')->only(['create', 'store']);
-    }
-
+    // public function __construct()
+    // {
+    //     $this->middleware(CekUserLogin::class . ':2,3')->only(['edit', 'destroy','update']);
+    //     // $this->middleware(CekUserLogin::class . ':1,2,3')->only(['create', 'store']);
+    // }
+    
     public function edit(PeminjamanAlat $peminjaman_alat): View
     {
+        $user = Auth::user();
+        if ($user->level == 2 || $user->level == 3){
         $inventory = Inventory::all();
         $namaalat = NamaAlat::all();
         $pengguna = Pengguna::all();
         return view('peminjaman_alat.edit',compact('peminjaman_alat', 'inventory', 'namaalat', 'pengguna'));
+        }
+        else {
+            // Redirect or display an error message
+            return redirect('login')->with('error', 'Anda tidak memiliki akses');
+        }
     }
   
     /**
@@ -114,6 +121,8 @@ class PeminjamanAlatController extends Controller
      */
     public function update(Request $request, PeminjamanAlat $peminjaman_alat): RedirectResponse
     {
+        $user = Auth::user();
+        if ($user->level == 2 || $user->level == 3){
         $request->validate([
             'id_peminjaman' => 'required',
             'kode_alat' => 'required',
@@ -128,6 +137,11 @@ class PeminjamanAlatController extends Controller
         
         return redirect()->route('peminjaman_alat.index')
                         ->with('success','Data pinjam berhasil diperbarui');
+        }
+        else {
+            // Redirect or display an error message
+            return redirect('login')->with('error', 'Anda tidak memiliki akses');
+        }
     }
   
     /**
@@ -135,11 +149,18 @@ class PeminjamanAlatController extends Controller
      */
     public function destroy(PeminjamanAlat $peminjaman_alat): RedirectResponse
     {
+        $user = Auth::user();
+        if ($user->level == 2 || $user->level == 3){
         $confirmDelete = true; // tambahkan variabel untuk menandai konfirmasi
         $peminjaman_alat->delete();
 
         return redirect()->route('peminjaman_alat.index')
                         ->with('success', 'Data telah berhasil dihapus')
                         ->with('confirmDelete', $confirmDelete); // tambahkan variabel ke session
+        }
+        else {
+            // Redirect or display an error message
+            return redirect('login')->with('error', 'Anda tidak memiliki akses');
+        }
     }
 }

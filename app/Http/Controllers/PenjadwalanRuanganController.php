@@ -11,6 +11,7 @@ use App\Models\PenjadwalanRuangan;
 use Illuminate\Support\Facades\DB;
 use App\Http\Middleware\CekUserLogin;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class PenjadwalanRuanganController extends Controller
 {
@@ -88,17 +89,24 @@ class PenjadwalanRuanganController extends Controller
      * Show the form for editing the specified resource.
      */
 
-    public function __construct()
-    {
-        $this->middleware(CekUserLogin::class . ':2')->only(['edit', 'destroy','update']);
-        // $this->middleware(CekUserLogin::class . ':1,2,3')->only(['create', 'store']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware(CekUserLogin::class . ':2,3')->only(['edit', 'destroy','update']);
+    //     // $this->middleware(CekUserLogin::class . ':1,2,3')->only(['create', 'store']);
+    // }
 
     public function edit(PenjadwalanRuangan $penjadwalanruangan): View
     {
+        $user = Auth::user();
+        if ($user->level == 2 || $user->level == 3){
         $room = Room::all();
         $pengguna = Pengguna::all();
         return view('penjadwalanruangan.edit',compact('penjadwalanruangan', 'room', 'pengguna'));
+    }
+    else {
+        // Redirect or display an error message
+        return redirect('login')->with('error', 'Anda tidak memiliki akses');
+    }
     }
   
     /**
@@ -106,6 +114,8 @@ class PenjadwalanRuanganController extends Controller
      */
     public function update(Request $request, PenjadwalanRuangan $penjadwalanruangan): RedirectResponse
     {
+        $user = Auth::user();
+        if ($user->level == 2 || $user->level == 3){
         $request->validate([
             'id_penjadwalan' => 'required',
             'kodeRuangan' => 'required',
@@ -119,6 +129,11 @@ class PenjadwalanRuanganController extends Controller
         
         return redirect()->route('penjadwalanruangan.index')
                         ->with('success','Data penjadwalan berhasil diperbarui');
+        }
+        else {
+            // Redirect or display an error message
+            return redirect('login')->with('error', 'Anda tidak memiliki akses');
+        }
     }
   
     /**
@@ -126,11 +141,18 @@ class PenjadwalanRuanganController extends Controller
      */
     public function destroy(PenjadwalanRuangan $penjadwalanruangan): RedirectResponse
     {
+        $user = Auth::user();
+        if ($user->level == 2 || $user->level == 3){
         $confirmDelete = true; // tambahkan variabel untuk menandai konfirmasi
         $penjadwalanruangan->delete();
 
         return redirect()->route('penjadwalanruangan.index')
                         ->with('success', 'Data telah berhasil dihapus')
                         ->with('confirmDelete', $confirmDelete); // tambahkan variabel ke session
+        }
+        else {
+            // Redirect or display an error message
+            return redirect('login')->with('error', 'Anda tidak memiliki akses');
+        }
     }
 }
