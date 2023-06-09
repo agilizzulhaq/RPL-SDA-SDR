@@ -109,8 +109,8 @@ Route::get('/hapusruangan/{id}', [RoomController::class, 'hapusruangan'])->name(
 
 // Login Google
 Route::controller(GoogleController::class)->group(function () {
-    Route::get('/auth/google', 'redirectToGoogle')->name('auth.google');
-    Route::get('/auth/google/callback', 'handleGoogleCallback')->name('handleGoogleCallback');
+    Route::get('/auth/google', 'redirect')->name('google-auth');
+    Route::get('/auth/google/call-back', 'callbackGoogle');
 });
 
 // Route Rasikh

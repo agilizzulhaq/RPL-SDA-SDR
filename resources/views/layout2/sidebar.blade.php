@@ -90,6 +90,7 @@
               <li><a href="/matkulregina">Data Matkul</a></li>
             </ul>
           </li>
+          <li><a href="/mahasiswa-agil">UAS Agil</a></li>
           <li><a href="{{ url('mahasiswa_alyzar') }}">UAS Alyzar</a></li>
           <li><a href="{{ url('mahasiswa') }}">UAS Arjuna</a></li>
           <li><a href="{{ url('crudrasikhs') }}">UAS Rasikh</a></li>
