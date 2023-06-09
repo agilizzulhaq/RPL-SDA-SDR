@@ -41,6 +41,7 @@ class GoogleController extends Controller
                     [   'email' => $google_user->getEmail(),
                         'name' => $google_user->getName(),
                         'google_id'=> $google_user->getId(),
+                        'level' =>$google_user->level,
                         'password' => Hash::make('password')
                     ]);
 
@@ -50,7 +51,7 @@ class GoogleController extends Controller
             }
 
         } catch (\Throwable $th) {
-            dd('HELP ME PLEASE'.$th->getMessage());
+            dd('HELP ME PLEASE'.$th->getMessage() );
         }
     }
 }
