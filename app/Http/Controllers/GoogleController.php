@@ -41,7 +41,7 @@ class GoogleController extends Controller
                     'email' => $google_user->getEmail(),
                     'name' => $google_user->getName(),
                     'google_id' => $google_user->getId(),
-                    'level' => '3', // Set a default value for the 'level' column
+                    'level' => '1', // Set a default value for the 'level' column
                     'password' => Hash::make('password')
                 ]);
 
