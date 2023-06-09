@@ -51,8 +51,8 @@ class GoogleController extends Controller
             }
 
         } 
-        // catch (\Throwable $th) {
-        //     dd('HELP ME PLEASE'.$th->getMessage() );
-        // }
+        catch (\Throwable $th) {
+            dd('HELP ME PLEASE'.$th->getMessage() );
+        }
     }
 }
