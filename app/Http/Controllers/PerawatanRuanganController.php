@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PerawatanRuangan;
 use App\Models\Room;
-use App\Models\Pengguna;
 use App\Models\Lokasi;
+use App\Models\Pengguna;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\PerawatanRuangan;
+use Illuminate\Support\Facades\DB;
 use App\Http\Middleware\CekUserLogin;
+use Illuminate\Http\RedirectResponse;
 
 class PerawatanRuanganController extends Controller
 {
@@ -18,26 +19,33 @@ class PerawatanRuanganController extends Controller
      */
     public function index(): View
     {
-        $perawatanruangan = PerawatanRuangan::with('Room', 'lokasi')
-            ->join('rooms', 'rooms.kodeRuangan', '=', 'perawatan_ruangans.kodeRuangan')
-            ->join('lokasi', 'room.lokasiRuangan', '=', 'lokasi.kode_lokasi')
+        $keyword = '%' . request('keyword') . '%';
+
+        $perawatanruangan = DB::table('perawatan_ruangans')
+            ->join('rooms', 'perawatan_ruangans.kodeRuangan', '=', 'rooms.kodeRuangan')
+            ->join('lokasi', 'rooms.lokasiRuangan', '=', 'lokasi.kode_lokasi')
             ->select(
                 'rooms.kodeRuangan',
                 'rooms.namaRuangan',
-                'rooms.lokasiRuangan',
                 'lokasi.nama_gedung',
                 'lokasi.lantai',
                 'perawatan_ruangans.id_perawatan',
                 'perawatan_ruangans.statusPerawatan',
                 'perawatan_ruangans.history',
                 'perawatan_ruangans.kondisi',
-            );
+            )
+            ->where('rooms.namaRuangan', 'like', $keyword)
+            ->orWhere('lokasi.nama_gedung', 'like', $keyword)
+            ->orWhere('lokasi.lantai', 'like', $keyword)
+            ->orWhere('perawatan_ruangans.kondisi', 'like', $keyword)
+            ->orWhere('perawatan_ruangans.statusPerawatan', 'like', $keyword)
+            ->paginate(10);
 
-        $room = Room::all();
-        $lokasi = Lokasi::all();
+        // $room = Room::all();
+        // $lokasi = Lokasi::all();
 
-        $perawatanruangan = PerawatanRuangan::paginate(10);
-        return view('perawatanruangan.index', compact('perawatanruangan', 'room', 'lokasi'));
+        // $perawatanruangan = PerawatanRuangan::paginate(10);
+        return view('perawatanruangan.index', compact('perawatanruangan'));
     }
 
     /**

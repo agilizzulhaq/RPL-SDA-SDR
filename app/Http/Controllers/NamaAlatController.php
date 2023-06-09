@@ -15,7 +15,10 @@ class NamaAlatController extends Controller
      */
     public function index(): View
     {
-        $nama_alat = NamaAlat::latest()->paginate(10);
+        $keyword = '%' . request('keyword') . '%';
+        $nama_alat = NamaAlat::latest()
+                        ->where('nama_alat.nama_alat', 'like', $keyword)
+                        ->paginate(10);
         
         return view('nama_alat.index',compact('nama_alat'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);

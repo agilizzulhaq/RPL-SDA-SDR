@@ -15,14 +15,12 @@
                 <span class="material-icons text-white drop-shadow-[0_3px_2px_rgba(0,0,0,0.4)]">edit</span>
               </div>
               @endif --}}
-              <div class="">
-                <div class="h-10 w-20 min-w-[200px]">
-                    <input type="text" class="px-3 py-[10px] block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
-                  </div>
-              </div>
+              <form action="/sda/perawatan_alat" class="h-10 w-20 min-w-[200px]">
+                <input type="text" name="keyword" value="{{ request('keyword') }}" class="px-3 py-[10px] text-black block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
+              </form>
             </div>
         </div> 
-       
+       {{ dd($perawatan_alat->first()) }}
         <div class="rounded-lg overflow-x-auto border-1 border-slate-300">
             <table class="w-full text-sm text-left text-blue-100">
                 <thead class="text-xs text-white text-center uppercase bg-[#5479f7]">
@@ -46,13 +44,7 @@
                         <td class="px-3 py-2">{{ ++$i }}</td>
                         <td class="px-3 py-2">{{ $perawatan->id_perawatan }}</td>
                         <td class="px-3 py-2">{{ $perawatan->kodeAlat }}</td>
-                        <td class="px-3 py-2">
-                            @foreach ($inventory as $item)
-                                @if ($item->kodeAlat === $perawatan->kodeAlat)
-                                    {{ $item->nama_alat->nama_alat }}
-                                @endif
-                            @endforeach
-                        </td>
+                        <td class="px-3 py-2">{{ $perawatan->nama_alat }}</td>
                         <td class="px-3 py-2">{{ $perawatan->jenis_perawatan }}</td>
                         <td class="px-3 py-2">{{ $perawatan->status_perawatan }}</td>
                         <td class="px-3 py-2">{{ $perawatan->tanggal_perawatan }}</td>

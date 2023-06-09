@@ -20,30 +20,34 @@ class PeminjamanAlatController extends Controller
      */
     public function index(): View
     {
-        
-        $peminjaman_alat = PeminjamanAlat::with('Inventory', 'NamaAlat', 'Pengguna')
-                    ->join('inventories', 'peminjaman_alat.kode_alat', '=', 'inventories.kodeAlat')
-                    ->join('nama_alat', 'inventories.kodeAlat', '=', 'nama_alat.kode_nama_alat')
+        $keyword = '%' . request('keyword') . '%';
+
+        $peminjaman_alat = DB::table('peminjaman_alat')
                     ->join('penggunas', 'peminjaman_alat.nama_peminjam', '=', 'penggunas.id_user')
+                    ->join('inventories', 'peminjaman_alat.kode_alat', '=', 'inventories.kodeAlat')
+                    ->join('nama_alat', 'inventories.namaAlat', '=', 'nama_alat.kode_nama_alat')
                     ->select(
-                        'inventories.kodeAlat',
                         'nama_alat.nama_alat',
                         'inventories.namaAlat',
-                        'penggunas.id_user',
                         'penggunas.nama_user',
+                        'peminjaman_alat.kode_alat',
                         'peminjaman_alat.id_peminjaman',
                         'peminjaman_alat.tanggal_peminjaman',
                         'peminjaman_alat.tanggal_pengembalian',
                         'peminjaman_alat.status_peminjaman',
                         'peminjaman_alat.alasan_peminjaman'
                     )
+                    ->where('nama_alat.nama_alat', 'like', $keyword)
+                    ->orWhere('penggunas.nama_user', 'like', $keyword)
+                    ->orWhere('peminjaman_alat.status_peminjaman', 'like', $keyword)
+                    ->orWhere('peminjaman_alat.alasan_peminjaman', 'like', $keyword)
                     ->latest('peminjaman_alat.created_at')
                     ->paginate(10);
 
         $inventory = Inventory::all();
         $pengguna = Pengguna::all();
        
-        return view('peminjaman_alat.index',compact('peminjaman_alat', 'inventory', 'pengguna'))
+        return view('peminjaman_alat.index',compact('peminjaman_alat'))
                     ->with('i', (request()->input('page', 1) - 1) * 10);
     }
     

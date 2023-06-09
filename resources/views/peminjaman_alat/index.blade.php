@@ -13,14 +13,11 @@
                 <span class="material-icons text-white drop-shadow-[0_3px_2px_rgba(0,0,0,0.4)]">edit</span>
               </div>
               @endif --}}
-              <div class="">
-                <div class="h-10 w-20 min-w-[200px]">
-                    <input type="text" class="px-3 py-[10px] block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
-                  </div>
-              </div>
+              <form action="/sda/peminjaman_alat" class="h-10 w-20 min-w-[200px]">
+                <input type="text" name="keyword" value="{{ request('keyword') }}" class="px-3 py-[10px] text-black block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
+              </form>
             </div>
         </div>  
-        
         <div class="rounded-lg overflow-x-auto border-1 border-slate-300">
             <table class="w-full text-sm text-left text-blue-100">
                 <tr class="text-xs text-white text-center uppercase bg-[#5479f7]">
@@ -39,14 +36,15 @@
                 <tr class="text-black text-center {{ ($key+1)%2 == 0 ? 'bg-white border-b-2 border-gray-300' : '' }}">
                     <td  class="px-3 py-2">{{ ++$i }}</td>
                     <td  class="px-3 py-2">{{ $peminjamanalat->id_peminjaman }}</td>
-                    <td  class="px-3 py-2">{{ $peminjamanalat->kodeAlat }}</td>
-                    <td>
+                    <td  class="px-3 py-2">{{ $peminjamanalat->kode_alat }}</td>
+                    {{-- <td>
                         @foreach ($inventory as $item)
                             @if ($item->kodeAlat === $peminjamanalat->kodeAlat)
                                 {{ $item->nama_alat->nama_alat }}
                             @endif
                         @endforeach
-                    </td>
+                    </td> --}}
+                    <td  class="px-3 py-2">{{ $peminjamanalat->nama_alat }}</td>
                     <td  class="px-3 py-2">{{ $peminjamanalat->nama_user }}</td>
                     <td  class="px-3 py-2">{{ $peminjamanalat->tanggal_peminjaman }}</td>
                     <td  class="px-3 py-2">{{ $peminjamanalat->tanggal_pengembalian }}</td>

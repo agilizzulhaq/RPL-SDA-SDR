@@ -11,11 +11,9 @@
       {{-- <div id="edit" class="w-10 h-10 bg-[#5479f7] drop-shadow-[0_3px_2px_rgba(0,0,0,0.4)] items-center flex justify-center rounded-full ease-in-out transition duration-150 cursor-pointer">
         <span class="material-icons text-white drop-shadow-[0_3px_2px_rgba(0,0,0,0.4)]">edit</span>
       </div> --}}
-      <div class="">
-        <div class="h-10 w-20 min-w-[200px]">
-          <input type="text" class="px-3 py-[10px] block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
-        </div>
-      </div>
+      <form action="/lokasi" class="h-10 w-20 min-w-[200px]">
+        <input type="text" name="keyword" value="{{ request('keyword') }}" class="px-3 py-[10px] text-black block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
+      </form>
     </div>
   </div>
   <div class="rounded-lg overflow-x-auto border-1 border-slate-300">

@@ -13,11 +13,9 @@
                 {{-- <div id="edit" class="w-10 h-10 bg-[#5479f7] drop-shadow-[0_3px_2px_rgba(0,0,0,0.4)] items-center flex justify-center rounded-full ease-in-out transition duration-150 cursor-pointer">
                   <span class="material-icons text-white drop-shadow-[0_3px_2px_rgba(0,0,0,0.4)]">edit</span>
                 </div> --}}
-                <div class="">
-                  <div class="h-10 w-20 min-w-[200px]">
-                      <input type="text" class="px-3 py-[10px] block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
-                    </div>
-                </div>
+                <form action="/sdr/perawatanruangan" class="h-10 w-20 min-w-[200px]">
+                    <input type="text" name="keyword" value="{{ request('keyword') }}" class="px-3 py-[10px] text-black block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
+                  </form>
               </div>
             </div>
         </div> 
@@ -43,7 +41,7 @@
                         <th scope="row" class="px-3 py-2 font-medium whitespace-nowrap">{{ $index + $perawatanruangan->firstItem() }}</th>
                         <td scope="row" class="px-3 py-2">{{ $row->id_perawatan }}</td>
                         <td scope="row" class="px-3 py-2">{{ $row->kodeRuangan }}</td>
-                        <td>
+                        {{-- <td>
                             @foreach ($room as $item)
                                 @if ($item->kodeRuangan === $row->kodeRuangan)
                                     {{ $item->namaRuangan }}
@@ -56,10 +54,12 @@
                                     {{ $item->lokasi->nama_gedung . " Lantai " . $item->lokasi->lantai }}
                                 @endif
                             @endforeach
-                        </td>
+                        </td> --}}
+                        <td scope="row" class="px-3 py-2">{{ $row->namaRuangan }}</td>
+                        <td scope="row" class="px-3 py-2">{{ $row->nama_gedung . " Lantai " . $row->lantai }}</td>
                         <td scope="row" class="px-3 py-2">{{ (($row->kondisi=='B') ? 'Baik' : (($row->kondisi=='S') ? 'Sedang' : 'Rusak')) }}</td>
                         <td scope="row" class="px-3 py-2">{{ $row->history }}</td>
-                        <td scope="row" class="px-3 py-2">{{ $row->statusperawatan }}</td>
+                        <td scope="row" class="px-3 py-2">{{ $row->statusPerawatan }}</td>
                         <td class="px-3 py-2">
                             @if($userLevel==2)
                             <div class="rounded-md group py-1 hover:bg-[#f5f5f5] cursor-pointer w-10">

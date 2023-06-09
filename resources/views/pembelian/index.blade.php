@@ -31,13 +31,12 @@
             <span class="material-icons text-white drop-shadow-[0_3px_2px_rgba(0,0,0,0.4)]">edit</span>
           </div>
         @endif --}}
-          <div class="">
-            <div class="h-10 w-20 min-w-[200px]">
-                <input type="text" class="px-3 py-[10px] block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
-              </div>
-          </div>
+          <form action="/sda/pembelian" class="h-10 w-20 min-w-[200px]">
+            <input type="text" name="keyword" value="{{ request('keyword') }}" class="px-3 py-[10px] text-black block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
+          </form>
         </div>
     </div> 
+    {{ dd($pembelians->first()->nama_alat) }}
     <div class="rounded-lg overflow-x-auto border-1 border-slate-300">
         <table class="w-full text-sm text-left text-blue-100">
             <thead class="text-xs text-white text-center uppercase bg-[#5479f7]">

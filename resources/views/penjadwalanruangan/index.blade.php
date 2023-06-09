@@ -11,14 +11,12 @@
               {{-- <div id="edit" class="w-10 h-10 bg-[#5479f7] drop-shadow-[0_3px_2px_rgba(0,0,0,0.4)] items-center flex justify-center rounded-full ease-in-out transition duration-150 cursor-pointer">
                 <span class="material-icons text-white drop-shadow-[0_3px_2px_rgba(0,0,0,0.4)]">edit</span>
               </div> --}}
-              <div class="">
-                <div class="h-10 w-20 min-w-[200px]">
-                    <input type="text" class="px-3 py-[10px] block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
-                  </div>
-              </div>
+              <form action="/sdr/penjadwalanruangan" class="h-10 w-20 min-w-[200px]">
+                <input type="text" name="keyword" value="{{ request('keyword') }}" class="px-3 py-[10px] text-black block w-full border-gray-200 rounded-full text-sm bg-white" placeholder="Search">
+              </form>
             </div>
         </div> 
-
+        {{-- {{ dd($penjadwalanruangan->first()->nama_gedung); }} --}}
         <div class="rounded-lg overflow-x-auto border-1 border-slate-300">
             <table class="w-full text-sm text-left text-blue-100">
                 <thead class="text-xs text-white text-center uppercase bg-[#5479f7]">
@@ -41,7 +39,7 @@
                         <th class="px-3 py-2 font-medium whitespace-nowrap">{{ $index + $penjadwalanruangan->firstItem() }}</th>
                         <td class="px-3 py-2">{{ $row->id_penjadwalan }}</td>
                         <td class="px-3 py-2">{{ $row->kodeRuangan }}</td>
-                        <td>
+                        {{-- <td>
                             @foreach ($room as $item)
                                 @if ($item->kodeRuangan === $row->kodeRuangan)
                                     {{ $item->namaRuangan }}
@@ -54,7 +52,9 @@
                                     {{ $item->lokasi->nama_gedung . " Lantai " . $item->lokasi->lantai }}
                                 @endif
                             @endforeach
-                        </td>
+                        </td> --}}
+                        <td class="px-3 py-2">{{ $row->namaRuangan }}</td>
+                        <td class="px-3 py-2">{{ $row->nama_gedung . " Lantai " . $row->lantai }}</td>
                         <td class="px-3 py-2">{{ $row->namaPeminjam }}</td>
                         <td class="px-3 py-2">{{ $row->tanggalMasuk }}</td>
                         <td class="px-3 py-2">{{ $row->tanggalKeluar }}</td>

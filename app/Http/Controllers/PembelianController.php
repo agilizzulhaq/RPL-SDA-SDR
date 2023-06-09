@@ -21,6 +21,8 @@ class PembelianController extends Controller
      */
     public function index(): View
     {
+        $keyword = '%' . request('keyword') . '%';
+
         $pembelians = Pembelian::with('NamaAlat')
                     ->join('nama_alat', 'pembelians.nama_alat', '=', 'nama_alat.kode_nama_alat')
                     ->join('vendors', 'pembelians.vendor', '=', 'vendors.id_vendor')
@@ -34,13 +36,17 @@ class PembelianController extends Controller
                         'pembelians.keterangan',
                         'pembelians.status',
                     )
+                    ->where('nama_alat.nama_alat', 'like', $keyword)
+                    ->orWhere('vendors.nama_vendor', 'like', $keyword)
+                    ->orWhere('pembelians.keterangan', 'like', $keyword)
+                    ->orWhere('pembelians.status', 'like', $keyword)
                     ->latest('pembelians.created_at')
                     ->paginate(10);
 
         $nama_alat = NamaAlat::all();
         $vendor = Vendor::all();
-        
-        return view('pembelian.index',compact('pembelians', 'nama_alat', 'vendor'))
+        // dd($pembelians->first()->id_pembelian);
+        return view('pembelian.index',compact('pembelians'))
                     ->with('i', (request()->input('page', 1) - 1) * 10);
     }
   

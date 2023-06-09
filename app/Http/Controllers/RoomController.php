@@ -10,26 +10,33 @@ use App\Http\Middleware\CekUserLogin;
 class RoomController extends Controller
 {
     public function ruangan(Request $request) {
+        $keyword = '%' . request('keyword') . '%';
+
         $data = Room::with('lokasi')
-                    ->join('lokasi', 'room.lokasiRuangan', '=', 'lokasi.kode_lokasi')
+                    ->join('lokasi', 'rooms.lokasiRuangan', '=', 'lokasi.kode_lokasi')
                     ->select(
                         'lokasi.nama_gedung',
                         'lokasi.lantai',
-                        'room.kodeRuangan',
-                        'room.kapasitas',
-                        'room.jenisRuangan',
-                        'room.namaRuangan',
-                        'room.statusRuangan',
-                    );
+                        'rooms.kodeRuangan',
+                        'rooms.kapasitas',
+                        'rooms.jenisRuangan',
+                        'rooms.namaRuangan',
+                        'rooms.statusRuangan',
+                    )
+                    ->where('rooms.jenisRuangan', 'like', $keyword)
+                    ->orWhere('rooms.namaRuangan', 'like', $keyword)
+                    ->orWhere('rooms.statusRuangan', 'like', $keyword)
+                    ->orWhere('lokasi.nama_gedung', 'like', $keyword)
+                    ->paginate(10);
                     
-        if($request -> has ('search')) {
-            $data = Room::where('namaRuangan','LIKE','%' .$request -> search.'%') -> paginate(10);
-        } else {
-            $data = Room::paginate(10);
-        }
+        // if($request -> has ('search')) {
+        //     $data = Room::where('namaRuangan','LIKE','%' .$request -> search.'%') -> paginate(10);
+        // } else {
+        //     $data = Room::paginate(10);
+        // }
 
         $lokasi = Lokasi::all();
-        return view('room.dataruangan', compact('data', 'lokasi'));
+        return view('room.dataruangan', compact('data'));
     }
 
     public function __construct()

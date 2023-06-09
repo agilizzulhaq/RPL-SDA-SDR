@@ -9,11 +9,19 @@ class PenggunaController extends Controller
 {
     # Controller Data Pengguna
     public function users(Request $request) {
-        if($request -> has ('search')) {
-            $data = Pengguna::where('nama_user','LIKE','%' .$request -> search.'%') -> paginate(10);
-        } else {
-            $data = Pengguna::paginate(10);
-        }
+        // if($request -> has ('search')) {
+        //     $data = Pengguna::where('nama_user','LIKE','%' .$request -> search.'%') -> paginate(10);
+        // } else {
+        //     $data = Pengguna::paginate(10);
+        // }
+
+        $keyword = '%' . request('keyword') . '%';
+        $data = Pengguna::latest()
+                        ->where('penggunas.nama_user', 'like', $keyword)
+                        ->orWhere('penggunas.alamat_user', 'like', $keyword)
+                        ->orWhere('penggunas.email_user', 'like', $keyword)
+                        ->paginate(10);
+
         return view('pengguna.datapengguna', compact('data'));
     }
 

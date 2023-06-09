@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PenjadwalanRuangan;
 use App\Models\Room;
-use App\Models\Pengguna;
 use App\Models\Lokasi;
+use App\Models\Pengguna;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\PenjadwalanRuangan;
+use Illuminate\Support\Facades\DB;
 use App\Http\Middleware\CekUserLogin;
+use Illuminate\Http\RedirectResponse;
 
 class PenjadwalanRuanganController extends Controller
 {
@@ -18,29 +19,31 @@ class PenjadwalanRuanganController extends Controller
      */
     public function index(): View
     {
-        $penjadwalanruangan = PenjadwalanRuangan::with('Room', 'Pengguna', 'lokasi')
-                    ->join('rooms', 'rooms.kodeRuangan', '=', 'penjadwalan_ruangans.kodeRuangan')
-                    ->join('penggunas', 'penggunas.id_user', '=', 'penjadwalan_ruangans.namaPeminjam')
-                    ->join('lokasi', 'room.lokasiRuangan', '=', 'lokasi.kode_lokasi')
+        $keyword = '%' . request('keyword') . '%';
+
+        $penjadwalanruangan = DB::table('penjadwalan_ruangans')
+                    ->join('rooms', 'penjadwalan_ruangans.kodeRuangan', '=', 'rooms.kodeRuangan')
+                    ->join('lokasi', 'rooms.lokasiRuangan', '=', 'lokasi.kode_lokasi')
                     ->select(
-                        'rooms.kodeRuangan',
                         'rooms.namaRuangan',
-                        'rooms.jenisRuangan',
                         'rooms.lokasiRuangan',
+                        'rooms.kodeRuangan',
                         'lokasi.nama_gedung',
                         'lokasi.lantai',
-                        'penggunas.nama_user',
                         'penjadwalan_ruangans.statusRuangan',
+                        'penjadwalan_ruangans.namaPeminjam',
+                        'penjadwalan_ruangans.id_penjadwalan',
                         'penjadwalan_ruangans.tanggalMasuk',
                         'penjadwalan_ruangans.tanggalKeluar',
-                    );
-
-        $room = Room::all();
-        $pengguna = Pengguna::all();
-        $lokasi = Lokasi::all();
-
-        $penjadwalanruangan = PenjadwalanRuangan::paginate(10);
-        return view('penjadwalanruangan.index',compact('penjadwalanruangan', 'room', 'pengguna', 'lokasi'));
+                    )
+                    ->where('rooms.namaRuangan', 'like', $keyword)
+                    ->orWhere('lokasi.nama_gedung', 'like', $keyword)
+                    ->orWhere('lokasi.lantai', 'like', $keyword)
+                    ->orWhere('penjadwalan_ruangans.namaPeminjam', 'like', $keyword)
+                    ->orWhere('penjadwalan_ruangans.statusRuangan', 'like', $keyword)
+                    ->paginate(10);
+                    
+        return view('penjadwalanruangan.index',compact('penjadwalanruangan'));
     }
   
     /**
