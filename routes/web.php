@@ -16,6 +16,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CrudRasikhController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProdiReginaController;
 use App\Http\Controllers\MatkulReginaController;
 use App\Http\Controllers\TempatLahirReginaController;
