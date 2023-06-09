@@ -32,8 +32,8 @@ return [
     ],
 
     'google' => [
-        'client_id' => env('GOOGLE_CLIENT_ID'),
-        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'http://localhost:8000/auth/google/callback',
+        'client_id' => '973976131300-imuvdhsbn063duid2lpggj1mfssoc7fe.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://www.alkesrosati.me/auth/google/call-back',
     ]
 ];

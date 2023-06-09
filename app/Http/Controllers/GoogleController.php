@@ -12,7 +12,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController extends Controller
 {
-    public function redirectToGoogle()
+    public function redirect()
     {
         return Socialite::driver('google')->redirect();
     }
@@ -22,13 +22,13 @@ class GoogleController extends Controller
      *
      * @return void
      */
-    public function handleGoogleCallback()
+    public function callbackGoogle()
     {
         try {
 
-            $user = Socialite::driver('google')->user();
+            $google_user = Socialite::driver('google')->user();
 
-            $finduser = User::where('google_id', $user->id)->first();
+            $finduser = User::where('google_id', $google_user->getId())->first();
 
             if($finduser){
 
@@ -37,19 +37,20 @@ class GoogleController extends Controller
                 return redirect()->intended('dashboard');
 
             }else{
-                $newUser = User::updateOrCreate(['email' => $user->email],[
-                        'name' => $user->name,
-                        'google_id'=> $user->id,
+                $new_User = User::Create(
+                    [   'email' => $google_user->getEmail(),
+                        'name' => $google_user->getName(),
+                        'google_id'=> $google_user->getId(),
                         'password' => Hash::make('password')
                     ]);
 
-                Auth::login($newUser);
+                Auth::login($new_User);
 
                 return redirect()->intended('dashboard');
             }
 
-        } catch (Exception $e) {
-            dd($e->getMessage());
+        } catch (\Throwable $th) {
+            dd('HELP ME PLEASE'.$th->getMessage());
         }
     }
 }
