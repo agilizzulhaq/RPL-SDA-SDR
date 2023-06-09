@@ -13,7 +13,7 @@ class MahasiswaAgilController extends Controller
     public function index()
     {
         $mahasiswaagil = MahasiswaAgil::all();
-        return view('mahasiswa_agil.index', compact('mahaasiswaagil'));
+        return view('mahasiswa_agil.index', compact('mahasiswaagil'));
     }
 
     /**
@@ -39,7 +39,7 @@ class MahasiswaAgilController extends Controller
     public function edit($IDMahasiswa)
     {
         $mahasiswaagil = MahasiswaAgil::find($IDMahasiswa);
-        return view('mahasiswa_agil.edit', compact('mahaasiswaagil'));
+        return view('mahasiswa_agil.edit', compact('mahasiswaagil'));
     }
 
     /**
