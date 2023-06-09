@@ -12,7 +12,7 @@ class MahasiswaAgilController extends Controller
      */
     public function index()
     {
-        $mahasiswa = MahasiswaAgil::all();
+        $mahasiswaagil = MahasiswaAgil::all();
         return view('mahasiswa_agil.index', compact('mahasiswa'));
     }
 
@@ -38,7 +38,7 @@ class MahasiswaAgilController extends Controller
      */
     public function edit($IDMahasiswa)
     {
-        $mahasiswa = MahasiswaAgil::find($IDMahasiswa);
+        $mahasiswaagil = MahasiswaAgil::find($IDMahasiswa);
         return view('mahasiswa_agil.edit', compact('mahasiswa'));
     }
 
@@ -47,8 +47,8 @@ class MahasiswaAgilController extends Controller
      */
     public function update($IDMahasiswa, Request $request)
     {
-        $mahasiswa = MahasiswaAgil::find($IDMahasiswa);
-        $mahasiswa->update($request->except(['_token', 'submit']));
+        $mahasiswaagil = MahasiswaAgil::find($IDMahasiswa);
+        $mahasiswaagil->update($request->except(['_token', 'submit']));
         return redirect('/mahasiswa-agil');
     }
 
@@ -57,8 +57,8 @@ class MahasiswaAgilController extends Controller
      */
     public function destroy($IDMahasiswa)
     {
-        $mahasiswaAgil = MahasiswaAgil::find($IDMahasiswa);
-        $mahasiswaAgil->delete();
+        $mahasiswaagil = MahasiswaAgil::find($IDMahasiswa);
+        $mahasiswaagil->delete();
         return redirect('/mahasiswa-agil');
     }
 }
