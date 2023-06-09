@@ -37,13 +37,13 @@ class GoogleController extends Controller
                 return redirect()->intended('dashboard');
 
             }else{
-                $new_User = User::Create(
-                    [   'email' => $google_user->getEmail(),
-                        'name' => $google_user->getName(),
-                        'google_id'=> $google_user->getId(),
-                        'level' =>$google_user->level,
-                        'password' => Hash::make('password')
-                    ]);
+                $new_User = User::create([
+                    'email' => $google_user->getEmail(),
+                    'name' => $google_user->getName(),
+                    'google_id' => $google_user->getId(),
+                    'level' => '3', // Set a default value for the 'level' column
+                    'password' => Hash::make('password')
+                ]);
 
                 Auth::login($new_User);
 
